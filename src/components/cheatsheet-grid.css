@@ -1,8 +1,4 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
-body{
-    background-color: #FBFBFF;
-}
+@charset "UTF-8";
 
 .box-wrapper{
     display: flex;
@@ -18,7 +14,7 @@ body{
     width: 70px;
     height: 70px;
     border-radius: 15px;
-    background: #7661E2;
+    background: #F6866A;
     color: white;
     font-family: Pretendard;
     font-size: 22px;
