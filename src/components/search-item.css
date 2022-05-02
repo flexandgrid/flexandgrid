@@ -1,1 +1,72 @@
 @charset "UTF-8";
+
+.list-search {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 154px;
+    padding: 20px;
+    border-radius: 15px;
+    background: #fff;
+    line-height: 1.2;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.item-search:hover {
+    background: #f9f9f9;
+}
+
+.item-search .route-search {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #B4B4B4;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.item-search .tit-search {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #3F3F46;
+    font-size: 22px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.item-search .desc-search {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #878787;
+    font-size: 16px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.item-search.dark {
+    background: #3f3f46;
+}
+
+.item-search.dark:hover {
+    background: #23262f;
+}
+
+.item-search.dark .route-search {
+    color: #878787;
+}
+
+.item-search.dark .tit-search {
+    color: #fff;
+}
+
+.item-search.dark .desc-search {
+    color: #b4b4b4;
+}
