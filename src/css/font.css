@@ -1,1 +1,27 @@
-/* font */
+@font-face {
+  font-family: Pretendard;
+  src: local('Pretendard Light'), local('Pretendard-Light'),
+    url('../fonts/Pretendard-Light.subset.woff2');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Pretendard;
+  src: local('Pretendard Regular'), local('Pretendard-Regular'),
+    url('../fonts/Pretendard-Regular.subset.woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Pretendard;
+  src: local('Pretendard SemiBold'), local('Pretendard-SemiBold'),
+    url('../fonts/Pretendard-SemiBold.subset.woff2');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Pretendard;
+  src: local('Pretendard Bold'), local('Pretendard-Bold'),
+    url('../fonts/Pretendard-Bold.subset.woff2');
+  font-weight: 700;
+}
