@@ -114,3 +114,19 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.modal-history.dark{
+  background-color:#27272A;
+}
+
+.modal-history.dark .list-item:hover{
+  background-color: #3F3F46;
+}
+
+.modal-history.dark .txt-ellipsis{
+  color:#EFEFEF;
+}
+
+.modal-history.dark .btn-del img{
+  content:url('../assets/images/icon-close-darkmode.svg');
+}
