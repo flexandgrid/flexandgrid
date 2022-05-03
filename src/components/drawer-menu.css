@@ -1,1 +1,221 @@
 @charset "UTF-8";
+
+/* drawer 버튼 */
+.btn-drawer {
+  position: absolute;
+  /* 초기 left 값 */
+  left: 0; 
+  /* drawer 버튼 클릭시 left값 변경 */
+  left: 249px;
+  /* pc 헤더 높이 감안 */
+  top: 80px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #EFEFEF;
+  border-radius: 0px 0px 4px 0px;
+  background: #fff url(../assets/images/icon-drawer-menu.svg) no-repeat center;
+}
+
+/* drawer-menu */
+.drawer-menu {
+  position: absolute;
+  /* 초기 left 값 */
+  left: 0;
+  /* drawer 버튼 클릭시 left값 변경 */
+  /* left: -250px; */
+  top: 80px;
+  width: 250px;
+  height: 100%;
+  padding: 6px 10px 0;
+  background: #fff;
+  border-right: 1px solid #EFEFEF;;
+}
+
+.mobile-logo {
+  /* 모바일에서 사용시 block */
+  display: none;
+  margin-left: 11px;
+  width: 130px;
+  height: 88px;
+  background: url(../assets/images/logo.svg) no-repeat center/contain;
+}
+
+.btn-drawer-menu {
+  position: relative;
+  width: 100%;
+  padding: 14px 0 11px 40px;
+  border-bottom: 1px solid #E0E2E7;
+  color: #3F4150;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.btn-drawer-menu::before {
+  content: '';
+  position: absolute;
+  left: 10.75px;
+  top: 16px;
+  width: 22px;
+  height: 22px;
+}
+
+.btn-cheatSheet::before {
+  background: url(../assets/images/icon-cheatsheet.svg) no-repeat center/contain;
+}
+
+.btn-flex::before {
+  background: url(../assets/images/icon-flex.svg) no-repeat center/contain;
+}
+
+.btn-grid::before {
+  background: url(../assets/images/icon-grid.svg) no-repeat center/contain;
+}
+
+.btn-drawer-menu::after {
+  content: '';
+  position: absolute;
+  right: 10.75px;
+  top: 18.75px;
+  width: 16px;
+  height: 16px;
+  background: url(../assets/images/icon-chevron.svg) no-repeat center/contain;
+}
+
+.btn-drawer-menu:focus::after {
+  transform: rotate(180deg);
+}
+
+.btn-cheatSheet:focus::before {
+  background: url(../assets/images/icon-cheatsheet-hover.svg) no-repeat center/contain;
+}
+
+.btn-flex:focus {
+  color: #7661E2;
+}
+
+.btn-flex:focus::before {
+  background: url(../assets/images/icon-flex-hover.svg) no-repeat center/contain;
+}
+
+.btn-grid:focus {
+  color: #F6866A;
+}
+
+.btn-grid:focus::before {
+  background: url(../assets/images/icon-grid-hover.svg) no-repeat center/contain;
+}
+
+/* drawer-menu 리스트 */
+.list-drawer-menu {
+  /* display: none; */
+  margin: 6px 0 0 -40px;
+  line-height: 34px;
+  color: #878787;
+  font-weight: 400;
+}
+
+.tit-drawer-menu {
+  display: block;
+  width: 100%;
+  padding-left: 12px;
+  font-size: 14px;
+}
+
+.subtit-drawer-menu {
+  padding-left: 30px;
+  font-size: 13px;
+}
+
+.tit-drawer-menu:hover, .selected-tit {
+  background: #F9F9F9;
+  color: #3F3F46;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.subtit-drawer-menu>li:hover, .selected-sub-tit {
+  color: #3F3F46;
+  font-weight: 600;
+}
+
+
+/* 다크 모드 */
+.btn-drawer.on {
+  border: 1px solid #27272A;
+  background-color: #3F3F46;
+}
+
+.drawer-menu.on {
+  background: #3F3F46;
+  border: none;
+}
+
+.drawer-menu.on .mobile-logo {
+  background: url(../assets/images/logo-gray-darkmode.svg) no-repeat center/contain;
+}
+
+.btn-drawer-menu.on {
+  color: #F9F9F9;
+}
+
+.btn-cheatSheet.on::before {
+  background: url(../assets/images/icon-cheatsheet-darkmode.svg) no-repeat center/contain;
+}
+
+.btn-flex.on::before {
+  background: url(../assets/images/icon-flex-darkmode.svg) no-repeat center/contain;
+}
+
+.btn-grid.on::before {
+  background: url(../assets/images/icon-grid-darkmode.svg) no-repeat center/contain;
+}
+
+.on::after {
+  background: url(../assets/images/icon-chevron-darkmode.svg) no-repeat center/contain;
+}
+
+.btn-cheatSheet.on:focus::before {
+  background: url(../assets/images/icon-cheatsheet-hover.svg) no-repeat center/contain;
+}
+
+.btn-flex.on:focus {
+  color: #7661E2;
+}
+
+.btn-flex.on:focus::before {
+  background: url(../assets/images/icon-flex-hover.svg) no-repeat center/contain;
+}
+
+.btn-grid.on:focus {
+  color: #F6866A;
+}
+
+.btn-grid.on:focus::before {
+  background: url(../assets/images/icon-grid-hover.svg) no-repeat center/contain;
+}
+
+.btn-flex.on .list-drawer-menu {
+  color: #B4B4B4;
+}
+
+.list-drawer-menu.on .selected-tit {
+  background: #252424;
+  color: #E0E0E0;
+}
+
+.list-drawer-menu.on .selected-sub-tit {
+  color: #E0E0E0;
+}
+
+.list-drawer-menu.on .tit-drawer-menu:hover {
+  background: #252424;
+  color: #E0E0E0;
+}
+
+.list-drawer-menu.on .subtit-drawer-menu>li:hover {
+  font-weight: 600;
+  color: #E0E0E0;
+}

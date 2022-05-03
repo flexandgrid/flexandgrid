@@ -9,6 +9,64 @@
     <link rel="stylesheet" href="drawer-menu.css">
 </head>
 <body>
-    
+    <!-- pc·모바일 동일(일부 요소 display 상태 변경해서 사용) -->
+    <!-- drawer 버튼 -->
+    <button class="btn-drawer"></button>
+
+    <!-- drawer-menu -->
+    <aside class="drawer-menu">
+        <!-- 모바일용 로고 -->
+        <a href="../../index.html" class="mobile-logo"></a>
+        <button class="btn-drawer-menu btn-cheatSheet">Cheatsheet</button>
+        <button class="btn-drawer-menu btn-flex">Flex
+            <ul class="list-drawer-menu">
+                <li>
+                    <a href="#none" class="tit-drawer-menu selected-tit">Flex란?</a>
+                    <ul class="subtit-drawer-menu">
+                        <li><a href="#none" class="selected-sub-tit">sub Title</a></li>
+                        <li><a href="#none">sub Title</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#none" class="tit-drawer-menu">기본 속성 정보</a>
+                    <ul class="subtit-drawer-menu">
+                        <li><a href="#none">sub Title</a></li>
+                        <li><a href="#none">sub Title</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </button>
+        <button class="btn-drawer-menu btn-grid">Grid</button>
+    </aside>
+
+    <!-- 다크 모드 (기존 클래스명에서 on 일부 추가)-->
+    <!-- drawer 버튼 -->
+    <button class="btn-drawer on"></button>
+
+    <!-- drawer-menu -->
+    <aside class="drawer-menu on">
+        <!-- 모바일용 로고 -->
+        <a href="../../index.html" class="mobile-logo"></a>
+        <button class="btn-drawer-menu btn-cheatSheet on">Cheatsheet</button>
+        <button class="btn-drawer-menu btn-flex on">Flex
+            <ul class="list-drawer-menu on">
+                <li>
+                    <a href="#none" class="tit-drawer-menu selected-tit">Flex란?</a>
+                    <ul class="subtit-drawer-menu">
+                        <li><a href="#none" class="selected-sub-tit">sub Title</a></li>
+                        <li><a href="#none">sub Title</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#none" class="tit-drawer-menu">기본 속성 정보</a>
+                    <ul class="subtit-drawer-menu">
+                        <li><a href="#none">sub Title</a></li>
+                        <li><a href="#none">sub Title</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </button>
+        <button class="btn-drawer-menu btn-grid on">Grid</button>
+    </aside>
 </body>
 </html>
