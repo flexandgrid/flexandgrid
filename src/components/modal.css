@@ -61,3 +61,56 @@
 .modal-menu.dark .link-menu:hover{
   background-color: #3F3F46;
 }
+
+/* modal-history */
+.modal-history{
+  width: 264px;
+  min-height: 270px;
+  padding: 14px 7px 6px 7px;
+  border: solid 1px #EFEFEF;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+}
+
+.header-history{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 7px 8px 8px;
+  line-height: 14px;
+}
+
+.tit-history, .btn-del-all{
+  font-size: 12px;
+  font-weight: 400;
+  color: #B4B4B4;
+}
+
+.list-item{
+  padding: 10px 8px;
+  line-height: 25px;
+  font-size: 16px;
+}
+
+.list-item:hover{
+  border-radius: 10px;
+  background-color: #F9F9F9;
+}
+
+.list-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn-del{
+  width: 16px;
+  height: 16px;
+}
+
+.txt-ellipsis{
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
