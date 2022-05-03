@@ -2,6 +2,7 @@
 
 /* modal-menu */
 .modal-menu{
+  display: none;
   margin-top: 8px;
   position: relative;
   width: 244px;
@@ -9,6 +10,10 @@
   border:#EFEFEF solid 1px;
   border-radius: 10px;
   background-color: #FFFFFF;
+}
+
+.modal-menu.on{
+  display: block;
 }
 
 .arrows{
@@ -38,11 +43,16 @@
   color: #3F3F46;
   line-height: 24px;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .link-menu:hover{
-  border-radius: 10px;
   background-color: #F9F9F9;
+  color: #765451;
+}
+
+.link-menu:focus{
+  outline: 1px solid #B4B4B4;
 }
 
 .modal-menu.dark{
@@ -64,12 +74,17 @@
 
 /* modal-history */
 .modal-history{
+  display: none;
   width: 264px;
   min-height: 270px;
   padding: 14px 7px 6px 7px;
   border: solid 1px #EFEFEF;
   border-radius: 10px;
   background-color: #FFFFFF;
+}
+
+.modal-history.on{
+  display: block;
 }
 
 .header-history{
@@ -85,15 +100,8 @@
   color: #B4B4B4;
 }
 
-.list-item{
-  padding: 10px 8px;
-  line-height: 25px;
-  font-size: 16px;
-}
-
-.list-item:hover{
-  border-radius: 10px;
-  background-color: #F9F9F9;
+.btn-del-all:hover{
+  color:#3F3F46;
 }
 
 .list-item{
@@ -101,11 +109,29 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  padding: 10px 8px;
+  line-height: 25px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.list-item:hover{
+  background-color: #F9F9F9;
+  color: #765451;
+}
+
+.list-item:focus{
+  outline: 1px solid #B4B4B4;
 }
 
 .btn-del{
   width: 16px;
   height: 16px;
+  border-radius: 50%;
+}
+
+.btn-del:focus{
+  outline: 1px solid #B4B4B4;
 }
 
 .txt-ellipsis{
@@ -119,6 +145,10 @@
   background-color:#27272A;
 }
 
+.modal-history.dark .btn-del-all:hover{
+  color:#EFEFEF;
+}
+
 .modal-history.dark .list-item:hover{
   background-color: #3F3F46;
 }
@@ -130,3 +160,4 @@
 .modal-history.dark .btn-del img{
   content:url('../assets/images/icon-close-darkmode.svg');
 }
+
