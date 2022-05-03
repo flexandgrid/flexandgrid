@@ -44,3 +44,20 @@
   border-radius: 10px;
   background-color: #F9F9F9;
 }
+
+.modal-menu.dark{
+  background-color: #27272A;
+}
+
+.modal-menu.dark .arrow,
+.modal-menu.dark .arrow-border{
+  border-bottom-color:#27272A;
+}
+
+.modal-menu.dark .link-menu{
+  color:#EFEFEF;
+}
+
+.modal-menu.dark .link-menu:hover{
+  background-color: #3F3F46;
+}
