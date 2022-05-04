@@ -61,11 +61,8 @@
   outline: 1px solid #B4B4B4;
 }
 
-.txt-ellipsis{
+.txt-item{
   font-weight: 400;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /* Dark mode */
@@ -81,7 +78,7 @@
   background-color: #3F3F46;
 }
 
-.modal-history.dark .txt-ellipsis{
+.modal-history.dark .txt-item{
   color:#EFEFEF;
 }
 
