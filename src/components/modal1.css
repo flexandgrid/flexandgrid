@@ -12,7 +12,7 @@
   background-color: #FFFFFF;
 }
 
-.modal-menu.on{
+.modal-menu.clicked{
   display: block;
 }
 
@@ -56,19 +56,19 @@
 }
 
 /* Dark mode */
-.modal-menu.dark{
+.modal-menu.on{
   background-color: #27272A;
 }
 
-.modal-menu.dark .arrow,
-.modal-menu.dark .arrow-border{
+.modal-menu.on .arrow,
+.modal-menu.on .arrow-border{
   border-bottom-color:#27272A;
 }
 
-.modal-menu.dark .link-menu{
+.modal-menu.on .link-menu{
   color:#EFEFEF;
 }
 
-.modal-menu.dark .link-menu:hover{
+.modal-menu.on .link-menu:hover{
   background-color: #3F3F46;
 }

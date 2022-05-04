@@ -10,7 +10,7 @@
   background-color: #FFFFFF;
 }
 
-.modal-history.on{
+.modal-history.clicked{
   display: block;
 }
 
@@ -66,23 +66,23 @@
 }
 
 /* Dark mode */
-.modal-history.dark{
+.modal-history.on{
   background-color:#27272A;
 }
 
-.modal-history.dark .btn-del-all:hover{
+.modal-history.on .btn-del-all:hover{
   color:#EFEFEF;
 }
 
-.modal-history.dark .list-item:hover{
+.modal-history.on .list-item:hover{
   background-color: #3F3F46;
 }
 
-.modal-history.dark .txt-item{
+.modal-history.on .txt-item{
   color:#EFEFEF;
 }
 
-.modal-history.dark .btn-del img{
+.modal-history.on .btn-del img{
   content:url('../assets/images/icon-close-darkmode.svg');
 }
 
