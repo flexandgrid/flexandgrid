@@ -1,18 +1,44 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>flex X grid</title>
-    <link rel="stylesheet" href="../css/default.css">
-    <link rel="stylesheet" href="cheatsheet-grid.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/default.css" />
+    <link rel="stylesheet" href="cheatsheet-grid.css" />
+  </head>
+  <body>
+    <!-- daytime모드 -->
     <div class="box-wrapper">
-        <div class="item">1</div>
-        <div class="item">2</div>
-        <div class="item">3</div>
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
     </div>
-</body>
+    <div class="box-code-area">
+      <p class="txt-code"><span class="number-code">1</span>.container {</p>
+      <p class="txt-code"><span class="number-code">2</span>display:flex;</p>
+      <p class="txt-code">
+        <span class="number-code">3</span>flex-direction:row;
+      </p>
+      <p class="txt-code"><span class="number-code">4</span>}</p>
+      <p class="txt-code"><span class="number-code">5</span></p>
+    </div>
+
+    <!-- 다크모드 -->
+    <div class="box-wrapper mode-dark">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+    <div class="box-code-area mode-dark">
+      <p class="txt-code"><span class="number-code">1</span>.container {</p>
+      <p class="txt-code"><span class="number-code">2</span>display:flex;</p>
+      <p class="txt-code">
+        <span class="number-code">3</span>flex-direction:row;
+      </p>
+      <p class="txt-code"><span class="number-code">4</span>}</p>
+      <p class="txt-code"><span class="number-code">5</span></p>
+    </div>
+  </body>
 </html>

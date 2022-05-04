@@ -1,24 +1,68 @@
 @charset "UTF-8";
 
-.box-wrapper{
-    display: flex;
-    gap: 22px 12px;
-    width: 525px;
-    min-height: 150px;
-    padding: 22px 30px;
-    border-radius: 20px;
-    box-shadow: 0px 4px 12px rgba(81, 69, 159, 0.08);
+body {
+  background-color: #e5e5e5;
 }
 
-.item{
-    width: 70px;
-    height: 70px;
-    border-radius: 15px;
-    background: #F6866A;
-    color: white;
-    font-family: Pretendard;
-    font-size: 22px;
-    line-height: 70px;
-    text-align: center;
-    box-shadow: 0px 4px 15px rgba(81, 69, 159, 0.08);
+.box-wrapper {
+  display: flex;
+  gap: 22px 12px;
+  width: 525px;
+  min-height: 150px;
+  padding: 22px 30px;
+  /* 아래박스와 구분을 위해 마진바텀을 임시로 넣어주었습니다. */
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 12px rgba(81, 69, 159, 0.08);
+}
+
+.item {
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  background: #f6866a;
+  color: white;
+  font-family: Pretendard;
+  font-size: 22px;
+  line-height: 70px;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(81, 69, 159, 0.08);
+}
+
+/* 코드예제부분 */
+
+.box-code-area {
+  width: 525px;
+  min-height: 180px;
+  padding: 22px 0 22px 20px;
+  /* 아래박스와 구분을 위해 마진바텀을 임시로 넣어주었습니다. */
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 12px rgba(81, 69, 159, 0.08);
+  box-sizing: border-box;
+  background-color: white;
+  font-family: 'Pretendard';
+}
+
+.txt-code {
+  color: #f6866a;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.number-code {
+  margin-right: 22px;
+  color: #b4b4b4;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+/* 다크모드 스타일링 */
+
+.mode-dark {
+  box-shadow: 0px 10px 25px 0px rgba(45, 45, 45, 0.1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background-color: #252424;
 }
