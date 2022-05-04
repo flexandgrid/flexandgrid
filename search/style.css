@@ -1,1 +1,34 @@
 @charset "UTF-8";
+
+.sr-only {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
+}
+
+.header-temporary {
+    height: 80px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+}
+
+.main {
+    margin: 120px 160px 0 160px;
+}
+
+.text-search {
+    margin: 0 0 10px 20px;
+    font-size: 36px;
+    line-height: 44px;
+    color: #3f3f46;
+}
+
+.text-search-count {
+    margin: 0 0 25px 20px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #878787;
+}
