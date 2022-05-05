@@ -112,3 +112,35 @@
 .carousel-third:nth-child(4) .item-flex:nth-child(1) {
     flex: 0 55%;
 }
+
+/* dark mode */
+.itemwrap-result.on {
+    background-color: #3F3F46;
+}
+
+.itemwrap-result.on .itemwrap-flex .item-flex {
+    box-shadow: 0px 6px 20px rgba(81, 69, 159, 0.1);
+}
+
+.itemwrap-result.on .itemwrap-flex .item-flex:nth-child(even) {
+    background-color: #504975;
+    box-shadow: 0px 6px 20px rgba(39, 39, 42, 0.1);
+}
+
+@media screen and (max-width: 320px) {
+    .section-view {
+        gap: 5em;
+    }
+    
+    .list-flex, .list-grid {
+        width: 289px;
+    }
+
+    .itemwrap-result {
+        gap: 10px;
+    }
+
+    .item-flex {
+        height: 50px;
+    }
+}
