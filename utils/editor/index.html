@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="../../src/css/default.css">
+  <link rel="stylesheet" href="../../src/css/color.css">
+  <link rel="stylesheet" href="./editor.css">
+</head>
+<body>
+  <!-- snippet mode -->
+  <div data-mode="snippet" class="fg-editor">
+    <code data-snippet="flex-start" data-item="3">
+      .container {
+        display: flex;
+        justify-content: flex-start;
+      }
+    </code>
+    <code data-snippet="center" data-item="3">
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+    </code>
+    <code data-snippet="flex-end">
+      .container {
+        display: flex;
+        justify-content: flex-end;
+      }
+    </code>
+  </div>
+
+  <br />
+
+  <!-- free mode -->
+  <div data-mode="free" class="fg-editor">
+    <code data-item="3">
+      .container {
+        display: flex;
+        justify-content: flex-start;
+      }
+      .item1 {
+        flex: 1;
+      }
+      .item2 {
+        order: 3;
+      }
+      .item3 {
+        align-self: flex-end;
+      }
+    </code>
+  </div>
+  <script src="editor.js"></script>
+</body>
+</html>
