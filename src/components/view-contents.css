@@ -1,1 +1,114 @@
 @charset "UTF-8";
+
+.section-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7.5em;
+}
+
+.container-view {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.list-flex, .list-grid {
+    width: 455px;
+}
+
+.itemwrap-result {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.itemwrap-flex {
+    display: flex;
+}
+
+.item-flex {
+    height: 80px;
+    margin: 0 7px;
+    border-radius: 40px;
+    background-color: #7661E2;
+    box-shadow: 0px 6px 20px rgba(81, 69, 159, 0.1);
+}
+
+.item-flex:nth-child(even) {
+    background-color: #ECEAFE;
+}
+
+  /* 1. carousel-flex */
+.itemwrap-flex:nth-child(1) .item-flex:nth-child(1) {
+    flex: 1;
+}
+
+.itemwrap-flex:nth-child(2) .item-flex:nth-child(1) {
+    flex: 0 55%;
+}
+
+.itemwrap-flex:nth-child(3) .item-flex:nth-child(1) {
+    flex: 0 35%;
+}
+
+.itemwrap-flex:nth-child(4) .item-flex:nth-child(1) {
+    flex: 0 18%;
+}
+
+.itemwrap-flex:nth-child(1) .item-flex:nth-child(2),
+.itemwrap-flex:nth-child(2) .item-flex:nth-child(2),
+.itemwrap-flex:nth-child(3) .item-flex:nth-child(2),
+.itemwrap-flex:nth-child(4) .item-flex:nth-child(2) {
+    flex: 1;
+}
+
+/* 2. carousel-flex */
+.carousel-second:nth-child(1) {
+    order: 0;
+}
+
+.carousel-second:nth-child(2) {
+    order: -1;
+}
+
+.carousel-second:nth-child(3) {
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.carousel-second:nth-child(3) .item-flex:nth-child(2) {
+    flex: 0 35%;
+}
+
+.carousel-second:nth-child(4) {
+    flex-direction: row-reverse;
+}
+
+/* 3. carousel-flex */
+.carousel-third:nth-child(2) {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+.carousel-third:nth-child(2) .item-flex:nth-child(1) {
+    flex: 0 18%;
+}
+
+.carousel-third:nth-child(2) .item-flex:nth-child(2) {
+    flex: 0 50%;
+}
+
+.carousel-third:nth-child(3) {
+    flex-direction: row-reverse;
+}
+.carousel-third:nth-child(3) .item-flex:nth-child(1) {
+    flex: 0 70%;
+}
+
+.carousel-third:nth-child(4) .item-flex:nth-child(1) {
+    flex: 0 55%;
+}
