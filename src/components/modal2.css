@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+.modal-history{
+  display: none;
+  width: 264px;
+  min-height: 270px;
+  padding: 14px 7px 6px 7px;
+  border: solid 1px #EFEFEF;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+}
+
+.modal-history.clicked{
+  display: block;
+}
+
+.header-history{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 7px 8px 8px;
+  line-height: 14px;
+}
+
+.tit-history, .btn-del-all{
+  font-size: 12px;
+  font-weight: 400;
+  color: #B4B4B4;
+}
+
+.btn-del-all:hover{
+  color:#3F3F46;
+}
+
+.list-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 8px;
+  line-height: 25px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.list-item:hover{
+  background-color: #F9F9F9;
+  color: #765451;
+}
+
+.list-item:focus{
+  outline: 1px solid #B4B4B4;
+}
+
+.btn-del{
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.btn-del:focus{
+  outline: 1px solid #B4B4B4;
+}
+
+.txt-item{
+  font-weight: 400;
+}
+
+/* Dark mode */
+.modal-history.on{
+  background-color:#27272A;
+}
+
+.modal-history.on .btn-del-all:hover{
+  color:#EFEFEF;
+}
+
+.modal-history.on .list-item:hover{
+  background-color: #3F3F46;
+}
+
+.modal-history.on .txt-item{
+  color:#EFEFEF;
+}
+
+.modal-history.on .btn-del img{
+  content:url('../assets/images/icon-close-darkmode.svg');
+}
+
