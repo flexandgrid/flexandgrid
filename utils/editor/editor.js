@@ -428,7 +428,9 @@
     }
 
     _codeInputEventListener({ currentTarget, currentTarget: { value } }) {
-      currentTarget.value = currentTarget.value.trim();
+      if (currentTarget.value.trim() === '') {
+        currentTarget.value = '';
+      }
       currentTarget.style.width =
         (value.length > 4 ? (value.length + 1) * 9 : 50) + 'px';
     }
