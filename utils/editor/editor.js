@@ -22,6 +22,12 @@
       children.forEach((child) => elem.appendChild(child));
     }
 
+    static addEventListeners(elem, options) {
+      Object.entries(options).forEach(([event, listener]) => {
+        elem.addEventListener(event, listener);
+      });
+    }
+
     setClassName() {
       if (this._className) {
         this.elem.setAttribute('class', this._className);
@@ -99,8 +105,100 @@
     // data-item을 입력하지 않았을 경우 기본값
     static DEFAULT_ITEM = 3;
 
-    // 코드 라인 수 최솟값
-    static MIN_CODE_LINE = 5;
+    // 여분 코드 라인
+    static EXTRA_CODE_LINE = 3;
+
+    // CSS 프로퍼티 목록
+    static CSS_PROPS = [
+      'align-content',
+      'align-items',
+      'align-self',
+      'column-gap',
+      'display',
+      'flex',
+      'flex-basis',
+      'flex-direction',
+      'flex-grow',
+      'flex-shrink',
+      'flex-wrap',
+      'gap',
+      'grid',
+      'grid-area',
+      'grid-auto-columns',
+      'grid-auto-rows',
+      'grid-column',
+      'grid-column-end',
+      'grid-column-start',
+      'grid-template-areas',
+      'grid-template-columns',
+      'grid-template-rows',
+      'grid-row',
+      'grid-row-end',
+      'grid-row-start',
+      'height',
+      'justify-content',
+      'order',
+      'row-gap',
+      'width'
+    ];
+
+    // CSS 프로퍼티 정보
+    static CSS_PROPS_INFO = {
+      'align-content': [
+        'center',
+        'flex-end',
+        'flex-start',
+        'normal',
+        'space-around',
+        'space-between',
+        'space-evenly'
+      ],
+      'align-items': ['center', 'flex-end', 'flex-start', 'normal'],
+      'align-self': [
+        'center',
+        'flex-end',
+        'flex-start',
+        'normal',
+        'space-around',
+        'space-between',
+        'space-evenly'
+      ],
+      'column-gap': 'text',
+      display: ['block', 'flex'],
+      flex: 'text',
+      'flex-basis': 'text',
+      'flex-direction': ['column', 'column-reverse', 'row', 'row-reverse'],
+      'flex-grow': 'text',
+      'flex-shrink': 'text',
+      'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse'],
+      gap: 'text',
+      grid: 'text',
+      'grid-area': [],
+      'grid-auto-columns': [],
+      'grid-auto-rows': [],
+      'grid-column': [],
+      'grid-column-end': [],
+      'grid-column-start': [],
+      'grid-template-areas': [],
+      'grid-template-columns': [],
+      'grid-template-rows': [],
+      'grid-row': [],
+      'grid-row-end': [],
+      'grid-row-start': [],
+      height: 'text',
+      'justify-content': [
+        'center',
+        'flex-end',
+        'flex-start',
+        'normal',
+        'space-around',
+        'space-between',
+        'space-evenly'
+      ],
+      order: 'text',
+      'row-gap': 'text',
+      width: 'text'
+    };
 
     constructor(elem, editorId) {
       this._editorId = editorId;
@@ -118,12 +216,10 @@
       const {
         mode = 'snippet',
         snippetPos = 'up',
-        maxCodeHeight = 300,
         item: defaultItemCount
       } = this._editor.elem.dataset;
       this._mode = mode;
       this._snippetPos = snippetPos;
-      this._maxHeight = maxCodeHeight;
 
       // snippets, css, html 초기화
       const codes = this._editor.querySelectorAll('code');
@@ -195,7 +291,7 @@
         codeLines.push(...props.map(({ prop, value }) => `${prop}:${value}`));
         codeLines.push('}', '');
       }
-      while (codeLines.length < Editor.MIN_CODE_LINE) {
+      for (let i = 0; i < Editor.EXTRA_CODE_LINE; i++) {
         codeLines.push('');
       }
       return codeLines;
@@ -204,8 +300,10 @@
     // 위 _cssCodeLines를 순회하면서 실제 화면에 보일 코드 생성
     get _cssTable() {
       const table = document.createElement('table');
-      table.style = `max-height:${this._maxHeight}px;`;
+
       let selectorCount = 0;
+      let propCount = 0;
+
       this._cssCodeLines.forEach((line, index) => {
         const row = document.createElement('tr');
 
@@ -216,45 +314,189 @@
         const codeLine = document.createElement('td');
         codeLine.setAttribute('class', 'code-line');
         if (line[0] === '.') {
+          propCount = 0;
           const selectorSpan = document.createElement('span');
           Tag.setAttributes(selectorSpan, {
             class: 'button-code selector-code',
             'data-selector-index': selectorCount
           });
           selectorSpan.textContent = line.slice(1);
+          if (line.slice(1).trim() === '') {
+            selectorSpan.classList.add('button-blank');
+          }
+
+          const deleteButton = this._createDeleteCodeButton(selectorCount);
 
           Tag.appendChildren(codeLine, [
+            deleteButton,
             document.createTextNode('.'),
             selectorSpan,
             document.createTextNode('\u00A0{')
           ]);
-          selectorCount += 1;
         } else if (line.includes(':')) {
           const [prop, value] = line.split(':');
 
           const propSpan = document.createElement('span');
-          propSpan.setAttribute('class', 'button-code prop-code');
+          Tag.setAttributes(propSpan, {
+            class: 'button-code prop-code',
+            'data-selector-index': selectorCount,
+            'data-prop-index': propCount
+          });
           propSpan.textContent = prop;
+          if (prop.trim() === '') {
+            propSpan.classList.add('button-blank');
+          }
 
-          const valueSpan = document.createElement('span');
-          valueSpan.setAttribute('class', 'button-code value-code');
-          valueSpan.textContent = value;
+          let valueElem;
+          if (Editor.CSS_PROPS_INFO[prop] === 'text') {
+            valueElem = document.createElement('input');
+            Tag.setAttributes(valueElem, {
+              class: 'button-code value-code',
+              value,
+              spellcheck: false,
+              'data-selector-index': selectorCount,
+              'data-prop-index': propCount
+            });
+            valueElem.style.width =
+              (value.length ? (value.length + 1) * 9 : 30) + 'px';
+
+            Tag.addEventListeners(valueElem, {
+              click: this._codeInputEventListener,
+              keydown: this._codeInputEventListener,
+              keyup: this._codeInputEventListener,
+              focus: ({ currentTarget }) => {
+                currentTarget.classList.remove('button-blank');
+              },
+              blur: ({ currentTarget }) => {
+                const {
+                  dataset: { selectorIndex, propIndex },
+                  value
+                } = currentTarget;
+                this._curCss[selectorIndex].props[propIndex].value = value;
+                currentTarget.style.width =
+                  (value.length ? (value.length + 1) * 9 : 30) + 'px';
+                this._updateCode();
+                this._setPreviewStyle();
+              }
+            });
+          } else {
+            valueElem = document.createElement('span');
+            Tag.setAttributes(valueElem, {
+              class: 'button-code value-code',
+              'data-selector-index': selectorCount,
+              'data-prop-index': propCount
+            });
+          }
+
+          valueElem.textContent = value;
+          if (value.trim() === '') {
+            valueElem.classList.add('button-blank');
+          }
+
+          const deleteButton = this._createDeleteCodeButton(
+            selectorCount,
+            propCount
+          );
+          const addButton = this._createAddCodeButton(selectorCount, propCount);
 
           Tag.appendChildren(codeLine, [
+            deleteButton,
             document.createTextNode('\u00A0\u00A0'),
             propSpan,
             document.createTextNode(':\u00A0'),
-            valueSpan,
-            document.createTextNode(';')
+            valueElem,
+            document.createTextNode(';'),
+            addButton
           ]);
+
+          propCount += 1;
         } else {
           codeLine.textContent = line;
+          if (line === '') {
+            const addButton = this._createAddCodeButton(selectorCount);
+            codeLine.appendChild(addButton);
+          } else if (line === '}') {
+            selectorCount += 1;
+          }
         }
 
         Tag.appendChildren(row, [lineNumber, codeLine]);
         table.appendChild(row);
       });
+
       return table;
+    }
+
+    _codeInputEventListener({ currentTarget, currentTarget: { value } }) {
+      currentTarget.value = currentTarget.value.trim();
+      currentTarget.style.width =
+        (value.length > 4 ? (value.length + 1) * 9 : 50) + 'px';
+    }
+
+    _createDeleteCodeButton(selectorIndex, propIndex) {
+      const elem = document.createElement('button');
+      if (typeof propIndex === 'number') {
+        Tag.setAttributes(elem, {
+          type: 'button',
+          class: 'button-delete',
+          'data-selector-index': selectorIndex,
+          'data-prop-index': propIndex
+        });
+        elem.addEventListener('click', () => {
+          this._curCss[selectorIndex].props.splice(propIndex, 1);
+          this._updateCode();
+          this._setPreviewStyle();
+        });
+      } else {
+        Tag.setAttributes(elem, {
+          type: 'button',
+          class: 'button-delete',
+          'data-selector-index': selectorIndex
+        });
+        elem.addEventListener('click', () => {
+          this._curCss.splice(selectorIndex, 1);
+          this._updateCode();
+          this._setPreviewStyle();
+        });
+      }
+      elem.textContent = '-';
+      return elem;
+    }
+
+    _createAddCodeButton(selectorIndex, propIndex) {
+      const elem = document.createElement('button');
+      if (typeof propIndex === 'number') {
+        Tag.setAttributes(elem, {
+          type: 'button',
+          class: 'button-add',
+          'data-selector-index': selectorIndex,
+          'data-prop-index': propIndex
+        });
+        elem.addEventListener('click', () => {
+          this._curCss[selectorIndex].props.splice(propIndex + 1, 0, {
+            prop: '\u00A0'.repeat(4),
+            value: '\u00A0'.repeat(4)
+          });
+          this._updateCode();
+          this._setPreviewStyle();
+        });
+      } else {
+        Tag.setAttributes(elem, {
+          type: 'button',
+          class: 'button-add button-add-selector',
+          'data-selector-index': selectorIndex
+        });
+        elem.addEventListener('click', () => {
+          this._curCss.splice(selectorIndex, 0, {
+            selector: '.' + '\u00A0'.repeat(8),
+            props: [{ prop: '\u00A0'.repeat(4), value: '\u00A0'.repeat(4) }]
+          });
+          this._updateCode();
+          this._setPreviewStyle();
+        });
+      }
+      elem.textContent = '+';
+      return elem;
     }
 
     // _css는 처음 마크업에 입력된 css를 저장하는 것이라면,
@@ -276,7 +518,6 @@
         container.render();
         this._preview.appendChild(container);
       });
-      this._preview.elem.style = `max-height:${this._maxHeight + 40}px;`;
     }
 
     // 이전 상태와 비교하여 변경된 부분만 수정(transition을 살리기 위함)
@@ -334,50 +575,82 @@
 
     _initCode() {
       const elem = document.createElement('div');
+      const wrapper = document.createElement('div');
+      this._codeWrapper = new Tag({
+        className: 'wrapper-code',
+        wrapper
+      });
+
       const table = this._cssTable;
-      elem.appendChild(table);
+      this._codeWrapper.appendChild(table);
 
       this._isDropdownOpen = false;
+      let scrollTop = 0;
       // free 모드에서는 css를 클릭해서 수정하지 않고 텍스트로 직접 수정하도록 할 예정
       if (this._mode === 'snippet') {
         elem.addEventListener('click', ({ target: targetCode }) => {
           if (this._isDropdownOpen) {
             this._dropdownParent.removeChild(this._dropdown);
             this._isDropdownOpen = false;
-            return;
           }
 
           if (!targetCode.classList.contains('button-code')) {
             return;
           }
 
+          if (targetCode.tagName === 'INPUT') {
+            return;
+          }
+
+          if (this._dropdownParent === targetCode) {
+            this._dropdownParent = null;
+            return;
+          }
+
+          this._dropdownParent = targetCode;
+          const { selectorIndex, propIndex } = targetCode.dataset;
           if (targetCode.classList.contains('selector-code')) {
-            this._dropdownParent = targetCode;
-            this._dropdown = this._createDropdown(targetCode, 'selector');
-            this._dropdown.addEventListener(
-              'click',
-              ({ target: targetItem }) => {
-                if (targetItem.tagName !== 'LI') {
-                  return;
-                }
+            this._dropdown = this._createDropdown(
+              targetCode,
+              'selector',
+              (targetItem) => {
                 const duplicate = this._curCss.find(
                   ({ selector }) => selector.slice(1) === targetItem.textContent
                 );
-                const curSelector =
-                  this._curCss[targetCode.dataset.selectorIndex];
+                const curSelector = this._curCss[selectorIndex];
                 if (duplicate) {
                   curSelector.props.push(...duplicate.props);
                   this._curCss.splice(this._curCss.indexOf(duplicate), 1);
                 }
                 curSelector.selector = '.' + targetItem.textContent;
-
-                this._updateCode();
-                this._setPreviewStyle();
               }
             );
-            targetCode.appendChild(this._dropdown);
-            this._isDropdownOpen = true;
+          } else if (targetCode.classList.contains('prop-code')) {
+            this._dropdown = this._createDropdown(
+              targetCode,
+              'prop',
+              (targetItem) => {
+                const curSelector = this._curCss[selectorIndex];
+                curSelector.props[propIndex].prop = targetItem.textContent;
+              }
+            );
+            scrollTop = Editor.CSS_PROPS.indexOf(targetCode.textContent) * 30;
+          } else if (targetCode.classList.contains('value-code')) {
+            this._dropdown = this._createDropdown(
+              targetCode,
+              'value',
+              (targetItem) => {
+                const curSelector = this._curCss[selectorIndex];
+                curSelector.props[propIndex].value = targetItem.textContent;
+              }
+            );
+            const prop = this._curCss[selectorIndex].props[propIndex].prop;
+            scrollTop =
+              Editor.CSS_PROPS_INFO[prop].indexOf(targetCode.textContent) * 30;
           }
+          targetCode.appendChild(this._dropdown);
+          this._dropdown.scrollTop = scrollTop;
+          this._isDropdownOpen = true;
         });
       }
 
@@ -386,17 +659,20 @@
         elem
       });
 
-      this._code.elem.querySelector(
-        'table'
-      ).style = `max-height:${this._maxHeight}px;`;
+      this._code.appendChild(this._codeWrapper);
     }
 
     // code 안에 table을 통째로 교체
     // _cssTable은 _curCss를 기준으로 생성됨
     _updateCode() {
+      this._curCss.forEach(({ props }, index) => {
+        if (!props.length) {
+          this._curCss.splice(index, 1);
+        }
+      });
       const table = this._cssTable;
-      this._code.removeAllChildren();
-      this._code.appendChild(table);
+      this._codeWrapper.removeAllChildren();
+      this._codeWrapper.appendChild(table);
     }
 
     _initSnippetList() {
@@ -503,7 +779,7 @@
     }
 
     // css를 클릭하면 나오는 dropdown
-    _createDropdown(target, type) {
+    _createDropdown(target, type, handleClick) {
       const elem = document.createElement('div');
       elem.setAttribute('class', 'dropdown');
       const list = document.createElement('ul');
@@ -530,8 +806,34 @@
           });
           break;
         }
+        case 'prop': {
+          Editor.CSS_PROPS.forEach((prop) => {
+            const item = document.createElement('li');
+            item.textContent = prop;
+            list.appendChild(item);
+          });
+          break;
+        }
+        case 'value': {
+          const { selectorIndex, propIndex } = target.dataset;
+          const curProp = this._curCss[selectorIndex].props[propIndex].prop;
+          Editor.CSS_PROPS_INFO[curProp].forEach((value) => {
+            const item = document.createElement('li');
+            item.textContent = value;
+            list.appendChild(item);
+          });
+          break;
+        }
       }
       elem.appendChild(list);
+      elem.addEventListener('click', ({ target }) => {
+        if (target.tagName !== 'LI') {
+          return;
+        }
+        handleClick(target);
+        this._updateCode();
+        this._setPreviewStyle();
+      });
       return elem;
     }
 
@@ -578,6 +880,7 @@
       }
       this._setPreviewTextAndClassName();
       this._setPreviewStyle();
+      console.log(this);
     }
   }
 
