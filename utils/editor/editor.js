@@ -216,12 +216,10 @@
       const {
         mode = 'snippet',
         snippetPos = 'up',
-        maxCodeHeight = 300,
         item: defaultItemCount
       } = this._editor.elem.dataset;
       this._mode = mode;
       this._snippetPos = snippetPos;
-      this._maxHeight = maxCodeHeight;
 
       // snippets, css, html 초기화
       const codes = this._editor.querySelectorAll('code');
@@ -302,7 +300,6 @@
     // 위 _cssCodeLines를 순회하면서 실제 화면에 보일 코드 생성
     get _cssTable() {
       const table = document.createElement('table');
-      table.style = `max-height:${this._maxHeight}px;`;
 
       let selectorCount = 0;
       let propCount = 0;
@@ -521,7 +518,6 @@
         container.render();
         this._preview.appendChild(container);
       });
-      this._preview.elem.style = `max-height:${this._maxHeight + 40}px;`;
     }
 
     // 이전 상태와 비교하여 변경된 부분만 수정(transition을 살리기 위함)
@@ -664,9 +660,6 @@
       });
 
       this._code.appendChild(this._codeWrapper);
-      this._code.elem.querySelector(
-        'table'
-      ).style = `max-height:${this._maxHeight}px;`;
     }
 
     // code 안에 table을 통째로 교체

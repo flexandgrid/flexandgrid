@@ -58,6 +58,7 @@
   display: block;
   min-width: 100%;
   width: max-content;
+  max-height: 340px;
   padding: 2px 0;
 }
 
@@ -382,4 +383,38 @@
 .fg-editor .buttons .button-remove {
   background-color: var(--subtext);
   color: var(--secondary);
+}
+
+@media screen and (max-width: 979px) {
+  .fg-editor {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .fg-editor {
+    align-items: center;
+  }
+
+  .fg-editor .item {
+    width: 54px;
+    height: 54px;
+    padding: 5px;
+    border-radius: 15px;
+    font-size: 22px;
+  }
+
+  .fg-editor .preview,
+  .fg-editor .code {
+    min-width: 280px;
+    width: 100%;
+  }
+
+  .fg-editor .preview {
+    padding: 22px 17px;
+  }
+
+  .fg-editor .code table {
+    max-height: 180px;
+  }
 }
