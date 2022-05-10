@@ -19,12 +19,30 @@
     width: 455px;
 }
 
+.list-grid {
+    position: relative;
+}
+
+.btn {
+    padding-top: 400px;
+}
+
+/* btn은 position설정으로 인해 리스트들이 영역을 차지하지 않아 임시로 넣어뒀습니다ㅠㅠ. 수정 예정입니다 */
+
 .itemwrap-result {
     display: flex;
     justify-content: center;
     flex-direction: column;
     gap: 16px;
     margin-bottom: 40px;
+}
+
+.grid-result {
+    width: 455px;
+    flex-shrink: 0;
+    position: absolute;
+    margin-bottom: 40px;
+    display: none;
 }
 
 .itemwrap-flex {
@@ -122,6 +140,7 @@
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(4, 1fr);
     row-gap: 16px;
+    background-color: white;
 }
 
 .first-grid:nth-child(1) {
@@ -268,6 +287,11 @@
 .itemwrap-result.on .third-grid:nth-child(6) {
     background-color: #775551;
     box-shadow: 0px 6px 20px rgba(39, 39, 42, 0.1);
+}
+
+/* carousel */
+.showing {
+    display: block;
 }
 
 @media screen and (max-width: 320px) {
