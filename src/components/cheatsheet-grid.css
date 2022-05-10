@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
 body {
   background-color: #e5e5e5;
 }
@@ -32,34 +34,6 @@ body {
   content: '';
 }
 
-/* 박스 타이틀 나이트모드 */
-
-.night-box-title {
-  width: 113px;
-  margin: 0 0 50px 9px;
-  color: #f9f9f9;
-  font-family: Pretendard;
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 36px;
-}
-
-.night-box-title:hover {
-  width: 142px;
-  color: #b4b4b4;
-}
-
-.night-box-title:hover:before {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-right: 5px;
-  background-image: url(../assets/images/icon-link.svg);
-  background-repeat: no-repeat;
-  filter: opacity(0.5) drop-shadow(0 0 0 #b4b4b4);
-  vertical-align: text-bottom;
-  content: '';
-}
 
 .box-wrapper {
   display: flex;
@@ -116,10 +90,39 @@ body {
   line-height: 28px;
 }
 
-/* 다크모드 스타일링 */
+/* 나이트모드 스타일링 */
 
-.mode-dark {
+.box-wrapper.on, .box-code-area.on {
   box-shadow: 0px 10px 25px 0px rgba(45, 45, 45, 0.1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: #252424;
+}
+
+/* 박스 타이틀 나이트모드 */
+
+.box-title.on {
+  width: 113px;
+  margin: 0 0 50px 9px;
+  color: #f9f9f9;
+  font-family: Pretendard;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 36px;
+}
+
+.box-title.on:hover {
+  width: 142px;
+  color: #b4b4b4;
+}
+
+.box-title.on:hover:before {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  background-image: url(../assets/images/icon-link.svg);
+  background-repeat: no-repeat;
+  filter: opacity(0.5) drop-shadow(0 0 0 #b4b4b4);
+  vertical-align: text-bottom;
+  content: '';
 }
