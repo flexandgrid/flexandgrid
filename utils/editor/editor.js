@@ -594,6 +594,11 @@
           if (this._isDropdownOpen) {
             this._dropdownParent.removeChild(this._dropdown);
             this._isDropdownOpen = false;
+
+            if (this._dropdownParent === targetCode) {
+              this._dropdownParent = null;
+              return;
+            }
           }
 
           if (!targetCode.classList.contains('button-code')) {
@@ -601,11 +606,6 @@
           }
 
           if (targetCode.tagName === 'INPUT') {
-            return;
-          }
-
-          if (this._dropdownParent === targetCode) {
-            this._dropdownParent = null;
             return;
           }
 
