@@ -10,37 +10,62 @@
   </head>
   <body>
     <!-- daytime모드 -->
-    <h2 class="box-title">align-items</h2>
-    <div class="box-wrapper">
-      <div class="item">1</div>
-      <div class="item">2</div>
-      <div class="item">3</div>
-    </div>
-    <div class="box-code-area">
-      <p class="txt-code"><span class="number-code">1</span>.container {</p>
-      <p class="txt-code"><span class="number-code">2</span>display:flex;</p>
-      <p class="txt-code">
-        <span class="number-code">3</span>flex-direction:row;
-      </p>
-      <p class="txt-code"><span class="number-code">4</span>}</p>
-      <p class="txt-code"><span class="number-code">5</span></p>
-    </div>
+    <article class="fg-cheat">
+      <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">align-items</a></h2>
+      <form class="radio-cheat">
+        <input type="radio" id="flex-start" name="cheat1" class="input-option align-items" checked="true">
+        <label for="flex-start" class="label-option">flex-start</label>
+        <input type="radio" id="center" name="cheat1" class="input-option align-items">
+        <label for="center" class="label-option">center</label>
+        <input type="radio" id="flex-end" name="cheat1" class="input-option align-items">
+        <label for="flex-end" class="label-option">flex-end</label>
+        <input type="radio" id="stretch" name="cheat1" class="input-option align-items">
+        <label for="stretch" class="label-option">stretch</label>
+      </form>
+      <section class="box-area">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+      </section>
+      <section class="box-code-area">
+        <p class="txt-code"><span class="number-code">1</span>.container {</p>
+        <p class="txt-code"><span class="number-code">2</span>display:flex;</p>
+        <p class="txt-code">
+          <span class="number-code">3</span>flex-direction:row;
+        </p>
+        <p class="txt-code"><span class="number-code">4</span>align-items:<span class="change-code-align-items">flex-start<span>;</p>
+        <p class="txt-code"><span class="number-code">5</span>}</p>
+      </section>
+    </article>
 
     <!-- 다크모드 -->
-    <h2 class="box-title on">align-items</h2>
-    <div class="box-wrapper on">
-      <div class="item">1</div>
-      <div class="item">2</div>
-      <div class="item">3</div>
-    </div>
-    <div class="box-code-area on">
-      <p class="txt-code"><span class="number-code">1</span>.container {</p>
-      <p class="txt-code"><span class="number-code">2</span>display:flex;</p>
-      <p class="txt-code">
-        <span class="number-code">3</span>flex-direction:row;
-      </p>
-      <p class="txt-code"><span class="number-code">4</span>}</p>
-      <p class="txt-code"><span class="number-code">5</span></p>
-    </div>
+    <article class="fg-cheat">
+      <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-direction</a></h2>
+      <form class="radio-cheat">
+        <input type="radio" id="row" name="cheat1" class="input-option flex-direction" checked="true">
+        <label for="row" class="label-option">row</label>
+        <input type="radio" id="row-reverse" name="cheat1" class="input-option flex-direction">
+        <label for="row-reverse" class="label-option">row-reverse</label>
+        <input type="radio" id="column" name="cheat1" class="input-option flex-direction">
+        <label for="column" class="label-option">column</label>
+        <input type="radio" id="column-reverse" name="cheat1" class="input-option flex-direction">
+        <label for="column-reverse" class="label-option">column-reverse</label>
+      </form>
+      <section class="box-area on">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+      </section>
+      <section class="box-code-area on">
+        <p class="txt-code"><span class="number-code">1</span>.container {</p>
+        <p class="txt-code"><span class="number-code">2</span>display:flex;</p>
+        <p class="txt-code">
+          <span class="number-code">3</span>flex-direction:<span class="change-code-flex-direction">row</span>;
+        </p>
+        <p class="txt-code"><span class="number-code">4</span>}</p>
+        <p class="txt-code"><span class="number-code">5</span></p>
+      </section>
+    </article>
+    <script src="./cheatsheet-grid.js"></script>
   </body>
 </html>

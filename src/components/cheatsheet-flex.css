@@ -4,10 +4,86 @@ body {
   background-color: #e5e5e5;
 }
 
+/* 임시 여백 */
+.fg-cheat {
+  padding: 10vh 5vw;
+}
+
+.radio-cheat {
+  margin: 20px 0;
+}
+
+.fg-cheat *,
+.fg-cheat *::before,
+.fg-cheat *::after {
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.fg-cheat form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 30px;
+  width: 100%;
+}
+
+.fg-cheat .input-option {
+  display: none;
+}
+
+.fg-cheat .label-option {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 14px;
+  color: #b4b4b4;
+  user-select: none;
+}
+
+.fg-cheat .label-option::before {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 1px solid #b4b4b4;
+  border-radius: 50%;
+  content: '';
+}
+
+.fg-cheat .label-option:hover,
+.fg-cheat .label-option:hover::before {
+  border-color: black;
+  color: black;
+}
+
+.fg-cheat .label-option::after {
+  display: inline-block;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  content: '';
+}
+
+.fg-cheat .input-option:checked + .label-option {
+  color: #7661e2;
+}
+
+.fg-cheat .input-option:checked + .label-option::before {
+  border-color: #7661e2;
+}
+
+.fg-cheat .input-option:checked + .label-option::after {
+  background-color: #7661e2;
+}
+
+
 /* 박스 타이틀 데이타임모드 */
 
-.box-title {
-  width: 113px;
+.tit-cheat {
   margin: 0 0 50px 9px;
   color: #3f3f46;
   font-family: Pretendard;
@@ -16,12 +92,11 @@ body {
   line-height: 36px;
 }
 
-.box-title:hover {
-  width: 142px;
+.tit-cheat:hover {
   color: #878787;
 }
 
-.box-title:hover:before {
+.tit-cheat:hover:before {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -35,7 +110,7 @@ body {
 
 /* 그림예제부분 */
 
-.box-wrapper {
+.box-area {
   display: flex;
   gap: 22px 12px;
   width: 525px;
@@ -92,7 +167,7 @@ body {
 
 /* 나이트모드 스타일링 */
 
-.box-wrapper.on, .box-code-area.on {
+.box-area.on, .box-code-area.on {
   box-shadow: 0px 10px 25px 0px rgba(45, 45, 45, 0.1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: #252424;
@@ -100,8 +175,7 @@ body {
 
 /* 박스 타이틀 나이트모드 */
 
-.box-title.on {
-  width: 113px;
+.tit-cheat.on {
   margin: 0 0 50px 9px;
   color: #f9f9f9;
   font-family: Pretendard;
@@ -110,12 +184,11 @@ body {
   line-height: 36px;
 }
 
-.box-title.on:hover {
-  width: 142px;
+.tit-cheat.on:hover {
   color: #b4b4b4;
 }
 
-.box-title.on:hover:before {
+.tit-cheat.on:hover:before {
   display: inline-block;
   width: 24px;
   height: 24px;
