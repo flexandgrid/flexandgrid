@@ -30,12 +30,13 @@
 .fg-editor .code {
   overflow: hidden;
   min-width: 360px;
+  max-height: 340px;
   box-shadow: 0px 4px 12px 0px #51459f14;
 }
 
 .fg-editor .preview {
   flex: 1;
-  padding: 22px 30px;
+  padding: 20px 30px;
   border-radius: 20px;
 }
 
@@ -58,7 +59,7 @@
   display: block;
   min-width: 100%;
   width: max-content;
-  max-height: 340px;
+  max-height: 300px;
   padding: 2px 0;
 }
 
@@ -85,6 +86,7 @@
   gap: 12px;
   overflow: auto;
   width: 100%;
+  max-height: 300px;
   height: 100%;
 }
 
@@ -389,6 +391,15 @@
   .fg-editor {
     flex-direction: column;
   }
+
+  .fg-editor .preview,
+  .fg-editor .code {
+    width: 100%;
+  }
+
+  .fg-editor .container {
+    min-height: 140px
+  }
 }
 
 @media screen and (max-width: 479px) {
@@ -407,14 +418,19 @@
   .fg-editor .preview,
   .fg-editor .code {
     min-width: 280px;
-    width: 100%;
+    max-height: 180px;
   }
 
   .fg-editor .preview {
-    padding: 22px 17px;
+    padding: 20px 17px;
+  }
+
+  .fg-editor .container {
+    max-height: 140px;
+    min-height: 100px;
   }
 
   .fg-editor .code table {
-    max-height: 180px;
+    max-height: 140px;
   }
 }
