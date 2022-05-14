@@ -1,27 +1,102 @@
 @charset "UTF-8";
 
 body {
-  background-color: #e5e5e5;
+  background-color: var(--flex-background);
 }
 
-/* 박스 타이틀 데이타임모드 */
+/* 임시 여백 */
+.fg-cheat {
+  padding: 10vh 5vw;
+}
 
-.box-title {
+.radio-cheat {
+  margin: 20px 0;
+}
+
+.fg-cheat *,
+.fg-cheat *::before,
+.fg-cheat *::after {
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.fg-cheat form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 30px;
+  width: 100%;
+}
+
+.fg-cheat .input-option {
+  display: none;
+}
+
+.fg-cheat .label-option {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 14px;
+  color: var(--tertiary);
+  user-select: none;
+}
+
+.fg-cheat .label-option::before {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 1px solid var(--tertiary);
+  border-radius: 50%;
+  content: '';
+}
+
+.fg-cheat .label-option:hover,
+.fg-cheat .label-option:hover::before {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.fg-cheat .label-option::after {
+  display: inline-block;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  content: '';
+}
+
+.fg-cheat .input-option:checked + .label-option {
+  color: var(--flex-primary);
+}
+
+.fg-cheat .input-option:checked + .label-option::before {
+  border-color: var(--flex-primary);
+}
+
+.fg-cheat .input-option:checked + .label-option::after {
+  background-color: var(--flex-primary);
+}
+
+/* 컴포넌트 CSS */
+
+.tit-cheat a {
   width: 113px;
   margin: 0 0 50px 9px;
-  color: #3f3f46;
-  font-family: Pretendard;
-  font-weight: 500;
+  color: var(--primary);
+  font-weight: 600;
   font-size: 22px;
   line-height: 36px;
 }
 
-.box-title:hover {
+.tit-cheat a:hover {
   width: 142px;
-  color: #878787;
+  color: var(--secondary);
 }
 
-.box-title:hover:before {
+.tit-cheat a:hover:before {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -32,11 +107,11 @@ body {
   content: '';
 }
 
-
 /* 그림예제부분 */
 
-.box-wrapper {
+.container {
   display: flex;
+  align-items: flex-start;
   gap: 22px 12px;
   width: 525px;
   min-height: 150px;
@@ -50,11 +125,10 @@ body {
 
 .item {
   width: 70px;
-  height: 70px;
+  /* height: 70px; */
   border-radius: 15px;
   background: #7661e2;
   color: white;
-  font-family: Pretendard;
   font-size: 22px;
   line-height: 70px;
   text-align: center;
@@ -72,57 +146,64 @@ body {
   border-radius: 20px;
   box-shadow: 0px 4px 12px rgba(81, 69, 159, 0.08);
   box-sizing: border-box;
-  background-color: white;
-  font-family: 'Pretendard';
+  background-color: var(--white);
 }
 
 .txt-code {
-  color: #7661e2;
+  color: var(--flex-primary);
   font-size: 16px;
   font-weight: 400;
 }
 
 .number-code {
   margin-right: 22px;
-  color: #b4b4b4;
+  color: var(--tertiary);
   font-size: 12px;
   font-weight: 400;
   line-height: 28px;
 }
 
-/* 나이트모드 스타일링 */
+/* 다크모드 스타일링 */
 
-.box-wrapper.on, .box-code-area.on {
+.fg-cheat.on {
+  background-color: var(--primary);
+}
+
+.fg-cheat.on .container,
+.fg-cheat.on .box-code-area {
   box-shadow: 0px 10px 25px 0px rgba(45, 45, 45, 0.1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: #252424;
 }
 
-/* 박스 타이틀 나이트모드 */
-
-.box-title.on {
+.fg-cheat.on .tit-cheat a {
   width: 113px;
   margin: 0 0 50px 9px;
-  color: #f9f9f9;
-  font-family: Pretendard;
-  font-weight: 500;
+  color: var(--background);
+  font-weight: 600;
   font-size: 22px;
   line-height: 36px;
 }
 
-.box-title.on:hover {
+.fg-cheat.on .tit-cheat a:hover {
   width: 142px;
-  color: #b4b4b4;
+  color: var(--tertiary);
 }
 
-.box-title.on:hover:before {
+.fg-cheat.on .tit-cheat a:hover:before {
   display: inline-block;
   width: 24px;
   height: 24px;
   margin-right: 5px;
-  background-image: url(../assets/images/icon-link.svg);
+  background-image: url(../assets/images/icon-link-darkmode.svg);
   background-repeat: no-repeat;
-  filter: opacity(0.5) drop-shadow(0 0 0 #b4b4b4);
+  filter: opacity(0.5) drop-shadow(0 0 0 var(--tertiary));
   vertical-align: text-bottom;
   content: '';
+}
+
+.fg-cheat.on .label-option:hover,
+.fg-cheat.on .label-option:hover::before {
+  border-color: var(--white);
+  color: var(--white);
 }
