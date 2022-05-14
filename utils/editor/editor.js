@@ -237,14 +237,14 @@
 
     get _classList() {
       const containerCount =
-        this._preview.querySelectorAll('.container').length;
+        this._previewWrapper.querySelectorAll('.container').length;
       const containers =
         containerCount > 1
           ? [...Array(containerCount)].map(
               (_, index) => `container${index + 1}`
             )
           : ['container'];
-      const itemCount = this._preview.querySelectorAll('.item').length;
+      const itemCount = this._previewWrapper.querySelectorAll('.item').length;
       const items = [...Array(itemCount)].map((_, index) => `item${index + 1}`);
       return [...containers, ...items];
     }
@@ -315,12 +315,13 @@
 
     _initPreview() {
       this._preview = new Tag({ className: 'preview' });
-      this._preview.removeAllChildren();
+      this._previewWrapper = new Tag({ className: 'wrapper-preview' });
       const containers = this._curSnippet.html;
       containers.forEach((container) => {
         container.render();
-        this._preview.appendChild(container);
+        this._previewWrapper.appendChild(container);
       });
+      this._preview.appendChild(this._previewWrapper);
     }
 
     _initCode() {
@@ -770,7 +771,7 @@
     }
 
     _addItemClickEventListener() {
-      const container = this._preview.querySelector('.container');
+      const container = this._previewWrapper.querySelector('.container');
       const item = new PreviewTag({ className: 'item' });
       container.appendChild(item.elem);
       this._updateItemCountVariation(container, 1);
@@ -779,7 +780,7 @@
     }
 
     _removeItemClickEventListener() {
-      const container = this._preview.querySelector('.container');
+      const container = this._previewWrapper.querySelector('.container');
       const lastChild = container.lastElementChild;
       if (lastChild) {
         container.removeChild(lastChild);
@@ -806,7 +807,7 @@
     // ------------------------------------------------------------------------------
 
     // 이전 상태와 비교하여 변경된 부분만 수정(transition을 살리기 위함)
-    _updatePreviewDOM(prev, cur, curElem = this._preview.elem) {
+    _updatePreviewDOM(prev, cur, curElem = this._previewWrapper.elem) {
       let lengthDiff = prev.length - cur.length;
       while (lengthDiff > 0) {
         curElem.removeChild(curElem.lastElementChild);
@@ -837,9 +838,9 @@
 
     // preview의 모든 자손 요소들의 style을 초기화 후, _curCss를 기준으로 다시 style 설정
     _updatePreviewStyle() {
-      this._preview.initAllChildrenStyle();
+      this._previewWrapper.initAllChildrenStyle();
       this._curCss.forEach(({ selector, props }) => {
-        const elems = this._preview.querySelectorAll(selector);
+        const elems = this._previewWrapper.querySelectorAll(selector);
         elems.forEach(
           (elem) =>
             (elem.style = props
@@ -851,7 +852,7 @@
 
     // preview의 모든 item 요소들에 숫자 textContent와 고유한 className 부여
     _updatePreviewTextAndClassName() {
-      const items = this._preview.querySelectorAll('.item');
+      const items = this._previewWrapper.querySelectorAll('.item');
       items.forEach((item, index) => {
         item.classList.add(`item${index + 1}`);
         item.textContent = index + 1;
