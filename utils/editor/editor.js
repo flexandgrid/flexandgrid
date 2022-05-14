@@ -618,20 +618,20 @@
       return elem;
     }
 
-    _createSelectorDropdown(targetCode, selectorIndex) {
+    _createSelectorDropdown(selectorIndex) {
       const handleClick = (targetItem) => {
         const duplicate = this._curCss.find(
           ({ selector }) => selector.slice(1) === targetItem.textContent
         );
         const curSelector = this._curCss[selectorIndex];
-        if (duplicate) {
+        if (duplicate && duplicate !== curSelector) {
           curSelector.props.push(...duplicate.props);
           this._curCss.splice(this._curCss.indexOf(duplicate), 1);
         }
         curSelector.selector = '.' + targetItem.textContent;
       };
       this._dropdown = this._createDropdown(
-        (list) => this._createSelectorDropdownItems(targetCode)(list),
+        (list) => this._createSelectorDropdownItems()(list),
         handleClick
       );
     }
@@ -658,13 +658,11 @@
       );
     }
 
-    _createSelectorDropdownItems(targetCode) {
+    _createSelectorDropdownItems() {
       return (list) => {
         this._classList.forEach((selector) => {
-          if (selector !== targetCode.textContent) {
-            const item = Tag.createElement('li', {}, selector);
-            list.appendChild(item);
-          }
+          const item = Tag.createElement('li', {}, selector);
+          list.appendChild(item);
         });
       };
     }
@@ -738,7 +736,10 @@
       this._dropdownParent = targetCode;
       const { selectorIndex, propIndex } = targetCode.dataset;
       if (targetCode.classList.contains('selector-code')) {
-        this._createSelectorDropdown(targetCode, selectorIndex);
+        this._createSelectorDropdown(selectorIndex);
+        scrollTop =
+          this._classList.indexOf(targetCode.textContent) *
+          Editor.DROPDOWN_HEIGHT;
       }
       if (targetCode.classList.contains('prop-code')) {
         this._createPropDropdown(selectorIndex, propIndex);
