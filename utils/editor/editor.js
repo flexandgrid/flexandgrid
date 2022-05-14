@@ -625,8 +625,8 @@
         );
         const curSelector = this._curCss[selectorIndex];
         if (duplicate && duplicate !== curSelector) {
-          curSelector.props.push(...duplicate.props);
-          this._curCss.splice(this._curCss.indexOf(duplicate), 1);
+          duplicate.props.push(...curSelector.props);
+          this._curCss.splice(this._curCss.indexOf(curSelector), 1);
         }
         curSelector.selector = '.' + targetItem.textContent;
       };
