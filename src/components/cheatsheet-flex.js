@@ -11,7 +11,6 @@ const code = document.querySelectorAll("em");
 
 for (let radio of radios) {
   radio.addEventListener("change", (e) => {
-    console.time("time");
     let target = e.target;
     let container;
     let radioName;
@@ -35,6 +34,5 @@ for (let radio of radios) {
       container.style.cssText = newCode;
       code[propNum].textContent = newCode;
     }
-    console.timeEnd("time");
   });
 }
