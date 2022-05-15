@@ -1,22 +1,40 @@
-const titles = document.querySelectorAll('h2');
+const titles = document.querySelectorAll("h2");
 const properties = [];
 titles.forEach((v) => {
   properties.push(v.textContent);
-})
+});
 
-const containers = document.querySelectorAll('.container');
+const containers = document.querySelectorAll(".container");
 const radios = document.querySelectorAll('input[type="radio"]');
+const labels = document.querySelectorAll(".label-option");
+const code = document.querySelectorAll("em");
+
 for (let radio of radios) {
-  radio.addEventListener('change', (e) => {
+  radio.addEventListener("change", (e) => {
+    console.time("time");
     let target = e.target;
-    let container = document.querySelector(`#cont-${target.name}`);
+    let container;
+    let radioName;
+    let newCode;
+
+    containers.forEach((v) => {
+      if (v.classList.contains(target.name)) {
+        container = v;
+      }
+    });
     let propNum = [...target.name].pop();
-    let radioName = document.querySelector(`label[for="${radio.id}"]`).textContent;
+
+    labels.forEach((v) => {
+      if (v.classList.contains(radio.id)) {
+        radioName = v.textContent;
+      }
+    });
+
     if (target.checked) {
-      let code = document.querySelectorAll('em')[propNum];
-      let newCode = `${properties[propNum]} : ${radioName};`
+      newCode = `${properties[propNum]} : ${radioName};`;
       container.style.cssText = newCode;
-      code.textContent = newCode;
+      code[propNum].textContent = newCode;
     }
+    console.timeEnd("time");
   });
 }
