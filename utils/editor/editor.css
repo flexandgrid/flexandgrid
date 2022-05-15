@@ -40,6 +40,13 @@
   border-radius: 20px;
 }
 
+.fg-editor .wrapper-preview {
+  overflow: auto;
+  width: 100%;
+  max-height: 300px;
+  height: 100%;
+}
+
 .fg-editor .code {
   display: block;
   flex: 1;
@@ -63,13 +70,13 @@
   padding: 2px 0;
 }
 
-.fg-editor .container::-webkit-scrollbar,
+.fg-editor .wrapper-preview::-webkit-scrollbar,
 .fg-editor .wrapper-code::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 
-.fg-editor .container::-webkit-scrollbar-thumb,
+.fg-editor .wrapper-preview::-webkit-scrollbar-thumb,
 .fg-editor .wrapper-code::-webkit-scrollbar-thumb {
   width: 5px;
   height: 40px;
@@ -77,17 +84,13 @@
   background-color: var(--tertiary);
 }
 
-.fg-editor .container::-webkit-scrollbar-track,
+.fg-editor .wrapper-preview::-webkit-scrollbar-track,
 .fg-editor .wrapper-code::-webkit-scrollbar-track {
   background: none;
 }
 
 .fg-editor .container {
   gap: 12px;
-  overflow: auto;
-  width: 100%;
-  max-height: 300px;
-  height: 100%;
 }
 
 .fg-editor .container:hover {
@@ -397,8 +400,8 @@
     width: 100%;
   }
 
-  .fg-editor .container {
-    min-height: 140px
+  .fg-editor .wrapper-preview {
+    min-height: 140px;
   }
 }
 
@@ -425,7 +428,7 @@
     padding: 20px 17px;
   }
 
-  .fg-editor .container {
+  .fg-editor .wrapper-preview {
     max-height: 140px;
     min-height: 100px;
   }
