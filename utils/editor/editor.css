@@ -410,6 +410,7 @@
 .fg-editor tr .button-add {
   margin-left: 10px;
   background-color: var(--primary-3);
+  vertical-align: text-top;
 }
 
 .fg-editor tr .button-add:hover {
