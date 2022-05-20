@@ -20,8 +20,6 @@
           elem.appendChild(child);
         } else if (child instanceof Tag) {
           elem.appendChild(child.elem);
-        } else {
-          throw new Error('올바르지 않은 입력입니다.');
         }
       });
     }
@@ -39,11 +37,11 @@
       return elem;
     }
 
-    static getLetterWidth(elem) {
+    static getLetterWidth(elem, text = 'a') {
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
       context.font = getComputedStyle(elem).font;
-      return context.measureText('a').width;
+      return context.measureText(text).width;
     }
 
     get dataset() {
@@ -87,8 +85,17 @@
         child.forEach((elem) => this.appendChild(elem));
       } else if (child instanceof Tag) {
         this.elem.appendChild(child.elem);
-      } else {
+      } else if (child instanceof Node) {
         this.elem.appendChild(child);
+      }
+    }
+
+    insertBefore(newNode, refNode) {
+      const ref = refNode instanceof Tag ? refNode.elem : refNode;
+      if (newNode instanceof Tag) {
+        this.elem.insertBefore(newNode.elem, ref);
+      } else if (newNode instanceof Node) {
+        this.elem.insertBefore(newNode, ref);
       }
     }
 
@@ -97,7 +104,7 @@
         child.forEach((elem) => this.elem.removeChild(elem));
       } else if (child instanceof Tag) {
         this.elem.removeChild(child.elem);
-      } else {
+      } else if (child instanceof Node) {
         this.elem.removeChild(child);
       }
     }
@@ -123,10 +130,18 @@
 
   // preview 안에 있는 container, item 요소들
   class PreviewTag extends Tag {
-    constructor({ className, parent = null }) {
+    constructor({ className, parent = null, text = null }) {
       super({ className });
       this.children = [];
       this.parent = parent;
+      this.text = text;
+    }
+
+    removeChild(child) {
+      super.removeChild(child);
+      if (this.children.includes(child)) {
+        this.children.splice(this.children.indexOf(child), 1);
+      }
     }
 
     push(child) {
@@ -462,6 +477,7 @@
     }
 
     _initCode() {
+      this._curCode = 'CSS';
       this._code = new Tag({ className: 'code' });
       this._codeWrapper = new Tag({ className: 'wrapper-code' });
       const code = this._createCssCodeElements();
@@ -480,7 +496,6 @@
       }
 
       this._isDropdownOpen = false;
-      this._curCode = 'CSS';
     }
 
     _initSnippetList() {
@@ -553,7 +568,11 @@
       if (this._mode === 'snippet') {
         return this._createCssCodeButtonTable();
       } else if (this._mode === 'free') {
-        return this._createCssCodeTextTable();
+        if (this._curCode === 'CSS') {
+          return this._createCssCodeTextTable();
+        } else if (this._curCode === 'HTML') {
+          return this._createHtmlCodeButtonTable();
+        }
       }
     }
 
@@ -582,7 +601,7 @@
           propIndex += 1;
         } else {
           codeLine.textContent = line;
-          if (line === '') {
+          if (line.trim() === '') {
             const addButton = this._createAddCodeButton(selectorIndex);
             codeLine.appendChild(addButton);
           } else if (line === '}') {
@@ -675,6 +694,126 @@
       });
       Tag.appendChildren(textareaWrapper, [numbers, textarea]);
       return textareaWrapper;
+    }
+
+    _createHtmlCodeButtonTable() {
+      const table = Tag.createElement('table', { class: 'html-table' });
+
+      // HTML 코드가 한 줄도 없으면 빈 줄 하나 만들기
+      if (!this._snippets[0].html.length) {
+        const row = document.createElement('tr');
+        const lineNumber = Tag.createElement(
+          'td',
+          {
+            class: 'number-line'
+          },
+          1
+        );
+        const codeLine = Tag.createElement('td', {
+          class: 'code-line html-code'
+        });
+        const addButton = this._createAddInnerTagButton();
+        Tag.appendChildren(codeLine, [addButton]);
+        Tag.appendChildren(row, [lineNumber, codeLine]);
+        table.appendChild(row);
+      }
+
+      const codeLines = this._snippets[0].html.reduce((acc, container) => {
+        const code = this._createHtmlCodeLines(container);
+        return [...acc, ...code];
+      }, []);
+
+      codeLines.forEach((line, index) => {
+        const row = document.createElement('tr');
+
+        const lineNumber = Tag.createElement(
+          'td',
+          {
+            class: 'number-line'
+          },
+          index + 1
+        );
+
+        const codeLine = Tag.createElement('td', {
+          class: 'code-line html-code'
+        });
+        const indentation = '\u00A0'.repeat(line.depth * 2);
+        const { tagName } = line.tag.elem;
+
+        const openingTag = line.className
+          ? this._createOpeningTag(tagName, line.className)
+          : [];
+
+        const textInput =
+          typeof line.textContent === 'string'
+            ? Tag.createElement('input', {
+                class: 'button-code text-code',
+                value: line.textContent,
+                spellcheck: false
+              })
+            : null;
+        if (textInput) {
+          const value = line.textContent;
+          if (value.trim() === '') {
+            textInput.classList.add('button-blank');
+          }
+          textInput.style.width =
+            (value.length ? (value.length + 1) * 9 : 30) + 'px';
+          Tag.addEventListeners(textInput, {
+            click: this._codeInputEventListener,
+            keydown: (e) => {
+              if (e.key === 'Enter' || e.key === 'Escape') {
+                e.currentTarget.blur();
+              } else {
+                this._codeInputEventListener(e);
+              }
+            },
+            keyup: this._codeInputEventListener,
+            focus: ({ currentTarget }) => {
+              currentTarget.classList.remove('button-blank');
+            },
+            blur: ({ currentTarget }) => {
+              line.tag.elem.textContent = currentTarget.value;
+              line.tag.text = currentTarget.value;
+              currentTarget.style.width =
+                (value.length ? (value.length + 1) * 9 : 30) + 'px';
+              this._updateHtmlCode();
+            }
+          });
+        }
+
+        const innerAddButton = textInput
+          ? this._createAddInnerTagButton(line.tag)
+          : null;
+
+        const closingTag =
+          !(typeof line.textContent === 'string') && line.className
+            ? null
+            : `</${tagName.toLowerCase()}>`;
+
+        const deleteButton = this._createDeleteTagButton(line.tag);
+
+        const addButton =
+          openingTag.length && !closingTag
+            ? this._createAddInnerTagButton(line.tag)
+            : this._createAddAdjacentTagButton(
+                line.tag,
+                line.tag.parent ?? this._previewWrapper
+              );
+
+        Tag.appendChildren(codeLine, [
+          deleteButton,
+          indentation,
+          ...openingTag,
+          textInput,
+          innerAddButton,
+          closingTag,
+          addButton
+        ]);
+        Tag.appendChildren(row, [lineNumber, codeLine]);
+        table.appendChild(row);
+      });
+      return table;
     }
 
     _createSingleContainerHtml(defaultItemCount, item) {
@@ -778,7 +917,13 @@
 
         Tag.addEventListeners(valueElem, {
           click: this._codeInputEventListener,
-          keydown: this._codeInputEventListener,
+          keydown: (e) => {
+            if (e.key === 'Enter' || e.key === 'Escape') {
+              e.currentTarget.blur();
+            } else {
+              this._codeInputEventListener(e);
+            }
+          },
           keyup: this._codeInputEventListener,
           focus: ({ currentTarget }) => {
             currentTarget.classList.remove('button-blank');
@@ -791,7 +936,7 @@
             this._curCss[selectorIndex].props[propIndex].value = value;
             currentTarget.style.width =
               (value.length ? (value.length + 1) * 9 : 30) + 'px';
-            this._updateCode();
+            this._updateCssCode();
           }
         });
       } else {
@@ -822,7 +967,7 @@
         });
         elem.addEventListener('click', () => {
           this._curCss[selectorIndex].props.splice(propIndex, 1);
-          this._updateCode();
+          this._updateCssCode();
         });
       } else {
         Tag.setAttributes(elem, {
@@ -856,7 +1001,7 @@
             prop: '\u00A0'.repeat(4),
             value: '\u00A0'.repeat(4)
           });
-          this._updateCode();
+          this._updateCssCode();
         });
       } else {
         elem.setAttribute('class', 'button-add button-add-selector');
@@ -864,6 +1009,89 @@
           this._addCodeClickEventListener(selectorIndex)
         );
       }
+      return elem;
+    }
+
+    _createDeleteTagButton(tag) {
+      const elem = Tag.createElement(
+        'button',
+        { type: 'button', class: 'button-delete' },
+        '-'
+      );
+      elem.addEventListener('click', () => {
+        const { parent } = tag;
+        if (parent) {
+          parent.removeChild(tag);
+        } else {
+          this._previewWrapper.removeChild(tag);
+          this._snippets[0].html.splice(this._snippets[0].html.indexOf(tag), 1);
+        }
+        this._updateHtmlCode();
+      });
+      return elem;
+    }
+
+    _createAddAdjacentTagButton(tag, parent) {
+      const elem = Tag.createElement(
+        'button',
+        { type: 'button', class: 'button-add' },
+        '+'
+      );
+
+      elem.addEventListener('click', () => {
+        const newTag =
+          parent instanceof PreviewTag
+            ? new PreviewTag({ className: 'item' })
+            : new PreviewTag({ className: 'container' });
+        const siblings = [...parent.elem.children];
+        const index = siblings.indexOf(tag.elem);
+        if (index === siblings.length - 1) {
+          parent.appendChild(newTag);
+        } else {
+          const nextSibling = siblings[index + 1];
+          parent.insertBefore(newTag, nextSibling);
+        }
+        if (parent instanceof PreviewTag) {
+          parent.children.splice(index + 1, 0, newTag);
+          newTag.parent = parent;
+        } else {
+          this._snippets[0].html.splice(index + 1, 0, newTag);
+        }
+        this._updateHtmlCode();
+      });
+
+      return elem;
+    }
+
+    _createAddInnerTagButton(tag) {
+      const elem = Tag.createElement(
+        'button',
+        { type: 'button', class: 'button-add' },
+        '+'
+      );
+
+      // HTML 코드가 하나도 없는 경우
+      if (!tag) {
+        elem.addEventListener('click', () => {
+          const newTag = new PreviewTag({ className: 'container' });
+          this._snippets[0].html.push(newTag);
+          this._previewWrapper.appendChild(newTag);
+          this._updateHtmlCode();
+        });
+        return elem;
+      }
+
+      elem.addEventListener('click', () => {
+        const newTag = new PreviewTag({ className: 'item' });
+        const { children } = tag;
+        tag.text = null;
+        tag.elem.textContent = '';
+        tag.insertBefore(newTag, children[0]);
+        tag.children.unshift(newTag);
+        newTag.parent = tag;
+        this._updateHtmlCode();
+      });
+
       return elem;
     }
 
@@ -946,7 +1174,7 @@
           return;
         }
         handleClick(target);
-        this._updateCode();
+        this._updateCssCode();
       });
       return elem;
     }
@@ -988,18 +1216,83 @@
       );
 
       htmlButton.addEventListener('click', () => {
+        if (this._curCode === 'HTML') {
+          return;
+        }
         this._curCode = 'HTML';
         htmlButton.classList.add('is-active');
         cssButton.classList.remove('is-active');
+        const table = this._createCssCodeElements();
+        this._codeWrapper.removeAllChildren();
+        this._codeWrapper.appendChild(table);
       });
       cssButton.addEventListener('click', () => {
+        if (this._curCode === 'CSS') {
+          return;
+        }
         this._curCode = 'CSS';
         htmlButton.classList.remove('is-active');
         cssButton.classList.add('is-active');
+        const table = this._createCssCodeElements();
+        this._codeWrapper.removeAllChildren();
+        this._codeWrapper.appendChild(table);
       });
 
       header.appendChild([title, htmlButton, cssButton]);
       return header;
+    }
+
+    _createHtmlCodeLines(tag, depth = 0) {
+      const { elem, children } = tag;
+      const { className, textContent } = elem;
+      const childrenLines = [];
+      children.forEach((child) => {
+        childrenLines.push(...this._createHtmlCodeLines(child, depth + 1));
+      });
+      if (childrenLines.length) {
+        return [{ depth, tag, className }, ...childrenLines, { depth, tag }];
+      } else {
+        return [
+          {
+            depth,
+            className,
+            textContent,
+            tag
+          }
+        ];
+      }
+    }
+
+    _createOpeningTag(tagName, className) {
+      const fragment = document.createDocumentFragment();
+      const attribute = Tag.createElement(
+        'span',
+        { class: 'attribute-code' },
+        'class='
+      );
+      const value = Tag.createElement(
+        'span',
+        { class: 'attribute-value-code' },
+        className
+      );
+      const leftQuotation = Tag.createElement(
+        'span',
+        { class: 'attribute-code' },
+        '"'
+      );
+      const rightQuotation = Tag.createElement(
+        'span',
+        { class: 'attribute-code' },
+        '"'
+      );
+      return [
+        `<${tagName.toLowerCase()} `,
+        attribute,
+        leftQuotation,
+        value,
+        rightQuotation,
+        '>'
+      ];
     }
 
     // Event Listener
@@ -1067,7 +1360,7 @@
       this._restoreItemCountVariation();
       this._initCurCss();
       this._updatePreviewDOM(prevHtml, curHtml);
-      this._updateCode();
+      this._updateCssCode();
       this._updatePreviewTextAndClassName();
     }
 
@@ -1096,12 +1389,12 @@
         selector: '.' + '\u00A0'.repeat(8),
         props: [{ prop: '\u00A0'.repeat(4), value: '\u00A0'.repeat(4) }]
       });
-      this._updateCode();
+      this._updateCssCode();
     }
 
     _removeCodeClickEventListener(selectorIndex) {
       this._curCss.splice(selectorIndex, 1);
-      this._updateCode();
+      this._updateCssCode();
     }
 
     _textTableMousedownEventListener({ target, button, offsetX, offsetY }) {
@@ -1328,7 +1621,7 @@
 
     // code 안에 table을 통째로 교체
     // _cssTable은 _curCss를 기준으로 생성됨
-    _updateCode() {
+    _updateCssCode() {
       this._curCss.forEach(({ props }, index) => {
         if (!props.length) {
           this._curCss.splice(index, 1);
@@ -1347,6 +1640,47 @@
       } else {
         this._itemCountVariation.set(container, variation);
       }
+    }
+
+    _updateHtml(
+      tag,
+      counts = {
+        item: 1,
+        container: 1
+      }
+    ) {
+      if (!(tag instanceof PreviewTag)) {
+        tag.forEach((container) => this._updateHtml(container, counts));
+      } else {
+        const classList = [];
+
+        if (tag.parent) {
+          classList.push('item');
+        }
+
+        if (tag.children.length || !tag.parent) {
+          classList.push('container', `container${counts.container++}`);
+        } else {
+          if (tag.text === null) {
+            tag.elem.textContent = counts.item;
+            classList.push(`item${counts.item++}`);
+          } else {
+            tag.elem.textContent = tag.text;
+          }
+        }
+
+        tag.elem.className = classList.join(' ');
+        tag.children.forEach((child) => {
+          this._updateHtml(child, counts);
+        });
+      }
+    }
+
+    _updateHtmlCode() {
+      this._updateHtml(this._snippets[0].html);
+      const table = this._createCssCodeElements();
+      this._codeWrapper.removeAllChildren();
+      this._codeWrapper.appendChild(table);
     }
 
     // 현재 snippet과 비교하여 add item, remove item을 하여 변동된 item 개수를 복원함
@@ -1418,10 +1752,11 @@
           this._code,
           this._buttons
         ]);
-      } else {
+        this._updatePreviewTextAndClassName();
+      } else if (this._mode === 'free') {
         this._appendToEditor([this._preview, this._code]);
+        this._updateHtml(this._curSnippet.html);
       }
-      this._updatePreviewTextAndClassName();
       this._updatePreviewStyle();
       console.log(this);
     }

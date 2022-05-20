@@ -157,6 +157,11 @@
   cursor: text;
 }
 
+.fg-editor .code table.html-table {
+  user-select: none;
+  cursor: auto;
+}
+
 .fg-editor .wrapper-preview::-webkit-scrollbar,
 .fg-editor .wrapper-code::-webkit-scrollbar,
 .fg-editor .container::-webkit-scrollbar {
@@ -446,7 +451,8 @@
   background-color: var(--flex-border);
 }
 
-.fg-editor .selector-code {
+.fg-editor .selector-code,
+.fg-editor .attribute-code {
   color: var(--grid-primary);
 }
 
@@ -462,12 +468,24 @@
   color: var(--flex-dark);
 }
 
-.fg-editor .value-code {
+.fg-editor .value-code,
+.fg-editor .html-code {
   color: var(--flex-primary);
 }
 
 .fg-editor.free-mode .value-code::selection {
   color: var(--white);
+}
+
+.fg-editor .attribute-value-code {
+  color: var(--flex-border);
+}
+
+.fg-editor .text-code {
+  display: inline-block;
+  color: var(--black);
+  text-align: center;
+  line-height: 24px;
 }
 
 .fg-editor .buttons {

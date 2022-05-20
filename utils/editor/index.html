@@ -36,15 +36,31 @@
 
   <!-- free mode -->
   <div data-mode="free" data-title="Flex Code" class="fg-editor">
-    <code data-struct="[3][2[3]][4]">
+    <code data-struct="[3][2[3]][[[1]]]">
       .container {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+      }
+      .container1 {
         margin-bottom: 20px;
       }
-      .item6 {
-        margin-bottom: 0;
+      .container1 .item {
+        height: 40px;
+      }
+      .container2 {
+        flex-wrap: wrap;
+        width: 300px;
+        margin-bottom: 20px;
+      }
+      .item3 {
+        flex: 1;
+      }
+      .item4 {
+        border-radius: 50%;
+      }
+      .item5 {
+        background-color: #F6866A;
       }
     </code>
   </div>
