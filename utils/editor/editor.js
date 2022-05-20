@@ -259,7 +259,7 @@
       }
 
       .item.container .item {
-        outline: 2px solid var(--white);
+        outline: 2px solid var(--fixed-white);
       }
 
       @media screen and (max-width: 479px) {
