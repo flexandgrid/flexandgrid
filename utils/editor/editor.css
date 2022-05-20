@@ -95,6 +95,7 @@
 .fg-editor .code {
   overflow: hidden;
   min-width: 360px;
+  width: calc(50% - 10px);
   max-height: 340px;
   background-color: var(--white);
   box-shadow: 0px 4px 12px 0px var(--box-shadow-1);
@@ -107,7 +108,6 @@
 }
 
 .fg-editor .preview {
-  flex: 1;
   padding: 20px 30px;
   border-radius: 20px;
 }
@@ -125,7 +125,6 @@
 
 .fg-editor .code {
   display: block;
-  flex: 1;
   padding: 20px 10px;
   border-radius: 20px;
   font-size: 16px;
