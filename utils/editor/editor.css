@@ -22,6 +22,21 @@
   --accent-1: #fffcfa;
 }
 
+.fg-editor.theme-grid {
+  --primary-6: #765451;
+  --primary-5: #f6866a;
+  --primary-4: #fc9e87;
+  --primary-3: #f9b09e;
+  --primary-2: #fff0e6;
+  --primary-1: #fffcfa;
+  --accent-6: #504975;
+  --accent-5: #7661e2;
+  --accent-4: #8f7ee2;
+  --accent-3: #b6abed;
+  --accent-2: #eceafe;
+  --accent-1: #fbfbff;
+}
+
 @keyframes mountItem {
   0% {
     transform: translateY(-10%);
