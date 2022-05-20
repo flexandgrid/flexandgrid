@@ -13,7 +13,17 @@
     }
 
     static appendChildren(elem, children) {
-      children.forEach((child) => elem.appendChild(child));
+      children.forEach((child) => {
+        if (typeof child === 'string') {
+          elem.appendChild(document.createTextNode(child));
+        } else if (child instanceof Node) {
+          elem.appendChild(child);
+        } else if (child instanceof Tag) {
+          elem.appendChild(child.elem);
+        } else {
+          throw new Error('올바르지 않은 입력입니다.');
+        }
+      });
     }
 
     static addEventListeners(elem, options) {
@@ -29,8 +39,27 @@
       return elem;
     }
 
+    static getLetterWidth(elem) {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.font = getComputedStyle(elem).font;
+      return context.measureText('a').width;
+    }
+
     get dataset() {
       return this.elem.dataset;
+    }
+
+    get classList() {
+      return this.elem.classList;
+    }
+
+    get scrollTop() {
+      return this.elem.scrollTop;
+    }
+
+    set scrollTop(value) {
+      this.elem.scrollTop = value;
     }
 
     _initElem(elem) {
@@ -55,7 +84,7 @@
 
     appendChild(child) {
       if (Array.isArray(child)) {
-        child.forEach((elem) => this.elem.appendChild(elem));
+        child.forEach((elem) => this.appendChild(elem));
       } else if (child instanceof Tag) {
         this.elem.appendChild(child.elem);
       } else {
@@ -94,14 +123,20 @@
 
   // preview 안에 있는 container, item 요소들
   class PreviewTag extends Tag {
-    constructor({ className, children = [] }) {
-      super({ className, children });
-      this.children = children;
+    constructor({ className, parent = null }) {
+      super({ className });
+      this.children = [];
+      this.parent = parent;
+    }
+
+    push(child) {
+      this.children.push(child);
+      child.parent = this;
     }
 
     // 재귀적으로 모든 자손 요소 추가
     render() {
-      this.removeAllChildren(this.elem);
+      this.removeAllChildren();
       this.children.forEach((child) => {
         child.render();
         this.elem.appendChild(child.elem);
@@ -111,7 +146,8 @@
 
   class Editor {
     // CSS 파싱을 위한 정규표현식
-    static CSS_STRING = /\.((container)|(item\d?))(:.*)?(::.*)?\{[^{}]*\}/g;
+    static CSS_STRING =
+      /((\.((container\d*)|(item\d*)))+(:[\w\-]*)?(::[\w\-]*)?\s*)+\{[^{}]*\}/g;
 
     // data-item을 입력하지 않았을 경우 기본값
     static DEFAULT_ITEM = 3;
@@ -121,6 +157,9 @@
 
     // 드롭다운 한 줄 높이
     static DROPDOWN_HEIGHT = 30;
+
+    // 코드 라인 한 줄 높이
+    static CODE_HEIGHT = 24;
 
     // CSS 프로퍼티 정보
     static CSS_PROPS_INFO = {
@@ -183,26 +222,95 @@
     // CSS 프로퍼티 목록
     static CSS_PROPS = Object.keys(Editor.CSS_PROPS_INFO);
 
+    // free 모드 기본 스타일
+    static DEFAULT_STYLE = `
+      .container {
+        gap: 12px;
+      }
+
+      .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 70px;
+      }
+
+      .item.container {
+        width: auto;
+        height: auto;
+        justify-content: normal;
+        align-items: normal;
+      }
+
+      .item.container .item {
+        outline: 2px solid var(--white);
+      }
+
+      @media screen and (max-width: 479px) {
+        .item {
+          width: 54px;
+          height: 54px;
+          padding: 5px;
+          border-radius: 15px;
+          font-size: 22px
+        }
+      }
+    `;
+
     // code 태그에 있는 문자열을 파싱하여 객체로 변환
     static parseCssText(cssText) {
-      const trimmedCss = cssText.replaceAll(/\s+/g, '');
+      const trimmedCss = cssText.replace(/\s+/g, ' ');
       const matchedCssArr = trimmedCss.match(Editor.CSS_STRING);
       if (!matchedCssArr) {
         return [];
       }
       return matchedCssArr.map((matchedCss) => {
         const index = matchedCss.indexOf('{');
-        const selector = matchedCss.slice(0, index);
+        const selector = matchedCss.slice(0, index).trim();
         const props = matchedCss
           .slice(index + 1, -1)
+          .trim()
           .split(';')
           .filter((css) => css)
           .map((css) => {
-            const [prop, value] = css.split(':');
+            const [prop, value = ''] = css.split(':').map((v) => v.trim());
             return { prop, value };
           });
         return { selector, props };
       });
+    }
+
+    static parseHtmlStructureText(structText) {
+      const container = [];
+      const structure = structText.replace(/\d+/g, (match) =>
+        'i'.repeat(+match)
+      );
+      let curContainer = container;
+      for (const text of structure) {
+        switch (text) {
+          case '[':
+            const child = new PreviewTag({
+              className:
+                curContainer === container ? 'container' : 'item container'
+            });
+            curContainer.push(child);
+            curContainer = child;
+            break;
+
+          case 'i':
+            curContainer.push(new PreviewTag({ className: 'item' }));
+            break;
+
+          case ']':
+            curContainer = curContainer.parent ?? container;
+            break;
+
+          default:
+            throw new Error('올바르지 않은 형식입니다');
+        }
+      }
+      return container;
     }
 
     constructor(elem, editorId) {
@@ -226,11 +334,17 @@
           selector,
           ...props.map(({ prop, value }) => `${prop}:${value}`),
           '}',
-          ''
+          '\u00A0'
         );
       }
-      for (let i = 0; i < Editor.EXTRA_CODE_LINE; i++) {
-        codeLines.push('');
+      if (this._mode === 'snippet') {
+        for (let i = 0; i < Editor.EXTRA_CODE_LINE; i++) {
+          codeLines.push('');
+        }
+      } else if (this._mode === 'free') {
+        if (!codeLines.length) {
+          codeLines.push('');
+        }
       }
       return codeLines;
     }
@@ -256,16 +370,30 @@
       this._initMode();
       this._initSnippets();
       this._initCurCss();
+
+      if (this._mode === 'free') {
+        this._initTitle();
+      }
+
       this._initElements();
     }
 
     _initMode() {
       const { mode = 'snippet' } = this._editor.dataset;
       this._mode = mode;
+      if (this._mode === 'snippet') {
+        this._editor.classList.add('snippet-mode');
+      } else if (this._mode === 'free') {
+        this._editor.classList.add('free-mode', `editor-${this._editorId}`);
+      }
+    }
+
+    _initTitle() {
+      const { title = '' } = this._editor.dataset;
+      this._title = title;
     }
 
     _initSnippets() {
-      const { item: defaultItemCount } = this._editor.dataset;
       const codes = this._editor.querySelectorAll('code');
       codes.forEach(({ dataset: { snippet, item }, textContent }) => {
         let snippetName;
@@ -275,24 +403,26 @@
           snippetName = snippet ?? 'main';
         }
 
+        let html;
+        if (this._mode === 'snippet') {
+          const { item: defaultItemCount } = this._editor.dataset;
+          html = this._createSingleContainerHtml(defaultItemCount, item);
+        } else if (this._mode === 'free') {
+          const { item: defaultItemCount } = codes[0].dataset;
+          if (defaultItemCount) {
+            html = this._createSingleContainerHtml(defaultItemCount);
+          } else {
+            html = this._createMultiContainerHtml(codes[0]);
+          }
+        }
+
+        if (this._mode === 'free') {
+          this._stylesheet = this._createStylesheet(textContent);
+        }
+
         this._snippets.push({
           name: snippetName,
-          html: [
-            new PreviewTag({
-              className: 'container',
-              children: [
-                ...Array(
-                  Number.isInteger(Number(item))
-                    ? Number(item)
-                    : defaultItemCount
-                    ? Number(defaultItemCount)
-                    : Editor.DEFAULT_ITEM
-                )
-              ].map(
-                (_, i) => new PreviewTag({ className: 'item', index: i + 1 })
-              )
-            })
-          ],
+          html,
           css: Editor.parseCssText(textContent)
         });
       });
@@ -321,23 +451,36 @@
         container.render();
         this._previewWrapper.appendChild(container);
       });
+
+      if (this._mode === 'free') {
+        this._style = document.createElement('style');
+        this._style.textContent = this._stylesheet;
+        this._preview.appendChild(this._style);
+      }
+
       this._preview.appendChild(this._previewWrapper);
     }
 
     _initCode() {
       this._code = new Tag({ className: 'code' });
       this._codeWrapper = new Tag({ className: 'wrapper-code' });
-      const table = this._createCssCodeTable();
-      this._codeWrapper.appendChild(table);
-      this._code.appendChild(this._codeWrapper);
+      const code = this._createCssCodeElements();
+      this._codeWrapper.appendChild(code);
 
-      this._isDropdownOpen = false;
-      // free 모드에서는 css를 클릭해서 수정하지 않고 텍스트로 직접 수정하도록 할 예정
       if (this._mode === 'snippet') {
+        this._code.appendChild(this._codeWrapper);
         this._code.addEventListener('click', (e) =>
           this._codeClickEventListener(e)
         );
+      } else if (this._mode === 'free') {
+        const header = this._createCodeHeader();
+        const inner = new Tag({ className: 'inner-code' });
+        inner.appendChild(this._codeWrapper);
+        this._code.appendChild([header, inner]);
       }
+
+      this._isDropdownOpen = false;
+      this._curCode = 'CSS';
     }
 
     _initSnippetList() {
@@ -406,11 +549,20 @@
     // Create
     // ------------------------------------------------------------------------------
 
-    _createCssCodeTable() {
+    _createCssCodeElements() {
+      if (this._mode === 'snippet') {
+        return this._createCssCodeButtonTable();
+      } else if (this._mode === 'free') {
+        return this._createCssCodeTextTable();
+      }
+    }
+
+    _createCssCodeButtonTable() {
       let selectorIndex = 0;
       let propIndex = 0;
 
       const table = document.createElement('table');
+
       this._cssCodeLines.forEach((line, index) => {
         const row = document.createElement('tr');
 
@@ -442,8 +594,105 @@
         Tag.appendChildren(row, [lineNumber, codeLine]);
         table.appendChild(row);
       });
+      return table;
+    }
+
+    _createCssCodeTextTable() {
+      const table = Tag.createElement('table', { tabindex: '-1' });
+
+      this._cssCodeLines.forEach((line, index) => {
+        const row = document.createElement('tr');
+
+        const lineNumber = Tag.createElement(
+          'td',
+          {
+            class: 'number-line'
+          },
+          index + 1
+        );
+
+        const codeLine = Tag.createElement('td', {
+          class: 'code-line',
+          'data-index': index
+        });
+        if (line[0] === '.') {
+          this._updateSelectorCodeLineStyle(line, codeLine);
+        } else if (line.includes(':')) {
+          this._updatePropCodeLineStyle(line, codeLine);
+        } else {
+          codeLine.textContent = line;
+        }
+
+        Tag.appendChildren(row, [lineNumber, codeLine]);
+        table.appendChild(row);
+      });
+
+      Tag.addEventListeners(table, {
+        mousedown: (e) => this._textTableMousedownEventListener(e),
+        mouseup: (e) => this._textTableMouseUpEventListener(e),
+        keydown: (e) => this._textTableKeydownEventListener(e)
+      });
 
       return table;
+    }
+
+    // 여기에 CssCodeTextTable을 클릭했을 때 대체될 div와 textarea 생성
+    _createCssCodeTextarea() {
+      const textareaWrapper = Tag.createElement('div', {
+        class: 'wrapper-textarea'
+      });
+      const numbers = new Tag({ className: 'container-number' });
+      const textarea = Tag.createElement('textarea', {
+        spellcheck: false,
+        class: 'textarea-code'
+      });
+
+      const codeLines = [];
+      this._cssCodeLines.forEach((line, index) => {
+        const lineNumber = Tag.createElement(
+          'span',
+          {
+            class: 'number-line'
+          },
+          index + 1
+        );
+        numbers.appendChild(lineNumber);
+
+        if (line[0] === '.') {
+          codeLines.push(`${line} {`);
+        } else if (line.includes(':')) {
+          const [prop, value] = line.split(':');
+          codeLines.push(`  ${prop}: ${value};`);
+        } else {
+          codeLines.push(line);
+        }
+      });
+      textarea.value = codeLines.join('\n');
+      textarea.style.height = codeLines.length * Editor.CODE_HEIGHT + 'px';
+      Tag.addEventListeners(textarea, {
+        input: (e) => this._textAreaInputEventListener(e, numbers),
+        blur: () => this._textTableBlurEventListener()
+      });
+      Tag.appendChildren(textareaWrapper, [numbers, textarea]);
+      return textareaWrapper;
+    }
+
+    _createSingleContainerHtml(defaultItemCount, item) {
+      const length = Number.isInteger(Number(item))
+        ? Number(item)
+        : defaultItemCount
+        ? Number(defaultItemCount)
+        : Editor.DEFAULT_ITEM;
+      const container = new PreviewTag({ className: 'container' });
+      for (let i = 0; i < length; i++) {
+        container.push(new PreviewTag({ className: 'item' }));
+      }
+      return [container];
+    }
+
+    _createMultiContainerHtml(code) {
+      const { struct } = code.dataset;
+      return Editor.parseHtmlStructureText(struct);
     }
 
     _createSelectorCodeLine(line, codeLine, selectorIndex) {
@@ -462,9 +711,39 @@
 
       Tag.appendChildren(codeLine, [
         deleteButton,
-        document.createTextNode('.'),
+        '.',
         selectorSpan,
-        document.createTextNode('\u00A0{')
+        '\u00A0{'
+      ]);
+    }
+
+    _createPropCodeLine(line, codeLine, selectorIndex, propIndex) {
+      const [prop, value] = line.split(':');
+      const propSpan = this._createPropCodeButton(
+        prop,
+        selectorIndex,
+        propIndex
+      );
+      const valueElem = this._createValueCodeButton(
+        prop,
+        value,
+        selectorIndex,
+        propIndex
+      );
+      const deleteButton = this._createDeleteCodeButton(
+        selectorIndex,
+        propIndex
+      );
+      const addButton = this._createAddCodeButton(selectorIndex, propIndex);
+
+      Tag.appendChildren(codeLine, [
+        deleteButton,
+        '\u00A0\u00A0',
+        propSpan,
+        ':\u00A0',
+        valueElem,
+        ';',
+        addButton
       ]);
     }
 
@@ -530,36 +809,6 @@
         valueElem.classList.add('button-blank');
       }
       return valueElem;
-    }
-
-    _createPropCodeLine(line, codeLine, selectorIndex, propIndex) {
-      const [prop, value] = line.split(':');
-      const propSpan = this._createPropCodeButton(
-        prop,
-        selectorIndex,
-        propIndex
-      );
-      const valueElem = this._createValueCodeButton(
-        prop,
-        value,
-        selectorIndex,
-        propIndex
-      );
-      const deleteButton = this._createDeleteCodeButton(
-        selectorIndex,
-        propIndex
-      );
-      const addButton = this._createAddCodeButton(selectorIndex, propIndex);
-
-      Tag.appendChildren(codeLine, [
-        deleteButton,
-        document.createTextNode('\u00A0\u00A0'),
-        propSpan,
-        document.createTextNode(':\u00A0'),
-        valueElem,
-        document.createTextNode(';'),
-        addButton
-      ]);
     }
 
     _createDeleteCodeButton(selectorIndex, propIndex) {
@@ -702,6 +951,57 @@
       return elem;
     }
 
+    _createStylesheet(styleText) {
+      const stylesheet = (Editor.DEFAULT_STYLE + styleText)
+        .replace(/\s+/g, ' ')
+        .replace(
+          Editor.CSS_STRING,
+          (match) => `.fg-editor.editor-${this._editorId} ${match}`
+        );
+      return stylesheet;
+    }
+
+    _createCodeHeader() {
+      const header = new Tag({ className: 'header-code' });
+      const title = Tag.createElement(
+        'p',
+        {
+          class: 'title'
+        },
+        this._title
+      );
+      const htmlButton = Tag.createElement(
+        'button',
+        {
+          type: 'button',
+          class: 'button-switch button-left'
+        },
+        'HTML'
+      );
+      const cssButton = Tag.createElement(
+        'button',
+        {
+          type: 'button',
+          class: 'button-switch button-right is-active'
+        },
+        'CSS'
+      );
+
+      htmlButton.addEventListener('click', () => {
+        this._curCode = 'HTML';
+        htmlButton.classList.add('is-active');
+        cssButton.classList.remove('is-active');
+      });
+      cssButton.addEventListener('click', () => {
+        this._curCode = 'CSS';
+        htmlButton.classList.remove('is-active');
+        cssButton.classList.add('is-active');
+      });
+
+      header.appendChild([title, htmlButton, cssButton]);
+      return header;
+    }
+
     // Event Listener
     // ------------------------------------------------------------------------------
 
@@ -804,6 +1104,158 @@
       this._updateCode();
     }
 
+    _textTableMousedownEventListener({ target, button, offsetX, offsetY }) {
+      if (target.classList.contains('number-line')) {
+        return;
+      }
+      if (button) {
+        return;
+      }
+      this._startX = offsetX;
+      this._startY = offsetY;
+    }
+
+    _textTableMouseUpEventListener({
+      currentTarget,
+      target,
+      button,
+      offsetX,
+      offsetY,
+      clientY
+    }) {
+      if (target.classList.contains('number-line')) {
+        return;
+      }
+      if (button) {
+        return;
+      }
+
+      const diffX = Math.abs(this._startX - offsetX);
+      const diffY = Math.abs(this._startY - offsetY);
+
+      if (diffX < 3 && diffY < 3) {
+        const letterWidth = Tag.getLetterWidth(
+          currentTarget.querySelector('.code-line')
+        );
+        const { top } = currentTarget.getBoundingClientRect();
+        const parentOffsetY = clientY - top;
+        const letterX = Math.floor((offsetX - 30) / letterWidth + 0.5);
+        const letterY = Math.floor(parentOffsetY / Editor.CODE_HEIGHT);
+
+        const scrollTop = this._codeWrapper.scrollTop;
+        this._codeWrapper.removeAllChildren();
+        const textareaWrapper = this._createCssCodeTextarea();
+        this._codeWrapper.appendChild(textareaWrapper);
+
+        const textarea = textareaWrapper.querySelector('textarea');
+        textarea.focus();
+        this._codeWrapper.scrollTop = scrollTop;
+
+        const textareaLines = textarea.value.split('\n');
+        const letterPos =
+          (letterX > textareaLines[letterY].length
+            ? textareaLines[letterY].length
+            : letterX) +
+          textareaLines
+            .slice(0, letterY)
+            .reduce((acc, v) => acc + v.length + 1, 0);
+        textarea.selectionStart = textarea.selectionEnd = letterPos;
+      }
+    }
+
+    _textTableBlurEventListener() {
+      const textarea = this._codeWrapper.querySelector('textarea');
+      this._curCss = Editor.parseCssText(textarea.value).map(
+        ({ selector, props }) => ({
+          selector,
+          props: [...props.map((prop) => ({ ...prop }))]
+        })
+      );
+      this._stylesheet = this._createStylesheet(textarea.value);
+      this._style.textContent = this._stylesheet;
+
+      this._codeWrapper.removeAllChildren();
+      const table = this._createCssCodeTextTable();
+      this._codeWrapper.appendChild(table);
+    }
+
+    _textAreaInputEventListener({ currentTarget }, numbers) {
+      currentTarget.style.height = 'auto';
+      currentTarget.style.height = currentTarget.scrollHeight + 'px';
+      numbers.removeAllChildren();
+      for (
+        let i = 0;
+        i < currentTarget.scrollHeight / Editor.CODE_HEIGHT;
+        i++
+      ) {
+        const lineNumber = Tag.createElement(
+          'span',
+          {
+            class: 'number-line'
+          },
+          i + 1
+        );
+        numbers.appendChild(lineNumber);
+      }
+    }
+
+    _textTableKeydownEventListener() {
+      const selection = window.getSelection();
+      if (!selection.toString()) {
+        return;
+      }
+      const { anchorNode, focusNode, anchorOffset, focusOffset } = selection;
+      const selectedText = selection.toString().replace(/\n\d+(?=\n)/g, '');
+
+      let anchorLine = anchorNode;
+      let focusLine = focusNode;
+      while (!anchorLine?.classList?.contains('code-line')) {
+        anchorLine = anchorLine.parentElement;
+      }
+      while (!focusLine?.classList?.contains('code-line')) {
+        focusLine = focusLine.parentElement;
+      }
+
+      const [node, firstLine, offset] =
+        anchorLine.dataset.index === focusLine.dataset.index
+          ? anchorOffset < focusOffset
+            ? [anchorNode, anchorLine, anchorOffset]
+            : [focusNode, focusLine, focusOffset]
+          : Number(anchorLine.dataset.index) < Number(focusLine.dataset.index)
+          ? [anchorNode, anchorLine, anchorOffset]
+          : [focusNode, focusLine, focusOffset];
+
+      const firstLineChildNodes = [...firstLine.childNodes]
+        .reduce((acc, node) => [...acc, node, ...(node.childNodes ?? [])], [])
+        .filter((node) => node instanceof Text);
+      const nodeIndex = firstLineChildNodes.indexOf(node);
+      const startIndex =
+        firstLineChildNodes.reduce(
+          (acc, node, i) =>
+            i < nodeIndex ? acc + node.textContent.length : acc,
+          0
+        ) + offset;
+
+      const scrollTop = this._codeWrapper.scrollTop;
+      this._codeWrapper.removeAllChildren();
+      const textareaWrapper = this._createCssCodeTextarea();
+      this._codeWrapper.appendChild(textareaWrapper);
+
+      const textarea = textareaWrapper.querySelector('textarea');
+      textarea.focus();
+      this._codeWrapper.scrollTop = scrollTop;
+
+      const textareaLines = textarea.value.split('\n');
+      const prevLength = textareaLines
+        .slice(0, firstLine.dataset.index)
+        .reduce((acc, line) => acc + line.length + 1, 0);
+
+      textarea.selectionStart = textarea.value
+        .replaceAll(' ', '\u00A0')
+        .indexOf(selectedText, prevLength + startIndex);
+      textarea.selectionEnd = textarea.selectionStart + selectedText.length;
+    }
+
     // Update
     // ------------------------------------------------------------------------------
 
@@ -839,16 +1291,24 @@
 
     // preview의 모든 자손 요소들의 style을 초기화 후, _curCss를 기준으로 다시 style 설정
     _updatePreviewStyle() {
-      this._previewWrapper.initAllChildrenStyle();
-      this._curCss.forEach(({ selector, props }) => {
-        const elems = this._previewWrapper.querySelectorAll(selector);
-        elems.forEach(
-          (elem) =>
-            (elem.style = props
-              .map(({ prop, value }) => `${prop}:${value};`)
-              .join(''))
-        );
-      });
+      if (this._mode === 'snippet') {
+        this._previewWrapper.initAllChildrenStyle();
+        const elems = this._previewWrapper.querySelectorAll('*');
+        elems.forEach((elem) => {
+          const classList = [...elem.classList].map(
+            (className) => '.' + className
+          );
+          const styles = [];
+          this._curCss.forEach(({ selector, props }) => {
+            if (classList.includes(selector)) {
+              styles.push(
+                props.map(({ prop, value }) => `${prop}:${value};`).join('')
+              );
+            }
+          });
+          elem.style = styles.join('');
+        });
+      }
     }
 
     // preview의 모든 item 요소들에 숫자 textContent와 고유한 className 부여
@@ -856,7 +1316,13 @@
       const items = this._previewWrapper.querySelectorAll('.item');
       items.forEach((item, index) => {
         item.classList.add(`item${index + 1}`);
-        item.textContent = index + 1;
+        if (!item.children.length) {
+          item.textContent = index + 1;
+        }
+      });
+      const containers = this._previewWrapper.querySelectorAll('.container');
+      containers.forEach((container, index) => {
+        container.classList.add(`container${index + 1}`);
       });
     }
 
@@ -868,7 +1334,7 @@
           this._curCss.splice(index, 1);
         }
       });
-      const table = this._createCssCodeTable();
+      const table = this._createCssCodeElements();
       this._codeWrapper.removeAllChildren();
       this._codeWrapper.appendChild(table);
       this._updatePreviewStyle();
@@ -897,6 +1363,43 @@
           this._updateItemCountVariation(container, 1);
         }
       }
+    }
+
+    _updateSelectorCodeLineStyle(line, codeLine) {
+      const selectorSpan = Tag.createElement(
+        'span',
+        {
+          class: 'selector-code'
+        },
+        line.slice(1)
+      );
+      Tag.appendChildren(codeLine, ['.', selectorSpan, '\u00A0{']);
+    }
+
+    _updatePropCodeLineStyle(line, codeLine) {
+      const [prop, value] = line.split(':');
+      const propSpan = Tag.createElement(
+        'span',
+        {
+          class: 'prop-code'
+        },
+        prop
+      );
+      const valueElem = Tag.createElement(
+        'span',
+        {
+          class: 'value-code'
+        },
+        value
+      );
+
+      Tag.appendChildren(codeLine, [
+        '\u00A0\u00A0',
+        propSpan,
+        ':\u00A0',
+        valueElem,
+        ';'
+      ]);
     }
 
     // _editor에 children을 순서대로 append
