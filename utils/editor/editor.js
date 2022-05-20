@@ -830,7 +830,7 @@
     }
 
     _createMultiContainerHtml(code) {
-      const { struct } = code.dataset;
+      const { struct = '[3]' } = code.dataset;
       return Editor.parseHtmlStructureText(struct);
     }
 
