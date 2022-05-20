@@ -1663,10 +1663,10 @@
         } else {
           if (tag.text === null) {
             tag.elem.textContent = counts.item;
-            classList.push(`item${counts.item++}`);
           } else {
             tag.elem.textContent = tag.text;
           }
+          classList.push(`item${counts.item++}`);
         }
 
         tag.elem.className = classList.join(' ');
