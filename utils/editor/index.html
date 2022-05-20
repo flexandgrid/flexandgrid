@@ -35,20 +35,32 @@
   <br />
 
   <!-- free mode -->
-  <div data-mode="free" class="fg-editor">
-    <code data-item="3">
+  <div data-mode="free" data-title="Flex Code" class="fg-editor">
+    <code data-struct="[3][2[3]][[[1]]]">
       .container {
         display: flex;
         justify-content: flex-start;
+        align-items: center;
       }
-      .item1 {
-        flex: 1;
+      .container1 {
+        margin-bottom: 20px;
       }
-      .item2 {
-        order: 3;
+      .container1 .item {
+        height: 40px;
+      }
+      .container2 {
+        flex-wrap: wrap;
+        width: 300px;
+        margin-bottom: 20px;
       }
       .item3 {
-        align-self: flex-end;
+        flex: 1;
+      }
+      .item4 {
+        border-radius: 50%;
+      }
+      .item5 {
+        background-color: #F6866A;
       }
     </code>
   </div>
