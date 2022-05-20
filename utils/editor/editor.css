@@ -1,12 +1,36 @@
+.fg-editor {
+  --gray-8: #27272a;
+  --gray-7: #23262f;
+  --gray-6: #3f3f46;
+  --gray-5: #878787;
+  --gray-4: #b4b4b4;
+  --gray-3: #e0e0e0;
+  --gray-2: #efefef;
+  --gray-1: #f9f9f9;
+  --white: #ffffff;
+  --primary-6: #504975;
+  --primary-5: #7661e2;
+  --primary-4: #8f7ee2;
+  --primary-3: #b6abed;
+  --primary-2: #eceafe;
+  --primary-1: #fbfbff;
+  --accent-6: #765451;
+  --accent-5: #f6866a;
+  --accent-4: #fc9e87;
+  --accent-3: #f9b09e;
+  --accent-2: #fff0e6;
+  --accent-1: #fffcfa;
+}
+
 @keyframes mountItem {
   0% {
     transform: translateY(-10%);
-    background-color: #8f7ee2;
+    background-color: var(--primary-4);
   }
 
   100% {
     transform: translateY(0);
-    background-color: var(--flex-primary);
+    background-color: var(--primary-5);
   }
 }
 
@@ -37,7 +61,7 @@
 .fg-editor.free-mode .preview,
 .fg-editor.free-mode .code {
   max-height: 408px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--gray-2);
 }
 
 .fg-editor .preview {
@@ -81,9 +105,9 @@
   flex: 1;
   height: 68px;
   padding-left: 32px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--gray-2);
   font-size: 35px;
-  color: var(--secondary);
+  color: var(--gray-5);
 }
 
 .fg-editor .header-code .button-switch {
@@ -94,41 +118,41 @@
   bottom: 0;
   width: 85px;
   height: 69px;
-  border-bottom: 1px solid var(--border);
-  background-color: var(--background);
+  border-bottom: 1px solid var(--gray-2);
+  background-color: var(--gray-1);
   font-weight: 700;
   font-size: 16px;
-  color: var(--tertiary);
+  color: var(--gray-4);
   user-select: none;
 }
 
 .fg-editor .header-code .button-left {
   right: 85px;
-  border-left: 1px solid var(--border);
-  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--gray-2);
+  border-top: 1px solid var(--gray-2);
   border-top-left-radius: 20px;
 }
 
 .fg-editor .header-code .button-right {
   right: 0px;
-  border-left: 1px solid var(--border);
+  border-left: 1px solid var(--gray-2);
 }
 
 .fg-editor .header-code .button-switch.is-active {
   border-bottom: 1px solid var(--white);
   background-color: var(--white);
-  color: var(--flex-primary);
+  color: var(--primary-5);
 }
 
 .fg-editor .header-code .button-switch:hover,
 .fg-editor .header-code .button-switch.is-active:hover {
-  background-color: var(--flex-hover);
+  background-color: var(--primary-2);
 }
 
 .fg-editor .header-code .button-switch:active,
 .fg-editor .header-code .button-switch.is-active:active {
-  background-color: var(--flex-background);
-  color: var(--flex-primary);
+  background-color: var(--primary-1);
+  color: var(--primary-5);
 }
 
 .fg-editor .wrapper-code {
@@ -175,7 +199,7 @@
   width: 5px;
   height: 40px;
   border-radius: 20px;
-  background-color: var(--tertiary);
+  background-color: var(--gray-4);
 }
 
 .fg-editor .wrapper-preview::-webkit-scrollbar-track,
@@ -189,13 +213,13 @@
 }
 
 .fg-editor .container:not(.item):hover {
-  background-color: var(--flex-hover);
+  background-color: var(--primary-2);
 }
 
 .fg-editor .item {
   padding: 10px;
   border-radius: 15px;
-  background-color: var(--flex-primary);
+  background-color: var(--primary-5);
   font-size: 22px;
   color: var(--white);
   user-select: none;
@@ -231,7 +255,7 @@
   align-items: center;
   position: relative;
   font-size: 14px;
-  color: var(--tertiary);
+  color: var(--gray-4);
   user-select: none;
 }
 
@@ -240,15 +264,15 @@
   width: 20px;
   height: 20px;
   margin-right: 10px;
-  border: 1px solid var(--tertiary);
+  border: 1px solid var(--gray-4);
   border-radius: 50%;
   content: '';
 }
 
 .fg-editor .label-snippet:hover,
 .fg-editor .label-snippet:hover::before {
-  border-color: var(--primary);
-  color: var(--primary);
+  border-color: var(--gray-6);
+  color: var(--gray-6);
 }
 
 .fg-editor .label-snippet::after {
@@ -263,15 +287,15 @@
 }
 
 .fg-editor .input-snippet:checked + .label-snippet {
-  color: var(--flex-primary);
+  color: var(--primary-5);
 }
 
 .fg-editor .input-snippet:checked + .label-snippet::before {
-  border-color: var(--flex-primary);
+  border-color: var(--primary-5);
 }
 
 .fg-editor .input-snippet:checked + .label-snippet::after {
-  background-color: var(--flex-primary);
+  background-color: var(--primary-5);
 }
 
 .fg-editor tr,
@@ -289,7 +313,7 @@
 }
 
 .fg-editor tr:hover {
-  background-color: var(--flex-hover);
+  background-color: var(--primary-2);
   transition: all 0.1s;
 }
 
@@ -321,30 +345,30 @@
   top: 50%;
   left: 30px;
   transform: translateY(-50%);
-  background-color: var(--grid-border);
+  background-color: var(--accent-3);
 }
 
 .fg-editor tr .button-delete:hover {
-  background-color: var(--grid-primary);
+  background-color: var(--accent-5);
 }
 
 .fg-editor tr .button-delete:active {
-  background-color: var(--grid-hover);
-  color: var(--grid-primary);
+  background-color: var(--accent-2);
+  color: var(--accent-5);
 }
 
 .fg-editor tr .button-add {
   margin-left: 10px;
-  background-color: var(--flex-border);
+  background-color: var(--primary-3);
 }
 
 .fg-editor tr .button-add:hover {
-  background-color: var(--flex-primary);
+  background-color: var(--primary-5);
 }
 
 .fg-editor tr .button-add:active {
-  background-color: var(--flex-hover);
-  color: var(--flex-primary);
+  background-color: var(--primary-2);
+  color: var(--primary-5);
 }
 
 .fg-editor tr .button-add-selector {
@@ -362,14 +386,14 @@
 .fg-editor.free-mode td::selection,
 .fg-editor.free-mode td *::selection,
 .fg-editor.free-mode .textarea-code::selection {
-  background-color: var(--grid-border);
+  background-color: var(--accent-3);
 }
 
 .fg-editor .number-line {
   flex-shrink: 0;
   width: 25px;
   font-size: 12px;
-  color: var(--tertiary);
+  color: var(--gray-4);
   text-align: right;
   line-height: 24px;
   user-select: none;
@@ -403,7 +427,7 @@
 }
 
 .fg-editor input.button-code:focus {
-  background-color: var(--border);
+  background-color: var(--gray-2);
   outline: none;
 }
 
@@ -417,8 +441,8 @@
   max-height: 120px;
   border: 1px solid black;
   border-radius: 5px;
-  background-color: var(--flex-hover);
-  color: var(--black);
+  background-color: var(--primary-2);
+  color: var(--gray-8);
   cursor: auto;
 }
 
@@ -430,7 +454,7 @@
   width: 5px;
   height: 40px;
   border-radius: 20px;
-  background-color: var(--tertiary);
+  background-color: var(--gray-4);
 }
 
 .fg-editor .button-code .dropdown::-webkit-scrollbar-track {
@@ -448,29 +472,29 @@
 }
 
 .fg-editor .button-code .dropdown li:hover {
-  background-color: var(--flex-border);
+  background-color: var(--primary-3);
 }
 
 .fg-editor .selector-code,
 .fg-editor .attribute-code {
-  color: var(--grid-primary);
+  color: var(--accent-5);
 }
 
 .fg-editor.free-mode .selector-code::selection {
-  color: var(--flex-primary);
+  color: var(--primary-5);
 }
 
 .fg-editor .prop-code {
-  color: var(--grid-dark);
+  color: var(--accent-6);
 }
 
 .fg-editor.free-mode .prop-code::selection {
-  color: var(--flex-dark);
+  color: var(--primary-6);
 }
 
 .fg-editor .value-code,
 .fg-editor .html-code {
-  color: var(--flex-primary);
+  color: var(--primary-5);
 }
 
 .fg-editor.free-mode .value-code::selection {
@@ -478,12 +502,12 @@
 }
 
 .fg-editor .attribute-value-code {
-  color: var(--flex-border);
+  color: var(--primary-3);
 }
 
 .fg-editor .text-code {
   display: inline-block;
-  color: var(--black);
+  color: var(--gray-8);
   text-align: center;
   line-height: 24px;
 }
@@ -508,13 +532,13 @@
 
 .fg-editor .buttons .button-add {
   margin-right: 12px;
-  background-color: var(--flex-hover);
-  color: var(--flex-primary);
+  background-color: var(--primary-2);
+  color: var(--primary-5);
 }
 
 .fg-editor .buttons .button-remove {
-  background-color: var(--subtext);
-  color: var(--secondary);
+  background-color: var(--gray-3);
+  color: var(--gray-5);
 }
 
 .fg-editor .wrapper-textarea {
