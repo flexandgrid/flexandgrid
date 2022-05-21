@@ -703,19 +703,21 @@
         });
         const indentation = '\u00A0'.repeat(line.depth * 2);
         const { tagName } = line.tag.elem;
+        const isRootContainer = !line.tag.children.length && !line.tag.parent;
 
         const openingTag = line.className
           ? this._createOpeningTag(tagName, line.className)
           : [];
 
         const textInput =
-          typeof line.textContent === 'string'
+          typeof line.textContent === 'string' && !isRootContainer
             ? Tag.createElement('input', {
                 class: 'button-code text-code',
                 value: line.textContent,
                 spellcheck: false
               })
             : null;
+
         if (textInput) {
           const value = line.textContent;
           if (value.trim() === '') {
@@ -746,9 +748,10 @@
           });
         }
 
-        const innerAddButton = textInput
-          ? this._createAddInnerTagButton(line.tag)
-          : null;
+        const innerAddButton =
+          textInput || isRootContainer
+            ? this._createAddInnerTagButton(line.tag)
+            : null;
 
         const closingTag =
           !(typeof line.textContent === 'string') && line.className
@@ -1049,7 +1052,9 @@
         const newTag = new PreviewTag({ className: 'item' });
         const { children } = tag;
         tag.text = null;
-        tag.elem.textContent = '';
+        if (!children.length) {
+          tag.elem.textContent = '';
+        }
         tag.insertBefore(newTag, children[0]);
         tag.children.unshift(newTag);
         newTag.parent = tag;
@@ -1228,7 +1233,6 @@
     }
 
     _createOpeningTag(tagName, className) {
-      const fragment = document.createDocumentFragment();
       const attribute = Tag.createElement(
         'span',
         { class: 'attribute-code' },
