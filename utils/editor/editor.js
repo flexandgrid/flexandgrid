@@ -237,42 +237,6 @@
     // CSS 프로퍼티 목록
     static CSS_PROPS = Object.keys(Editor.CSS_PROPS_INFO);
 
-    // free 모드 기본 스타일
-    static DEFAULT_STYLE = `
-      .container {
-        gap: 12px;
-      }
-
-      .item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 70px;
-        height: 70px;
-      }
-
-      .item.container {
-        width: auto;
-        height: auto;
-        justify-content: normal;
-        align-items: normal;
-      }
-
-      .item.container .item {
-        outline: 2px solid var(--fixed-white);
-      }
-
-      @media screen and (max-width: 479px) {
-        .item {
-          width: 54px;
-          height: 54px;
-          padding: 5px;
-          border-radius: 15px;
-          font-size: 22px
-        }
-      }
-    `;
-
     // code 태그에 있는 문자열을 파싱하여 객체로 변환
     static parseCssText(cssText) {
       const trimmedCss = cssText.replace(/\s+/g, ' ');
@@ -1180,7 +1144,7 @@
     }
 
     _createStylesheet(styleText) {
-      const stylesheet = (Editor.DEFAULT_STYLE + styleText)
+      const stylesheet = styleText
         .replace(/\s+/g, ' ')
         .replace(
           Editor.CSS_STRING,
