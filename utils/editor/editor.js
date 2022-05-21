@@ -1052,7 +1052,9 @@
         const newTag = new PreviewTag({ className: 'item' });
         const { children } = tag;
         tag.text = null;
-        tag.elem.textContent = '';
+        if (!children.length) {
+          tag.elem.textContent = '';
+        }
         tag.insertBefore(newTag, children[0]);
         tag.children.unshift(newTag);
         newTag.parent = tag;
