@@ -1,1 +1,91 @@
 @charset "UTF-8";
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    padding-left: 160px;
+    padding-right: 160px;
+    box-sizing: border-box;
+}
+
+
+#logo {
+    width: 144px;
+    height: 20px;
+    padding-top: 30px;
+}
+
+nav {
+    left: 340px;
+    bottom: 26px;
+    font-size: 18px;
+    line-height: 28px;
+    padding-top: 26px;
+}
+
+ul {
+    display: flex;
+}
+
+nav li {
+    margin-left: 30px;
+}
+
+.search {
+    background-color: var(--background);
+    margin-left: 289px;
+    border: 1px solid var(--border);
+    width: 265px;
+    height: 40px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.darkmode {
+    background-color: var(--background);
+    width: 37px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    margin-top: 22px;
+    margin-left: 24px;
+}
+
+.github {
+    background-color: var(--background);
+    width: 37px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    margin-top: 22px;
+    margin-left: 11px;
+}
+
+/* 다크모드 */
+
+.header.on {
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+
+nav li.on {
+    color: var(--white);
+}
+
+.search.on {
+    background-color: var(--black);
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+}
+
