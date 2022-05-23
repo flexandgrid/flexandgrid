@@ -1,65 +1,83 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>gnb-nav</title>
-    <link rel="stylesheet" href="../css/default.css">
-    <link rel="stylesheet" href="../css/color.css" >
-    <link rel="stylesheet" href="gnb-nav.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/default.css" />
+    <link rel="stylesheet" href="../css/color.css" />
+    <link rel="stylesheet" href="gnb-nav.css" />
+  </head>
+  <body>
     <!-- 헤더 섹션 시작 -->
     <header class="header">
-        <a href="#" class="header-logo" id="logo">
-            <img src="\src\assets\images\logo.svg" alt="">
-        </a>
-        <nav>
-            <ul>
-                <li><a href="#cheatsheet">Cheatsheet</a></li>
-                <li><a href="#flex">Flex</a></li>
-                <li><a href="#grid">Grid</a></li>
-                <li><a href="#try-it">Try it</a></li>
-            </ul>
-        </nav>
-        <div class="search">
-            <input type="text" placeholder="Search">
-            <button><img src="/src/assets/images/icon-search.svg" alt=""></button>
-        </div>
-        <div class="darkmode">
-            <button id="darkmode"><img src="/src/assets/images/icon-darkmode.svg" alt=""></button>
-        </div>
-        <div class="github">
-            <button id="github"><img src="/src/assets/images/icon-github.svg" alt=""></button>
-        </div>
+      <nav>
+        <ul class="nav-left">
+          <li>
+            <a href="#" class="header-logo">
+              <span class="a11y-hidden">로고</span>
+            </a>
+          </li>
+          <li><a href="#cheatsheet">Cheatsheet</a></li>
+          <li><a href="#flex">Flex</a></li>
+          <li><a href="#grid">Grid</a></li>
+          <li><a href="#try-it">Try it</a></li>
+        </ul>
+        <ul class="nav-right">
+          <li class="search">
+            <input type="text" class="search-input" placeholder="Search" />
+            <button class="search-btn">
+              <span class="a11y-hidden">검색버튼</span>
+            </button>
+          </li>
+          <li>
+            <button class="darkmode">
+              <span class="a11y-hidden">다크모드 버튼</span>
+            </button>
+          </li>
+          <li>
+            <button class="github">
+              <span class="a11y-hidden">깃헙 바로가기 버튼</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <!-- 헤더 섹션 다크 모드 -->
     <header class="header on">
-        <a href="#" class="header-logo" id="logo">
-            <img src="\src\assets\images\logo.svg" alt="">
-        </a>
-        <nav>
-            <ul>
-                <li><a href="#cheatsheet">Cheatsheet</a></li>
-                <li><a href="#flex">Flex</a></li>
-                <li><a href="#grid">Grid</a></li>
-                <li><a href="#try-it">Try it</a></li>
-            </ul>
-        </nav>
-        <div class="search on">
-            <input type="text" placeholder="Search">
-            <button><img src="/src/assets/images/icon-search.svg" alt=""></button>
-        </div>
-        <!-- 이미지 이름 icon-gnb-darkmode -->
-        <div class="darkmode on">
-            <button id="darkmode"><img src="/src/assets/images/icon-darkmode.svg" alt=""></button>
-        </div>
-        <!-- 이미지 이름 icon-github-darkmode -->
-        <div class="github on">
-            <button id="github"><img src="/src/assets/images/icon-github.svg" alt=""></button>
-        </div>
+      <nav>
+        <ul class="nav-left">
+          <li>
+            <a href="#" class="header-logo on">
+              <span class="a11y-hidden">로고</span>
+            </a>
+          </li>
+          <li><a href="#cheatsheet">Cheatsheet</a></li>
+          <li><a href="#flex">Flex</a></li>
+          <li><a href="#grid">Grid</a></li>
+          <li><a href="#try-it">Try it</a></li>
+        </ul>
+        <ul class="nav-right">
+          <li class="search">
+            <input type="text" class="search-input on" placeholder="Search" />
+            <button class="search-btn">
+              <span class="a11y-hidden">검색버튼</span>
+            </button>
+          </li>
+          <li>
+            <button class="darkmode on">
+              <span class="a11y-hidden">다크모드 버튼</span>
+            </button>
+          </li>
+          <li>
+            <button class="github on">
+              <span class="a11y-hidden">깃헙 바로가기 버튼</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
     </header>
-</body>
+  </body>
 </html>
