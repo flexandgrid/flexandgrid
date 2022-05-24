@@ -809,7 +809,7 @@
 
         const innerAddButton =
           textInput || isRootContainer || this._layout === 'carousel'
-            ? this._createAddInnerTagButton(line.tag)
+            ? this._createAddInnerTagButton(line.tag, 'button-inner')
             : null;
 
         const closingTag =
@@ -1078,12 +1078,15 @@
       return elem;
     }
 
-    _createAddInnerTagButton(tag) {
+    _createAddInnerTagButton(tag, className) {
       const elem = Tag.createElement(
         'button',
         { type: 'button', class: 'button-add' },
         '+'
       );
+      if (className) {
+        elem.classList.add(className);
+      }
 
       // HTML 코드가 하나도 없는 경우
       if (!tag) {
