@@ -185,6 +185,10 @@
   color: var(--gray-6);
 }
 
+.fg-editor.snippet-mode .code {
+  user-select: none;
+}
+
 .fg-editor.free-mode .code {
   padding: 0;
 }
