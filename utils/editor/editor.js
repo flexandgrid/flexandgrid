@@ -807,15 +807,17 @@
           });
         }
 
-        const innerAddButton =
-          textInput || isRootContainer || this._layout === 'carousel'
-            ? this._createAddInnerTagButton(line.tag, 'button-inner')
-            : null;
-
         const closingTag =
           !(typeof line.textContent === 'string') && line.className
             ? null
             : `</${tagName.toLowerCase()}>`;
+
+        const innerAddButton =
+          textInput ||
+          isRootContainer ||
+          (openingTag.length && closingTag && this._layout === 'carousel')
+            ? this._createAddInnerTagButton(line.tag, 'button-inner')
+            : null;
 
         const deleteButton = this._createDeleteTagButton(line.tag);
 
