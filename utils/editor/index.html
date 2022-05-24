@@ -9,7 +9,95 @@
   <link rel="stylesheet" href="./editor.css">
 </head>
 <body>
-  <!-- snippet mode -->
+
+  <div style="display: flex; align-items: flex-start; gap: 20px;">
+    <!-- carousel mode (flex) -->
+    <div data-mode="carousel" data-title="Flex Code" class="fg-editor">
+      <code data-struct="[1][2][2][2]">
+        .container {
+          display: flex;
+        }
+        .item1 {
+          flex: 1;
+        }
+        .item2 {
+          flex: 2;
+        }
+        .item3 {
+          flex: 1;
+          background-color: #eceafe;
+        }
+        .item4 {
+          flex: 1;
+        }
+        .item5 {
+          flex: 2;
+          background-color: #eceafe;
+        }
+        .item7 {
+          flex: 1;
+          background-color: #eceafe;
+        }
+      </code>
+      <code data-struct="[3]">
+        .container {
+          display: flex;
+          justify-content: center;
+        }
+      </code>
+      <code data-struct="[3]">
+        .container {
+          display: flex;
+          justify-content: flex-end;
+        }
+      </code>
+    </div>
+    <!-- carousel mode (grid) -->
+    <div data-mode="carousel" data-title="Grid Code" class="fg-editor theme-grid">
+      <code data-struct="[1][2][2][2]">
+        .container {
+          display: flex;
+        }
+        .item1 {
+          flex: 1;
+        }
+        .item2 {
+          flex: 2;
+        }
+        .item3 {
+          flex: 1;
+          background-color: #fff0e6;
+        }
+        .item4 {
+          flex: 1;
+        }
+        .item5 {
+          flex: 2;
+          background-color: #fff0e6;
+        }
+        .item7 {
+          flex: 1;
+          background-color: #fff0e6;
+        }
+      </code>
+      <code data-struct="[3]">
+        .container {
+          display: flex;
+          justify-content: center;
+        }
+      </code>
+      <code data-struct="[3]">
+        .container {
+          display: flex;
+          justify-content: flex-end;
+        }
+      </code>
+    </div>
+  </div>
+
+  <br />
+
+  <!-- snippet mode (flex) -->
   <div data-mode="snippet" class="fg-editor">
     <code data-snippet="flex-start" data-item="3">
       .container {

@@ -30,7 +30,7 @@
       });
     }
 
-    static createElement(tagName, attributes, textContent = '') {
+    static createElement(tagName, attributes = {}, textContent = '') {
       const elem = document.createElement(tagName);
       Tag.setAttributes(elem, attributes);
       elem.textContent = textContent;
@@ -139,14 +139,24 @@
 
     removeChild(child) {
       super.removeChild(child);
-      if (this.children.includes(child)) {
-        this.children.splice(this.children.indexOf(child), 1);
-      }
+      this.remove(child);
     }
 
     push(child) {
       this.children.push(child);
       child.parent = this;
+    }
+
+    remove(child) {
+      let tag;
+      if (typeof child === 'number') {
+        tag = this.children[child];
+      } else if (child instanceof Tag) {
+        tag = child;
+      }
+      if (this.children.includes(child)) {
+        this.children.splice(this.children.indexOf(child), 1);
+      }
     }
 
     // 재귀적으로 모든 자손 요소 추가
@@ -297,7 +307,6 @@
       this._editor = new Tag({ elem });
       this._snippetIndex = 0;
       this._snippets = [];
-      this._itemCountVariation = new Map();
       this._init();
     }
 
@@ -349,6 +358,7 @@
       this._initMode();
       this._initSnippets();
       this._initCurCss();
+      this._initCurHtml();
 
       if (this._mode === 'free') {
         this._initTitle();
@@ -364,6 +374,14 @@
         this._editor.classList.add('snippet-mode');
       } else if (this._mode === 'free') {
         this._editor.classList.add('free-mode', `editor-${this._editorId}`);
+      } else if (this._mode === 'carousel') {
+        this._mode = 'free';
+        this._layout = 'carousel';
+        this._editor.classList.add(
+          'free-mode',
+          `editor-${this._editorId}`,
+          'carousel-layout'
+        );
       }
     }
 
@@ -374,7 +392,7 @@
 
     _initSnippets() {
       const codes = this._editor.querySelectorAll('code');
-      codes.forEach(({ dataset: { snippet, item }, textContent }) => {
+      codes.forEach(({ dataset: { snippet, item, struct }, textContent }) => {
         let snippetName;
         if (this._mode === 'snippet' && !snippet) {
           snippetName = '제목없음';
@@ -383,6 +401,7 @@
         }
 
         let html;
+        let structure = '[3]';
         if (this._mode === 'snippet') {
           const { item: defaultItemCount } = this._editor.dataset;
           html = this._createSingleContainerHtml(defaultItemCount, item);
@@ -391,18 +410,22 @@
           if (defaultItemCount) {
             html = this._createSingleContainerHtml(defaultItemCount);
           } else {
-            html = this._createMultiContainerHtml(codes[0]);
+            structure = struct ?? structure;
+            html = Editor.parseHtmlStructureText(structure);
           }
         }
 
+        let stylesheet = '';
         if (this._mode === 'free') {
-          this._stylesheet = this._createStylesheet(textContent);
+          stylesheet = this._createStylesheet(textContent);
         }
 
         this._snippets.push({
           name: snippetName,
           html,
-          css: Editor.parseCssText(textContent)
+          css: Editor.parseCssText(textContent),
+          stylesheet,
+          structure
         });
       });
     }
@@ -415,17 +438,26 @@
       }));
     }
 
+    _initCurHtml() {
+      this._curHtml = Editor.parseHtmlStructureText(this._curSnippet.structure);
+    }
+
     _initElements() {
       this._initPreview();
       this._initCode();
       this._initSnippetList();
-      this._initButtons();
+      if (this._mode === 'snippet') {
+        this._initButtons();
+      }
+      if (this._layout === 'carousel') {
+        this._initIndicators();
+      }
     }
 
     _initPreview() {
       this._preview = new Tag({ className: 'preview' });
       this._previewWrapper = new Tag({ className: 'wrapper-preview' });
-      const containers = this._curSnippet.html;
+      const containers = this._curHtml;
       containers.forEach((container) => {
         container.render();
         this._previewWrapper.appendChild(container);
@@ -433,7 +465,7 @@
 
       if (this._mode === 'free') {
         this._style = document.createElement('style');
-        this._style.textContent = this._stylesheet;
+        this._style.textContent = this._curSnippet.stylesheet;
         this._preview.appendChild(this._style);
       }
 
@@ -523,6 +555,31 @@
       );
 
       this._buttons.appendChild([addButton, removeButton]);
+    }
+
+    _initIndicators() {
+      this._carouselIndicators = new Tag({ className: 'container-indicators' });
+      for (let i = 0; i < this._snippets.length; i++) {
+        const indicator = new Tag({ elem: 'button', className: 'indicator' });
+        indicator.elem.setAttribute('type', 'button');
+        if (i === 0) {
+          indicator.classList.add('selected');
+        }
+        this._carouselIndicators.appendChild(indicator);
+      }
+      this._carouselIndicators.addEventListener(
+        'click',
+        ({ currentTarget, target }) => {
+          if (target.tagName !== 'BUTTON') {
+            return;
+          }
+          const children = [...currentTarget.querySelectorAll('.indicator')];
+          const index = children.indexOf(target);
+          children[this._snippetIndex].classList.remove('selected');
+          target.classList.add('selected');
+          this._snippetChangeEventListener(index);
+        }
+      );
     }
 
     // Create
@@ -664,7 +721,7 @@
       const table = Tag.createElement('table', { class: 'html-table' });
 
       // HTML 코드가 한 줄도 없으면 빈 줄 하나 만들기
-      if (!this._snippets[0].html.length) {
+      if (!this._curHtml.length) {
         const row = document.createElement('tr');
         const lineNumber = Tag.createElement(
           'td',
@@ -682,7 +739,7 @@
         table.appendChild(row);
       }
 
-      const codeLines = this._snippets[0].html.reduce((acc, container) => {
+      const codeLines = this._curHtml.reduce((acc, container) => {
         const code = this._createHtmlCodeLines(container);
         return [...acc, ...code];
       }, []);
@@ -710,7 +767,9 @@
           : [];
 
         const textInput =
-          typeof line.textContent === 'string' && !isRootContainer
+          typeof line.textContent === 'string' &&
+          !isRootContainer &&
+          this._layout !== 'carousel'
             ? Tag.createElement('input', {
                 class: 'button-code text-code',
                 value: line.textContent,
@@ -749,7 +808,7 @@
         }
 
         const innerAddButton =
-          textInput || isRootContainer
+          textInput || isRootContainer || this._layout === 'carousel'
             ? this._createAddInnerTagButton(line.tag)
             : null;
 
@@ -763,10 +822,7 @@
         const addButton =
           openingTag.length && !closingTag
             ? this._createAddInnerTagButton(line.tag)
-            : this._createAddAdjacentTagButton(
-                line.tag,
-                line.tag.parent ?? this._previewWrapper
-              );
+            : this._createAddAdjacentTagButton(line.tag, line.tag.parent);
 
         Tag.appendChildren(codeLine, [
           deleteButton,
@@ -794,11 +850,6 @@
         container.push(new PreviewTag({ className: 'item' }));
       }
       return [container];
-    }
-
-    _createMultiContainerHtml(code) {
-      const { struct = '[3]' } = code.dataset;
-      return Editor.parseHtmlStructureText(struct);
     }
 
     _createSelectorCodeLine(line, codeLine, selectorIndex) {
@@ -991,7 +1042,7 @@
           parent.removeChild(tag);
         } else {
           this._previewWrapper.removeChild(tag);
-          this._snippets[0].html.splice(this._snippets[0].html.indexOf(tag), 1);
+          this._curHtml.splice(this._curHtml.indexOf(tag), 1);
         }
         this._updateHtmlCode();
       });
@@ -1005,27 +1056,24 @@
         '+'
       );
 
-      elem.addEventListener('click', () => {
-        const newTag =
-          parent instanceof PreviewTag
-            ? new PreviewTag({ className: 'item' })
-            : new PreviewTag({ className: 'container' });
-        const siblings = [...parent.elem.children];
-        const index = siblings.indexOf(tag.elem);
-        if (index === siblings.length - 1) {
-          parent.appendChild(newTag);
-        } else {
-          const nextSibling = siblings[index + 1];
-          parent.insertBefore(newTag, nextSibling);
-        }
-        if (parent instanceof PreviewTag) {
+      if (parent) {
+        elem.addEventListener('click', () => {
+          const newTag = new PreviewTag({ className: 'item' });
+          const index = parent.children.indexOf(tag);
           parent.children.splice(index + 1, 0, newTag);
           newTag.parent = parent;
-        } else {
-          this._snippets[0].html.splice(index + 1, 0, newTag);
-        }
-        this._updateHtmlCode();
-      });
+          this._updatePreviewDOM();
+          this._updateHtmlCode();
+        });
+      } else {
+        elem.addEventListener('click', () => {
+          const newTag = new PreviewTag({ className: 'container' });
+          const index = this._curHtml.indexOf(tag);
+          this._curHtml.splice(index + 1, 0, newTag);
+          this._updatePreviewDOM();
+          this._updateHtmlCode();
+        });
+      }
 
       return elem;
     }
@@ -1041,8 +1089,8 @@
       if (!tag) {
         elem.addEventListener('click', () => {
           const newTag = new PreviewTag({ className: 'container' });
-          this._snippets[0].html.push(newTag);
-          this._previewWrapper.appendChild(newTag);
+          this._curHtml.push(newTag);
+          this._updatePreviewDOM();
           this._updateHtmlCode();
         });
         return elem;
@@ -1055,9 +1103,9 @@
         if (!children.length) {
           tag.elem.textContent = '';
         }
-        tag.insertBefore(newTag, children[0]);
         tag.children.unshift(newTag);
         newTag.parent = tag;
+        this._updatePreviewDOM();
         this._updateHtmlCode();
       });
 
@@ -1322,32 +1370,31 @@
 
     // snippetList에서 snippet을 변경했을 때 실행
     _snippetChangeEventListener(index) {
-      const prevHtml = this._curSnippet.html;
       this._snippetIndex = index;
-      const curHtml = this._curSnippet.html;
-      this._restoreItemCountVariation();
+      this._initCurHtml();
       this._initCurCss();
-      this._updatePreviewDOM(prevHtml, curHtml);
+      this._updateAllPreviewDOM();
       this._updateCssCode();
-      this._updatePreviewTextAndClassName();
+      this._updateHtmlCode();
+      if (this._mode === 'free') {
+        this._style.textContent = this._curSnippet.stylesheet;
+      }
     }
 
     _addItemClickEventListener() {
-      const container = this._previewWrapper.querySelector('.container');
       const item = new PreviewTag({ className: 'item' });
-      container.appendChild(item.elem);
-      this._updateItemCountVariation(container, 1);
-      this._updatePreviewTextAndClassName();
+      this._curHtml[0].push(item);
+      this._updatePreviewDOM();
+      this._updateHtml();
       this._updatePreviewStyle();
     }
 
     _removeItemClickEventListener() {
-      const container = this._previewWrapper.querySelector('.container');
-      const lastChild = container.lastElementChild;
-      if (lastChild) {
-        container.removeChild(lastChild);
-        this._updateItemCountVariation(container, -1);
-        this._updatePreviewTextAndClassName();
+      const children = this._curHtml[0].children;
+      if (children.length) {
+        this._curHtml[0].children.pop();
+        this._updatePreviewDOM();
+        this._updateHtml();
         this._updatePreviewStyle();
       }
     }
@@ -1432,8 +1479,7 @@
           props: [...props.map((prop) => ({ ...prop }))]
         })
       );
-      this._stylesheet = this._createStylesheet(textarea.value);
-      this._style.textContent = this._stylesheet;
+      this._style.textContent = this._createStylesheet(textarea.value);
 
       this._codeWrapper.removeAllChildren();
       const table = this._createCssCodeTextTable();
@@ -1520,33 +1566,45 @@
     // Update
     // ------------------------------------------------------------------------------
 
-    // 이전 상태와 비교하여 변경된 부분만 수정(transition을 살리기 위함)
-    _updatePreviewDOM(prev, cur, curElem = this._previewWrapper.elem) {
-      let lengthDiff = prev.length - cur.length;
-      while (lengthDiff > 0) {
-        curElem.removeChild(curElem.lastElementChild);
-        lengthDiff--;
-      }
-      while (lengthDiff < 0) {
-        const container = cur[cur.length + lengthDiff];
-        container.render();
-        curElem.appendChild(container.elem);
-        lengthDiff++;
+    // curHtml의 elem으로 Preview DOM 교체
+    _updatePreviewDOM(dom = this._previewWrapper.elem, tag = this._curHtml) {
+      for (let i = 0; i < tag.length; i++) {
+        const { elem } = tag[i];
+        if (elem !== dom.children[i]) {
+          dom.insertBefore(elem, dom.children[i]);
+        }
       }
 
-      const minLength = Math.min(prev.length, cur.length);
+      while (dom.children.length > tag.length) {
+        dom.removeChild(dom.lastElementChild);
+      }
+
+      const domChildren = [...dom.children];
+      for (let i = 0; i < tag.length; i++) {
+        this._updatePreviewDOM(domChildren[i], tag[i].children);
+      }
+    }
+
+    // 기존 Preview DOM 요소로 curHtml의 elem을 교체
+    _updateAllPreviewDOM(dom = this._previewWrapper.elem, tag = this._curHtml) {
+      const minLength = Math.min(dom.children.length, tag.length);
       for (let i = 0; i < minLength; i++) {
-        if (prev[i].className !== cur[i].className) {
-          const prevElem = curElem.children[i];
-          cur[i].render();
-          curElem.insertBefore(cur[i].elem, prevElem);
-          curElem.removeChild(prevElem);
-        }
-        this._updatePreviewDOM(
-          prev[i].children,
-          cur[i].children,
-          curElem.children[i]
-        );
+        tag[i].elem = dom.children[i];
+      }
+
+      while (dom.children.length < tag.length) {
+        const newElem = document.createElement('div');
+        tag[dom.children.length].elem = newElem;
+        dom.appendChild(newElem);
+      }
+
+      while (dom.children.length > tag.length) {
+        dom.removeChild(dom.lastElementChild);
+      }
+
+      const domChildren = [...dom.children];
+      for (let i = 0; i < tag.length; i++) {
+        this._updateAllPreviewDOM(domChildren[i], tag[i].children);
       }
     }
 
@@ -1601,17 +1659,8 @@
       this._updatePreviewStyle();
     }
 
-    _updateItemCountVariation(container, variation) {
-      const value = this._itemCountVariation.get(container);
-      if (value) {
-        this._itemCountVariation.set(container, value + variation);
-      } else {
-        this._itemCountVariation.set(container, variation);
-      }
-    }
-
     _updateHtml(
-      tag,
+      tag = this._curHtml,
       counts = {
         item: 1,
         container: 1
@@ -1629,10 +1678,12 @@
         if (tag.children.length || !tag.parent) {
           classList.push('container', `container${counts.container++}`);
         } else {
-          if (tag.text === null) {
-            tag.elem.textContent = counts.item;
-          } else {
-            tag.elem.textContent = tag.text;
+          if (this._layout !== 'carousel') {
+            if (tag.text === null) {
+              tag.elem.textContent = counts.item;
+            } else {
+              tag.elem.textContent = tag.text;
+            }
           }
           classList.push(`item${counts.item++}`);
         }
@@ -1645,26 +1696,10 @@
     }
 
     _updateHtmlCode() {
-      this._updateHtml(this._snippets[0].html);
+      this._updateHtml();
       const table = this._createCssCodeElements();
       this._codeWrapper.removeAllChildren();
       this._codeWrapper.appendChild(table);
-    }
-
-    // 현재 snippet과 비교하여 add item, remove item을 하여 변동된 item 개수를 복원함
-    // snippet 변경시 이전 snippet에서 현재 snippet과 비교하기 전에
-    // 이전 snippet의 원래 상태로 복원하기 위함
-    _restoreItemCountVariation() {
-      for (const [container] of this._itemCountVariation) {
-        while (this._itemCountVariation.get(container) > 0) {
-          container.removeChild(container.lastElementChild);
-          this._updateItemCountVariation(container, -1);
-        }
-        while (this._itemCountVariation.get(container) < 0) {
-          container.appendChild(new PreviewTag({ className: 'item' }).elem);
-          this._updateItemCountVariation(container, 1);
-        }
-      }
     }
 
     _updateSelectorCodeLineStyle(line, codeLine) {
@@ -1720,11 +1755,18 @@
           this._code,
           this._buttons
         ]);
-        this._updatePreviewTextAndClassName();
       } else if (this._mode === 'free') {
-        this._appendToEditor([this._preview, this._code]);
-        this._updateHtml(this._curSnippet.html);
+        if (this._layout === 'carousel') {
+          this._appendToEditor([
+            this._preview,
+            this._carouselIndicators,
+            this._code
+          ]);
+        } else {
+          this._appendToEditor([this._preview, this._code]);
+        }
       }
+      this._updateHtml();
       this._updatePreviewStyle();
       console.log(this);
     }
