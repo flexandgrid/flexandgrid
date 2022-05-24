@@ -61,8 +61,10 @@
   --accent-3: #f9b09e;
   --accent-2: #fff0e6;
   --accent-1: #fffcfa;
+  --background: #ffffff;
   --box-shadow-2: #00000033;
   --box-shadow-1: #51459f14;
+  --indicator: #efefef;
   --fixed-white: #ffffff;
   --fixed-gray-8: #27272a;
   --fixed-gray-6: #3f3f46;
@@ -95,8 +97,10 @@
   --gray-2: #3f3f46;
   --gray-1: #171718;
   --white: #23262f;
+  --background: #3f3f46;
   --box-shadow-2: #ffffff33;
   --box-shadow-1: #aeba6014;
+  --indicator: #252424;
   --four-color-1: #f9b09e;
 }
 
@@ -152,6 +156,9 @@
 }
 
 .fg-editor .wrapper-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   overflow: auto;
   width: 100%;
   max-height: var(--inner);
@@ -670,6 +677,59 @@
   color: var(--gray-8);
   line-height: var(--code-line);
   resize: none;
+}
+
+.fg-editor.carousel-layout {
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.fg-editor.carousel-layout .preview {
+  border: none;
+  background-color: var(--background);
+  box-shadow: none;
+}
+
+.fg-editor.carousel-layout .item:not(.container) {
+  width: 91px;
+  height: 80px;
+  padding: 40px;
+  border-radius: 40px;
+}
+
+.fg-editor.carousel-layout .container:not(.item):hover {
+  background-color: var(--primary-6);
+}
+
+.fg-editor.carousel-layout .preview,
+.fg-editor.carousel-layout .code {
+  width: 100%;
+}
+
+.fg-editor .container-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 14px;
+  margin: 60px 0 40px;
+}
+
+.fg-editor .container-indicators .indicator {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--background);
+  background-color: var(--indicator);
+  border-radius: 50%;
+}
+
+.fg-editor .container-indicators .indicator:hover {
+  background-color: var(--primary-5);
+}
+
+.fg-editor .container-indicators .indicator.selected {
+  border: none;
+  background-color: var(--gray-5);
 }
 
 @media screen and (max-width: 979px) {
