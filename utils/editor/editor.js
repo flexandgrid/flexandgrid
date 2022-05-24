@@ -172,7 +172,7 @@
   class Editor {
     // CSS 파싱을 위한 정규표현식
     static CSS_STRING =
-      /((\.((container\d*)|(item\d*)))+(:[\w\-]*)?(::[\w\-]*)?\s*)+\{[^{}]*\}/g;
+      /(?<selector>((\.((container\d*)|(item\d*)))+(\[[^:\{\}]*\])?(:[^:\{\}]*)?(::[^:\{\}]*)?\s*)+)(,\s*\k<selector>)*\{[^{}]*\}/g;
 
     // data-item을 입력하지 않았을 경우 기본값
     static DEFAULT_ITEM = 3;
