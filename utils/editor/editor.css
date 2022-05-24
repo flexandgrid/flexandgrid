@@ -64,6 +64,10 @@
   --background: #ffffff;
   --box-shadow-2: #00000033;
   --box-shadow-1: #51459f14;
+  --add-button-color: var(--primary-5);
+  --add-button-background: var(--primary-2);
+  --remove-button-color: #878787;
+  --remove-button-background: #e0e0e0;
   --indicator: #efefef;
   --fixed-white: #ffffff;
   --fixed-gray-8: #27272a;
@@ -98,8 +102,12 @@
   --gray-1: #171718;
   --white: #23262f;
   --background: #3f3f46;
-  --box-shadow-2: #ffffff33;
+  --box-shadow-2: #ffffffaa;
   --box-shadow-1: #aeba6014;
+  --add-button-color: var(--primary-1);
+  --add-button-background: var(--primary-3);
+  --remove-button-color: #252424;
+  --remove-button-background: #878787;
   --indicator: #252424;
   --four-color-1: #f9b09e;
 }
@@ -630,22 +638,22 @@
 }
 
 .fg-editor .buttons .button:hover {
-  box-shadow: 0 0 2px 1px var(--box-shadow-2);
+  box-shadow: 0 0 2px 2px var(--box-shadow-2);
 }
 
 .fg-editor .buttons .button:active {
-  box-shadow: inset 0 0 2px 1px var(--box-shadow-2);
+  box-shadow: inset 0 0 2px 2px var(--box-shadow-2);
 }
 
 .fg-editor .buttons .button-add {
   margin-right: 12px;
-  background-color: var(--primary-2);
-  color: var(--primary-5);
+  background-color: var(--add-button-background);
+  color: var(--add-button-color);
 }
 
 .fg-editor .buttons .button-remove {
-  background-color: var(--gray-3);
-  color: var(--gray-5);
+  background-color: var(--remove-button-background);
+  color: var(--remove-button-color);
 }
 
 .fg-editor .wrapper-textarea {
