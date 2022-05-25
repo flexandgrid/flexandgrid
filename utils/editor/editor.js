@@ -1362,14 +1362,19 @@
           Editor.DROPDOWN_HEIGHT;
       }
       if (targetCode.classList.contains('value-code')) {
-        this._createValueDropdown(targetCode, selectorIndex, propIndex);
         const prop = this._curCss[selectorIndex].props[propIndex].prop;
+        if (prop.trim() === '') {
+          return;
+        }
+        this._createValueDropdown(targetCode, selectorIndex, propIndex);
         scrollTop =
           Editor.CSS_PROPS_INFO[prop].indexOf(targetCode.textContent) *
           Editor.DROPDOWN_HEIGHT;
       }
       targetCode.appendChild(this._dropdown);
-      this._dropdown.scrollTop = scrollTop;
+      if (this._dropdown) {
+        this._dropdown.scrollTop = scrollTop;
+      }
       this._isDropdownOpen = true;
     }
 
