@@ -322,7 +322,7 @@
           selector,
           ...props.map(({ prop, value }) => `${prop}:${value}`),
           '}',
-          '\u00A0'
+          ''
         );
       }
       if (this._mode === 'snippet') {
@@ -1204,10 +1204,18 @@
     _createStylesheet(styleText) {
       const stylesheet = styleText
         .replace(/\s+/g, ' ')
-        .replace(
-          Editor.CSS_STRING,
-          (match) => `.fg-editor.editor-${this._editorId} ${match}`
-        );
+        .replace(Editor.CSS_STRING, (match) => {
+          const index = match.indexOf('{');
+          const selectors = match.slice(0, index).split(', ');
+          const rest = match.slice(index);
+          return (
+            selectors
+              .map(
+                (selector) => `.fg-editor.editor-${this._editorId} ${selector}`
+              )
+              .join(', ') + rest
+          );
+        });
       return stylesheet;
     }
 
