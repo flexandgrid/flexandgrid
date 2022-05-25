@@ -172,7 +172,7 @@
   class Editor {
     // CSS 파싱을 위한 정규표현식
     static CSS_STRING =
-      /((\.((container\d*)|(item\d*)))+(:[\w\-]*)?(::[\w\-]*)?\s*)+\{[^{}]*\}/g;
+      /(?<selector>((\.((container\d*)|(item\d*)))+(\[[^:\{\}]*\])?(:[^:\{\}]*)?(::[^:\{\}]*)?\s*)+)(,\s*\k<selector>)*\{[^{}]*\}/g;
 
     // data-item을 입력하지 않았을 경우 기본값
     static DEFAULT_ITEM = 3;
@@ -322,7 +322,7 @@
           selector,
           ...props.map(({ prop, value }) => `${prop}:${value}`),
           '}',
-          '\u00A0'
+          ''
         );
       }
       if (this._mode === 'snippet') {
@@ -807,15 +807,17 @@
           });
         }
 
-        const innerAddButton =
-          textInput || isRootContainer || this._layout === 'carousel'
-            ? this._createAddInnerTagButton(line.tag)
-            : null;
-
         const closingTag =
           !(typeof line.textContent === 'string') && line.className
             ? null
             : `</${tagName.toLowerCase()}>`;
+
+        const innerAddButton =
+          textInput ||
+          isRootContainer ||
+          (openingTag.length && closingTag && this._layout === 'carousel')
+            ? this._createAddInnerTagButton(line.tag, 'button-inner')
+            : null;
 
         const deleteButton = this._createDeleteTagButton(line.tag);
 
@@ -1078,12 +1080,15 @@
       return elem;
     }
 
-    _createAddInnerTagButton(tag) {
+    _createAddInnerTagButton(tag, className) {
       const elem = Tag.createElement(
         'button',
         { type: 'button', class: 'button-add' },
         '+'
       );
+      if (className) {
+        elem.classList.add(className);
+      }
 
       // HTML 코드가 하나도 없는 경우
       if (!tag) {
@@ -1199,10 +1204,18 @@
     _createStylesheet(styleText) {
       const stylesheet = styleText
         .replace(/\s+/g, ' ')
-        .replace(
-          Editor.CSS_STRING,
-          (match) => `.fg-editor.editor-${this._editorId} ${match}`
-        );
+        .replace(Editor.CSS_STRING, (match) => {
+          const index = match.indexOf('{');
+          const selectors = match.slice(0, index).split(', ');
+          const rest = match.slice(index);
+          return (
+            selectors
+              .map(
+                (selector) => `.fg-editor.editor-${this._editorId} ${selector}`
+              )
+              .join(', ') + rest
+          );
+        });
       return stylesheet;
     }
 
@@ -1357,14 +1370,19 @@
           Editor.DROPDOWN_HEIGHT;
       }
       if (targetCode.classList.contains('value-code')) {
-        this._createValueDropdown(targetCode, selectorIndex, propIndex);
         const prop = this._curCss[selectorIndex].props[propIndex].prop;
+        if (prop.trim() === '') {
+          return;
+        }
+        this._createValueDropdown(targetCode, selectorIndex, propIndex);
         scrollTop =
           Editor.CSS_PROPS_INFO[prop].indexOf(targetCode.textContent) *
           Editor.DROPDOWN_HEIGHT;
       }
       targetCode.appendChild(this._dropdown);
-      this._dropdown.scrollTop = scrollTop;
+      if (this._dropdown) {
+        this._dropdown.scrollTop = scrollTop;
+      }
       this._isDropdownOpen = true;
     }
 
@@ -1512,7 +1530,11 @@
         return;
       }
       const { anchorNode, focusNode, anchorOffset, focusOffset } = selection;
-      const selectedText = selection.toString().replace(/\n\d+(?=\n)/g, '');
+      const selectedText = selection
+        .toString()
+        .replace(/\n\d+(?=\n)/g, '')
+        .replaceAll('\u00A0', ' ')
+        .replaceAll('}\n', '}\n\n');
 
       let anchorLine = anchorNode;
       let focusLine = focusNode;
@@ -1557,8 +1579,8 @@
         .slice(0, firstLine.dataset.index)
         .reduce((acc, line) => acc + line.length + 1, 0);
 
-      textarea.selectionStart = textarea.value
-        .replaceAll(' ', '\u00A0')
+      textarea.selectionStart = (textarea.value + '\n')
+        .replaceAll('\u00A0', ' ')
         .indexOf(selectedText, prevLength + startIndex);
       textarea.selectionEnd = textarea.selectionStart + selectedText.length;
     }
