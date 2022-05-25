@@ -1533,7 +1533,8 @@
       const selectedText = selection
         .toString()
         .replace(/\n\d+(?=\n)/g, '')
-        .replaceAll('\u00A0', ' ');
+        .replaceAll('\u00A0', ' ')
+        .replaceAll('}\n', '}\n\n');
 
       let anchorLine = anchorNode;
       let focusLine = focusNode;
@@ -1578,7 +1579,7 @@
         .slice(0, firstLine.dataset.index)
         .reduce((acc, line) => acc + line.length + 1, 0);
 
-      textarea.selectionStart = textarea.value
+      textarea.selectionStart = (textarea.value + '\n')
         .replaceAll('\u00A0', ' ')
         .indexOf(selectedText, prevLength + startIndex);
       textarea.selectionEnd = textarea.selectionStart + selectedText.length;
