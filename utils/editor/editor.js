@@ -249,7 +249,12 @@
 
     // code 태그에 있는 문자열을 파싱하여 객체로 변환
     static parseCssText(cssText) {
-      const trimmedCss = cssText.replace(/\s+/g, ' ');
+      const trimmedCss = cssText.replace(/\s{2,}/g, (match) => {
+        if (match.includes('\n')) {
+          return '\n';
+        }
+        return ' ';
+      });
       const matchedCssArr = trimmedCss.match(Editor.CSS_STRING);
       if (!matchedCssArr) {
         return [];
@@ -263,8 +268,18 @@
           .split(';')
           .filter((css) => css)
           .map((css) => {
-            const [prop, value = ''] = css.split(':').map((v) => v.trim());
-            return { prop, value };
+            const [prop, value = ''] = css.split(':');
+            let trimmedValue = value;
+            // 한 줄인데 줄바꿈 한 경우
+            if (value.match(/\n/g)?.length === 1 && value.indexOf('\n') === 0) {
+              trimmedValue = trimmedValue.slice(1);
+            }
+            // trim(맨 앞에 공백문자 ' '만 제거하고 \n는 살림, 맨 뒤는 다 없앰)
+            trimmedValue = trimmedValue.replace(/^\u0020+|\s+$/u, '');
+            return {
+              prop: prop.trim(),
+              value: trimmedValue
+            };
           });
         return { selector, props };
       });
@@ -598,6 +613,7 @@
     }
 
     _createCssCodeButtonTable() {
+      let numberIndex = 1;
       let selectorIndex = 0;
       let propIndex = 0;
 
@@ -605,20 +621,39 @@
 
       this._cssCodeLines.forEach((line, index) => {
         const row = document.createElement('tr');
+        let extraRows = [];
 
         const lineNumber = Tag.createElement(
           'td',
           {
             class: 'number-line'
           },
-          index + 1
+          numberIndex++
         );
 
         const codeLine = Tag.createElement('td', { class: 'code-line' });
         if (line[0] === '.') {
           this._createSelectorCodeLine(line, codeLine, selectorIndex);
         } else if (line.includes(':')) {
-          this._createPropCodeLine(line, codeLine, selectorIndex, propIndex);
+          const [prop, value] = line.split(':');
+          if (Editor.CSS_PROPS_INFO[prop] === 'texts') {
+            extraRows = this._createPropCodeLines(
+              prop,
+              value.split('\n'),
+              numberIndex - 1,
+              selectorIndex,
+              propIndex
+            );
+            numberIndex += extraRows.length - 1;
+          } else {
+            this._createPropCodeLine(
+              prop,
+              value,
+              codeLine,
+              selectorIndex,
+              propIndex
+            );
+          }
           propIndex += 1;
         } else {
           codeLine.textContent = line;
@@ -631,40 +666,61 @@
           }
         }
 
-        Tag.appendChildren(row, [lineNumber, codeLine]);
-        table.appendChild(row);
+        if (extraRows.length) {
+          Tag.appendChildren(table, extraRows);
+        } else {
+          Tag.appendChildren(row, [lineNumber, codeLine]);
+          table.appendChild(row);
+        }
       });
       return table;
     }
 
     _createCssCodeTextTable() {
+      let numberIndex = 1;
       const table = Tag.createElement('table', { tabindex: '-1' });
 
-      this._cssCodeLines.forEach((line, index) => {
+      this._cssCodeLines.forEach((line) => {
         const row = document.createElement('tr');
+        let extraRows = [];
 
         const lineNumber = Tag.createElement(
           'td',
           {
             class: 'number-line'
           },
-          index + 1
+          numberIndex++
         );
 
         const codeLine = Tag.createElement('td', {
           class: 'code-line',
-          'data-index': index
+          'data-index': numberIndex - 2
         });
         if (line[0] === '.') {
           this._updateSelectorCodeLineStyle(line, codeLine);
         } else if (line.includes(':')) {
-          this._updatePropCodeLineStyle(line, codeLine);
+          const [prop, value] = line.split(':');
+          const valueArr = value.split('\n');
+          if (valueArr.length === 1) {
+            this._updatePropCodeLineStyle(prop, value, codeLine);
+          } else {
+            extraRows = this._createStyledPropCodeLines(
+              prop,
+              valueArr,
+              numberIndex - 1
+            );
+            numberIndex += extraRows.length - 1;
+          }
         } else {
           codeLine.textContent = line;
         }
 
-        Tag.appendChildren(row, [lineNumber, codeLine]);
-        table.appendChild(row);
+        if (extraRows.length) {
+          Tag.appendChildren(table, extraRows);
+        } else {
+          Tag.appendChildren(row, [lineNumber, codeLine]);
+          table.appendChild(row);
+        }
       });
 
       Tag.addEventListeners(table, {
@@ -688,13 +744,14 @@
       });
 
       const codeLines = [];
-      this._cssCodeLines.forEach((line, index) => {
+      let numberIndex = 1;
+      this._cssCodeLines.forEach((line) => {
         const lineNumber = Tag.createElement(
           'span',
           {
             class: 'number-line'
           },
-          index + 1
+          numberIndex++
         );
         numbers.appendChild(lineNumber);
 
@@ -702,7 +759,35 @@
           codeLines.push(`${line} {`);
         } else if (line.includes(':')) {
           const [prop, value] = line.split(':');
-          codeLines.push(`  ${prop}: ${value};`);
+          const valueArr = value.split('\n');
+          if (valueArr.length === 1) {
+            codeLines.push(`  ${prop}: ${value};`);
+          } else {
+            valueArr.forEach((val, i) => {
+              let lineText;
+              if (i === 0) {
+                if (val) {
+                  lineText = `  ${prop}: ${val}`;
+                } else {
+                  lineText = `  ${prop}:`;
+                }
+              } else {
+                lineText = `    ${val}`;
+                const lineNumber = Tag.createElement(
+                  'span',
+                  {
+                    class: 'number-line'
+                  },
+                  numberIndex++
+                );
+                numbers.appendChild(lineNumber);
+              }
+              if (i === valueArr.length - 1) {
+                lineText += ';';
+              }
+              codeLines.push(lineText);
+            });
+          }
         } else {
           codeLines.push(line);
         }
@@ -876,8 +961,7 @@
       ]);
     }
 
-    _createPropCodeLine(line, codeLine, selectorIndex, propIndex) {
-      const [prop, value] = line.split(':');
+    _createPropCodeLine(prop, value, codeLine, selectorIndex, propIndex) {
       const propSpan = this._createPropCodeButton(
         prop,
         selectorIndex,
@@ -1030,6 +1114,455 @@
         );
       }
       return elem;
+    }
+
+    _createPropCodeLines(
+      prop,
+      valueArr,
+      numberIndex,
+      selectorIndex,
+      propIndex
+    ) {
+      const output = [];
+      let inputIndex = 0;
+      valueArr.forEach((value, index) => {
+        const row = document.createElement('tr');
+        const lineNumber = Tag.createElement(
+          'td',
+          {
+            class: 'number-line'
+          },
+          numberIndex++
+        );
+        const codeLine = Tag.createElement('td', { class: 'code-line' });
+        const valueInput = this._createValueCodeInput(
+          value,
+          inputIndex,
+          selectorIndex,
+          propIndex
+        );
+        if (index === 0) {
+          const propSpan = this._createPropCodeButton(
+            prop,
+            selectorIndex,
+            propIndex
+          );
+          const deleteButton = this._createDeleteCodeButton(
+            selectorIndex,
+            propIndex
+          );
+          if (value) {
+            Tag.appendChildren(codeLine, [
+              deleteButton,
+              '\u00A0\u00A0',
+              propSpan,
+              ':\u00A0',
+              valueInput
+            ]);
+            inputIndex++;
+          } else {
+            if (valueArr.length === 1) {
+              Tag.appendChildren(codeLine, [
+                deleteButton,
+                '\u00A0\u00A0',
+                propSpan,
+                ':\u00A0',
+                valueInput
+              ]);
+            } else {
+              Tag.appendChildren(codeLine, [
+                deleteButton,
+                '\u00A0\u00A0',
+                propSpan,
+                ':'
+              ]);
+            }
+          }
+        } else {
+          Tag.appendChildren(codeLine, ['\u00A0'.repeat(4), valueInput]);
+          inputIndex++;
+        }
+        if (index === valueArr.length - 1) {
+          const addButton = this._createAddCodeButton(selectorIndex, propIndex);
+          Tag.appendChildren(codeLine, [';', addButton]);
+        }
+        Tag.appendChildren(row, [lineNumber, codeLine]);
+        output.push(row);
+      });
+      return output;
+    }
+
+    _createValueCodeInput(value, inputIndex, selectorIndex, propIndex) {
+      const valueInput = Tag.createElement('input', {
+        class: 'button-code value-code',
+        value,
+        spellcheck: false,
+        'data-selector-index': selectorIndex,
+        'data-prop-index': propIndex,
+        'data-input-index': inputIndex
+      });
+      if (value.trim() === '') {
+        valueInput.classList.add('button-blank');
+      }
+      valueInput.style.width =
+        (value.length ? (value.length + 1) * 9 : 30) + 'px';
+
+      Tag.addEventListeners(valueInput, {
+        click: this._codeInputEventListener,
+        keydown: (e) => {
+          const { value, selectionStart, selectionEnd } = e.currentTarget;
+          switch (e.key) {
+            case 'Escape':
+              e.currentTarget.blur();
+              break;
+
+            case 'Enter':
+              {
+                if (!value || (selectionStart === 0 && selectionEnd === 0)) {
+                  return;
+                }
+                const curValue = value.slice(0, selectionStart);
+                const nextValue = value.slice(selectionEnd);
+                this._curCss[selectorIndex].props[propIndex].nextValueInfo = {
+                  key: e.key,
+                  inputIndex,
+                  selectionStart,
+                  selectionEnd,
+                  prevValue: value,
+                  curValue,
+                  nextValue
+                };
+                e.currentTarget.blur();
+                const nextElem = this._codeWrapper
+                  .querySelectorAll('input')
+                  .find(
+                    ({ dataset }) =>
+                      Number(dataset.selectorIndex) === selectorIndex &&
+                      Number(dataset.propIndex) === propIndex &&
+                      Number(dataset.inputIndex) === inputIndex + 1
+                  );
+                nextElem.focus();
+              }
+              break;
+
+            case 'Backspace':
+              {
+                if (inputIndex === 0) {
+                  return;
+                }
+                if (selectionStart || selectionEnd) {
+                  return;
+                }
+                e.preventDefault();
+                this._curCss[selectorIndex].props[propIndex].nextValueInfo = {
+                  key: e.key,
+                  inputIndex,
+                  prevValue: value
+                };
+                e.currentTarget.blur();
+                const nextElem = this._codeWrapper
+                  .querySelectorAll('input')
+                  .find(
+                    ({ dataset }) =>
+                      Number(dataset.selectorIndex) === selectorIndex &&
+                      Number(dataset.propIndex) === propIndex &&
+                      Number(dataset.inputIndex) === inputIndex - 1
+                  );
+                nextElem.focus();
+                nextElem.selectionStart = nextElem.selectionEnd =
+                  nextElem.value.length - value.length;
+              }
+              break;
+
+            case 'Delete':
+              {
+                const inputArr = [
+                  ...this._codeWrapper.querySelectorAll('input')
+                ].filter(
+                  ({ dataset }) =>
+                    Number(dataset.selectorIndex) === selectorIndex &&
+                    Number(dataset.propIndex) === propIndex
+                );
+                if (inputArr.length === inputIndex + 1) {
+                  return;
+                }
+                if (
+                  selectionStart < value.length ||
+                  selectionEnd < value.length
+                ) {
+                  return;
+                }
+                e.preventDefault();
+                this._curCss[selectorIndex].props[propIndex].nextValueInfo = {
+                  key: e.key,
+                  inputIndex,
+                  prevValue: inputArr[inputIndex + 1].value
+                };
+                e.currentTarget.blur();
+                const nextElem = this._codeWrapper
+                  .querySelectorAll('input')
+                  .find(
+                    ({ dataset }) =>
+                      Number(dataset.selectorIndex) === selectorIndex &&
+                      Number(dataset.propIndex) === propIndex &&
+                      Number(dataset.inputIndex) === inputIndex
+                  );
+                nextElem.focus();
+                nextElem.selectionStart = nextElem.selectionEnd = value.length;
+              }
+              break;
+
+            case 'ArrowUp':
+              {
+                e.preventDefault();
+                if (inputIndex === 0) {
+                  return;
+                }
+                e.currentTarget.blur();
+                const nextElem = [
+                  ...this._codeWrapper.querySelectorAll('input')
+                ].filter(
+                  ({ dataset }) =>
+                    Number(dataset.selectorIndex) === selectorIndex &&
+                    Number(dataset.propIndex) === propIndex
+                )[inputIndex - 1];
+                nextElem.focus();
+                nextElem.selectionStart = nextElem.selectionEnd =
+                  selectionStart;
+              }
+              break;
+
+            case 'ArrowDown':
+              {
+                e.preventDefault();
+                const inputArr = [
+                  ...this._codeWrapper.querySelectorAll('input')
+                ].filter(
+                  ({ dataset }) =>
+                    Number(dataset.selectorIndex) === selectorIndex &&
+                    Number(dataset.propIndex) === propIndex
+                );
+                if (inputIndex === inputArr.length - 1) {
+                  return;
+                }
+                e.currentTarget.blur();
+                const nextElem = [
+                  ...this._codeWrapper.querySelectorAll('input')
+                ].filter(
+                  ({ dataset }) =>
+                    Number(dataset.selectorIndex) === selectorIndex &&
+                    Number(dataset.propIndex) === propIndex
+                )[inputIndex + 1];
+                nextElem.focus();
+                nextElem.selectionStart = nextElem.selectionEnd =
+                  selectionStart;
+              }
+              break;
+
+            case 'ArrowLeft':
+              {
+                if (selectionStart > 0 || inputIndex === 0) {
+                  return;
+                }
+                e.preventDefault();
+                e.currentTarget.blur();
+                const nextElem = [
+                  ...this._codeWrapper.querySelectorAll('input')
+                ].filter(
+                  ({ dataset }) =>
+                    Number(dataset.selectorIndex) === selectorIndex &&
+                    Number(dataset.propIndex) === propIndex
+                )[inputIndex - 1];
+                nextElem.focus();
+                nextElem.selectionStart = nextElem.selectionEnd =
+                  nextElem.value.length;
+              }
+              break;
+
+            case 'ArrowRight':
+              {
+                const inputArr = [
+                  ...this._codeWrapper.querySelectorAll('input')
+                ].filter(
+                  ({ dataset }) =>
+                    Number(dataset.selectorIndex) === selectorIndex &&
+                    Number(dataset.propIndex) === propIndex
+                );
+                if (
+                  selectionStart < value.length ||
+                  inputIndex === inputArr.length - 1
+                ) {
+                  return;
+                }
+                e.preventDefault();
+                e.currentTarget.blur();
+                const nextElem = [
+                  ...this._codeWrapper.querySelectorAll('input')
+                ].filter(
+                  ({ dataset }) =>
+                    Number(dataset.selectorIndex) === selectorIndex &&
+                    Number(dataset.propIndex) === propIndex
+                )[inputIndex + 1];
+                nextElem.focus();
+                nextElem.selectionStart = nextElem.selectionEnd = 0;
+              }
+              break;
+
+            default:
+              this._codeInputEventListener(e);
+          }
+        },
+        keyup: this._codeInputEventListener,
+        focus: ({ currentTarget }) => {
+          currentTarget.classList.remove('button-blank');
+        },
+        blur: ({ currentTarget }) => {
+          const {
+            dataset: {
+              selectorIndex: targetSelectorIndex,
+              propIndex: targetPropIndex
+            },
+            value
+          } = currentTarget;
+          const inputArr = [
+            ...this._codeWrapper.querySelectorAll('input')
+          ].filter(
+            ({ dataset }) =>
+              dataset.selectorIndex === targetSelectorIndex &&
+              dataset.propIndex === targetPropIndex
+          );
+          const curProp = this._curCss[selectorIndex].props[targetPropIndex];
+          const curValues = inputArr.map(({ value }) => value);
+          let blankIndex = -1;
+          if (curProp.nextValueInfo) {
+            const {
+              key,
+              inputIndex: targetIndex,
+              selectionStart,
+              selectionEnd,
+              prevValue,
+              curValue,
+              nextValue
+            } = curProp.nextValueInfo;
+            switch (key) {
+              case 'Enter':
+                {
+                  curValues[targetIndex] = curValue;
+                  curValues.splice(targetIndex + 1, 0, nextValue);
+                  if (selectionStart === 0) {
+                    blankIndex = targetIndex;
+                  } else if (selectionEnd === prevValue.length) {
+                    blankIndex = targetIndex + 1;
+                  }
+                }
+                break;
+
+              case 'Backspace':
+                {
+                  curValues[targetIndex - 1] += prevValue;
+                  curValues.splice(targetIndex, 1);
+                }
+                break;
+
+              case 'Delete':
+                {
+                  curValues[targetIndex] += prevValue;
+                  curValues.splice(targetIndex + 1, 1);
+                }
+                break;
+            }
+          }
+          const nextInputArr = curValues.filter(
+            (value, i) => value || i === blankIndex
+          );
+          if (nextInputArr.length === 0) {
+            nextInputArr.push('');
+          }
+          curProp.value =
+            (nextInputArr.length > 1 ? '\n' : '') + nextInputArr.join('\n');
+          curProp.nextValueInfo = null;
+          currentTarget.style.width =
+            (value.length ? (value.length + 1) * 9 : 30) + 'px';
+          this._updateCssCode();
+        }
+      });
+      return valueInput;
+    }
+
+    _createStyledPropCodeLines(prop, valueArr, numberIndex) {
+      const output = [];
+      valueArr.forEach((value, index) => {
+        const row = document.createElement('tr');
+        const lineNumber = Tag.createElement(
+          'td',
+          {
+            class: 'number-line'
+          },
+          numberIndex++
+        );
+        const codeLine = Tag.createElement('td', {
+          class: 'code-line',
+          'data-index': numberIndex - 2
+        });
+        const valueSpan = Tag.createElement(
+          'span',
+          {
+            class: 'value-code'
+          },
+          value
+        );
+        if (index === 0) {
+          const propSpan = Tag.createElement(
+            'span',
+            {
+              class: 'prop-code'
+            },
+            prop
+          );
+          if (value) {
+            Tag.appendChildren(codeLine, [
+              '\u00A0'.repeat(2),
+              propSpan,
+              ':\u00A0',
+              valueSpan
+            ]);
+          } else {
+            Tag.appendChildren(codeLine, ['\u00A0'.repeat(2), propSpan, ':']);
+          }
+        } else {
+          Tag.appendChildren(codeLine, ['\u00A0'.repeat(4), valueSpan]);
+        }
+        if (index === valueArr.length - 1) {
+          Tag.appendChildren(codeLine, [';']);
+        }
+        Tag.appendChildren(row, [lineNumber, codeLine]);
+        output.push(row);
+      });
+      return output;
+
+      const propSpan = Tag.createElement(
+        'span',
+        {
+          class: 'prop-code'
+        },
+        prop
+      );
+      const valueElem = Tag.createElement(
+        'span',
+        {
+          class: 'value-code'
+        },
+        //!! flag 임시 조치 -> 여러 줄일 때 코드 줄 여러 개 생성해서 보여줘야 함
+        value.trim()
+      );
+
+      Tag.appendChildren(codeLine, [
+        '\u00A0\u00A0',
+        propSpan,
+        ':\u00A0',
+        valueElem,
+        ';'
+      ]);
     }
 
     _createDeleteTagButton(tag) {
@@ -1735,8 +2268,7 @@
       Tag.appendChildren(codeLine, ['.', selectorSpan, '\u00A0{']);
     }
 
-    _updatePropCodeLineStyle(line, codeLine) {
-      const [prop, value] = line.split(':');
+    _updatePropCodeLineStyle(prop, value, codeLine) {
       const propSpan = Tag.createElement(
         'span',
         {
@@ -1749,7 +2281,8 @@
         {
           class: 'value-code'
         },
-        value
+        //!!flag 임시 조치 -> 여러 줄일 때 코드 줄 여러 개 생성해서 보여줘야 함
+        value.trim()
       );
 
       Tag.appendChildren(codeLine, [

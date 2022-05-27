@@ -54,30 +54,36 @@
     </div>
     <!-- carousel mode (grid) -->
     <div data-mode="carousel" data-title="Grid Code" class="fg-editor theme-grid">
-      <code data-struct="[1][2][2][2]">
+      <code data-struct="[6]">
         .container {
-          display: flex;
+          display: grid;
+          grid-template-areas:
+            "header header header"
+            "sidebar content1 content2"
+            "sidebar content3 content3"
+            "footer footer footer";
+        }
+        .item {
+          width: auto !important;
+          height: auto !important;
         }
         .item1 {
-          flex: 1;
+          grid-area: header;
         }
         .item2 {
-          flex: 2;
+          grid-area: sidebar;
         }
         .item3 {
-          flex: 1;
-          background-color: #fff0e6;
+          grid-area: content1;
         }
         .item4 {
-          flex: 1;
+          grid-area: content2;
         }
         .item5 {
-          flex: 2;
-          background-color: #fff0e6;
+          grid-area: content3;
         }
-        .item7 {
-          flex: 1;
-          background-color: #fff0e6;
+        .item6 {
+          grid-area: footer;
         }
       </code>
       <code data-struct="[3]">
