@@ -2071,11 +2071,15 @@
 
       let anchorLine = anchorNode;
       let focusLine = focusNode;
-      while (!anchorLine?.classList?.contains('code-line')) {
-        anchorLine = anchorLine.parentElement;
-      }
-      while (!focusLine?.classList?.contains('code-line')) {
-        focusLine = focusLine.parentElement;
+      try {
+        while (!anchorLine?.classList?.contains('code-line')) {
+          anchorLine = anchorLine.parentElement;
+        }
+        while (!focusLine?.classList?.contains('code-line')) {
+          focusLine = focusLine.parentElement;
+        }
+      } catch {
+        return;
       }
 
       const [node, firstLine, offset] =
