@@ -33,7 +33,13 @@
   color: #878787;
 }
 
-/* 헤더css 일시적으로 가져왔습니다. */
+/* 모달 엑스버튼 이미지 안눌리게 */
+.close-img {
+  pointer-events: none;
+}
+
+
+/* 헤더css 일시적으로 가져왔습니다. => 재사용성 고려해 selector 수정해보았습니다. */
 
 /* .a11y-hidden : 웹접근성 위해 - 텍스트는 눈에 보이지 않지만 스크린 리더기가 읽을 수 있음 */
 .a11y-hidden {
@@ -53,7 +59,7 @@
   margin: 0;
 }
 
-header {
+.gnb-header {
   width: 100%;
   height: 80px;
   padding: 0 160px;
@@ -61,7 +67,7 @@ header {
   color: var(--secondary);
 }
 
-nav {
+.gnb-header nav {
   width: 100%;
   height: 100%;
   display: flex;
@@ -69,49 +75,51 @@ nav {
   font-size: 18px;
 }
 
-.header-logo {
+.gnb-header .header-logo {
   display: inline-block;
   width: 144px;
   height: 20px;
   background: url(/src/assets/images/logo.svg) no-repeat;
 }
 
-ul.nav-left {
+.gnb-header ul.nav-left {
   display: flex;
   box-sizing: border-box;
 }
 
-nav ul.nav-left li a {
+.gnb-header nav ul.nav-left li a {
   line-height: 28px;
 }
 
-ul.nav-left li {
+.gnb-header ul.nav-left li {
   display: flex;
   align-items: center;
 }
 
-ul.nav-left li {
+.gnb-header ul.nav-left li {
   margin-right: 30px;
   padding: 26px 0;
 }
 
-ul.nav-left li:last-child {
+.gnb-header ul.nav-left li:last-child {
   margin-right: 0;
 }
-ul.nav-left li:first-child {
+
+.gnb-header ul.nav-left li:first-child {
   margin-right: 32px;
   padding: 30px 0;
 }
 
-nav ul.nav-right {
+.gnb-header nav ul.nav-right {
   display: flex;
   box-sizing: border-box;
   padding: 20px 0;
 }
 
-.search {
+.gnb-header .search {
   position: relative;
 }
+
 .search-input {
   width: 265px;
   height: 40px;
@@ -132,7 +140,7 @@ nav ul.nav-right {
   font-size: 1;
 }
 
-.darkmode {
+.darkmode-btn {
   width: 37px;
   height: 37px;
   display: flex;
@@ -144,7 +152,7 @@ nav ul.nav-right {
   font-size: 1;
 }
 
-.github {
+.github-btn {
   width: 37px;
   height: 37px;
   display: flex;
@@ -157,43 +165,32 @@ nav ul.nav-right {
 }
 
 /* 다크모드 */
+/* header에만 on 클래스를 붙이면 다크모드로 전환되도록 수정했습니다. */
+.gnb-header.on {
+  background-color: var(--primary);
+  color: var(--background);
+}
 
-.header-logo.on {
+.gnb-header.on .header-logo {
   display: inline-block;
   width: 144px;
   height: 20px;
   background: url(/src/assets/images/logo-darkmode.svg) no-repeat;
 }
 
-.header.on {
-  background-color: var(--primary);
+.gnb-header.on nav li {
   color: var(--background);
 }
 
-nav li.on {
-  color: var(--background);
-}
-
-.search.on {
-  background-color: var(--black);
-  color: var(--secondary);
-  border: 1px solid var(--secondary);
-}
-
-.search-input.on {
+.gnb-header.on .search-input {
   background-color: var(--black);
   border: none;
 }
 
-.darkmode.on {
+.gnb-header.on .darkmode-btn {
   background: url(/src/assets/images/icon-moon-dark.svg) center no-repeat;
 }
 
-.github.on {
+.gnb-header.on .github-btn {
   background: url(/src/assets/images/icon-github-dark.svg) center no-repeat;
-}
-
-/* 모달 엑스버튼 이미지 안눌리게 */
-.close-img {
-  pointer-events: none;
 }
