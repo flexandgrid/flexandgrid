@@ -416,7 +416,7 @@
         }
 
         let html;
-        let structure = '[3]';
+        let structure = item ? `[${item}]` : '[3]';
         if (this._mode === 'snippet') {
           const { item: defaultItemCount } = this._editor.dataset;
           html = this._createSingleContainerHtml(defaultItemCount, item);

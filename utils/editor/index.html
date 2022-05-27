@@ -129,10 +129,36 @@
 
   <!-- snippet mode (grid) -->
   <div data-mode="snippet" class="fg-editor theme-grid">
-    <code data-snippet="flex-start" data-item="3">
+    <code data-snippet="flex-start" data-item="6">
       .container {
-        display: flex;
-        justify-content: flex-start;
+        display: grid;
+        grid-template-areas:
+          "header header header"
+          "sidebar content1 content2"
+          "sidebar content3 content3"
+          "footer footer footer";
+      }
+      .item {
+        width: auto !important;
+        height: auto !important;
+      }
+      .item1 {
+        grid-area: header;
+      }
+      .item2 {
+        grid-area: sidebar;
+      }
+      .item3 {
+        grid-area: content1;
+      }
+      .item4 {
+        grid-area: content2;
+      }
+      .item5 {
+        grid-area: content3;
+      }
+      .item6 {
+        grid-area: footer;
       }
     </code>
     <code data-snippet="center" data-item="3">
