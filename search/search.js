@@ -27,8 +27,11 @@ const searchItem = document.querySelectorAll(".itemwrap-search");
 const searchText = document.querySelector(".text-search");
 const searchResultCount = document.querySelector(".text-search-count");
 
+const URLSearch = new URLSearchParams(location.search);
+const searchQuery = URLSearch.get('q');
+
 //검색한 텍스트 표시
-searchText.innerText = `Results for "${localStorage.getItem("search")}"`;
+searchText.innerText = `Results for "${searchQuery}"`;
 //아이템 갯수 표시
 searchResultCount.innerText = `Showing ${searchItem.length} results`;
 
@@ -54,6 +57,7 @@ document.addEventListener("click", (e) => {
 
   //모달에 있는 X버튼 터치 시 해당 아이템 삭제
   if (e.target.classList.value == "btn-del") {
+    e.preventDefault(); 
     const inText = e.target.previousSibling.innerText;
     searchHistory = searchHistory.filter((text) => {
       return text !== inText;
@@ -98,6 +102,7 @@ const createHistory = () => {
       const deleteImage = document.createElement("img");
 
       listItem.setAttribute("class", "list-item");
+      listItem.setAttribute("href", `/search/?q=${v}`);
       serachText.setAttribute("class", "txt-item");
       deleteBtn.setAttribute("class", "btn-del");
       deleteImage.setAttribute("src", "../src/assets/images/icon-close.svg");
