@@ -19,7 +19,7 @@
       <nav>
         <ul class="nav-left">
           <li>
-            <a href="#" class="header-logo">
+            <a href="/" class="header-logo">
               <span class="a11y-hidden">로고</span>
             </a>
           </li>
@@ -30,10 +30,12 @@
         </ul>
         <ul class="nav-right">
           <li class="search">
-            <input type="text" class="search-input" placeholder="Search" />
-            <button class="search-btn">
-              <span class="a11y-hidden">검색버튼</span>
-            </button>
+            <form action="/search" method="get">
+              <input type="text" class="search-input" placeholder="Search" />
+              <button type="submit" class="search-btn">
+                <span class="a11y-hidden">검색버튼</span>
+              </button>
+            </form>
             <div class="modal-history">
               <div class="header-history">
                 <strong class="tit-history">최근 검색어</strong>
