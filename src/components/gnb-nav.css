@@ -23,6 +23,13 @@
   margin: 0;
 }
 
+.hamburger-menu {
+  display: inline-block;
+  width: 20px;
+  height: 18px;
+  background: url(/src/assets/images/hamburger-menu.svg) no-repeat 100%;
+}
+
 header {
   width: 100%;
   height: 80px;
@@ -126,37 +133,74 @@ nav ul.nav-right {
 
 /* 다크모드 */
 
-.header-logo.on {
+header.on {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+header.on .header-logo {
   display: inline-block;
   width: 144px;
   height: 20px;
   background: url(/src/assets/images/logo-darkmode.svg) no-repeat;
 }
 
-.header.on {
-  background-color: var(--primary);
+header.on nav li {
   color: var(--background);
 }
 
-nav li.on {
-  color: var(--background);
-}
-
-.search.on {
-  background-color: var(--black);
-  color: var(--secondary);
-  border: 1px solid var(--secondary);
-}
-
-.search-input.on {
+header.on .search-input {
   background-color: var(--black);
   border: none;
 }
 
-.darkmode.on {
+header.on .darkmode {
   background: url(/src/assets/images/icon-moon-dark.svg) center no-repeat;
 }
 
-.github.on {
+header.on .github {
   background: url(/src/assets/images/icon-github-dark.svg) center no-repeat;
+}
+
+header.on .hamburger-menu {
+  background: url(/src/assets/images/hamburger-menu-darkmode.svg) no-repeat;
+}
+
+/* 반응형 */
+
+@media screen and (max-width: 1201px) {
+  header {
+    padding: 0 60px;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  header {
+    padding: 0 60px;
+  }
+
+  .nav-left-menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  header {
+    position: relative;
+    padding: 0 16px;
+  }
+  .search-btn {
+    position: static;
+  }
+  .logo-container {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+  }
+}
+
+/*  반응형 햄버거 메뉴 스크린 사이즈 커지면 추가 */
+.hide {
+  display: none;
 }
