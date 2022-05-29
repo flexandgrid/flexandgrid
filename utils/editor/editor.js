@@ -360,7 +360,7 @@
           ? [...Array(containerCount)].map(
               (_, index) => `container${index + 1}`
             )
-          : ['container'];
+          : ['container', 'item'];
       const itemCount = this._previewWrapper.querySelectorAll('.item').length;
       const items = [...Array(itemCount)].map((_, index) => `item${index + 1}`);
       return [...containers, ...items];
