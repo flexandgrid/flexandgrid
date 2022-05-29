@@ -94,7 +94,7 @@
   --four-color-1: #504975;
 }
 
-.fg-editor.theme-dark {
+.on .fg-editor {
   --gray-8: #ffffff;
   --gray-7: #ffffff;
   --gray-6: #efefef;
@@ -114,7 +114,7 @@
   --four-color-1: #f9b09e;
 }
 
-.fg-editor.theme-grid.theme-dark {
+.on .fg-editor.theme-grid {
   --four-color-1: #b6abed;
 }
 
@@ -141,8 +141,14 @@
 .fg-editor *,
 .fg-editor *::before,
 .fg-editor *::after {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   box-sizing: border-box;
+}
+
+.fg-editor .preview *,
+.fg-editor .preview *::before,
+.fg-editor .preview *::after {
+  transition: all 0.3s ease-in-out;
 }
 
 .fg-editor .preview,
