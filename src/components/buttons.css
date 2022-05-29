@@ -24,7 +24,7 @@ li {
   margin-right: 30px;
 }
 
-.btn-value input[type="radio"] {
+.btn-value input[type='radio'] {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -35,7 +35,7 @@ li {
   border: 0;
 }
 
-.btn-value input[type="radio"] + .radio-label {
+.btn-value input[type='radio'] + .radio-label {
   display: inline-block;
   position: relative;
   padding-left: 30px;
@@ -44,45 +44,45 @@ li {
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
-  color: #b4b4b4;
+  color: var(--tertiary);
 }
 
-.btn-value input[type="radio"] + .radio-label:before {
-  content: "";
+.btn-value input[type='radio'] + .radio-label:before {
+  content: '';
   position: absolute;
   left: 0;
   width: 20px;
   height: 20px;
   text-align: center;
-  background-color: #ffffff;
-  border: 1px solid #b4b4b4;
+  background-color: var(--white);
+  border: 1px solid var(--tertiary);
   box-sizing: border-box;
   border-radius: 50%;
 }
 
-.btn-value input[type="radio"]:checked + .radio-label:before {
+.btn-value input[type='radio']:checked + .radio-label:before {
   background: transparent;
-  border-color: #7661e2;
+  border-color: var(--flex-primary);
 }
 
-.btn-value input[type="radio"]:checked + .radio-label:after {
-  content: "";
+.btn-value input[type='radio']:checked + .radio-label:after {
+  content: '';
   position: absolute;
   top: 5px;
   left: 5px;
   width: 10px;
   height: 10px;
-  background: #7661e2;
+  background: var(--flex-primary);
   border-radius: 50%;
   box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-.btn-value input[type="radio"]:checked + label {
-  color: #7661e2;
+.btn-value input[type='radio']:checked + label {
+  color: var(--flex-primary);
 }
 
 /* radio button Dark mode on추가 */
-.btn-container.on input[type="radio"] + .radio-label:before {
+.btn-container.on input[type='radio'] + .radio-label:before {
   background-color: transparent;
 }
 
@@ -96,17 +96,17 @@ li {
   font-weight: 400;
   line-height: 20px;
   text-decoration: none;
-  color: #878787;
+  color: var(--secondary);
   padding: 14px 0 14px 18px;
   box-sizing: border-box;
 }
 
 .mobile-github::before {
   display: inline-block;
-  content: "";
+  content: '';
   width: 21px;
   height: 21px;
-  background-image: url(./img/github.png);
+  background-image: url(../assets/imges/github-logo-link.svg);
   background-size: 21px;
   vertical-align: top;
   margin-right: 11px;
@@ -114,11 +114,11 @@ li {
 
 /* github link button Dark mode on추가 */
 .mobile-github.on {
-  color: #b4b4b4;
+  color: var(--tertiary);
 }
 
 .mobile-github::before {
-  background-image: url(./img/github_darkmode.png);
+  background-image: url(../assets/imges/github-darkmode-logo-link.svg);
 }
 
 .carousel-container {
