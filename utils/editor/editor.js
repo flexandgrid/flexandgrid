@@ -170,9 +170,15 @@
   }
 
   class Editor {
+    // CSS 선택자 파싱을 위한 정규표현식 문자열
+    static CSS_SELECTOR =
+      '((\\.((container\\d*)|(item\\d*)))+(\\[[^:{}]*\\])?(:[^:{}]*)?(::[^:{}]*)?\\s*)+';
+
     // CSS 파싱을 위한 정규표현식
-    static CSS_STRING =
-      /(?<selector>((\.((container\d*)|(item\d*)))+(\[[^:\{\}]*\])?(:[^:\{\}]*)?(::[^:\{\}]*)?\s*)+)(,\s*\k<selector>)*\{[^{}]*\}/g;
+    static CSS_STRING = new RegExp(
+      `${Editor.CSS_SELECTOR}(,\\s*${Editor.CSS_SELECTOR})*\\{[^{}]*\\}`,
+      'g'
+    );
 
     // data-item을 입력하지 않았을 경우 기본값
     static DEFAULT_ITEM = 3;
