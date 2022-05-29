@@ -795,7 +795,8 @@
       textarea.value = codeLines.join('\n');
       textarea.style.height = codeLines.length * Editor.CODE_HEIGHT + 'px';
       Tag.addEventListeners(textarea, {
-        input: (e) => this._textAreaInputEventListener(e, numbers),
+        input: (e) => this._textareaInputEventListener(e, numbers),
+        keydown: (e) => this._textareaKeydownEventListener(e),
         blur: () => this._textTableBlurEventListener()
       });
       Tag.appendChildren(textareaWrapper, [numbers, textarea]);
@@ -2037,7 +2038,76 @@
       this._codeWrapper.appendChild(table);
     }
 
-    _textAreaInputEventListener({ currentTarget }, numbers) {
+    _textareaKeydownEventListener(e) {
+      const { currentTarget, key } = e;
+      const { value } = currentTarget;
+      const startIndex = currentTarget.selectionStart;
+      const endIndex = currentTarget.selectionEnd;
+      const curValue = value.slice(startIndex, endIndex);
+
+      switch (key) {
+        case 'Enter':
+          {
+            if (curValue.includes('{') || curValue.includes('}')) {
+              return;
+            }
+
+            let openingIndex = startIndex;
+            let closingIndex = endIndex;
+
+            if (
+              value[openingIndex - 1] === '{' &&
+              value[closingIndex] === '}'
+            ) {
+              e.preventDefault();
+              currentTarget.value =
+                value.slice(0, startIndex) + '\n  \n' + value.slice(endIndex);
+              currentTarget.selectionStart = currentTarget.selectionEnd =
+                startIndex + 3;
+              return;
+            }
+
+            while (true) {
+              openingIndex--;
+              if (value[openingIndex] === '{') {
+                break;
+              }
+              if (value[openingIndex] === '}' || openingIndex < 0) {
+                return;
+              }
+            }
+            while (true) {
+              closingIndex++;
+              if (value[closingIndex] === '}') {
+                break;
+              }
+              if (
+                value[closingIndex] === '{' ||
+                closingIndex === value.length
+              ) {
+                return;
+              }
+            }
+
+            e.preventDefault();
+
+            currentTarget.value =
+              value.slice(0, startIndex) + '\n  ' + value.slice(endIndex);
+            currentTarget.selectionStart = currentTarget.selectionEnd =
+              startIndex + 3;
+          }
+          break;
+
+        case '{':
+          currentTarget.value =
+            value.slice(0, startIndex) + '}' + value.slice(endIndex);
+          currentTarget.selectionStart = currentTarget.selectionEnd =
+            startIndex;
+          break;
+      }
+    }
+
+    _textareaInputEventListener({ currentTarget }, numbers) {
       currentTarget.style.height = 'auto';
       currentTarget.style.height = currentTarget.scrollHeight + 'px';
       numbers.removeAllChildren();
