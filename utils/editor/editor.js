@@ -1733,30 +1733,6 @@
         output.push(row);
       });
       return output;
-
-      const propSpan = Tag.createElement(
-        'span',
-        {
-          class: 'prop-code'
-        },
-        prop
-      );
-      const valueElem = Tag.createElement(
-        'span',
-        {
-          class: 'value-code'
-        },
-        //!! flag 임시 조치 -> 여러 줄일 때 코드 줄 여러 개 생성해서 보여줘야 함
-        value.trim()
-      );
-
-      Tag.appendChildren(codeLine, [
-        '\u00A0\u00A0',
-        propSpan,
-        ':\u00A0',
-        valueElem,
-        ';'
-      ]);
     }
 
     _createDeleteTagButton(tag) {
