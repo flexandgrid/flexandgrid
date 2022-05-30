@@ -420,7 +420,12 @@
       }
       return matchedCssArr.map((matchedCss) => {
         const index = matchedCss.indexOf('{');
-        const selector = matchedCss.slice(0, index).trim();
+        const selector = matchedCss
+          .slice(0, index)
+          .replaceAll('\n', ' ')
+          .split(',')
+          .map((v) => v.trim())
+          .join(', ');
         const props = matchedCss
           .slice(index + 1, -1)
           .trim()
