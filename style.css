@@ -1,33 +1,62 @@
 @charset "UTF-8";
 
-/* header, footer 컴포넌트 넣을 예정입니다. 아래는 임시 코드입니다. */
-.header {
-  width: 100%;
-  height: 80px;
-  margin-bottom: 50px;
-  border-bottom: 1px solid #efefef;
-  text-align: center;
-  line-height: 80px;
+/* header css */
+.hamburger-menu {
+    background: url("./src/assets/images/hamburger-menu.svg") no-repeat 100%;
 }
 
-.footer {
-  width: 100%;
-  height: 224px;
-  margin-top: 100px;
-  background-color: #f9f9f9;
-  text-align: center;
-  line-height: 224px;
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+}
+
+.header-logo {
+    background: url("./src/assets/images/logo.svg") no-repeat;
+}
+
+.search-btn {
+    background: url("./src/assets/images/icon-search.svg") no-repeat;
+}
+
+.darkmode {
+    background: url("./src/assets/images/icon-darkmode.svg") center no-repeat;
+}
+
+.github {
+    background: url("./src/assets/images/icon-github.svg") center no-repeat;
+}
+
+/* header css - darkmode */
+header.on .header-logo {
+    background: url("./src/assets/images/logo-darkmode.svg") no-repeat;
+}
+
+header.on .darkmode {
+    background: url("./src/assets/images/icon-moon-dark.svg") center no-repeat;
+}
+
+header.on .github {
+    background: url("./src/assets/images/icon-github-dark.svg") center no-repeat;
+}
+
+/* carousel css */
+.main {
+    margin: 130px 0 100px;
 }
 
 .section-carousel {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 74px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 74px;
 }
 
 .carousel-flex {
-  position: relative;
+    position: relative;
 }
 
 .carousel-flex::before {
@@ -40,14 +69,32 @@
 }
 
 .fg-editor {
-  width: 500px;
+    width: 500px;
+}
+
+/* topbutton */
+.upBtn {
+    position: fixed;
+    bottom: 60px;
+    right: 160px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #3f3f46;
+    box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
+    background-image: url("./src/assets/images/chevron-down.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.upBtn.on {
+    background: #e0e0e0;
+    background-image: url("./src/assets/images/chevron-down-darkmode.svg");
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 979px) {
-  .header {
-    background-color: #222;
-  }
-
   .section-carousel {
     flex-wrap: wrap;
     margin: 0 20px;
@@ -72,13 +119,6 @@
 }
 
 @media screen and (max-width: 479px) {
-  .header {
-    height: 50px;
-    margin-bottom: 15px;
-    line-height: 50px;
-    background-color: #efefef;
-  }
-
   .section-carousel {
     gap: 80px;
   }
@@ -87,7 +127,7 @@
     bottom: -40px;
   }
 
-  .footer {
+  .footer-area {
     height: 215px;
     line-height: 215px;
   }

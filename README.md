@@ -7,8 +7,9 @@
 ## 진행사항
 
 - 책 : 링크
-- 웹 서비스 : 링크
+- 웹 서비스 : [서비스 바로가기](https://flexngrid.com/)
 - Notion : 링크
+- 피그마 링크 : [피그마 바로가기](https://www.figma.com/file/ZJ95eCOKHKWwM79IEdHo9I/flex-x-grid-UI?node-id=0%3A1)
 
 ## 기여하기
 

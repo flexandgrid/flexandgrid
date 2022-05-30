@@ -14,15 +14,20 @@
     <header class="header">
       <nav>
         <ul class="nav-left">
-          <li>
+          <li class="hamburger-container hide">
+            <a href="/" class="hamburger-menu">
+              <span class="a11y-hidden">햄버거 메뉴</span>
+            </a>
+          </li>
+          <li class="logo-container">
             <a href="#" class="header-logo">
               <span class="a11y-hidden">로고</span>
             </a>
           </li>
-          <li><a href="#cheatsheet">Cheatsheet</a></li>
-          <li><a href="#flex">Flex</a></li>
-          <li><a href="#grid">Grid</a></li>
-          <li><a href="#try-it">Try it</a></li>
+          <li class="nav-left-menu"><a href="#cheatsheet">Cheatsheet</a></li>
+          <li class="nav-left-menu"><a href="#flex">Flex</a></li>
+          <li class="nav-left-menu"><a href="#grid">Grid</a></li>
+          <li class="nav-left-menu"><a href="#try-it">Try it</a></li>
         </ul>
         <ul class="nav-right">
           <li class="search">
@@ -46,38 +51,78 @@
     </header>
 
     <!-- 헤더 섹션 다크 모드 -->
-    <header class="header on">
+    <!-- <header class="header on">
       <nav>
         <ul class="nav-left">
+          <li class="hamburger-container hide">
+            <a href="/" class="hamburger-menu">
+              <span class="a11y-hidden">햄버거 메뉴</span>
+            </a>
+          </li>
           <li>
-            <a href="#" class="header-logo on">
+            <a href="#" class="header-logo">
               <span class="a11y-hidden">로고</span>
             </a>
           </li>
-          <li><a href="#cheatsheet">Cheatsheet</a></li>
-          <li><a href="#flex">Flex</a></li>
-          <li><a href="#grid">Grid</a></li>
-          <li><a href="#try-it">Try it</a></li>
+          <li class="nav-left-menu"><a href="#cheatsheet">Cheatsheet</a></li>
+          <li class="nav-left-menu"><a href="#flex">Flex</a></li>
+          <li class="nav-left-menu"><a href="#grid">Grid</a></li>
+          <li class="nav-left-menu"><a href="#try-it">Try it</a></li>
         </ul>
         <ul class="nav-right">
           <li class="search">
-            <input type="text" class="search-input on" placeholder="Search" />
+            <input type="text" class="search-input" placeholder="Search" />
             <button class="search-btn">
               <span class="a11y-hidden">검색 버튼</span>
             </button>
           </li>
           <li>
-            <button class="darkmode on">
+            <button class="darkmode">
               <span class="a11y-hidden">다크 모드 버튼</span>
             </button>
           </li>
           <li>
-            <button class="github on">
+            <button class="github">
               <span class="a11y-hidden">깃헙 바로 가기 버튼</span>
             </button>
           </li>
         </ul>
       </nav>
-    </header>
+    </header> -->
+
+    <script>
+      const hamburgerMenu = document.querySelector(".hamburger-container");
+      const darkmodeBtn = document.querySelector(".darkmode");
+      const githubBtn = document.querySelector(".github");
+      const searchInput = document.querySelector(".search-input");
+      const headerArea = document.querySelector("header");
+
+      window.onresize = resize;
+      let currentScreenSize;
+
+      function resize() {
+        currentScreenSize = window.screen.width;
+        // console.log(currentScreenSize);
+        if (currentScreenSize > 1025) {
+          hamburgerMenu.classList.add("hide");
+        } else if (770 <= currentScreenSize && currentScreenSize <= 1025) {
+          hamburgerMenu.classList.remove("hide");
+          darkmodeBtn.classList.remove("hide");
+          githubBtn.classList.remove("hide");
+          searchInput.classList.remove("hide");
+        } else if (currentScreenSize < 769) {
+          hamburgerMenu.classList.remove("hide");
+          darkmodeBtn.classList.add("hide");
+          githubBtn.classList.add("hide");
+          searchInput.classList.add("hide");
+        }
+      }
+
+      const handleDarkMode = () => {
+        headerArea.classList.toggle("on");
+      };
+
+      darkmodeBtn.addEventListener("click", handleDarkMode);
+    </script>
   </body>
 </html>

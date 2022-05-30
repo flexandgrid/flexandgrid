@@ -27,15 +27,17 @@ const searchItem = document.querySelectorAll(".itemwrap-search");
 const searchText = document.querySelector(".text-search");
 const searchResultCount = document.querySelector(".text-search-count");
 
+const URLSearch = new URLSearchParams(location.search);
+const searchQuery = URLSearch.get("q");
+
 //검색한 텍스트 표시
-searchText.innerText = `Results for "${localStorage.getItem("search")}"`;
+searchText.innerText = `Results for "${searchQuery}"`;
 //아이템 갯수 표시
 searchResultCount.innerText = `Showing ${searchItem.length} results`;
 
 //검색창이 눌리면 모달창이 노출
 searchInput.addEventListener("click", () => {
   searchModal.classList.add("clicked");
-  removeChildAll(searchHistoryList);
   createHistory();
 });
 
@@ -47,22 +49,39 @@ const removeChildAll = (ele) => {
 
 document.addEventListener("click", (e) => {
   //검색창 말고 다른 곳을 클릭하면 모달 사라짐
-  if (e.target.classList.value !== "search-input") {
-    if (e.target.classList.value !== "btn-del")
-      searchModal.classList.remove("clicked");
+  if (
+    e.target.classList.value !== "search-input" &&
+    e.target.classList.value !== "btn-del" &&
+    e.target.classList.value !== "btn-del-all"
+  ) {
+    searchModal.classList.remove("clicked");
   }
 
   //모달에 있는 X버튼 터치 시 해당 아이템 삭제
   if (e.target.classList.value == "btn-del") {
+    e.preventDefault();
     const inText = e.target.previousSibling.innerText;
     searchHistory = searchHistory.filter((text) => {
       return text !== inText;
     });
     localStorage.setItem("searchHistoryData", JSON.stringify(searchHistory));
-    removeChildAll(searchHistoryList);
     createHistory();
   }
+
+  if (e.target.classList.value == "list-item") {
+    touchList(e.target.firstChild.innerText);
+  }
 });
+
+const touchList = (touchListText) => {
+  if (searchHistory.includes(touchListText)) {
+    searchHistory = searchHistory.filter((text) => {
+      return text !== touchListText;
+    });
+    searchHistory.unshift(touchListText);
+    localStorage.setItem("searchHistoryData", JSON.stringify(searchHistory));
+  }
+};
 
 searchBtn.addEventListener("click", () => {
   if (!searchHistory.includes(searchInput.value) && searchInput.value) {
@@ -72,6 +91,11 @@ searchBtn.addEventListener("click", () => {
     } else {
       searchHistory.unshift(searchInput.value);
     }
+  } else if (searchHistory.includes(searchInput.value)) {
+    searchHistory = searchHistory.filter((text) => {
+      return text !== searchInput.value;
+    });
+    searchHistory.unshift(searchInput.value);
   }
   //검색어 저장
   localStorage.setItem("search", searchInput.value);
@@ -82,10 +106,12 @@ searchBtn.addEventListener("click", () => {
 searchDataDeleteBtn.addEventListener("click", () => {
   searchHistory = [];
   localStorage.setItem("searchHistoryData", JSON.stringify(searchHistory));
+  createHistory();
 });
 
 //모달 검색어리스트 생성
 const createHistory = () => {
+  removeChildAll(searchHistoryList);
   if (searchHistory.length > 0) {
     searchHistory.forEach((v) => {
       const searchList = document.createElement("li");
@@ -98,6 +124,7 @@ const createHistory = () => {
       const deleteImage = document.createElement("img");
 
       listItem.setAttribute("class", "list-item");
+      listItem.setAttribute("href", `/search/?q=${v}`);
       serachText.setAttribute("class", "txt-item");
       deleteBtn.setAttribute("class", "btn-del");
       deleteImage.setAttribute("src", "../src/assets/images/icon-close.svg");

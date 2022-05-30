@@ -1,1 +1,126 @@
 @charset "UTF-8";
+
+* {
+  font-family: Pretendard, sans-serif;
+}
+
+.footer-area {
+  overflow: hidden;
+  background-color: var(--background);
+}
+
+.footer-area .cont-footer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1118px;
+  margin: 60px auto 55px;
+}
+
+.footer-area .img-logo {
+  width: 144px;
+}
+
+.footer-area .cont-txt {
+  max-width: 480px;
+}
+
+.footer-area .txt-title {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--tertiary);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 16px;
+}
+
+.footer-area .txt-main {
+  margin-bottom: 17px;
+  color: var(--tertiary);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.footer-area .txt-copyrigt {
+  color: var(--tertiary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.footer-area .cont-btn {
+  margin: auto 0;
+}
+
+.footer-area .btn-footer {
+  padding: 11px 13px 11px 8px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 10px rgba(135, 135, 135, 0.08);
+  background-color: var(--tertiary);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.footer-area .btn-github {
+  margin-right: 20px;
+}
+
+.footer-area .btn-github::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  background: url(../assets/images/icon-github-footer.svg) no-repeat
+    center/contain;
+  vertical-align: -5px;
+}
+
+.footer-area .btn-file::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  background: url(../assets/images/icon-download.svg) no-repeat center/contain;
+  vertical-align: -5px;
+}
+
+/* Dark mode */
+.footer-area.on {
+  background-color: var(--dark);
+}
+
+.footer-area.on .txt-title.on,
+.footer-area.on .txt-main.on,
+.footer-area.on .txt-copyrigt.on {
+  color: var(--secondary);
+}
+
+.footer-area.on .btn-footer.on {
+  background-color: var(--secondary);
+  color: var(--dark);
+}
+
+.footer-area.on .btn-github::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  background: url(../assets/images/icon-github-darkmode-footer.svg) no-repeat
+    center/contain;
+  vertical-align: -5px;
+}
+
+.footer-area.on .btn-file::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  background: url(../assets/images/icon-download-darkmode.svg) no-repeat
+    center/contain;
+  vertical-align: -5px;
+}
