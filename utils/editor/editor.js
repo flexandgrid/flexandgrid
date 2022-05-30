@@ -1920,14 +1920,19 @@
         .replace(/\s+/g, ' ')
         .replace(Editor.CSS_STRING, (match) => {
           const index = match.indexOf('{');
-          const selectors = match.slice(0, index).split(', ');
-          const rest = match.slice(index);
+          const selectors = match
+            .slice(0, index)
+            .split(', ')
+            .map((selector) => selector.trim());
+          const rest = match
+            .slice(index)
+            .replace(/((?<=[{}:;])\s+)|(\s+(?=[{}:;]))/g, '');
           return (
             selectors
               .map(
                 (selector) => `.fg-editor.editor-${this._editorId} ${selector}`
               )
-              .join(', ') + rest
+              .join(',') + rest
           );
         });
       return stylesheet;
