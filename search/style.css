@@ -1,196 +1,217 @@
 @charset "UTF-8";
 
 .sr-only {
-  position: absolute;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  clip: rect(0, 0, 0, 0);
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
 }
 
 .header-temporary {
-  height: 80px;
-  border: 1px solid #999;
-  box-sizing: border-box;
+    height: 80px;
+    border: 1px solid #999;
+    box-sizing: border-box;
 }
 
 .main {
-  margin: 120px 160px 0 160px;
+    margin: 120px 160px 0 160px;
 }
 
 .text-search {
-  margin: 0 0 10px 20px;
-  font-size: 36px;
-  line-height: 44px;
-  color: #3f3f46;
+    margin: 0 0 10px 20px;
+    font-size: 36px;
+    line-height: 44px;
+    color: #3f3f46;
 }
 
 .text-search-count {
-  margin: 0 0 25px 20px;
-  font-size: 12px;
-  line-height: 16px;
-  color: #878787;
+    margin: 0 0 25px 20px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #878787;
 }
 
 /* 모달 엑스버튼 이미지 안눌리게 */
 .close-img {
-  pointer-events: none;
+    pointer-events: none;
 }
-
 
 /* 헤더css 일시적으로 가져왔습니다. => 재사용성 고려해 selector 수정해보았습니다. */
 
 /* .a11y-hidden : 웹접근성 위해 - 텍스트는 눈에 보이지 않지만 스크린 리더기가 읽을 수 있음 */
 .a11y-hidden {
-  /* 스크린 리더가 읽을 수 있도록 사이즈를 설정함 */
-  width: 1px;
-  height: 1px;
-  /* 레이아웃에 영향을 끼치지 않도록 포지션 설정 */
-  position: absolute;
-  /* 이하 눈에 보이는 부분은 제거 */
-  overflow: hidden;
-  /* 네개의 좌표로 지정한 직사각형 모양대로 요소를 잘라내는 속성
+    /* 스크린 리더가 읽을 수 있도록 사이즈를 설정함 */
+    width: 1px;
+    height: 1px;
+    /* 레이아웃에 영향을 끼치지 않도록 포지션 설정 */
+    position: absolute;
+    /* 이하 눈에 보이는 부분은 제거 */
+    overflow: hidden;
+    /* 네개의 좌표로 지정한 직사각형 모양대로 요소를 잘라내는 속성
     포토샵의 mask 효과와 비슷
     position 속성 값이 absolute 혹은 fixed인 요소여야하고,
     만약 overflow 속성 값이 visible일 경우에는 적용이 되지 않음
      */
-  clip: rect(1px 1px 1px 1px);
-  margin: 0;
+    clip: rect(1px 1px 1px 1px);
+    margin: 0;
 }
 
 .gnb-header {
-  width: 100%;
-  height: 80px;
-  padding: 0 160px;
-  box-sizing: border-box;
-  color: var(--secondary);
+    width: 100%;
+    height: 80px;
+    padding: 0 160px;
+    box-sizing: border-box;
+    color: var(--secondary);
 }
 
 .gnb-header nav {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
 }
 
 .gnb-header .header-logo {
-  display: inline-block;
-  width: 144px;
-  height: 20px;
-  background: url(/src/assets/images/logo.svg) no-repeat;
+    display: inline-block;
+    width: 144px;
+    height: 20px;
+    background: url(/src/assets/images/logo.svg) no-repeat;
 }
 
 .gnb-header ul.nav-left {
-  display: flex;
-  box-sizing: border-box;
+    display: flex;
+    box-sizing: border-box;
 }
 
 .gnb-header nav ul.nav-left li a {
-  line-height: 28px;
+    line-height: 28px;
 }
 
 .gnb-header ul.nav-left li {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .gnb-header ul.nav-left li {
-  margin-right: 30px;
-  padding: 26px 0;
+    margin-right: 30px;
+    padding: 26px 0;
 }
 
 .gnb-header ul.nav-left li:last-child {
-  margin-right: 0;
+    margin-right: 0;
 }
 
 .gnb-header ul.nav-left li:first-child {
-  margin-right: 32px;
-  padding: 30px 0;
+    margin-right: 32px;
+    padding: 30px 0;
 }
 
 .gnb-header nav ul.nav-right {
-  display: flex;
-  box-sizing: border-box;
-  padding: 20px 0;
+    display: flex;
+    box-sizing: border-box;
+    padding: 20px 0;
 }
 
 .gnb-header .search {
-  position: relative;
+    position: relative;
 }
 
 .search-input {
-  width: 265px;
-  height: 40px;
-  padding: 8px 54px 8px 30px;
-  background-color: var(--background);
-  border: 1px solid var(--border);
-  border-radius: 30px;
+    width: 265px;
+    height: 40px;
+    padding: 8px 54px 8px 30px;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 30px;
 }
 
 .search-btn {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  top: 8px;
-  right: 20px;
-  background: url(/src/assets/images/icon-search.svg) no-repeat;
-  color: transparent;
-  font-size: 1;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 8px;
+    right: 20px;
+    background: url(/src/assets/images/icon-search.svg) no-repeat;
+    color: transparent;
+    font-size: 1;
 }
 
 .darkmode-btn {
-  width: 37px;
-  height: 37px;
-  display: flex;
-  justify-content: center;
-  border-radius: 50%;
-  margin-left: 30.5px;
-  background: url(/src/assets/images/icon-darkmode.svg) center no-repeat;
-  color: transparent;
-  font-size: 1;
+    width: 37px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    margin-left: 30.5px;
+    background: url(/src/assets/images/icon-darkmode.svg) center no-repeat;
+    color: transparent;
+    font-size: 1;
 }
 
 .github-btn {
-  width: 37px;
-  height: 37px;
-  display: flex;
-  justify-content: center;
-  border-radius: 50%;
-  margin-left: 22px;
-  background: url(/src/assets/images/icon-github.svg) center no-repeat;
-  color: transparent;
-  font-size: 1;
+    width: 37px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    margin-left: 22px;
+    background: url(/src/assets/images/icon-github.svg) center no-repeat;
+    color: transparent;
+    font-size: 1;
 }
 
 /* 다크모드 */
 /* header에만 on 클래스를 붙이면 다크모드로 전환되도록 수정했습니다. */
 .gnb-header.on {
-  background-color: var(--primary);
-  color: var(--background);
+    background-color: var(--primary);
+    color: var(--background);
 }
 
 .gnb-header.on .header-logo {
-  display: inline-block;
-  width: 144px;
-  height: 20px;
-  background: url(/src/assets/images/logo-darkmode.svg) no-repeat;
+    display: inline-block;
+    width: 144px;
+    height: 20px;
+    background: url(/src/assets/images/logo-darkmode.svg) no-repeat;
 }
 
 .gnb-header.on nav li {
-  color: var(--background);
+    color: var(--background);
 }
 
 .gnb-header.on .search-input {
-  background-color: var(--black);
-  border: none;
+    background-color: var(--black);
+    border: none;
 }
 
 .gnb-header.on .darkmode-btn {
-  background: url(/src/assets/images/icon-moon-dark.svg) center no-repeat;
+    background: url(/src/assets/images/icon-moon-dark.svg) center no-repeat;
 }
 
 .gnb-header.on .github-btn {
-  background: url(/src/assets/images/icon-github-dark.svg) center no-repeat;
+    background: url(/src/assets/images/icon-github-dark.svg) center no-repeat;
+}
+
+/* 버튼 */
+.upBtn {
+    position: fixed;
+    bottom: 60px;
+    right: 160px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #3f3f46;
+    box-shadow: 0px 10px 25px rgba(135, 135, 135, 0.15);
+    background-image: url("../src/assets/images/chevron-down.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.upBtn.on {
+    background: #e0e0e0;
+    background-image: url("../src/assets/images/chevron-down-darkmode.svg");
+    background-position: center;
+    background-repeat: no-repeat;
 }

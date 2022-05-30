@@ -18,7 +18,7 @@ const searchData = localStorage.getItem("searchHistoryData");
 //데이터가 있으면 배열에 넣어줌
 let searchHistory = [];
 if (searchData !== null) {
-  searchHistory = JSON.parse(searchData);
+    searchHistory = JSON.parse(searchData);
 }
 
 const searchHistoryList = document.querySelector(".list-history");
@@ -28,7 +28,7 @@ const searchText = document.querySelector(".text-search");
 const searchResultCount = document.querySelector(".text-search-count");
 
 const URLSearch = new URLSearchParams(location.search);
-const searchQuery = URLSearch.get('q');
+const searchQuery = URLSearch.get("q");
 
 //검색한 텍스트 표시
 searchText.innerText = `Results for "${searchQuery}"`;
@@ -37,86 +37,92 @@ searchResultCount.innerText = `Showing ${searchItem.length} results`;
 
 //검색창이 눌리면 모달창이 노출
 searchInput.addEventListener("click", () => {
-  searchModal.classList.add("clicked");
-  removeChildAll(searchHistoryList);
-  createHistory();
+    searchModal.classList.add("clicked");
+    removeChildAll(searchHistoryList);
+    createHistory();
 });
 
 const removeChildAll = (ele) => {
-  while (ele.hasChildNodes()) {
-    ele.removeChild(ele.firstChild);
-  }
+    while (ele.hasChildNodes()) {
+        ele.removeChild(ele.firstChild);
+    }
 };
 
 document.addEventListener("click", (e) => {
-  //검색창 말고 다른 곳을 클릭하면 모달 사라짐
-  if (e.target.classList.value !== "search-input") {
-    if (e.target.classList.value !== "btn-del")
-      searchModal.classList.remove("clicked");
-  }
+    //검색창 말고 다른 곳을 클릭하면 모달 사라짐
+    if (e.target.classList.value !== "search-input") {
+        if (e.target.classList.value !== "btn-del")
+            searchModal.classList.remove("clicked");
+    }
 
-  //모달에 있는 X버튼 터치 시 해당 아이템 삭제
-  if (e.target.classList.value == "btn-del") {
-    e.preventDefault(); 
-    const inText = e.target.previousSibling.innerText;
-    searchHistory = searchHistory.filter((text) => {
-      return text !== inText;
-    });
-    localStorage.setItem("searchHistoryData", JSON.stringify(searchHistory));
-    removeChildAll(searchHistoryList);
-    createHistory();
-  }
+    //모달에 있는 X버튼 터치 시 해당 아이템 삭제
+    if (e.target.classList.value == "btn-del") {
+        e.preventDefault();
+        const inText = e.target.previousSibling.innerText;
+        searchHistory = searchHistory.filter((text) => {
+            return text !== inText;
+        });
+        localStorage.setItem(
+            "searchHistoryData",
+            JSON.stringify(searchHistory)
+        );
+        removeChildAll(searchHistoryList);
+        createHistory();
+    }
 });
 
 searchBtn.addEventListener("click", () => {
-  if (!searchHistory.includes(searchInput.value) && searchInput.value) {
-    if (searchHistory.length > 4) {
-      searchHistory.pop();
-      searchHistory.unshift(searchInput.value);
-    } else {
-      searchHistory.unshift(searchInput.value);
+    if (!searchHistory.includes(searchInput.value) && searchInput.value) {
+        if (searchHistory.length > 4) {
+            searchHistory.pop();
+            searchHistory.unshift(searchInput.value);
+        } else {
+            searchHistory.unshift(searchInput.value);
+        }
     }
-  }
-  //검색어 저장
-  localStorage.setItem("search", searchInput.value);
-  localStorage.setItem("searchHistoryData", JSON.stringify(searchHistory));
-  location.href = `http://${location.host}/search/index.html`;
+    //검색어 저장
+    localStorage.setItem("search", searchInput.value);
+    localStorage.setItem("searchHistoryData", JSON.stringify(searchHistory));
+    location.href = `http://${location.host}/search/index.html`;
 });
 
 searchDataDeleteBtn.addEventListener("click", () => {
-  searchHistory = [];
-  localStorage.setItem("searchHistoryData", JSON.stringify(searchHistory));
+    searchHistory = [];
+    localStorage.setItem("searchHistoryData", JSON.stringify(searchHistory));
 });
 
 //모달 검색어리스트 생성
 const createHistory = () => {
-  if (searchHistory.length > 0) {
-    searchHistory.forEach((v) => {
-      const searchList = document.createElement("li");
-      const listItem = document.createElement("a");
+    if (searchHistory.length > 0) {
+        searchHistory.forEach((v) => {
+            const searchList = document.createElement("li");
+            const listItem = document.createElement("a");
 
-      const serachText = document.createElement("strong");
-      serachText.appendChild(document.createTextNode(v));
+            const serachText = document.createElement("strong");
+            serachText.appendChild(document.createTextNode(v));
 
-      const deleteBtn = document.createElement("button");
-      const deleteImage = document.createElement("img");
+            const deleteBtn = document.createElement("button");
+            const deleteImage = document.createElement("img");
 
-      listItem.setAttribute("class", "list-item");
-      listItem.setAttribute("href", `/search/?q=${v}`);
-      serachText.setAttribute("class", "txt-item");
-      deleteBtn.setAttribute("class", "btn-del");
-      deleteImage.setAttribute("src", "../src/assets/images/icon-close.svg");
-      deleteImage.setAttribute("alt", "삭제버튼");
-      deleteImage.setAttribute("class", "close-img");
+            listItem.setAttribute("class", "list-item");
+            listItem.setAttribute("href", `/search/?q=${v}`);
+            serachText.setAttribute("class", "txt-item");
+            deleteBtn.setAttribute("class", "btn-del");
+            deleteImage.setAttribute(
+                "src",
+                "../src/assets/images/icon-close.svg"
+            );
+            deleteImage.setAttribute("alt", "삭제버튼");
+            deleteImage.setAttribute("class", "close-img");
 
-      deleteBtn.appendChild(deleteImage);
+            deleteBtn.appendChild(deleteImage);
 
-      listItem.appendChild(serachText);
-      listItem.appendChild(deleteBtn);
+            listItem.appendChild(serachText);
+            listItem.appendChild(deleteBtn);
 
-      searchList.appendChild(listItem);
+            searchList.appendChild(listItem);
 
-      searchHistoryList.appendChild(searchList);
-    });
-  }
+            searchHistoryList.appendChild(searchList);
+        });
+    }
 };
