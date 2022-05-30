@@ -180,6 +180,7 @@
   max-height: var(--inner);
   min-height: var(--min-height);
   height: 100%;
+  padding: 5px;
 }
 
 .fg-editor.free-mode .wrapper-preview {
@@ -710,6 +711,12 @@
   color: var(--gray-8);
   line-height: var(--code-line);
   resize: none;
+}
+
+.fg-editor .item.stressed,
+.fg-editor .container.stressed {
+  outline: 3px solid var(--primary-3) !important;
+  transition: outline 0.1s;
 }
 
 .fg-editor.carousel-layout {

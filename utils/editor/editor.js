@@ -1036,6 +1036,14 @@
 
       codeLines.forEach((line, index) => {
         const row = document.createElement('tr');
+        Tag.addEventListeners(row, {
+          mouseover: () => {
+            line.tag.elem.classList.add('stressed');
+          },
+          mouseout: () => {
+            line.tag.elem.classList.remove('stressed');
+          }
+        });
 
         const lineNumber = Tag.createElement(
           'td',
