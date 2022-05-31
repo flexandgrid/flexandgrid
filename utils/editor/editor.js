@@ -2192,7 +2192,7 @@
         const { top } = currentTarget.getBoundingClientRect();
         const parentOffsetY = clientY - top;
         const letterX = Math.floor((offsetX - 30) / letterWidth + 0.5);
-        const letterY = Math.floor(parentOffsetY / Editor.CODE_HEIGHT);
+        let letterY = Math.floor(parentOffsetY / Editor.CODE_HEIGHT);
 
         const scrollTop = this._codeWrapper.scrollTop;
         this._codeWrapper.removeAllChildren();
@@ -2204,6 +2204,9 @@
         this._codeWrapper.scrollTop = scrollTop;
 
         const textareaLines = textarea.value.split('\n');
+        if (letterY >= textareaLines.length) {
+          letterY = textareaLines.length - 1;
+        }
         const letterPos =
           (letterX > textareaLines[letterY].length
             ? textareaLines[letterY].length
