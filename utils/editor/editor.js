@@ -2606,7 +2606,6 @@
       }
       this._updateHtml();
       this._updatePreviewStyle();
-      console.log(this);
     }
   }
 
