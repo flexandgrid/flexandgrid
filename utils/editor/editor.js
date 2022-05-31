@@ -440,6 +440,13 @@
             }
             // trim(맨 앞에 공백문자 ' '만 제거하고 \n는 살림, 맨 뒤는 다 없앰)
             trimmedValue = trimmedValue.replace(/^\u0020+|\s+$/u, '');
+            // 개행을 했는데 맨 첫 번째 줄이 개행문자로 시작하지 않으면 맨 앞에 개행문자 추가
+            if (
+              [...trimmedValue].filter((v) => v === '\n').length > 0 &&
+              trimmedValue[0] !== '\n'
+            ) {
+              trimmedValue = '\n' + trimmedValue;
+            }
             return {
               prop: prop.trim(),
               value: trimmedValue
@@ -2599,7 +2606,6 @@
       }
       this._updateHtml();
       this._updatePreviewStyle();
-      console.log(this);
     }
   }
 
