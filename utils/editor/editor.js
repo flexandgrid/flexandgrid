@@ -999,8 +999,8 @@
       textarea.value = codeLines.join('\n');
       textarea.style.height = codeLines.length * Editor.CODE_HEIGHT + 'px';
       Tag.addEventListeners(textarea, {
-        input: (e) => this._textareaInputEventListener(e, numbers),
-        keydown: (e) => this._textareaKeydownEventListener(e),
+        input: () => this._updateLineNumbers(textarea, numbers),
+        keydown: (e) => this._textareaKeydownEventListener(e, numbers),
         blur: () => this._textTableBlurEventListener()
       });
       Tag.appendChildren(textareaWrapper, [numbers, textarea]);
@@ -2192,7 +2192,7 @@
         const { top } = currentTarget.getBoundingClientRect();
         const parentOffsetY = clientY - top;
         const letterX = Math.floor((offsetX - 30) / letterWidth + 0.5);
-        const letterY = Math.floor(parentOffsetY / Editor.CODE_HEIGHT);
+        let letterY = Math.floor(parentOffsetY / Editor.CODE_HEIGHT);
 
         const scrollTop = this._codeWrapper.scrollTop;
         this._codeWrapper.removeAllChildren();
@@ -2204,6 +2204,9 @@
         this._codeWrapper.scrollTop = scrollTop;
 
         const textareaLines = textarea.value.split('\n');
+        if (letterY >= textareaLines.length) {
+          letterY = textareaLines.length - 1;
+        }
         const letterPos =
           (letterX > textareaLines[letterY].length
             ? textareaLines[letterY].length
@@ -2230,7 +2233,7 @@
       this._codeWrapper.appendChild(table);
     }
 
-    _textareaKeydownEventListener(e) {
+    _textareaKeydownEventListener(e, numbers) {
       const { currentTarget, key } = e;
       const { value } = currentTarget;
       const startIndex = currentTarget.selectionStart;
@@ -2241,6 +2244,7 @@
         case 'Enter':
           {
             if (curValue.includes('{') || curValue.includes('}')) {
+              this._updateLineNumbers(currentTarget, numbers);
               return;
             }
 
@@ -2252,10 +2256,16 @@
               value[closingIndex] === '}'
             ) {
               e.preventDefault();
+              const prevValue = currentTarget.value;
               currentTarget.value =
                 value.slice(0, startIndex) + '\n  \n' + value.slice(endIndex);
               currentTarget.selectionStart = currentTarget.selectionEnd =
                 startIndex + 3;
+              this._updateLineNumbers(currentTarget, numbers);
+
+              if (endIndex === prevValue.length - 1) {
+                this._codeWrapper.scrollTop += Editor.CODE_HEIGHT * 2;
+              }
               return;
             }
 
@@ -2265,6 +2275,7 @@
                 break;
               }
               if (value[openingIndex] === '}' || openingIndex < 0) {
+                this._updateLineNumbers(currentTarget, numbers);
                 return;
               }
             }
@@ -2277,6 +2288,7 @@
                 value[closingIndex] === '{' ||
                 closingIndex === value.length
               ) {
+                this._updateLineNumbers(currentTarget, numbers);
                 return;
               }
             }
@@ -2297,26 +2309,8 @@
             startIndex;
           break;
       }
-    }
 
-    _textareaInputEventListener({ currentTarget }, numbers) {
-      currentTarget.style.height = 'auto';
-      currentTarget.style.height = currentTarget.scrollHeight + 'px';
-      numbers.removeAllChildren();
-      for (
-        let i = 0;
-        i < currentTarget.scrollHeight / Editor.CODE_HEIGHT;
-        i++
-      ) {
-        const lineNumber = Tag.createElement(
-          'span',
-          {
-            class: 'number-line'
-          },
-          i + 1
-        );
-        numbers.appendChild(lineNumber);
-      }
+      this._updateLineNumbers(currentTarget, numbers);
     }
 
     _textTableKeydownEventListener() {
@@ -2558,6 +2552,22 @@
         valueElem,
         ';'
       ]);
+    }
+
+    _updateLineNumbers(textarea, numbers) {
+      textarea.style.height = 'auto';
+      textarea.style.height = textarea.scrollHeight + 'px';
+      numbers.removeAllChildren();
+      for (let i = 0; i < textarea.scrollHeight / Editor.CODE_HEIGHT; i++) {
+        const lineNumber = Tag.createElement(
+          'span',
+          {
+            class: 'number-line'
+          },
+          i + 1
+        );
+        numbers.appendChild(lineNumber);
+      }
     }
 
     // _editor에 children을 순서대로 append
