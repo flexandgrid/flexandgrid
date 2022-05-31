@@ -12,7 +12,7 @@
 
   <div style="display: flex; align-items: flex-start; gap: 20px;">
     <!-- carousel mode (flex) -->
-    <div data-mode="carousel" data-title="Flex Code" class="fg-editor">
+    <div data-mode="carousel" data-title="Flex Code" class="fg-editor css-flex">
       <code data-struct="[1][2][2][2]">
         .container {
           display: flex;
@@ -63,10 +63,6 @@
             "sidebar content3 content3"
             "footer footer footer";
         }
-        .item {
-          width: auto !important;
-          height: auto !important;
-        }
         .item1 {
           grid-area: header;
         }
@@ -104,7 +100,7 @@
   <br />
 
   <!-- snippet mode (flex) -->
-  <div data-mode="snippet" class="fg-editor">
+  <div data-mode="snippet" class="fg-editor css-flex">
     <code data-snippet="flex-start" data-item="3">
       .container {
         display: flex;
@@ -128,7 +124,7 @@
   <br />
 
   <!-- snippet mode (grid) -->
-  <div data-mode="snippet" class="fg-editor theme-grid">
+  <div data-mode="snippet" class="fg-editor theme-grid css-grid">
     <code data-snippet="flex-start" data-item="6">
       .container {
         display: grid;
@@ -177,50 +173,52 @@
 
   <br />
 
-  <!-- snippet mode (dark) -->
-  <div data-mode="snippet" class="fg-editor theme-dark">
-    <code data-snippet="flex-start" data-item="3">
-      .container {
-        display: flex;
-        justify-content: flex-start;
-      }
-    </code>
-    <code data-snippet="center" data-item="3">
-      .container {
-        display: flex;
-        justify-content: center;
-      }
-    </code>
-    <code data-snippet="flex-end">
-      .container {
-        display: flex;
-        justify-content: flex-end;
-      }
-    </code>
-  </div>
-
-  <br />
-
-  <!-- snippet mode (grid dark) -->
-  <div data-mode="snippet" class="fg-editor theme-grid theme-dark">
-    <code data-snippet="flex-start" data-item="3">
-      .container {
-        display: flex;
-        justify-content: flex-start;
-      }
-    </code>
-    <code data-snippet="center" data-item="3">
-      .container {
-        display: flex;
-        justify-content: center;
-      }
-    </code>
-    <code data-snippet="flex-end">
-      .container {
-        display: flex;
-        justify-content: flex-end;
-      }
-    </code>
+  <div class="on">
+    <!-- snippet mode (dark) -->
+    <div data-mode="snippet" class="fg-editor theme-dark css-flex">
+      <code data-snippet="flex-start" data-item="3">
+        .container {
+          display: flex;
+          justify-content: flex-start;
+        }
+      </code>
+      <code data-snippet="center" data-item="3">
+        .container {
+          display: flex;
+          justify-content: center;
+        }
+      </code>
+      <code data-snippet="flex-end">
+        .container {
+          display: flex;
+          justify-content: flex-end;
+        }
+      </code>
+    </div>
+  
+    <br />
+  
+    <!-- snippet mode (grid dark) -->
+    <div data-mode="snippet" class="fg-editor theme-grid theme-dark css-grid">
+      <code data-snippet="flex-start" data-item="3">
+        .container {
+          display: flex;
+          justify-content: flex-start;
+        }
+      </code>
+      <code data-snippet="center" data-item="3">
+        .container {
+          display: flex;
+          justify-content: center;
+        }
+      </code>
+      <code data-snippet="flex-end">
+        .container {
+          display: flex;
+          justify-content: flex-end;
+        }
+      </code>
+    </div>
   </div>
 
   <br />

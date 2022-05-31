@@ -170,9 +170,15 @@
   }
 
   class Editor {
+    // CSS 선택자 파싱을 위한 정규표현식 문자열
+    static CSS_SELECTOR =
+      '((\\.((container\\d*)|(item\\d*)))+(\\[[^:{}]*\\])?(:[^:{}]*)?(::[^:{}]*)?\\s*)+';
+
     // CSS 파싱을 위한 정규표현식
-    static CSS_STRING =
-      /(?<selector>((\.((container\d*)|(item\d*)))+(\[[^:\{\}]*\])?(:[^:\{\}]*)?(::[^:\{\}]*)?\s*)+)(,\s*\k<selector>)*\{[^{}]*\}/g;
+    static CSS_STRING = new RegExp(
+      `${Editor.CSS_SELECTOR}(,\\s*${Editor.CSS_SELECTOR})*\\{[^{}]*\\}`,
+      'g'
+    );
 
     // data-item을 입력하지 않았을 경우 기본값
     static DEFAULT_ITEM = 3;
@@ -186,66 +192,219 @@
     // 코드 라인 한 줄 높이
     static CODE_HEIGHT = 24;
 
-    // CSS 프로퍼티 정보
-    static CSS_PROPS_INFO = {
-      'align-content': [
-        'center',
-        'flex-end',
-        'flex-start',
-        'normal',
-        'space-around',
-        'space-between',
-        'space-evenly'
-      ],
-      'align-items': ['center', 'flex-end', 'flex-start', 'normal'],
-      'align-self': [
-        'center',
-        'flex-end',
-        'flex-start',
-        'normal',
-        'space-around',
-        'space-between',
-        'space-evenly'
-      ],
-      'column-gap': 'text',
-      display: ['block', 'flex', 'grid'],
-      flex: 'text',
-      'flex-basis': 'text',
-      'flex-direction': ['column', 'column-reverse', 'row', 'row-reverse'],
-      'flex-grow': 'text',
-      'flex-shrink': 'text',
-      'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse'],
-      gap: 'text',
-      grid: 'texts',
-      'grid-area': 'texts',
-      'grid-auto-columns': 'text',
-      'grid-auto-rows': 'text',
-      'grid-column': 'text',
-      'grid-column-end': 'text',
-      'grid-column-start': 'text',
-      'grid-template-areas': 'texts',
-      'grid-template-columns': 'text',
-      'grid-template-rows': 'text',
-      'grid-row': 'text',
-      'grid-row-end': 'text',
-      'grid-row-start': 'text',
-      height: 'text',
-      'justify-content': [
-        'center',
-        'flex-end',
-        'flex-start',
-        'normal',
-        'space-around',
-        'space-between',
-        'space-evenly'
-      ],
-      order: 'text',
-      'row-gap': 'text',
-      width: 'text'
-    };
+    // flex 속성
+    static CSS_FLEX_PROPS = [
+      {
+        prop: 'align-content',
+        values: [
+          'center',
+          'flex-end',
+          'flex-start',
+          'space-around',
+          'space-between',
+          'space-evenly'
+        ]
+      },
+      {
+        prop: 'align-items',
+        values: ['center', 'flex-end', 'flex-start', 'stretch']
+      },
+      {
+        prop: 'align-self',
+        values: ['auto', 'center', 'flex-end', 'flex-start', 'stretch']
+      },
+      {
+        prop: 'column-gap',
+        values: ['text']
+      },
+      {
+        prop: 'display',
+        values: ['block', 'flex']
+      },
+      {
+        prop: 'flex',
+        values: ['text']
+      },
+      {
+        prop: 'flex-basis',
+        values: ['text']
+      },
+      {
+        prop: 'flex-direction',
+        values: ['column', 'column-reverse', 'row', 'row-reverse']
+      },
+      {
+        prop: 'flex-grow',
+        values: ['text']
+      },
+      {
+        prop: 'flex-shrink',
+        values: ['text']
+      },
+      {
+        prop: 'flex-wrap',
+        values: ['nowrap', 'wrap', 'wrap-reverse']
+      },
+      {
+        prop: 'gap',
+        values: ['text']
+      },
+      {
+        prop: 'height',
+        values: ['text']
+      },
+      {
+        prop: 'justify-content',
+        values: [
+          'center',
+          'flex-end',
+          'flex-start',
+          'space-around',
+          'space-between',
+          'space-evenly',
+          'stretch'
+        ]
+      },
+      {
+        prop: 'order',
+        values: ['text']
+      },
+      {
+        prop: 'row-gap',
+        values: ['text']
+      },
+      {
+        prop: 'width',
+        values: ['text']
+      }
+    ];
 
-    // CSS 프로퍼티 목록
-    static CSS_PROPS = Object.keys(Editor.CSS_PROPS_INFO);
+    // grid 속성
+    static CSS_GRID_PROPS = [
+      {
+        prop: 'align-content',
+        values: [
+          'center',
+          'end',
+          'space-around',
+          'space-between',
+          'space-evenly',
+          'start'
+        ]
+      },
+      {
+        prop: 'align-items',
+        values: ['center', 'end', 'start', 'stretch']
+      },
+      {
+        prop: 'align-self',
+        values: ['auto', 'center', 'end', 'start', 'stretch']
+      },
+      {
+        prop: 'column-gap',
+        values: ['text']
+      },
+      {
+        prop: 'display',
+        values: ['block', 'grid']
+      },
+      {
+        prop: 'gap',
+        values: ['text']
+      },
+      {
+        prop: 'grid',
+        values: ['texts']
+      },
+      {
+        prop: 'grid-area',
+        values: ['texts']
+      },
+      {
+        prop: 'grid-auto-columns',
+        values: ['text']
+      },
+      {
+        prop: 'grid-auto-rows',
+        values: ['text']
+      },
+      {
+        prop: 'grid-column',
+        values: ['text']
+      },
+      {
+        prop: 'grid-column-end',
+        values: ['text']
+      },
+      {
+        prop: 'grid-column-start',
+        values: ['text']
+      },
+      {
+        prop: 'grid-template-areas',
+        values: ['texts']
+      },
+      {
+        prop: 'grid-template-columns',
+        values: ['text']
+      },
+      {
+        prop: 'grid-template-rows',
+        values: ['text']
+      },
+      {
+        prop: 'grid-row',
+        values: ['text']
+      },
+      {
+        prop: 'grid-row-end',
+        values: ['text']
+      },
+      {
+        prop: 'grid-row-start',
+        values: ['text']
+      },
+      {
+        prop: 'height',
+        values: ['text']
+      },
+      {
+        prop: 'justify-content',
+        values: [
+          'center',
+          'end',
+          'space-around',
+          'space-between',
+          'space-evenly',
+          'start',
+          'stretch'
+        ]
+      },
+      {
+        prop: 'justify-items',
+        values: ['center', 'end', 'start', 'stretch']
+      },
+      {
+        prop: 'justify-self',
+        values: ['auto', 'center', 'end', 'start', 'stretch']
+      },
+      {
+        prop: 'order',
+        values: ['text']
+      },
+      {
+        prop: 'place-items',
+        values: ['text']
+      },
+      {
+        prop: 'row-gap',
+        values: ['text']
+      },
+      {
+        prop: 'width',
+        values: ['text']
+      }
+    ];
 
     // code 태그에 있는 문자열을 파싱하여 객체로 변환
     static parseCssText(cssText) {
@@ -261,7 +420,12 @@
       }
       return matchedCssArr.map((matchedCss) => {
         const index = matchedCss.indexOf('{');
-        const selector = matchedCss.slice(0, index).trim();
+        const selector = matchedCss
+          .slice(0, index)
+          .replaceAll('\n', ' ')
+          .split(',')
+          .map((v) => v.trim())
+          .join(', ');
         const props = matchedCss
           .slice(index + 1, -1)
           .trim()
@@ -360,7 +524,7 @@
           ? [...Array(containerCount)].map(
               (_, index) => `container${index + 1}`
             )
-          : ['container'];
+          : ['container', 'item'];
       const itemCount = this._previewWrapper.querySelectorAll('.item').length;
       const items = [...Array(itemCount)].map((_, index) => `item${index + 1}`);
       return [...containers, ...items];
@@ -371,6 +535,7 @@
 
     _init() {
       this._initMode();
+      this._initProps();
       this._initSnippets();
       this._initCurCss();
       this._initCurHtml();
@@ -398,6 +563,45 @@
           'carousel-layout'
         );
       }
+    }
+
+    _initProps() {
+      let props;
+      if (this._editor.classList.contains('css-flex')) {
+        props = Editor.CSS_FLEX_PROPS;
+      } else if (this._editor.classList.contains('css-grid')) {
+        props = Editor.CSS_GRID_PROPS;
+      } else {
+        props = [];
+        Editor.CSS_FLEX_PROPS.forEach(
+          ({ prop: flexProp, values: flexValues }) => {
+            const duplicate = props.find(({ prop }) => prop === flexProp);
+            if (duplicate) {
+              duplicate.values.push(...flexValues);
+            } else {
+              props.push({ prop: flexProp, values: [...flexValues] });
+            }
+          }
+        );
+        Editor.CSS_GRID_PROPS.forEach(
+          ({ prop: gridProp, values: gridValues }) => {
+            const duplicate = props.find(({ prop }) => prop === gridProp);
+            if (duplicate) {
+              duplicate.values.push(...gridValues);
+            } else {
+              props.push({ prop: gridProp, values: [...gridValues] });
+            }
+          }
+        );
+        props.forEach(
+          ({ values }, i) => (props[i].values = [...new Set(values)])
+        );
+      }
+      this._props = props.map(({ prop }) => prop);
+      this._propsInfo = props.reduce((acc, { prop, values }) => {
+        acc[prop] = values;
+        return acc;
+      }, {});
     }
 
     _initTitle() {
@@ -636,7 +840,7 @@
           this._createSelectorCodeLine(line, codeLine, selectorIndex);
         } else if (line.includes(':')) {
           const [prop, value] = line.split(':');
-          if (Editor.CSS_PROPS_INFO[prop] === 'texts') {
+          if (this._propsInfo[prop]?.[0] === 'texts') {
             extraRows = this._createPropCodeLines(
               prop,
               value.split('\n'),
@@ -795,7 +999,8 @@
       textarea.value = codeLines.join('\n');
       textarea.style.height = codeLines.length * Editor.CODE_HEIGHT + 'px';
       Tag.addEventListeners(textarea, {
-        input: (e) => this._textAreaInputEventListener(e, numbers),
+        input: (e) => this._textareaInputEventListener(e, numbers),
+        keydown: (e) => this._textareaKeydownEventListener(e),
         blur: () => this._textTableBlurEventListener()
       });
       Tag.appendChildren(textareaWrapper, [numbers, textarea]);
@@ -831,6 +1036,14 @@
 
       codeLines.forEach((line, index) => {
         const row = document.createElement('tr');
+        Tag.addEventListeners(row, {
+          mouseover: () => {
+            line.tag.elem.classList.add('stressed');
+          },
+          mouseout: () => {
+            line.tag.elem.classList.remove('stressed');
+          }
+        });
 
         const lineNumber = Tag.createElement(
           'td',
@@ -1008,7 +1221,7 @@
 
     _createValueCodeButton(prop, value, selectorIndex, propIndex) {
       let valueElem;
-      if (Editor.CSS_PROPS_INFO[prop] === 'text') {
+      if (this._propsInfo[prop]?.[0] === 'text') {
         valueElem = Tag.createElement('input', {
           class: 'button-code value-code',
           value,
@@ -1539,30 +1752,6 @@
         output.push(row);
       });
       return output;
-
-      const propSpan = Tag.createElement(
-        'span',
-        {
-          class: 'prop-code'
-        },
-        prop
-      );
-      const valueElem = Tag.createElement(
-        'span',
-        {
-          class: 'value-code'
-        },
-        //!! flag 임시 조치 -> 여러 줄일 때 코드 줄 여러 개 생성해서 보여줘야 함
-        value.trim()
-      );
-
-      Tag.appendChildren(codeLine, [
-        '\u00A0\u00A0',
-        propSpan,
-        ':\u00A0',
-        valueElem,
-        ';'
-      ]);
     }
 
     _createDeleteTagButton(tag) {
@@ -1701,7 +1890,7 @@
 
     _createPropDropdownItems() {
       return (list) => {
-        Editor.CSS_PROPS.forEach((prop) => {
+        this._props.forEach((prop) => {
           const item = Tag.createElement('li', {}, prop);
           list.appendChild(item);
         });
@@ -1712,7 +1901,7 @@
       return (list) => {
         const { selectorIndex, propIndex } = targetCode.dataset;
         const curProp = this._curCss[selectorIndex].props[propIndex].prop;
-        Editor.CSS_PROPS_INFO[curProp].forEach((value) => {
+        this._propsInfo[curProp].forEach((value) => {
           const item = Tag.createElement('li', {}, value);
           list.appendChild(item);
         });
@@ -1739,14 +1928,19 @@
         .replace(/\s+/g, ' ')
         .replace(Editor.CSS_STRING, (match) => {
           const index = match.indexOf('{');
-          const selectors = match.slice(0, index).split(', ');
-          const rest = match.slice(index);
+          const selectors = match
+            .slice(0, index)
+            .split(', ')
+            .map((selector) => selector.trim());
+          const rest = match
+            .slice(index)
+            .replace(/((?<=[{}:;])\s+)|(\s+(?=[{}:;]))/g, '');
           return (
             selectors
               .map(
                 (selector) => `.fg-editor.editor-${this._editorId} ${selector}`
               )
-              .join(', ') + rest
+              .join(',') + rest
           );
         });
       return stylesheet;
@@ -1899,8 +2093,7 @@
       if (targetCode.classList.contains('prop-code')) {
         this._createPropDropdown(selectorIndex, propIndex);
         scrollTop =
-          Editor.CSS_PROPS.indexOf(targetCode.textContent) *
-          Editor.DROPDOWN_HEIGHT;
+          this._props.indexOf(targetCode.textContent) * Editor.DROPDOWN_HEIGHT;
       }
       if (targetCode.classList.contains('value-code')) {
         const prop = this._curCss[selectorIndex].props[propIndex].prop;
@@ -1909,7 +2102,7 @@
         }
         this._createValueDropdown(targetCode, selectorIndex, propIndex);
         scrollTop =
-          Editor.CSS_PROPS_INFO[prop].indexOf(targetCode.textContent) *
+          this._propsInfo[prop].indexOf(targetCode.textContent) *
           Editor.DROPDOWN_HEIGHT;
       }
       targetCode.appendChild(this._dropdown);
@@ -2037,7 +2230,76 @@
       this._codeWrapper.appendChild(table);
     }
 
-    _textAreaInputEventListener({ currentTarget }, numbers) {
+    _textareaKeydownEventListener(e) {
+      const { currentTarget, key } = e;
+      const { value } = currentTarget;
+      const startIndex = currentTarget.selectionStart;
+      const endIndex = currentTarget.selectionEnd;
+      const curValue = value.slice(startIndex, endIndex);
+
+      switch (key) {
+        case 'Enter':
+          {
+            if (curValue.includes('{') || curValue.includes('}')) {
+              return;
+            }
+
+            let openingIndex = startIndex;
+            let closingIndex = endIndex;
+
+            if (
+              value[openingIndex - 1] === '{' &&
+              value[closingIndex] === '}'
+            ) {
+              e.preventDefault();
+              currentTarget.value =
+                value.slice(0, startIndex) + '\n  \n' + value.slice(endIndex);
+              currentTarget.selectionStart = currentTarget.selectionEnd =
+                startIndex + 3;
+              return;
+            }
+
+            while (true) {
+              openingIndex--;
+              if (value[openingIndex] === '{') {
+                break;
+              }
+              if (value[openingIndex] === '}' || openingIndex < 0) {
+                return;
+              }
+            }
+            while (true) {
+              closingIndex++;
+              if (value[closingIndex] === '}') {
+                break;
+              }
+              if (
+                value[closingIndex] === '{' ||
+                closingIndex === value.length
+              ) {
+                return;
+              }
+            }
+
+            e.preventDefault();
+
+            currentTarget.value =
+              value.slice(0, startIndex) + '\n  ' + value.slice(endIndex);
+            currentTarget.selectionStart = currentTarget.selectionEnd =
+              startIndex + 3;
+          }
+          break;
+
+        case '{':
+          currentTarget.value =
+            value.slice(0, startIndex) + '}' + value.slice(endIndex);
+          currentTarget.selectionStart = currentTarget.selectionEnd =
+            startIndex;
+          break;
+      }
+    }
+
+    _textareaInputEventListener({ currentTarget }, numbers) {
       currentTarget.style.height = 'auto';
       currentTarget.style.height = currentTarget.scrollHeight + 'px';
       numbers.removeAllChildren();

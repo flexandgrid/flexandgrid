@@ -60,37 +60,16 @@ header.on .github {
 }
 
 .carousel-flex::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    right: -40px;
-    height: 368px;
-    border-right: 2px solid #EFEFEF;
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: -40px;
+  height: 368px;
+  border-right: 2px solid #efefef;
 }
 
 .fg-editor {
     width: 500px;
-}
-
-.fg-editor .wrapper-preview {
-    overflow: visible;
-    /* overflow: auto; */
-}
-
-.fg-editor .container:not(.item):hover {
-    background-color: #fff;
-}
-
-.fg-editor.carousel-flex .item:not(.container) {
-    box-shadow: 0 6px 20px rgba(81, 69, 159, 0.1);
-}
-
-.fg-editor.carousel-grid .item:not(.container) {
-    box-shadow: 0 4px 39px rgba(246, 134, 106, 0.09);
-}
-
-.fg-editor .wrapper-code {
-    overflow-x: hidden;
 }
 
 /* topbutton */
@@ -116,53 +95,40 @@ header.on .github {
 }
 
 @media screen and (max-width: 979px) {
-    .section-carousel {
-        flex-wrap: wrap;
-        margin: 0 20px;
-    }
+  .section-carousel {
+    flex-wrap: wrap;
+    margin: 0 20px;
+  }
 
-    .fg-editor {
-        width: 100%;
-    }
+  .fg-editor {
+    width: 100%;
+  }
 
-    .carousel-flex::before {
-        display: none;
-    }
+  .carousel-flex::before {
+    display: none;
+  }
 
-    .carousel-flex::after {
-        content: '';
-        position: absolute;
-        bottom: -48px;
-        left: 0;
-        width: 100%;
-        border-bottom: 2px solid #EFEFEF;
-    }
+  .carousel-flex::after {
+    content: '';
+    position: absolute;
+    bottom: -48px;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid #efefef;
+  }
 }
 
 @media screen and (max-width: 479px) {
-    .fg-editor {
-        height: 368px;
-    }
+  .section-carousel {
+    gap: 80px;
+  }
 
-    .fg-editor .code,
-    .fg-editor .container-indicators {
-        display: none;
-    }
+  .carousel-flex::after {
+    bottom: -40px;
+  }
 
-    .section-carousel {
-        gap: 80px;
-    }
-
-    .fg-editor .preview {
-        overflow: visible;
-    }
-
-    .carousel-flex::after {
-        bottom: -60px;
-    }
-
-    .footer-area {
-        height: 215px;
-        line-height: 215px;
-    }
+  .footer-area {
+    height: 215px;
+    line-height: 215px;
+  }
 }
