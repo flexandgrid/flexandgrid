@@ -45,6 +45,10 @@
   color: #b4b4b4;
 }
 
+.itemwrap-search {
+  display: none;
+}
+
 /* 모달 엑스버튼 이미지 안눌리게 */
 .close-img {
   pointer-events: none;
