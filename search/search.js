@@ -109,7 +109,7 @@ const createHistory = () => {
       const deleteImage = document.createElement("img");
 
       listItem.setAttribute("class", "list-item");
-      listItem.setAttribute("href", `http://${location.host}/flexandgrid/search/?q=${v}`);
+      listItem.setAttribute("href", `/search/?q=${v}`);
       serachText.setAttribute("class", "txt-item");
       deleteBtn.setAttribute("class", "btn-del");
       deleteImage.setAttribute("src", "../src/assets/images/icon-close.svg");
