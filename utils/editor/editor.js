@@ -2548,8 +2548,7 @@
         {
           class: 'value-code'
         },
-        //!!flag 임시 조치 -> 여러 줄일 때 코드 줄 여러 개 생성해서 보여줘야 함
-        value.trim()
+        value
       );
 
       Tag.appendChildren(codeLine, [
