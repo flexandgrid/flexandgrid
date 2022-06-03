@@ -1124,6 +1124,10 @@
             ? this._createAddInnerTagButton(line.tag, 'button-inner')
             : null;
 
+        if (innerAddButton) {
+          codeLine.classList.add('has-button-inner');
+        }
+
         const deleteButton = this._createDeleteTagButton(line.tag);
 
         const addButton =

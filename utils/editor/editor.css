@@ -529,11 +529,25 @@
 }
 
 .fg-editor .code-line {
-  padding: 0 45px 0 30px;
+  padding: 0 40px 0 30px;
   line-height: var(--code-line);
+  transition: padding 0s;
 }
 
 .fg-editor.free-mode .code-line {
+  padding: 0 10px 0 30px;
+}
+
+.fg-editor.free-mode .html-code {
+  padding: 0 40px 0 30px;
+}
+
+.fg-editor.free-mode .html-code.has-button-inner {
+  padding: 0 70px 0 30px;
+}
+
+.fg-editor tr:hover .code-line,
+.fg-editor tr:hover .html-code.has-button-inner {
   padding: 0 10px 0 30px;
 }
 
