@@ -434,18 +434,21 @@
           .map((css) => {
             const [prop, value = ''] = css.split(':');
             let trimmedValue = value;
-            // 한 줄인데 줄바꿈 한 경우
-            if (value.match(/\n/g)?.length === 1 && value.indexOf('\n') === 0) {
-              trimmedValue = trimmedValue.slice(1);
-            }
             // trim(맨 앞에 공백문자 ' '만 제거하고 \n는 살림, 맨 뒤는 다 없앰)
-            trimmedValue = trimmedValue.replace(/^\u0020+|\s+$/u, '');
+            trimmedValue = trimmedValue.replace(/(^\u0020+)|(\s+$)/gu, '');
             // 개행을 했는데 맨 첫 번째 줄이 개행문자로 시작하지 않으면 맨 앞에 개행문자 추가
             if (
-              [...trimmedValue].filter((v) => v === '\n').length > 0 &&
+              trimmedValue.split('\n').filter(Boolean).length > 1 &&
               trimmedValue[0] !== '\n'
             ) {
               trimmedValue = '\n' + trimmedValue;
+            }
+            // 한 줄인데 줄바꿈 한 경우
+            if (
+              trimmedValue.split('\n').filter(Boolean).length === 1 &&
+              trimmedValue[0] === '\n'
+            ) {
+              trimmedValue = trimmedValue.slice(1);
             }
             return {
               prop: prop.trim(),
@@ -1123,6 +1126,10 @@
           (openingTag.length && closingTag && this._layout === 'carousel')
             ? this._createAddInnerTagButton(line.tag, 'button-inner')
             : null;
+
+        if (innerAddButton) {
+          codeLine.classList.add('has-button-inner');
+        }
 
         const deleteButton = this._createDeleteTagButton(line.tag);
 
@@ -2415,8 +2422,7 @@
       }
 
       while (dom.children.length < tag.length) {
-        const newElem = document.createElement('div');
-        tag[dom.children.length].elem = newElem;
+        const newElem = tag[dom.children.length].elem;
         dom.appendChild(newElem);
       }
 
@@ -2548,8 +2554,7 @@
         {
           class: 'value-code'
         },
-        //!!flag 임시 조치 -> 여러 줄일 때 코드 줄 여러 개 생성해서 보여줘야 함
-        value.trim()
+        value
       );
 
       Tag.appendChildren(codeLine, [
@@ -2606,6 +2611,7 @@
       }
       this._updateHtml();
       this._updatePreviewStyle();
+      console.log(this);
     }
   }
 
