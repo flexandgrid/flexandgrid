@@ -51,22 +51,22 @@
   -webkit-line-clamp: 2;
 }
 
-.item-search.on {
+body.on .item-search {
   background: #3f3f46;
 }
 
-.item-search.on:hover {
+body.on .item-search:hover {
   background: #23262f;
 }
 
-.item-search.on .route-search {
+body.on .route-search {
   color: #878787;
 }
 
-.item-search.on .tit-search {
+body.on .tit-search {
   color: #fff;
 }
 
-.item-search.on .desc-search {
+body.on  .desc-search {
   color: #b4b4b4;
 }
