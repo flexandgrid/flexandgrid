@@ -14,6 +14,7 @@
   justify-content: space-between;
   max-width: 1118px;
   margin: 60px auto 55px;
+  padding: 0 15px;
 }
 
 .footer-area .img-logo {
@@ -22,6 +23,7 @@
 
 .footer-area .cont-txt {
   max-width: 480px;
+  margin: 0 15px;
 }
 
 .footer-area .txt-title {
@@ -50,10 +52,12 @@
 
 .footer-area .cont-btn {
   margin: auto 0;
+  flex-shrink: 0;
 }
 
 .footer-area .btn-footer {
-  padding: 11px 13px 11px 8px;
+  display: inline-block;
+  padding: 8px 0;
   border-radius: 10px;
   box-shadow: 0px 8px 10px rgba(135, 135, 135, 0.08);
   background-color: var(--tertiary);
@@ -63,6 +67,7 @@
 }
 
 .footer-area .btn-github {
+  width: 95px;
   margin-right: 20px;
 }
 
@@ -71,10 +76,14 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  margin-right: 8px;
+  margin: 0 5px 0 8px;
   background: url(../assets/images/icon-github-footer.svg) no-repeat
     center/contain;
   vertical-align: -5px;
+}
+
+.footer-area .btn-file {
+  width: 115px;
 }
 
 .footer-area .btn-file::before {
@@ -82,23 +91,24 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  margin-right: 8px;
+  margin: 0 8px;
   background: url(../assets/images/icon-download.svg) no-repeat center/contain;
   vertical-align: -5px;
 }
 
 /* Dark mode */
+/* Dark mode는 .footer-area에 .on class를 붙여주세요 */
 .footer-area.on {
   background-color: var(--dark);
 }
 
-.footer-area.on .txt-title.on,
-.footer-area.on .txt-main.on,
-.footer-area.on .txt-copyrigt.on {
+.footer-area.on .txt-title,
+.footer-area.on .txt-main,
+.footer-area.on .txt-copyrigt {
   color: var(--secondary);
 }
 
-.footer-area.on .btn-footer.on {
+.footer-area.on .btn-footer {
   background-color: var(--secondary);
   color: var(--dark);
 }
@@ -108,7 +118,7 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  margin-right: 8px;
+  margin: 0 5px 0 8px;
   background: url(../assets/images/icon-github-darkmode-footer.svg) no-repeat
     center/contain;
   vertical-align: -5px;
@@ -123,4 +133,36 @@
   background: url(../assets/images/icon-download-darkmode.svg) no-repeat
     center/contain;
   vertical-align: -5px;
+}
+
+/* 반응형 */
+@media screen and (max-width: 769px) {
+  .footer-area .cont-footer {
+    flex-direction: column;
+  }
+
+  .footer-area .cont-logo {
+    margin-bottom: 10px;
+  }
+
+  .footer-area .cont-txt {
+    position: relative;
+    margin: 0;
+  }
+
+  .footer-area .txt-title {
+    font-size: 12px;
+  }
+
+  .footer-area .txt-main {
+    display: none;
+  }
+
+  .footer-area .txt-copyrigt {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: -80px;
+    font-size: 10px;
+  }
 }
