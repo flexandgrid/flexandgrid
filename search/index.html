@@ -5,47 +5,46 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>search</title>
-        <link rel="stylesheet" href="../src/css/default.css" />
-        <link rel="stylesheet" href="../../src/css/color.css" />
-        <link rel="stylesheet" href="./style.css" />
-        <!-- <link rel="stylesheet" href="../src/components/gnb-nav.css" /> -->
-        <link rel="stylesheet" href="../src/components/search-item.css" />
-        <link rel="stylesheet" href="../src/components/modal2.css" />
-        <script defer src="search.js"></script>
+        <link rel="stylesheet" href="/src/css/default.css" />
+        <link rel="stylesheet" href="/src/css/color.css" />
+        <link rel="stylesheet" href="/search/style.css" />
+        <link rel="stylesheet" href="/src/components/gnb-nav.css" />
+        <link rel="stylesheet" href="/src/components/search-item.css" />
+        <link rel="stylesheet" href="/src/components/modal2.css" />
+        <script defer src="/src/js/darkmode.js"></script>
+        <script defer src="/src/js/search.js"></script>
     </head>
     <body class="search-body">
         <h1 class="sr-only">검색 페이지입니다.</h1>
         <header class="gnb-header">
             <nav>
                 <ul class="nav-left">
-                    <li class="hamburger-container hide">
-                        <a href="/" class="hamburger-menu">
-                            <span class="a11y-hidden">햄버거 메뉴</span>
+                    <li class="hamburger-container">
+                        <a href="#" class="hamburger-menu">
+                            <span class="a11y-hidden">모바일 메뉴</span>
                         </a>
                     </li>
                     <li class="logo-container">
-                        <a href="#" class="header-logo">
-                            <span class="a11y-hidden">로고</span>
+                        <a href="/" class="header-logo">
+                            <span class="a11y-hidden">플렉스 앤 그리드 로고</span>
                         </a>
                     </li>
-                    <li class="nav-left-menu">
-                        <a href="#cheatsheet">Cheatsheet</a>
-                    </li>
-                    <li class="nav-left-menu"><a href="#flex">Flex</a></li>
-                    <li class="nav-left-menu"><a href="#grid">Grid</a></li>
-                    <li class="nav-left-menu"><a href="#try-it">Try it</a></li>
+                    <li class="nav-left-menu"><a href="/cheatsheet">Cheatsheet</a></li>
+                    <li class="nav-left-menu"><a href="/flex">Flex</a></li>
+                    <li class="nav-left-menu"><a href="/grid">Grid</a></li>
+                    <li class="nav-left-menu"><a href="/try-it">Try it</a></li>
                 </ul>
                 <ul class="nav-right">
+                    <li class="mobile-search">
+                        <button class="search-toggle">
+                            <span class="a11y-hidden">검색 창 활성화</span>
+                        </button>
+                    </li>
                     <li class="search">
                         <form action="" method="get" autocomplete="off">
-                            <input
-                                type="text"
-                                class="search-input"
-                                name="q"
-                                placeholder="Search"
-                            />
+                            <input type="text" class="search-input" name="q" placeholder="Search" />
                             <button type="submit" class="search-btn">
-                                <span class="a11y-hidden">검색버튼</span>
+                                <span class="a11y-hidden">검색 버튼</span>
                             </button>
                         </form>
                         <div class="modal-history">
@@ -58,7 +57,7 @@
                     </li>
                     <li>
                         <button class="darkmode-btn">
-                            <span class="a11y-hidden">다크 모드 버튼</span>
+                            <span class="a11y-hidden">다크 모드 전환</span>
                         </button>
                     </li>
                     <li>
@@ -101,7 +100,7 @@
                     </a>
                 </li>
             </ul>
-            <button class="upBtn"></button>
+            <button class="btn-up"></button>
         </main>
     </body>
 </html>
