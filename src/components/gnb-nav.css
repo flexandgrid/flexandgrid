@@ -160,6 +160,8 @@
 .gnb-header.on .search-input {
     background-color: var(--black);
     border: none;
+    -webkit-text-fill-color: var(--white);
+    opacity: 1;
 }
 
 .gnb-header.on .darkmode-btn {
