@@ -4,11 +4,11 @@
 
 해당 저장소는 flex와 grid를 좀 더 쉽게 개발자가 접하고 학습할 수 있도록 웹페이지와 책을 집필하는데 목표를 두고 있습니다. 비영리 프로젝트이며, 조건없이 사용할 수 있습니다.
 
-## 진행사항
+## 콘텐츠
 
-- 책 : 링크
+- 책 : [리디북스 바로가기](https://ridibooks.com/books/2773000058)
 - 웹 서비스 : [서비스 바로가기](https://flexngrid.com/)
-- Notion : 링크
+- Notion : [링크 바로가기](https://paullabworkspace.notion.site/flex-grid-e5bdea43ba4f427990ff8666ea53ec56)
 - 피그마 링크 : [피그마 바로가기](https://www.figma.com/file/ZJ95eCOKHKWwM79IEdHo9I/flex-x-grid-UI?node-id=0%3A1)
 
 ## 기여하기
