@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-* {
-    transition: all 200ms ease-in-out;
-}
-
 .a11y-hidden {
     overflow: hidden;
     position: absolute;
