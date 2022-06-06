@@ -9,269 +9,269 @@
 } */
 
 li {
-  list-style: none;
+    list-style: none;
 }
 
 .btn-container {
-  display: flex;
+    display: flex;
 }
 
 .btn-value {
-  position: relative;
+    position: relative;
 }
 
 .btn-value:not(:last-child) {
-  margin-right: 30px;
+    margin-right: 30px;
 }
 
-.btn-value input[type='radio'] {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+.btn-value input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
-.btn-value input[type='radio'] + .radio-label {
-  display: inline-block;
-  position: relative;
-  padding-left: 30px;
-  cursor: pointer;
-  font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-  color: var(--tertiary);
+.btn-value input[type="radio"] + .radio-label {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--tertiary);
 }
 
-.btn-value input[type='radio'] + .radio-label:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  background-color: var(--white);
-  border: 1px solid var(--tertiary);
-  box-sizing: border-box;
-  border-radius: 50%;
+.btn-value input[type="radio"] + .radio-label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background-color: var(--white);
+    border: 1px solid var(--tertiary);
+    box-sizing: border-box;
+    border-radius: 50%;
 }
 
-.btn-value input[type='radio']:checked + .radio-label:before {
-  background: transparent;
-  border-color: var(--flex-primary);
+.btn-value input[type="radio"]:checked + .radio-label:before {
+    background: transparent;
+    border-color: var(--flex-primary);
 }
 
-.btn-value input[type='radio']:checked + .radio-label:after {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 10px;
-  height: 10px;
-  background: var(--flex-primary);
-  border-radius: 50%;
-  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3);
+.btn-value input[type="radio"]:checked + .radio-label:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    background: var(--flex-primary);
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-.btn-value input[type='radio']:checked + label {
-  color: var(--flex-primary);
+.btn-value input[type="radio"]:checked + label {
+    color: var(--flex-primary);
 }
 
 /* radio button Dark mode on추가 */
-.btn-container.on input[type='radio'] + .radio-label:before {
-  background-color: transparent;
+.btn-container.on input[type="radio"] + .radio-label:before {
+    background-color: transparent;
 }
 
 /* github link button */
 .mobile-github {
-  display: inline-block;
-  width: 230px;
-  height: 48px;
-  font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  text-decoration: none;
-  color: var(--secondary);
-  padding: 14px 0 14px 18px;
-  box-sizing: border-box;
+    display: inline-block;
+    width: 230px;
+    height: 48px;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-decoration: none;
+    color: var(--secondary);
+    padding: 14px 0 14px 18px;
+    box-sizing: border-box;
 }
 
 .mobile-github::before {
-  display: inline-block;
-  content: '';
-  width: 21px;
-  height: 21px;
-  background-image: url(../assets/imges/github-logo-link.svg);
-  background-size: 21px;
-  vertical-align: top;
-  margin-right: 11px;
+    display: inline-block;
+    content: "";
+    width: 21px;
+    height: 21px;
+    background-image: url(../assets/imges/github-logo-link.svg);
+    background-size: 21px;
+    vertical-align: top;
+    margin-right: 11px;
 }
 
 /* github link button Dark mode on추가 */
 .mobile-github.on {
-  color: var(--tertiary);
+    color: var(--tertiary);
 }
 
 .mobile-github::before {
-  background-image: url(../assets/imges/github-darkmode-logo-link.svg);
+    background-image: url(../assets/imges/github-darkmode-logo-link.svg);
 }
 
 .carousel-container {
-  display: flex;
-  gap: 20px;
-  width: 78px;
-  height: 14px;
+    display: flex;
+    gap: 20px;
+    width: 78px;
+    height: 14px;
 }
 
 .carousel-container li {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #efefef;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #efefef;
 }
 
 .carousel-container li.checked {
-  width: 14px;
-  height: 14px;
-  background: #878787;
+    width: 14px;
+    height: 14px;
+    background: #878787;
 }
 
 .carousel-container.on li {
-  background: #23262f;
+    background: #23262f;
 }
 
 .carousel-container.on li.checked {
-  background: #878787;
+    background: #878787;
 }
 
-.upBtn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: #3f3f46;
-  box-shadow: 0px 10px 25px rgba(135, 135, 135, 0.15);
-  background-image: url("/src/assets/images/chevron-down.svg");
-  background-position: center;
-  background-repeat: no-repeat;
+.btn-up {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #3f3f46;
+    box-shadow: 0px 10px 25px rgba(135, 135, 135, 0.15);
+    background-image: url("/src/assets/images/chevron-down.svg");
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.upBtn.on {
-  background: #e0e0e0;
-  background-image: url("/src/assets/images/chevron-down-darkmode.svg");
-  background-position: center;
-  background-repeat: no-repeat;
+.btn-up.on {
+    background: #e0e0e0;
+    background-image: url("/src/assets/images/chevron-down-darkmode.svg");
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .github-container {
-  display: flex;
-  align-items: center;
-  padding: 8px 5px 8px 8px;
-  width: 95px;
-  height: 40.82px;
-  background: #b4b4b4;
-  box-shadow: 0px 8px 10px rgba(135, 135, 135, 0.08);
-  border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 8px 5px 8px 8px;
+    width: 95px;
+    height: 40.82px;
+    background: #b4b4b4;
+    box-shadow: 0px 8px 10px rgba(135, 135, 135, 0.08);
+    border-radius: 10px;
 }
 
 .github-container p {
-  width: 42px;
-  height: 19px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 138.69%;
-  color: #ffffff;
+    width: 42px;
+    height: 19px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 138.69%;
+    color: #ffffff;
 }
 
 .github-container::before {
-  display: inline-block;
-  content: "";
-  width: 24px;
-  height: 24px;
-  background-image: url("../assets/images/github.svg");
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  margin-right: 8px;
+    display: inline-block;
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-image: url("../assets/images/github.svg");
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-right: 8px;
 }
 
 .github-container.on {
-  background: #878787;
+    background: #878787;
 }
 
 .github-container.one p {
-  color: #23262f;
+    color: #23262f;
 }
 
 .github-container.on::before {
-  display: inline-block;
-  content: "";
-  width: 24px;
-  height: 24px;
-  background-image: url("../assets/images/github-darkmode.svg");
-  background-repeat: no-repeat;
-  vertical-align: middle;
-  margin-right: 8px;
+    display: inline-block;
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-image: url("../assets/images/github-darkmode.svg");
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-right: 8px;
 }
 
 .nextPageBtn {
-  padding: 8px;
-  width: 99px;
-  height: 41px;
-  background: #3f3f46;
-  border-radius: 10px;
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
-  color: #f9f9f9;
+    padding: 8px;
+    width: 99px;
+    height: 41px;
+    background: #3f3f46;
+    border-radius: 10px;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #f9f9f9;
 }
 
 .nextPageBtn.on {
-  background: #b4b4b4;
-  color: #3f3f46;
+    background: #b4b4b4;
+    color: #3f3f46;
 }
 
 .cheatsheetBtn {
-  padding: 8px 5px 8px 8px;
-  width: 102px;
-  height: 41px;
-  background: #eceafe;
-  border-radius: 10px;
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #7661e2;
+    padding: 8px 5px 8px 8px;
+    width: 102px;
+    height: 41px;
+    background: #eceafe;
+    border-radius: 10px;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7661e2;
 }
 
 .cheatsheetBtn.on {
-  background: #b6abed;
-  color: #fbfbff;
+    background: #b6abed;
+    color: #fbfbff;
 }
 
 .removeBoxBtn {
-  padding: 8px;
-  width: 119px;
-  height: 41px;
-  background: #e0e0e0;
-  border-radius: 10px;
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #878787;
+    padding: 8px;
+    width: 119px;
+    height: 41px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #878787;
 }
 
 .removeBoxBtn.on {
-  background: #878787;
-  color: #23262f;
+    background: #878787;
+    color: #23262f;
 }
