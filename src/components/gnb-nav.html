@@ -19,6 +19,11 @@
 <body>
     <!-- 헤더 섹션 시작 -->
     <header class="gnb-header">
+        <h1 class="logo-container">
+            <a href="/" class="header-logo">
+                <span class="a11y-hidden">flex and grid 홈</span>
+            </a>
+        </h1>
         <nav>
             <ul class="nav-left">
                 <li class="hamburger-container">
@@ -26,15 +31,10 @@
                         <span class="a11y-hidden">모바일 메뉴</span>
                     </a>
                 </li>
-                <li class="logo-container">
-                    <a href="/" class="header-logo">
-                        <span class="a11y-hidden">플렉스 앤 그리드 로고</span>
-                    </a>
-                </li>
-                <li class="nav-left-menu"><a href="/cheatsheet">Cheatsheet</a></li>
-                <li class="nav-left-menu"><a href="/flex">Flex</a></li>
-                <li class="nav-left-menu"><a href="/grid">Grid</a></li>
-                <li class="nav-left-menu"><a href="/try-it">Try it</a></li>
+                <li class="nav-left-menu nav-cheatsheet"><a href="/cheatsheet">Cheatsheet</a></li>
+                <li class="nav-left-menu nav-flex"><a href="/flex">Flex</a></li>
+                <li class="nav-left-menu nav-grid"><a href="/grid">Grid</a></li>
+                <li class="nav-left-menu nav-tryit"><a href="/try-it">Try it</a></li>
             </ul>
             <ul class="nav-right">
                 <li class="mobile-search">
@@ -57,15 +57,13 @@
                         <ul class="list-history"></ul>
                     </div>
                 </li>
-                <li>
+                <li class="button-group">
                     <button class="darkmode-btn">
                         <span class="a11y-hidden">다크 모드 전환</span>
                     </button>
-                </li>
-                <li>
-                    <button class="github-btn">
+                    <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="github-btn">
                         <span class="a11y-hidden">깃헙 바로가기</span>
-                    </button>
+                    </a>
                 </li>
             </ul>
         </nav>
