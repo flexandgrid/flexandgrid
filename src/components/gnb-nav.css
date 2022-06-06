@@ -34,6 +34,7 @@
 }
 
 .gnb-header nav {
+    position: relative;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -71,12 +72,31 @@
     margin-right: 10px;
 }
 
+.modal-menu {
+    position: absolute;
+    top: 70px;
+    left:16px;
+    font-weight: 400;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-menu .list-menu .list-item {
+    margin-right: 0px
+}
+
 .gnb-header ul.nav-left li:last-child {
     margin-right: 0;
 }
 
 .gnb-header ul .nav-left-menu:hover {
     font-weight: 700;
+}
+
+.gnb-header ul .nav-cheatsheet:hover .modal-menu, 
+.gnb-header ul .nav-cheatsheet:focus .modal-menu {
+    opacity: 1;
+    visibility: visible;
 }
 
 .gnb-header ul.nav-left li:nth-child(3):hover {
@@ -209,7 +229,7 @@
 
 .gnb-header.on .button-group .darkmode-btn:hover,
 .gnb-header.on .button-group .github-btn:hover {
-    background-color: var(--dark);
+    background-color: #333338;;
 }
 
 /* 반응형 */

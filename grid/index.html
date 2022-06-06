@@ -8,8 +8,9 @@
     <title>Grid</title>
     <link rel="stylesheet" href="/src/css/default.css" />
     <link rel="stylesheet" href="/src/css/color.css" />
+		<link rel="stylesheet" href="/src/components/gnb-nav-modal.css">
     <link rel="stylesheet" href="/src/components/gnb-nav.css" />
-    <link rel="stylesheet" href="/src/components/modal2.css" />
+    <link rel="stylesheet" href="/src/components/search-modal.css" />
     <script defer src="/src/js/darkmode.js"></script>
     <script defer src="/src/js/search.js"></script>
 </head>
@@ -28,8 +29,18 @@
 											<span class="a11y-hidden">모바일 메뉴</span>
 									</a>
 							</li>
-							<li class="nav-left-menu nav-cheatsheet"><a href="/cheatsheet">Cheatsheet</a></li>
-							<li class="nav-left-menu nav-flex"><a href="/flex">Flex</a></li>
+							<li class="nav-left-menu nav-cheatsheet">Cheatsheet
+									<div class="modal-menu">
+											<ul class="list-menu">
+													<li class="list-item">
+															<a class="link-menu" href="/cheatsheet-flex">Flex Cheatsheet</a>
+													</li>
+													<li class="list-item">
+															<a class="link-menu" href="/cheatsheet-grid">Grid Cheatsheet</a>
+													</li>
+											</ul>
+									</div>
+							</li>							<li class="nav-left-menu nav-flex"><a href="/flex">Flex</a></li>
 							<li class="nav-left-menu nav-grid"><a href="/grid">Grid</a></li>
 							<li class="nav-left-menu nav-tryit"><a href="/try-it">Try it</a></li>
 					</ul>
