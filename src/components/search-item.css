@@ -21,7 +21,7 @@
 }
 
 .item-search:hover {
-  background: #f9f9f9;
+  background: #f6f6f6;
 }
 
 .item-search .route-search {
@@ -56,7 +56,7 @@ body.on .item-search {
 }
 
 body.on .item-search:hover {
-  background: #23262f;
+  background: #37373C;
 }
 
 body.on .route-search {

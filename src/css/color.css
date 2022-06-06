@@ -2,23 +2,24 @@
 
 /* 컬러 시스템 참고 */
 :root {
-    --black: #27272A; 
-    --dark: #23262F; 
-    --primary: #3F3F46;
+    --black: #27272a; 
+    --dark: #23262f; 
+    --primary: #3f3f46;
     --secondary: #878787;
-    --tertiary: #B4B4B4;
-    --subtext: #E0E0E0;
-    --border: #EFEFEF;
-    --background: #F9F9F9;
-    --white: #FFFFFF;
+    --tertiary: #b4b4b4;
+    --subtext: #e0e0e0;
+    --border: #efefef;
+    --border-dark: #2d2d2d;
+    --background: #f9f9f9;
+    --white: #ffffff;
     --flex-dark: #504975;
-    --flex-primary: #7661E2;
-    --flex-border: #B6ABED;
-    --flex-hover: #ECEAFE;
-    --flex-background: #FBFBFF;
+    --flex-primary: #7661e2;
+    --flex-border: #b6abed;
+    --flex-hover: #eceafe;
+    --flex-background: #fbfbff;
     --grid-dark: #765451;
-    --grid-primary: #F6866A;
-    --grid-border: #F9B09E;
-    --grid-hover: #FFF0E6;
-    --grid-background: #FFFCFA;
+    --grid-primary: #f6866a;
+    --grid-border: #f9b09e;
+    --grid-hover: #fff0e6;
+    --grid-background: #fffcfa;
 }
