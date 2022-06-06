@@ -29,7 +29,7 @@
 }
 
 /* topbutton */
-.upBtn {
+.btn-up {
     position: fixed;
     bottom: 60px;
     right: 160px;
@@ -43,7 +43,7 @@
     background-repeat: no-repeat;
 }
 
-.upBtn.on {
+.btn-up.on {
     background: #e0e0e0;
     background-image: url("./src/assets/images/chevron-down-darkmode.svg");
     background-position: center;
