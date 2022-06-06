@@ -1,13 +1,957 @@
-<!DOCTYPE html>
-<html lang="ko">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>flex</title>
-    <link rel="stylesheet" href="../src/css/default.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Flex</title>
 </head>
+
 <body>
-    <h1>flex</h1>
+	<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+			href="#5f86a363-8a38-4630-aa4f-72902121e52f">1. Flex</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#94eee8a6-dbeb-40c5-a029-ec1e4ced18ad">1.1. 들어가기에 앞서</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#ab5a8fb4-7a62-4fe9-9662-6fc0aa1834a8">1.2 flex의 대표적인 구성요소</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#0afb47b3-569f-4288-ac3e-ae8cb0ca0547">1.3. Flex를 알면 만들 수 있는 것</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#8211b02b-959a-4aad-be6c-eab41af7d790">1.4. Flex의 특징</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#e4ff4812-4c44-4cc4-b79a-7b849e9823e9">1.5. axis와 cross-axis</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+			href="#99280dde-d1b0-4129-9693-db75460d2e5e">1.5.1. axis란?</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+			href="#0dac392c-5e23-4733-81fd-9d4f0372cf03">1.5.2. 주축과 교차축</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#2ad1137d-7bbe-4516-a330-9467167ec5cd">1.6. 기본 속성 정보</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link"
+			href="#1e460717-192b-48ba-a9f9-e0f75c128930">1.6.1. display:flex</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+			href="#282459e5-3e7a-414c-b6f0-58cb97a32d24">3. Justify-content</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#6282f836-2592-4689-9d79-ec94a3ebc4ec">3.1. <strong>flex-start, center,
+				flex-end</strong></a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#9739fd5f-7cf2-4418-9fa3-dad62b3d019f">3.2. space-between, space-around, space-evenly</a>
+	</div>
+	<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+			href="#ca7eb7ce-6e17-405d-9eeb-2c2bf0a0ccec">4. Align-items, Align-content</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#1fc419a0-dfba-4e8c-b432-038f31ba00c0">4.1 align-items</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#aa2fc9bb-636d-4a86-9d60-c70434437bff">4.2. align-content</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+			href="#b62dcdc4-193b-43b1-94a0-2d2a9237560f">5. Flex-wrap</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#cb13f20f-89f2-4917-aa6a-b9fcf69db854">5.1. flex-wrap : nowrap</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#6a1bd7a5-7ab0-4445-b609-dd0b8fe46389">5.2. flex-wrap : wrap</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#73176b9d-b666-4298-a4ac-72c79a6bbaa4">5.3. flex-wrap : wrap-reverse</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+			href="#f8b02fff-8c98-494d-9f98-889be218b481">6. Flex-basis</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#6181e4d6-101b-4a1b-bb9d-d9a86b752148">6.1. flex-basis란?</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#4aea158d-65ed-4085-b490-b272ad091280">6.2. flex-basis에 들어가는 값</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#2801050a-0fe0-4f4d-a6c4-7f6ed8ce7793">6.3. flex-basis의 유연성</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#b77253fb-f5cc-44f3-a3c4-dc8324ff940a">6.4. flex-basis와 width/height의 관계</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#af6517e0-55d6-4dce-85b3-6e6a2a8751ed">6.5. flex-basis : auto; 와 flex-basis : 0;</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#95bf8d61-b826-4cb6-b05a-bdf481ea5105">6.6. flex-basis : content;</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#d84a7962-40f5-472c-8b3f-8a05eb42b7ba">6.7. flex-basis보다는 flex 축약 속성을! (W3C)</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#42c2323a-9aee-4c88-8fbc-de325d9b292d">6.8. flex-basis 호환성</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+			href="#0bd9828f-d254-4e4d-a0dd-d2b8d5a122ce">7. Flex-grow</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#e07cecd5-5ac9-4f36-8a7e-43841e96813a">7.1. flex-grow란?</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#0f19348c-cb25-4a26-8e08-a266bbb40c18">7.2. flex-grow 기능 : 확장 또는 고정</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#0166c7ec-9a81-423f-8370-f80807353dab">7.3. flex-grow 사용 시 주의할 점</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#d579290b-5934-4833-989e-38756870c654">7.4. flex 축약 속성</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#7c67db42-55e7-49c5-8d95-b1c3753a7c42">7.5. flex-shrink보다는 flex 축약 속성을! (W3C)</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#ecb97a04-3411-42e1-bc49-42eb407e4f31">7.6. flex-grow 호환성</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+			href="#cd2bbc34-5928-41f0-b7a9-d558fe35773e">8. Flex-shrink</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#2831555f-cd37-4cfe-8f57-e5f81ff5eb52">8.1. Flex-shrink 란?</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#6efb4522-86c6-452c-9a3c-0e78ad47a27a">8.2. Flex-shrink 기능: 축소 또는 고정</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#f708c363-dd35-444c-8436-890e42508978">8.3. Flex-shrink 사용 시 주의할 점</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#e04db1f7-363a-4ee5-899a-b9bdb2330b29">8.4. Flex 축약 속성</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#c5478e64-fe26-40e2-b602-e7041c22f8ee">8.5. Flex-shrink보다는 Flex 축약 속성을! (W3C)</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#b75b7e14-16d6-47f3-9c85-966ebcc320c2">8.6. Flex-shrink 호환성 (caniuse)</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+			href="#120be712-a5c6-4d48-96d5-89afc54ae0f2">9. 그 밖의 Flex-item에 사용하는 속성들</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#8d19722c-0a54-410d-a325-c48cdf0895ad">9.1. align-self</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#74533c47-1b06-4918-be42-ebcb1d6b826a">9.2. order</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#2d245140-4a6c-4c60-8f3d-8f4a442007e7">9.3. z-index</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
+			href="#42b3488c-fda2-4c96-924f-8ec57365c177">10. IE 지원을 위한 Flex</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#dee57fc4-b062-4d2d-b188-1ee54a3e1926">10.1. -ms- prefix 사용 예시</a></div>
+	<div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link"
+			href="#b623552f-cdbd-4a02-84b7-adac1c2e7ba7">10.2. IE에서의 Flex 이슈</a></div>
+
+	<h1 id="5f86a363-8a38-4630-aa4f-72902121e52f" class="">1. Flex</h1>
+	<h2 id="94eee8a6-dbeb-40c5-a029-ec1e4ced18ad" class="">1.1. 들어가기에 앞서</h2>
+	<p id="9fc59f5a-50c9-47bd-a5e2-12bc3a7deea4" class="">기기가 다양해짐에 따라 화면 크기도 다양하게 변화되었다. 다양한 기기에 대응하기 위해 웹 서비스를
+		유연하게 만드는 것은 선택이 아닌 필수가 되었다.</p>
+	<p id="37ac1dce-55ff-42aa-b9ce-488834daccb5" class="">다양한 화면의 크기에 맞추어 유연하게 대응할 수 있는 레이아웃을 만들기 위해 새롭게 추가된 속성이
+		Flex와 Grid이다. <strong>Flex는 1차원 적인 레이아웃</strong>을 잡을 때 사용하며, <strong>grid는 2차원 적인 레이아웃</strong>을 잡을 때
+		용이하다.</p>
+	<p id="adcdd1bf-5554-406f-9759-9071c6a4880f" class=""><strong>Flex</strong>는 부모 요소(컨테이너)
+		아래에서<strong> </strong>자식 요소(아이템)들이 <strong>한 방향으로 배치</strong>가 된다. 따라서 <strong>행 또는 열 </strong>한 가지 방향으로
+		레이아웃을 배치해야 하는 경우에 사용한다. 또한 다양한 속성을 통해 자식 요소 사이를 일정한 간격으로 줄 수 있고 정렬하기가 매우 편하다.</p>
+	<p id="c72d7fbf-e583-40b9-a799-66d98404d80e" class="">Grid는 <strong>행과 열 Matrix 형태로</strong> 레이아웃을 배치해야 하는
+		경우 사용한다. 원하는 요소를 어디서부터 어디까지, 어느 방향으로 차지하게 할 건지 정하고 배치하면 된다.</p>
+	<p id="59b9663f-dc1e-4584-a861-c3e47aed9b0b" class="">지금부터 ‘알아서 잘 딱 깔끔하고 센스 있게’ Flex를 배워보자.</p>
+	<h2 id="ab5a8fb4-7a62-4fe9-9662-6fc0aa1834a8" class="">1.2 flex의 대표적인 구성요소</h2>
+	<p id="270642ea-e7d2-4788-af38-dab58f7e5fd7" class="">같은 이미지로 grid도 설명하니 비교해보면서 보길 권한다.</p>
+	<h2 id="0afb47b3-569f-4288-ac3e-ae8cb0ca0547" class="">1.3. Flex를 알면 만들 수 있는 것</h2>
+	<p id="ed8a5547-301b-49fb-90a3-5de825fb5326" class="">카드를 순서대로 배치할 수 있고, 각 카드 내부에서 Flex를 이용해서 요소를 보다 쉽게 배치할
+		수 있다.</p>
+	<figure id="e8da7a19-e36f-413d-978e-9cd80436c7c8" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/card.png"><img style="width:792px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/card.png" /></a>
+		<figcaption>flex로 구현된 UI - 1</figcaption>
+	</figure>
+	<p id="e03d0537-cc0b-425c-8efc-d4431f2f8977" class="">
+	</p>
+	<p id="a506e1d7-5105-4faf-bc1f-9b52db86997d" class="">Flex를 활용한 홈페이지다. 로고 배치, 검색창, 메뉴 모든 UI에 flex를 활용하였다.
+	</p>
+	<figure id="d3a89a88-88d3-4b1e-b0ff-50a9afcc6daa" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/%ED%99%94%EB%A9%B4%EC%98%88%EC%8B%9C.png"><img
+				style="width:1893px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/%ED%99%94%EB%A9%B4%EC%98%88%EC%8B%9C.png" /></a>
+		<figcaption>flex로 구현된 UI - 2</figcaption>
+	</figure>
+	<h2 id="8211b02b-959a-4aad-be6c-eab41af7d790" class="">1.4. Flex의 특징</h2>
+	<p id="20bbc946-3662-42c5-a89e-c0941c34c2b7" class="">Flex는 부모와 자식 태그가 필요하고, 부모
+		요소(<code>flex-container</code>)와 자식 요소(<code>flex-item</code>)에 적용하는 속성이 구분되어 있다.</p>
+	<p id="de41c471-8c41-4fb2-85ac-bd434a4554c8" class="">이때 속성의 영향은 <strong>컨테이너의 직계자식까지만 영향</strong>을 준다는 특징이
+		있으니 주의해야 한다. </p>
+	<p id="47517350-405d-4dd8-b077-5097cc7c2708" class="">flex-container에는 정렬 방식과 item의 배치 흐름을 정의하고, flex-item에는
+		크기, 속성, 순서를 정의한다. </p>
+	<ul id="1db1e975-bcc3-4d53-8182-3714e73761b7" class="bulleted-list">
+		<li style="list-style-type:disc"><code>flex-container</code>의 속성 : <strong>flex-direction, flex-wrap,
+				justify-content, align-items, align-content</strong> 등</li>
+	</ul>
+	<ul id="9b9a9c7c-eabb-479c-ac01-230da36b85be" class="bulleted-list">
+		<li style="list-style-type:disc"><code>flex-item</code>의 속성 : <strong>flex, flex-grow, flex-shrink,
+				flex-basis, align-self, order, z-index</strong> 등</li>
+	</ul>
+	<p id="c10321ab-507c-48db-ae96-0027637c21fc" class="">
+	</p>
+	<table id="4bb31b1f-2e9e-4233-b2e8-79c4d49e5da7" class="simple-table">
+		<tbody>
+			<tr id="526e5048-13ad-4bdb-8585-f56c259aeaed">
+				<th id="tKC:" class="block-color-orange_background simple-table-header"
+					style="width:166.6666717529297px"></th>
+				<td id="{FlH" class="block-color-orange_background" style="width:149.6666717529297px">기본 속성</td>
+				<td id="nlWi" class="block-color-orange_background" style="width:198.65625px">적용 대상</td>
+			</tr>
+			<tr id="2903de14-4992-490f-89ed-1dc87f177d73">
+				<th id="tKC:" class="simple-table-header-color simple-table-header" style="width:166.6666717529297px">
+					flex-direction </th>
+				<td id="{FlH" class="" style="width:149.6666717529297px">row</td>
+				<td id="nlWi" class="" style="width:198.65625px">flex containers</td>
+			</tr>
+			<tr id="01ead4a3-6bf4-4e0a-8c57-55a57023e609">
+				<th id="tKC:" class="simple-table-header-color simple-table-header" style="width:166.6666717529297px">
+					justify-content </th>
+				<td id="{FlH" class="" style="width:149.6666717529297px">normal</td>
+				<td id="nlWi" class="" style="width:198.65625px">flex containers</td>
+			</tr>
+			<tr id="182fa650-7072-4be3-9e2d-c782ed69b9d2">
+				<th id="tKC:" class="simple-table-header-color simple-table-header" style="width:166.6666717529297px">
+					align-items</th>
+				<td id="{FlH" class="" style="width:149.6666717529297px">normal</td>
+				<td id="nlWi" class="" style="width:198.65625px">all elements</td>
+			</tr>
+			<tr id="8d81e1c6-9727-4320-89d3-7d38f466aa49">
+				<th id="tKC:" class="simple-table-header-color simple-table-header" style="width:166.6666717529297px">
+					align-content</th>
+				<td id="{FlH" class="" style="width:149.6666717529297px">normal</td>
+				<td id="nlWi" class="" style="width:198.65625px">multi-line flex containers</td>
+			</tr>
+			<tr id="1f747453-d193-4b0b-9357-477c993ef995">
+				<th id="tKC:" class="simple-table-header-color simple-table-header" style="width:166.6666717529297px">
+					flex-wrap</th>
+				<td id="{FlH" class="" style="width:149.6666717529297px">nowrap</td>
+				<td id="nlWi" class="" style="width:198.65625px">flex containers</td>
+			</tr>
+			<tr id="114d161c-94ec-48c6-be56-b746758a6c25">
+				<th id="tKC:" class="simple-table-header-color simple-table-header" style="width:166.6666717529297px">
+					flex-basis</th>
+				<td id="{FlH" class="" style="width:149.6666717529297px">auto</td>
+				<td id="nlWi" class="" style="width:198.65625px">flex items</td>
+			</tr>
+			<tr id="1266ec8e-8b78-407f-8203-51464fcce417">
+				<th id="tKC:" class="simple-table-header-color simple-table-header" style="width:166.6666717529297px">
+					flex-grow</th>
+				<td id="{FlH" class="" style="width:149.6666717529297px">0</td>
+				<td id="nlWi" class="" style="width:198.65625px">flex items</td>
+			</tr>
+			<tr id="559c57ff-492d-44d7-9f5d-d6170a9c1019">
+				<th id="tKC:" class="simple-table-header-color simple-table-header" style="width:166.6666717529297px">
+					flex- shrink</th>
+				<td id="{FlH" class="" style="width:149.6666717529297px">1</td>
+				<td id="nlWi" class="" style="width:198.65625px">flex items</td>
+			</tr>
+		</tbody>
+	</table>
+	<p id="2d700af1-8895-49e9-b361-a4615fe18d4d" class="">어떠한 속성을 적용해야 하는지 헷갈리는 경우, 컨테이너에 flex 속성을 적용한 뒤 크롬 개발자
+		도구의 스타일 탭을 확인하면 좋다. 주요한 속성 다섯 가지를 GUI 기능으로 제공하여 적용된 모습을 확인해볼 수 있기 때문이다.</p>
+	<p id="937767b2-0fe4-4b7f-bf20-34a255a0a3bc" class="">
+	</p>
+	<figure id="32eda986-dda8-4640-987b-f019162658bd" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled.png"><img style="width:336px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled.png" /></a></figure>
+	<h2 id="e4ff4812-4c44-4cc4-b79a-7b849e9823e9" class="">1.5. axis와 cross-axis</h2>
+	<h3 id="99280dde-d1b0-4129-9693-db75460d2e5e" class="">1.5.1. axis란?</h3>
+	<p id="200d4f50-e871-46bd-a121-a08ea8ad5c0a" class="">axis로 자식 요소의 정렬 방향을 제어할 수 있다. 행방향, 열방향으로 각각 반대 방향도
+		지원한다.</p>
+	<figure id="6cee0062-9ac0-4623-9362-7c3029b4a1d2" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/1.png"><img style="width:2225px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/1.png" /></a></figure>
+	<h3 id="0dac392c-5e23-4733-81fd-9d4f0372cf03" class="">1.5.2. 주축과 교차축</h3>
+	<ul id="f19f2c17-9081-49d9-90c2-4725b01afde2" class="bulleted-list">
+		<li style="list-style-type:disc"><strong>Main Axis</strong></li>
+	</ul>
+	<p id="f553d17e-86d7-4418-97f1-848701046a0a" class="">Flex의 주축이 되는 main axis의 방향은
+		<code>flex-direction</code> 이라는 속성에 의해 결정된다. 이는 다음과 같이 <strong>네 가지의 경우</strong>가 있다.
+	</p>
+	<p id="72a17e36-b697-414c-ab47-a4f7b68ca980" class="">
+		<code>flex-direction</code> 속성에 <code>row-reverse</code> 또는 <code>column-reverse</code> 값을 사용하면 DOM 구조와
+		시각적 표현에 차이가 발생하여 스크린 리더로 접근하는 사용자에게 잘못된 정보를 전달 할 가능성이 있으니 주의를 요한다.
+	</p>
+	<ol type="1" id="9f751384-5ac0-4908-ab8e-2e17267fb057" class="numbered-list" start="1">
+		<li><code>flex-direction: row</code> : <code>flex-direction</code> 의 기본값으로 아이템들이 행 방향, 가로로 배치된다. </li>
+	</ol>
+	<ol type="1" id="12be1939-1fe1-4640-9cce-5f7c62c02328" class="numbered-list" start="2">
+		<li><code>flex-direction: row-reverse</code> : 아이템들이 역순으로 가로로 배치된다. </li>
+	</ol>
+	<ol type="1" id="797cea0f-fb45-4b4a-bb55-23e142584527" class="numbered-list" start="3">
+		<li><code>flex-direction: column</code> : 아이템들이 열 방향으로, 세로로 배치된다. </li>
+	</ol>
+	<ol type="1" id="771fa87d-9b41-4c28-8444-dc47fdbaab38" class="numbered-list" start="4">
+		<li><code>flex-direction: column-reverse</code> : 아이템들이 역순으로 세로로 배치된다. </li>
+	</ol>
+	<ul id="caebd95d-6ccd-44bb-8f0f-b0d35c3ff697" class="bulleted-list">
+		<li style="list-style-type:disc"><strong>Cross Axis</strong></li>
+	</ul>
+	<p id="db91a382-bd8f-423b-ba66-9d5d5d721c54" class="">Cross axis는 Main axis 방향의 수직 방향이다. Main axis가
+		<code>flex-direction</code> 에 의해 결정되었다면, Cross axis는 main axis 방향에 따라 결정이 된다.
+	</p>
+	<p id="f1243a9f-0e89-473e-a505-a292d694ce27" class="">
+	</p>
+	<p id="d0205c63-4414-4827-a6e1-20e3a5780b84" class="">
+	</p>
+	<p id="f7707d2f-799e-4a78-bfc5-6ddf9138861c" class=""><mark
+			class="highlight-red"><strong>실행코드(flex-direction)</strong></mark></p>
+	<p id="89f8edb3-e77d-48a6-9829-9d8dc3cdebb5" class="">
+	</p>
+	<p id="45583d8c-dcfa-4293-8ba7-c41ab6aad252" class="">
+	</p>
+	<h2 id="2ad1137d-7bbe-4516-a330-9467167ec5cd" class="">1.6. 기본 속성 정보</h2>
+	<h3 id="1e460717-192b-48ba-a9f9-e0f75c128930" class="">1.6.1. display:flex</h3>
+	<p id="6a6bf07b-84c3-4b25-b00c-5ba900da9772" class="">Flex는 자식요소(아이템)이 그 자식요소(아이템)을 포함하는 부모 요소(컨테이너)의 공간에 맞춰
+		그 크기를 줄이거나, 늘이고 또는 부모 요소(컨테이너)에 맞춰 그 정렬을 맞추는 css display의 하나의 속성이다. flex를 보여주는 간단한 예로 살펴보자. </p>
+	<p id="60241622-7a1d-4d69-abbe-5b026e59eafc" class="">
+	</p>
+	<p id="921a00d6-4811-4076-b671-286df1e60874" class=""><mark class="highlight-red"><strong>실행코드(display:black,
+				display:flex)</strong></mark></p>
+	<p id="40fc1991-e6a2-46db-8472-268bdaa8b739" class="">
+	</p>
+	<h1 id="282459e5-3e7a-414c-b6f0-58cb97a32d24" class="">3. Justify-content</h1>
+	<p id="ff330a0b-8c75-45c9-b7a4-fbfacf92c358" class="">justify-content는 main-axis로 어떻게 정렬할지 정하는 코드이다.</p>
+	<p id="8e511563-1942-4e43-aa78-05d65588c68c" class="">
+	</p>
+	<h2 id="6282f836-2592-4689-9d79-ec94a3ebc4ec" class="">3.1. <strong>flex-start, center, flex-end</strong>
+	</h2>
+	<p id="f1c07335-6204-4387-babb-3b8e4428b22f" class="">
+	</p>
+	<p id="088d8144-00c2-4d85-9a34-b37078aad907" class=""><strong><mark class="highlight-red">실행코드(flex-direction에 따른
+				justify-content flex-start, center,
+				flex-end)</mark></strong></p>
+	<p id="08fb438c-8ba8-4783-8b89-7ddd8ff76b9d" class="">
+	</p>
+	<h2 id="9739fd5f-7cf2-4418-9fa3-dad62b3d019f" class="">3.2. space-between, space-around, space-evenly</h2>
+	<p id="5253c113-aba5-4847-b33e-1e697c4f0693" class=""><code>space-between</code>, <code>space-around</code>,
+		<code>space-evenly</code>는 차례로 ‘사이에’, ‘둘레에’, ‘균등하게’라는 뜻이다. 뜻을 생각하며 아래 그림으로 차이점을 확인해 보자.
+	</p>
+	<p id="c20ee981-e855-4cef-985e-64ebceec3c52" class="">
+	</p>
+	<p id="a07e23e7-623f-41c5-aa70-b9d0d1720de7" class=""><mark class="highlight-red"><strong>실행코드</strong></mark></p>
+	<h1 id="ca7eb7ce-6e17-405d-9eeb-2c2bf0a0ccec" class="">4. Align-items, Align-content</h1>
+	<p id="ed2746b0-ecc8-4c46-81d3-76c6a8cdb65d" class="">align의 사전적 정의는 ‘일직선으로 맞추다’이다. 즉, flex에서 align이란 축의 수직
+		방향 정렬을 의미하며, 부모요소(컨테이너) 안에서 교차 축에 따라 자식요소(아이템)가 정렬되는 속성이다.</p>
+	<h2 id="1fc419a0-dfba-4e8c-b432-038f31ba00c0" class="">4.1 align-items</h2>
+	<p id="6acc2bbf-68f6-49e6-8343-2dcd6886392b" class="">
+	</p>
+	<p id="d865ce01-63c4-427e-98c1-9aa29f5562dc" class=""><mark
+			class="highlight-red"><strong>실행코드(align-items)</strong></mark></p>
+	<p id="29fd8d22-f089-4696-a6c1-51b664a82dae" class="">
+	</p>
+	<h2 id="aa2fc9bb-636d-4a86-9d60-c70434437bff" class="">4.2. align-content</h2>
+	<p id="b2fe78a2-46cc-442e-a336-b0e10d57eab4" class="">
+	</p>
+	<p id="e2e3228d-2fd0-4c9b-9221-bb1673b4b151" class=""><mark
+			class="highlight-red"><strong>실행코드(align-items)</strong></mark></p>
+	<h1 id="b62dcdc4-193b-43b1-94a0-2d2a9237560f" class="">5. Flex-wrap</h1>
+	<p id="26e29a08-601b-420a-a430-6ddbf66d8c3c" class="">웹페이지 레이아웃을 구성할 때 부모 요소(컨테이너) 안의 자식 요소(아이템)들이 많으면 고민할
+		때가 있다. 예를 들어 영어 단어 웹페이지를 만든다고 가정해보자. 단어 카드들을 한 줄에 길게 배치할 것인지 아니면 한 줄이 아닌 두 줄 이상으로 배치할지 고민이 들 때가 있다. </p>
+	<p id="a7382565-3f3d-4d87-98d5-0f54fec0c536" class="">
+	</p>
+	<p id="cf5fd8b2-5cef-4efd-a9f5-68e5e6b0f1fa" class=""><mark class="highlight-red"><strong>실행코드</strong></mark></p>
+	<p id="4c3c7ab3-2037-4019-9c74-1ef6d5052b94" class="">
+	</p>
+	<p id="12621473-eabb-4c95-a2c2-2f2b509bac3e" class="">flex-wrap 속성을 사용하게 되면, 부모 요소(컨테이너)의 크기만큼 단어 카드들의 크기를
+		조절할 수도 있고, 단어 카드들의 크기만큼 영역을 차지하고 부모 요소(컨테이너)의 영역을 벗어나게 되면 단어 카드를 밑으로 내려서 정렬도 할 수 있게 된다.</p>
+	<p id="43ad74f2-2f4a-4cc1-b95b-ec6bd0ca7b9b" class="">flex-wrap 속성은 Flex 레이아웃 모듈의 하위 속성이다. 정렬된 요소들의 총 너비가 부모
+		너비보다 클 때, 요소들을 강제적으로 한 줄로 할 것인지 여러 줄로 할 것인지를 정의한다. 두 줄 이상인 경우 새로운 라인이 쌓일 방향을 결정하는 교차 축도 정의된다. 가로축은 메인축에
+		수직인 축이다. 부모 요소에 <code>display:flex;</code>를 꼭 작성해야한다.</p>
+	<h2 id="cb13f20f-89f2-4917-aa6a-b9fcf69db854" class="">5.1. flex-wrap : nowrap</h2>
+	<p id="939d3d59-b033-4d31-b303-4d4d789e72d3" class="">flex-wrap 속성 중 nowrap의 속성에 대해서 알아보자. flex-wrap는 작성자가
+		따로 설정하지 않는다면 기본값인 nowrap으로 설정된다. flex-wrap: nowrap을 사용하였을 때, 아래 그림과 같이 자식 요소(아이템)의 크기가 부모 요소(컨테이너)의 크기에
+		맞춰 일정 비율만큼 줄어드는 것을 확인할 수 있을 것이다.</p>
+	<figure id="027f4b11-a971-434f-b2b4-0a648c09b4b7" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/1%201.png"><img style="width:1274px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/1%201.png" /></a></figure>
+	<p id="ccb9c3b5-0d78-47d4-bffa-857a028b2b84" class="">하지만, 검색을 통해서 wrap의 속성을 찾아봤다면, 아래 그림처럼 부모영역(컨테이너)을 넘어가는
+		그림을 보았을 것이다. 이렇게 되는 이유는 8장에서 다루게 될 flex-shrink의 속성 때문이다. 기본적으로 flex-shrink의 초깃값은 1로 설정되어있어서 일정 비율만큼 줄어들게
+		되는데 이 속성을 0으로 하면 아래 그림처럼 부모영역(컨테이너)을 넘어가게 된다.</p>
+	<p id="1c639e54-a0e3-4a99-98bd-8276955cb904" class="">따라서 flex-wrap : nowrap은 자식 요소(아이템)의 전체 크기가 부모영역(컨테이너)을
+		넘어가지 않는다면 자기 자신의 크기를 유지하게 되고, 부모영역(컨테이너)을 넘어가게 된다면 일정한 비율로 줄어들게 된다. Flex를 사용하다 보면 nowrap이라는 속성을 자주 볼 일은
+		없지만, 이 속성을 사용하면 어떻게 변하는지 알아두는 것이 좋다.</p>
+	<figure id="02bc4d4c-a2fb-4e28-8324-f21968b3ac56" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/2.png"><img style="width:1213px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/2.png" /></a></figure>
+	<h2 id="6a1bd7a5-7ab0-4445-b609-dd0b8fe46389" class="">5.2. flex-wrap : wrap</h2>
+	<p id="18c4c1d7-e5f0-421c-834a-cef68bd58132" class="">다음으로 flex-wrap 속성 중에 wrap의 속성에 대해서 알아보자. Flex-wrap의
+		wrap속성은 각 자식 요소(아이템)의 총 넓이가 부모 요소(컨테이너)의 넓이 보다 클 때, 부모 요소(컨테이너) 안에 자식 요소(아이템)이 들어갈 수 있도록 다음 줄에 이어서 정렬해
+		주는 속성을 말한다.</p>
+	<p id="e133f093-77d0-4b7c-a564-8825e8f5db4d" class="">앞서 말한 flex-wrap에서 no-wrap을 사용하면 자식 요소(아이템)의 총 넓이가 부모
+		요소(컨테이너)의 넓이보다 큰 경우 정렬된 요소들은 부모 요소(컨테이너)의 넓이에 맞춰 자동 축소 되게 된다.</p>
+	<figure id="91e62af3-b3eb-494b-8644-2c93397b6d44" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-21_오전_10.33.58.png"><img style="width:1580px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-21_오전_10.33.58.png" /></a>
+	</figure>
+	<p id="ebcc7a89-a28b-4b72-9709-9453a0f6471d" class="">반면, flex-wrap:wrap의 경우에는 자식 요소(아이템)의 넓이를 유지한 채로 다음 줄로
+		이어서 정렬 되게 한다. flex-wrap:wrap을 사용하는 경우, 자식 요소(아이템)의 크기와 부모 요소(컨테이너)에 크기에 따라 다음 줄로 정렬이 이어지게 되는데 이는
+		flex-direction의 방향을 따르게 된다,</p>
+	<figure id="cbbfddf6-49a7-4e49-a1c6-515496d5e895" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-21_오전_10.34.35.png"><img style="width:1328px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-21_오전_10.34.35.png" /></a>
+	</figure>
+	<p id="1161eb00-cbaf-42b6-8901-9fa5807afd91" class="">만약 flex-direction의 방향이 row(행)라면 row(행)에 맞춰 주축인 수평으로 자식
+		요소(아이템)들이 정렬 되게 되고, 교차축인 수직축으로 아이템이 쌓이게 된다. </p>
+	<figure id="883b0f87-8700-4fdd-a7af-6a49cfa23f15" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-21_오전_10.34.35 1.png"><img style="width:1328px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-21_오전_10.34.35 1.png" /></a>
+	</figure>
+	<p id="bc88f9e0-abb6-4278-bb1f-14523ba75c09" class="">flex-direction의 방향이 column(열)이라면 column(열)에 맞춰 주축인
+		수직으로 자식 요소(아이템)들이 정렬 되게 되고, 교차축인 수평축으로 자식 요소(아이템)줄이 쌓이게 된다.</p>
+	<figure id="c0882744-6aad-4e70-a910-71dd3f12bf6d" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-21_오전_10.35.24.png"><img style="width:1348px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-21_오전_10.35.24.png" /></a>
+	</figure>
+	<p id="532b1fd4-2b0d-47ce-8ce2-7be75c44f49b" class="">이러한 자동 맞춤 같은 flex-wrap:wrap의 성질에 따라서 화면이 조정되는 경우(특히
+		미디어 쿼리를 구현하는 경우), 아이템의 크기가 변하지 않고 위치만 조정될 수 있게 하기 위해서 많이 사용하게 된다. </p>
+	<h2 id="73176b9d-b666-4298-a4ac-72c79a6bbaa4" class="">5.3. flex-wrap : wrap-reverse</h2>
+	<p id="8a875a07-2a79-414a-a707-b852a1cf9f89" class=""><code>flex-wrap : wrap-reverse;</code> 는
+		<code>wrap-reverse</code>: <code>wrap;</code> 과 마찬가지로 자식 요소(아이템)들이 필요한 경우 여러 줄에 걸쳐 배치되지만, 다른 점은
+		wrap-reverse이기 때문에 자식 요소(아이템) 요소들이 정렬되는 기준점이 반대 방향으로 바뀌어서 배치된다.
+	</p>
+	<p id="f772b7c7-270a-4d9a-ab2e-add4ba70824c" class="">적용하는 방법은 부모 요소(컨테이너)에 display: flex를 주고, flex-wrap:
+		wrap-reverse 값을 설정하면 된다.</p>
+	<pre id="abdb817d-fbb1-494c-ab66-4a43af479bad" class="code"><code>.container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+}</code></pre>
+	<p id="499acc52-a623-483a-95c3-52640a278fa0" class="">
+	</p>
+	<ul id="ade9e787-5114-458b-9317-9a34cb00ed90" class="bulleted-list">
+		<li style="list-style-type:disc"><strong>flex-wrap: wrap; 과 flex-wrap: wrap-reverse; 비교</strong></li>
+	</ul>
+	<figure id="c892aad0-068d-4194-9307-7a220facf682" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%201.png"><img style="width:1806px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%201.png" /></a></figure>
+	<pre id="0357e6f8-ae08-4383-a827-be747f9e29c7" class="code"><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+}</code></pre>
+	<p id="bd03cb1a-a888-41f5-bd67-f1e26a58ddd8" class=""><code>display: flex;</code> 의 경우
+		<code>flex-direction: row;</code> 가 기본값이다. 그렇기 때문에 <code>flex-wrap: wrap;</code> 인 경우에는 부모 요소인 컨테이너의 왼쪽
+		축의 상단부터 자식 요소인 아이템들이 순차적으로 배치된다. 즉, 배치가 시작되는 기준이 주축(main-axis)의 main-start 지점이 부모(컨테이너)의 상단, 교차
+		축(cross-axis)의 cross-start 지점은 부모(컨테이너) 왼쪽이 된다.
+	</p>
+	<p id="827e3841-5dd1-4864-aa6f-aaeabc2ff7c0" class="">하지만, <code>flex-wrap: wrap-reverse;</code> 의 경우 부모
+		요소(컨테이너)의 하단인 바닥 행의 왼쪽에서부터 1, 2, 3…번 순으로 아이템이 배치 되고 나머지 요소들은 그 행 위에 배치 된다. 또, 전체적으로 보면
+		<code>flex-wrap: wrap;</code> 과는 반대로 자식 요소(아이템)들이 컨테이너의 하단에 붙어 배치 되는 것을 확인할 수 있다.
+	</p>
+	<figure id="0a9dd3e1-6d20-4628-9ba7-2365a1854cbd" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%202.png"><img style="width:1802px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%202.png" /></a></figure>
+	<pre id="12536a79-f965-40b6-94ad-62b66bbf495b" class="code"><code>.container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+}</code></pre>
+	<p id="6c7cec36-4c53-4a51-b6cc-ae644ca49474" class="">reverse(역순)이기 때문에 배치 되는 기준점이 바뀌기 때문이다. 즉,
+		<code>flex-wrap: wrap-reverse;</code> 를 주게 되면, 주축(main-axis)의 main-start 지점이 부모 요소(컨테이너)의 하단이 된다. 그래서 부모
+		요소(컨테이너)의 하단 왼쪽이 기준점이 되어 자식 요소들(아이템들)이 순서대로 배치 되게 된다. 자식요소(아이템)는 부모 요소(컨테이너)의 width에 맞춰 정렬되기 때문에 부모의
+		witdh를 줄이면, 각 줄에 들어가는 아이템의 개수 역시 아래 예시와 같이 변경되게 된다.
+	</p>
+	<figure id="1f6c1915-4635-4745-87a4-eeddfedea028" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%203.png"><img style="width:1338px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%203.png" /></a></figure>
+	<p id="025a3790-81bf-4334-b423-2dc83ed90eb0" class="">그리고 flex-wrap: wrap; 과 마찬가지로, flex-item 요소들의 크기를 컨테이너
+		크기에 맞춰 줄이지 않기 때문에, flex-item(자식 요소)이 부모(컨테이너)에 들어가기에 더 많은 부피를 차지하게 되면 아래 이미지처럼 아이템들이 컨테이너 밖으로 넘치는 것을 확인할
+		수 있다.</p>
+	<figure id="c598e319-fc21-40a3-8c15-2c3d77ee0b44" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%204.png"><img style="width:1338px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%204.png" /></a></figure>
+	<p id="1fc385e2-4631-4474-b6f4-45b55c95e154" class="">
+	</p>
+	<ul id="2614371b-7c8d-45da-8e20-aa9e0911f071" class="bulleted-list">
+		<li style="list-style-type:disc"><strong>flex-direction: column; 값을 준 경우 flex-wrap: wrap-reverse; 는 어떻게
+				될까?</strong></li>
+	</ul>
+	<p id="70bf53c4-62c0-4af1-8bed-9052addb2146" class=""><code>display: flex;</code> 를 준 경우, flex-direction의
+		기본값은 row지만, <code>flex-direction: column;</code> 을 준다면 위에서 확인한 것들과는 다른 결과를 확인할 수 있다. flex의 방향이 row(행)이
+		아닌 column(열)으로 변경되기 때문에 주축(main-axis)이 수평(가로)이 아닌 수직(세로) 방향이 된다. </p>
+	<p id="f889e0a9-659a-4380-99dc-5f2d0634cdeb" class="">그렇기 때문에, <code>flex-direction: column;</code> 인 상태에서
+		<code>flex-wrap: wrap-reverse;</code> 를 주게 되면, 주축(main-axis)의 main-start 지점이 부모 요소(컨테이너)의 오른쪽 끝 지점이 되고,
+		오른쪽 끝의 열(column)부터 아이템이 차례대로 배치된다.
+	</p>
+	<figure id="59ab1258-f07f-45cd-8bf1-22f983dbadc4" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%205.png"><img style="width:1808px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%205.png" /></a></figure>
+	<h1 id="f8b02fff-8c98-494d-9f98-889be218b481" class="">6. Flex-basis</h1>
+	<h2 id="6181e4d6-101b-4a1b-bb9d-d9a86b752148" class="">6.1. flex-basis란?</h2>
+	<p id="dc4ae089-7658-4aa2-9384-9d55019e1a34" class="">flex-basis는 <strong>자식 요소(아이템)</strong>에 사용하는 속성이다. 부모
+		요소인 컨테이너의 주 축(main axis)이 되는 방향으로 <strong>flex 아이템의 초기 크기(default size)</strong>를 정해줄 수 있다. 컨테이너의 아이템 배치
+		방향(<code>flex-direction</code>)이 가로(row) 축일 경우 넓이를, 세로(column) 축일 경우 높이를 지정한다.</p>
+	<h2 id="4aea158d-65ed-4085-b490-b272ad091280" class="">6.2. flex-basis에 들어가는 값</h2>
+	<p id="1a0c0627-69b1-455a-9e78-229c64493133" class="">flex-basis의 값으로는 우리가 사용하는 각종 단위가 들어갈 수 있다. 길이를 나타내는
+		단위들인 <code>em</code>, <code>rem</code>, <code>px</code>이나 퍼센티지(<code>%</code>) 값이 될 수도 있고,
+		<code>content</code>, <code>min-content</code>, <code>max-content</code>, <code>fit-content</code>,
+		<code>fill</code>, <code>auto</code> 등의 키워드가 될 수도 있다. 상수는 0 외에 다른 값을 사용할 수 없다.
+	</p>
+	<h2 id="2801050a-0fe0-4f4d-a6c4-7f6ed8ce7793" class="">6.3. flex-basis의 유연성</h2>
+	<p id="3fe363f6-aec4-44e2-a8db-37ad7122d371" class="">flex-basis 속성은 <strong>유연한</strong>(flexible)<strong>
+			크기</strong>를 가진다. 즉, 고정적인 width, height 값을 지정해 줄 때와 달리 축의 방향에 따라, 또 <strong>내부 콘텐츠에 따라</strong> 크기가
+		가변적, 유동적으로 변할 수 있다.</p>
+	<figure id="f7bfc39c-14e1-4e9b-93a1-b207a76cb7bf" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%206.png"><img style="width:644px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%206.png" /></a>
+		<figcaption>아이템이 <code>height: 40px;</code>일 때(내부 콘텐츠의 크기는 고려하지 않고 40px에 맞춤)</figcaption>
+	</figure>
+	<figure id="06a9b1f7-d1a4-41cc-9c60-ae755d1f5cd5" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%207.png"><img style="width:644px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%207.png" /></a>
+		<figcaption>아이템이 <code>flex-basis: 40px;</code>일 때(콘텐츠의 크기에 맞춤)</figcaption>
+	</figure>
+	<h2 id="b77253fb-f5cc-44f3-a3c4-dc8324ff940a" class="">6.4. flex-basis와 width/height의 관계</h2>
+	<p id="09d9befe-4cf1-409b-b0a1-f0050a2b766f" class="">기본값 auto는 해당 아이템의 width(또는 height) 값을 사용하게 된다. 만약
+		width값이 없다면 콘텐츠의 크기가 기본으로 잡히게 된다.</p>
+	<figure id="ead61c79-23e4-4530-be4b-379a8ad3b179" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/basis_01.png"><img style="width:1138px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/basis_01.png" /></a></figure>
+	<p id="fab15877-a4f6-4cd1-87ed-eab04f990568" class="">위 그림에서는 basis의 값을 100px로 설정했다. 콘텐츠의 크기가 적으면 100px로
+		아이템들의 width가 결정되지만, 콘텐츠가 많아지게 되면 basis보다 넓어지게 된다.</p>
+	<figure id="ed7b55b3-0b9c-432f-943f-a133da6e3cec" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/basis_02.png"><img style="width:1128px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/basis_02.png" /></a></figure>
+	<p id="26331e38-8332-4f9f-8fa6-9999cb78292d" class="">반면, width값을 100px로 설정하게 되면 basis와 달리 컨텐츠의 크기가 많아지면
+		아이템의 width는 100px로 고정되고, 컨텐츠가 밖으로 나가게 된다. 이를 방지하려면 <code>word-wrap: break-word;</code> 값을 주면 해결된다.</p>
+	<figure id="429acc6d-051d-462d-996b-93047003b46f" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/basis_03.png"><img style="width:1136px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/basis_03.png" /></a></figure>
+	<p id="72335bc7-782b-4e85-a944-f74ea5f91f4f" class="">기본적으로 flex-basis 속성이 width(또는 height) 값보다 우선하게 된다. 즉,
+		width를 100px을 주고 basis를 300px로 주게 되면 basis값이 우선시되어 아이템들의 기본너비가 300px로 잡히게 된다. 주의할 점은 서로 다른 값일 경우 기본적으로
+		flex-basis가 우선하지만, 똑같은 값을 flex-basis와 width(또는 height)에 주고 동시에 적용할 경우엔 width(또는 height)의 적용이 우선시된다는 것이다.
+		또한, 언어가 한글인지 영어인지와 <code>word-break</code> 등 다른 속성값에 따라 flex-basis는 예상과 다르게 동작할 수도 있다.</p>
+	<h2 id="af6517e0-55d6-4dce-85b3-6e6a2a8751ed" class="">6.5. flex-basis : auto; 와 flex-basis : 0;</h2>
+	<p id="ddd69575-45f6-4fa4-826e-51748c5157f9" class=""><code>flex-basis: auto;</code>가 기본값이다. 이때는 지정해 준
+		width(또는 height) 값을 사용하거나, 다른 박스가 늘어날 때 같이 늘어난다(stretch). 또한, 추가 공간이 flex-grow 값에 따라 분배된다.
+		<code>auto</code> 일 때와는 달리 <code>flex-basis: 0;</code>으로 설정하면 내용 주위의 추가 공간이 고려되지 않는다.
+	</p>
+	<figure id="ef98b6d3-19f2-413e-afa8-d640fc7f7f06" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/4.png"><img style="width:2225px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/4.png" /></a>
+		<figcaption>flex-basis 값이 0일 때와 auto일 때의 차이</figcaption>
+	</figure>
+	<h2 id="95bf8d61-b826-4cb6-b05a-bdf481ea5105" class="">6.6. flex-basis : content;</h2>
+	<p id="4e22ef15-55de-49b0-ad86-466d05fa9545" class=""><code>flex-basis: content;</code>는 콘텐츠 크기에 맞게 자동으로 크기가
+		조절된다. 고유 크기 조정 키워드로는 <code>fill</code>, <code>min-content</code>, <code>max-content</code>,
+		<code>fit-content</code> 가 있다.
+	</p>
+	<figure id="d14f1a70-64ef-42e0-aafb-81297d55f89c" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/6-6.png"><img style="width:1000px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/6-6.png" /></a></figure>
+	<p id="e1f05569-5f8c-4413-8e90-66a936779090" class="">이 키워드는 잘 지원되지 않기 때문에 테스트하기 어렵다 (2022년 기준). 따라서
+		<code>min-content</code>, <code>max-content</code> 및 <code>fit-content</code>의 기능을 완전히 파악하여 원하는 의도대로
+		사용하기엔 아직 무리가 있다.
+	</p>
+	<h2 id="d84a7962-40f5-472c-8b3f-8a05eb42b7ba" class="">6.7. flex-basis보다는 flex 축약 속성을! (W3C)</h2>
+	<p id="bbfc7a9b-087f-43a8-89b1-5cb13c47c9f1" class="">CSS 표준을 관리하는 <strong>W3C</strong>에 따르면, flex-basis 속성을
+		직접 사용하기보다는 <strong>flex 축약 속성</strong>으로 사용하는 것을 권장하고 있다.</p>
+	<figure id="bd9f732f-cd6a-4dce-a289-062ec0fa2831" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%208.png"><img style="width:1619px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%208.png" /></a>
+		<figcaption>출처: <a
+				href="https://www.w3.org/TR/css-flexbox-1/#flex-basis-property">https://www.w3.org/TR/css-flexbox-1/#flex-basis-property</a>
+		</figcaption>
+	</figure>
+	<h2 id="42c2323a-9aee-4c88-8fbc-de325d9b292d" class="">6.8. flex-basis 호환성</h2>
+	<figure id="bc75c40b-821d-454f-9a57-20375e396ea3" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%209.png"><img style="width:1786px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%209.png" /></a>
+		<figcaption>출처: <a href="https://caniuse.com/?search=flex-basis">https://caniuse.com/?search=flex-basis</a>
+		</figcaption>
+	</figure>
+	<h1 id="0bd9828f-d254-4e4d-a0dd-d2b8d5a122ce" class="">7. Flex-grow</h1>
+	<h2 id="e07cecd5-5ac9-4f36-8a7e-43841e96813a" class="">7.1. flex-grow란?</h2>
+	<p id="8c57cf90-8c40-43a4-b463-f03e3f1b0cbb" class=""><code>flex-grow</code>는 자식 요소인 <code>flex-item</code>이
+		차지하는 비율을 조절하는 속성이다. 컨테이너 크기에 맞춰 늘어나는 비율이 여백을 차지하면서 이 속성을 가진 다른 요소들과 동일하게 분배한다. 쉽게 말해서
+		<code>flex-grow</code>의 값은 아이템들의 <code>flex-basis</code>를 제외한 여백 부분을 <code>flex-grow</code>의 비율로 각각 나누어
+		가진다.
+	</p>
+	<h2 id="0f19348c-cb25-4a26-8e08-a266bbb40c18" class="">7.2. flex-grow 기능 : 확장 또는 고정</h2>
+	<pre id="1a7327c3-32c1-4c1b-b9af-1f313a9c121b" class="code"><code>.item {
+    flex-shrink: 0; /* 기본값 */
+}</code></pre>
+	<pre id="676a290c-fb4f-4cc9-a72d-c65f1d91003d" class="code"><code>/* &lt;number&gt; values */
+flex-grow: 1 | 0.5;
+
+/* Global values */
+flex-grow: inherit | initial | unset;</code></pre>
+	<p id="7736b68d-6259-4283-9e00-b8a113d08c62" class=""><code>flex-grow</code> 속성은 기본값이 0 이다.
+		<code>flex-grow:0</code> 일때는 <code>flex item</code>을 확장하지 않고 원래의 크기를 유지한다.
+	</p>
+	<figure id="cd987bfa-af05-4a0b-9f07-d832d4120d1e" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-15_오후_3.55.43.png"><img style="width:2516px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-15_오후_3.55.43.png" /></a>
+		<figcaption>예시1. <code>flex-grow:0</code> (기본 값)</figcaption>
+	</figure>
+	<p id="42cdd33d-2d92-41ad-975e-62fcd8ffa636" class=""><code>flex-grow:1</code> 일 때는 <code>flex item</code> 이
+		유연한 박스의 형태로 바뀌며 빈 공간을 채운다. </p>
+	<figure id="5b7fe610-31f2-4c74-b65d-a3231fd338e2" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-15_오후_3.56.47.png"><img style="width:2534px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-15_오후_3.56.47.png" /></a>
+		<figcaption>예시2. <code>flex-grow:1</code></figcaption>
+	</figure>
+	<p id="de20e380-b1fd-4cf5-bae0-1f6bbc21e983" class="">각각의 아이템별로 <code>flex-grow</code> 값을 줄 수도 있다.
+		<code>flex-grow</code> 에 정해준 비율만큼 여분의 컨테이너 너비를 분배하여 갖는다.
+	</p>
+	<figure id="4b0f5524-9f98-4734-8f07-83f04b1d5167" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-15_오후_3.57.53.png"><img style="width:2558px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-15_오후_3.57.53.png" /></a>
+		<figcaption>예시3. 각각의 아이템별로 다른 <code>flex-grow</code></figcaption>
+	</figure>
+	<h2 id="0166c7ec-9a81-423f-8370-f80807353dab" class="">7.3. flex-grow 사용 시 주의할 점</h2>
+	<p id="3766fda5-6602-4f66-858c-0d2651c3aedc" class=""><code>flex-grow</code> 속성은 <strong>0</strong> 또는
+		<strong>양의 정수</strong>의 값으로 설정해야 한다. 음수의 값으로 설정했을 경우, 기본값인 <code>flex-grow:0</code>일 때와 같다. 또한
+		<code>flex-grow</code>의 증가너비 비율은 width로 인해 영향을 받는다. 때문에 <code>flex-basis</code>로 flex의 가변 범위에 입력하여 기본값을
+		정하는 것이 좋다.
+	</p>
+	<figure id="5ccfc046-8835-4f4b-aadb-599695f59a84" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-15_오후_4.00.47.png"><img style="width:2492px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/스크린샷_2022-05-15_오후_4.00.47.png" /></a>
+		<figcaption>예시4. <code>flex-grow:-1</code></figcaption>
+	</figure>
+	<h2 id="d579290b-5934-4833-989e-38756870c654" class="">7.4. flex 축약 속성</h2>
+	<pre id="3b7d695f-9629-4f33-89a3-c0774fdc2742"
+		class="code"><code>flex: flex-grow | flex-shrink | flex-basis;</code></pre>
+	<p id="78d9276b-d12c-46e7-aec3-9c4189e4f215" class="">일반적으로는 모든 값이 설정되었음을 보장하기 위하여 flex 속성을
+		이용해 <strong>축약형</strong>으로 사용한다. 축약 속성의 순서는 <code>flex-grow</code>, <code>flex-shrink</code>,
+		<code>flex-basis</code> 순으로 적용되며 띄어쓰기로 구분한다.
+	</p>
+	<p id="85c03a03-c108-4fd2-b378-929fc82a0d81" class="">Flex <strong>축약 속성의 기본값</strong>은 <strong>flex: 0 1
+			auto;</strong> 이다. flex-grow를 제외한 개별 속성은 생략할 수 있다. flex : 1; 할 경우 grow는 1로 변하고 shrink의 값은 0으로 basis의
+		값을 명시적으로 작성하지 않으면 0으로 입력이 된다.</p>
+	<h2 id="7c67db42-55e7-49c5-8d95-b1c3753a7c42" class="">7.5. flex-shrink보다는 flex 축약 속성을! (W3C)</h2>
+	<p id="13b356d1-ad02-45ac-b346-2af74798db30" class="">CSS 표준을 관리하는 <strong>W3C</strong>에 따르면, flex-shrink속성을
+		직접 사용하기보다는
+		<strong>flex 축약 속성</strong>으로 사용하는 것을 권장하고 있다.
+	</p>
+	<figure id="f3535988-2034-4eac-8349-97856e1e50e6" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2010.png"><img style="width:1554px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2010.png" /></a>
+		<figcaption><a
+				href="https://www.w3.org/TR/css-flexbox-1/#propdef-flex-grow">https://www.w3.org/TR/css-flexbox-1/#propdef-flex-grow</a>
+		</figcaption>
+	</figure>
+	<h2 id="ecb97a04-3411-42e1-bc49-42eb407e4f31" class="">7.6. flex-grow 호환성</h2>
+	<p id="2ebe62f7-bca2-4c0d-ba04-989a69214566" class="">지원버전</p>
+	<figure id="ad5cc1bb-9835-41f8-9f2b-dee7f439f356" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2011.png"><img style="width:1456px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2011.png" /></a>
+		<figcaption>출처: <a href="https://developer.mozilla.org/ko/docs/Web/CSS/flex-grow">mdn</a></figcaption>
+	</figure>
+	<figure id="3a4090c9-1fea-49e7-a31e-de69b4076a76" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2012.png"><img style="width:2900px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2012.png" /></a>
+		<figcaption>출처: <a href="https://caniuse.com/?search=flex-grow">https://caniuse.com/?search=flex-grow</a>
+		</figcaption>
+	</figure>
+	<h1 id="cd2bbc34-5928-41f0-b7a9-d558fe35773e" class="">8. Flex-shrink</h1>
+	<h2 id="2831555f-cd37-4cfe-8f57-e5f81ff5eb52" class="">8.1. Flex-shrink 란?</h2>
+	<p id="a9bb1278-62dd-4af8-afc0-8941172ffa0c" class=""><code>flex-shrink</code>는 자식 요소에 사용하는 속성이다. flex 컨테이너
+		안에서 자식 요소인 flex 아이템 요소를 자동으로 줄여서 적절한 크기로 배치해 유연한 레이아웃을 만들 수 있다는 장점이 있다. <code>flex-basis</code> 속성으로 지정된
+		아이템의 기본 크기를 설정한 숫자 값에 비례해 수축시킬 수 있다. <code>flex-grow</code>와는 반대되는 개념이다.</p>
+	<h2 id="6efb4522-86c6-452c-9a3c-0e78ad47a27a" class="">8.2. Flex-shrink 기능: 축소 또는 고정</h2>
+	<pre id="437c71b7-a54b-4004-9d17-890531d99171" class="code"><code>.item {
+    flex-shrink: 1; /* 기본값 */
+}</code></pre>
+	<p id="f2d85785-c69d-4271-a653-be8793abcca0" class=""><code>flex-shrink</code>속성의 <strong>기본값은 1</strong>이다.
+		즉, 정의하지 않아도 자동으로 <strong>축소</strong>된다. 숫자가 클수록 상대적으로 더 작은 크기를 갖게 된다. 값을 0으로 선언할 경우 너비 혹은 높이를
+		<strong>고정해서</strong> 항상 유지할 수 있다.
+	</p>
+	<p id="43e6a28b-d00d-4ccf-8556-52b10c3ea3e5" class="">
+	</p>
+	<figure id="3d4b68c9-cf22-4008-bce9-d2c616b92ae4" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/shrink1.png"><img style="width:2312px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/shrink1.png" /></a>
+		<figcaption>예시1. <code>flex-shrink:1</code> (기본값)</figcaption>
+	</figure>
+	<figure id="c6056e63-a1f2-4370-94db-a1bf939bf88a" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/shrink0.png"><img style="width:2522px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/shrink0.png" /></a>
+		<figcaption>예시2. <code>flex-shrink:0</code></figcaption>
+	</figure>
+	<figure id="337efe44-b307-48da-ae2c-6ea5a9bdb61e" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/001.png"><img style="width:2295px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/001.png" /></a>
+		<figcaption>예시3. 아이템 별로 다른 경우</figcaption>
+	</figure>
+	<h2 id="f708c363-dd35-444c-8436-890e42508978" class="">8.3. Flex-shrink 사용 시 주의할 점</h2>
+	<p id="6d2f4e6b-1837-4ba8-881a-3f3a5ba3e633" class=""><code>flex-shrink</code> 속성은 부모 컨테이너에
+		<code>flex-wrap: wrap;</code> 속성을 부여한 경우 적용되지 않는다. 따라서 적용을 위해서는 <code>wrap</code>을 정의하지 않거나,
+		<code>nowrap</code>속성이 부여되어야 한다.
+	</p>
+	<figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex"
+		id="c94188a4-c62b-4db6-b2d4-d33b50a597ec">
+		<div style="font-size:1.5em"><span class="icon">💡</span></div>
+		<div style="width:100%">flex-basis: 250px 통일, 3번째 아이템만 flex-shrink: 2 일 때 (예시3, 4)</div>
+	</figure>
+	<figure id="994a9b0a-c73a-4658-af09-ab246d8cee6b" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2013.png"><img style="width:947px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2013.png" /></a>
+		<figcaption>예시3. 부모 컨테이너 <code>flex-wrap: nowrap;</code></figcaption>
+	</figure>
+	<p id="74ee527d-c153-469f-9c94-dd15b1a9cfad" class="">
+	</p>
+	<figure id="f82afdb4-834d-454f-8f12-a0e2eec98cd9" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2014.png"><img style="width:947px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2014.png" /></a>
+		<figcaption>예시4. 부모 컨테이너 <code>flex-wrap: wrap;</code> (⇒ flex-shrink 적용되지 않음)</figcaption>
+	</figure>
+	<h2 id="e04db1f7-363a-4ee5-899a-b9bdb2330b29" class="">8.4. Flex 축약 속성</h2>
+	<pre id="f09db80e-50e6-45e2-971d-77f46385d12a"
+		class="code"><code>flex: &lt;flex-grow&gt; &lt;flex-shrink&gt; &lt;flex-basis&gt;</code></pre>
+	<p id="38c42d2f-4ba3-4864-aaa2-bc8b42218963" class=""><code>flex-grow</code> , <code>flex-shrink</code> ,
+		<code>flex-basis</code> 속성의 값을 단축해서 사용할 수 있는 것이 <code>flex</code> 축약 속성이다. 순서는 grow, shrink, basis 순으로
+		적용된다.
+	</p>
+	<ul id="a97f61e0-f0be-48c6-88e3-affa11f5a868" class="bulleted-list">
+		<li style="list-style-type:disc"><code>flex-grow</code> 는 flex 아이템이 팽창하는 비율을 설정한다. 기본값은 1이다.</li>
+	</ul>
+	<ul id="01f6259f-7f4e-4b1c-8969-af000f35fd68" class="bulleted-list">
+		<li style="list-style-type:disc"><code>flex-shrink</code> 는 flex 아이템이 수축하는 비율을 설정한다. 기본값은 1이다.</li>
+	</ul>
+	<ul id="a28fc989-9b40-45c6-8015-1b8aa49b22aa" class="bulleted-list">
+		<li style="list-style-type:disc"><code>flex-basis</code> 는 flex 아이템이 팽창하고 수축하는 기준 크기를 설정한다. 기본값은 0이다.
+		</li>
+	</ul>
+	<h2 id="c5478e64-fe26-40e2-b602-e7041c22f8ee" class="">8.5. Flex-shrink보다는 Flex 축약 속성을! (W3C)</h2>
+	<p id="d3cdbb70-8143-427f-a658-3e9cf343ec88" class="">CSS 표준을 관리하는 <strong>W3C</strong>에 따르면, flex-shrink속성을
+		직접 사용하기보다는 <strong>flex 축약 속성</strong>으로 사용하는 것을 권장하고 있다.</p>
+	<figure id="dffe4373-fd7c-4190-a4af-7290918638e1" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2015.png"><img style="width:1613px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2015.png" /></a>
+		<figcaption><a
+				href="https://www.w3.org/TR/css-flexbox-1/#propdef-flex-shrink">https://www.w3.org/TR/css-flexbox-1/#propdef-flex-shrink</a>
+		</figcaption>
+	</figure>
+	<h2 id="b75b7e14-16d6-47f3-9c85-966ebcc320c2" class="">8.6. Flex-shrink 호환성 (caniuse)</h2>
+	<figure id="6b279305-ddbc-4276-9c94-a62d55a27715" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2016.png"><img style="width:1777px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Untitled%2016.png" /></a>
+		<figcaption>출처: <a href="https://caniuse.com/?search=flex-shrink">https://caniuse.com/?search=flex-shrink</a>
+		</figcaption>
+	</figure>
+	<h1 id="120be712-a5c6-4d48-96d5-89afc54ae0f2" class="">9. 그 밖의 Flex-item에 사용하는 속성들</h1>
+	<p id="45b1d137-811f-4639-b9f8-ceaf34d00ba0" class="">기타 flex-item에 사용하는 속성에는 <code>align-self</code>,
+		<code>order</code>, 그리고 <code>z-index</code>가 있다.
+	</p>
+	<h2 id="8d19722c-0a54-410d-a325-c48cdf0895ad" class="">9.1. align-self</h2>
+	<p id="b65339d1-6d54-4934-8b11-59bba6382409" class=""><code>align-self</code>란 교차 축(cross-axis)을 기준으로 개별아이템
+		요소의 정렬 방법을 결정하는 속성이다. Flex 컨테이너에 적용하여 내부에 있는 전체 아이템을 정렬하는 <code>align-items</code>와 달리,
+		<code>align-self</code>는 인접한 Flex 아이템에 영향을 주지 않고, 각각의 Flex 아이템 위치를 자유롭게 변경할 수 있다. 따라서 전체 설정인
+		<code>align-items</code>보다, 개별 아이템에 적용되는 <code>align-self</code> 속성이 우선한다는 특징이 있다.
+	</p>
+	<p id="b149aa1c-6b8a-4462-9979-bdc777fc2869" class=""><strong>align-self의 속성값</strong></p>
+	<p id="903002bf-6a89-432d-9858-f04cfc3cb48a" class=""><code>align-self</code>의 속성값은, auto 값을 제외하면
+		<code>align-items</code>의 속성값과 같다.
+	</p>
+	<ul id="cb1ac0f1-889d-4f27-9b33-3e59868ce75a" class="bulleted-list">
+		<li style="list-style-type:disc">auto : 기본값으로, 플렉스박스 컨테이너의 <code>align-items</code> 속성을 상속받는다.
+			align-items의 기본 속성은 stretch이기 때문에, align-items가 지정되어있지 않는 경우 stretch 속성을 상속받는다.</li>
+	</ul>
+	<ul id="8e97bd73-cc70-4a60-bfc2-a1e7ef1621d0" class="bulleted-list">
+		<li style="list-style-type:disc">stretch : 교차 축을 기준으로, 컨테이너의 높이를 채우기 위해 플렉스 아이템이 늘어난다. </li>
+	</ul>
+	<ul id="23bec0dc-803a-4eb5-9b8a-d95e8e58c9a8" class="bulleted-list">
+		<li style="list-style-type:disc">flex-start : 교차 축을 기준으로, 플렉스 아이템이 컨테이너의 시작점에 정렬된다. </li>
+	</ul>
+	<ul id="98ad95ca-4543-4623-a862-074a89b6ac0e" class="bulleted-list">
+		<li style="list-style-type:disc">flex-end : 교차 축을 기준으로, 플렉스 아이템이 컨테이너의 끝점에 정렬된다. </li>
+	</ul>
+	<ul id="248030d8-2cdc-4ef6-9ec2-6ba65bb1fa5f" class="bulleted-list">
+		<li style="list-style-type:disc">center : 교차 축을 기준으로, 플렉스 아이템이 컨테이너의 중앙에 정렬된다. </li>
+	</ul>
+	<ul id="faded9cb-5688-47ca-bf90-5497be24cf47" class="bulleted-list">
+		<li style="list-style-type:disc">baseline : 교차 축을 기준으로, 플렉스 아이템이 컨테이너의 문자 기준선에 정렬된다. </li>
+	</ul>
+	<p id="63478739-350f-4488-9d44-400aa6f302f0" class="">아래는 아이템에 auto, stretch, flex-start, flex-end, center,
+		baseline 속성값을 부여한 모습이다. 컨테이너가 <code>flex-direction:row;</code> 인 경우 교차 축인 세로축을 기준으로, 아이템들이 컨테이너를 채운다.
+	</p>
+	<figure id="84a02612-56ba-4b11-8eba-42ba6619321d" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/align-self-word-1.png"><img style="width:911px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/align-self-word-1.png" /></a></figure>
+	<pre id="11087f01-c20f-422f-a913-06c81e9f3975" class="code"><code>.container{
+    display: flex;
+    flex-direction: row;
+}
+.item:nth-child(1){align-self: auto;}
+.item:nth-child(2){align-self: stretch;}
+.item:nth-child(3){align-self: flex-start;}
+.item:nth-child(4){align-self: flex-end;}
+.item:nth-child(5){align-self: center;}
+.item:nth-child(6){align-self: baseline;}</code></pre>
+	<p id="e6308a44-1c69-4e3c-8053-670233dbf41e" class=""><code>flex-direction:column;</code> 일 때는 교차 축인 가로축을
+		기준으로, 아이템들이 컨테이너를 채운다. </p>
+	<figure id="c166ef28-f76b-4729-9004-73311288af68" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/align-self-word-2.png"><img style="width:914px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/align-self-word-2.png" /></a></figure>
+	<pre id="37fab78b-80b7-48f9-8faa-5e851149c270" class="code"><code>.container{
+    display: flex;
+    flex-direction: column;
+}</code></pre>
+	<p id="9782ce6b-ba88-4fbc-a251-5fe004f9a76e" class="">
+	</p>
+	<p id="1c43a0ce-d0ac-42c7-bee8-9756aabf175b" class=""><strong>align-self의 활용 예시</strong></p>
+	<p id="06a1e7c1-c3fe-44e5-a62f-1c2613a98fa9" class="">아래는 Flex 컨테이너의 아이템들을 align-self 속성을 사용하여 간단하고 쉽게 정렬한
+		모습이다. 컨테이너에 <code>flex-direction:column;</code> 을 부여하고, 첫 번째 Flex 아이템에
+		<code>align-self:flex-end;</code>를, 네 번째 Flex 아이템에 <code>align-self:flex-start;</code> 을 주어 배치하였다. 값이
+		부여되지 않은 두 번째와 세 번째 아이템 요소는 <code>align-self:auto;</code>가 되어, 컨테이너의 <code>align-items</code>의 기본값인
+		stretch 속성을 부여받은 것을 확인할 수 있다.
+	</p>
+	<figure id="a1722385-3a73-491c-89ca-fe15fda06973" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/card%201.png"><img style="width:912px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/card%201.png" /></a></figure>
+	<pre id="fbe9d1fe-61f4-4b22-a5ad-db02ca1c7c21" class="code"><code>.container{
+    display: flex;
+    flex-direction: column;
+}
+.item:nth-child(1){align-self: flex-end;}
+.item:nth-child(4){align-self: flex-start;}</code></pre>
+	<h2 id="74533c47-1b06-4918-be42-ebcb1d6b826a" class="">9.2. order</h2>
+	<p id="431db525-aa14-4906-bec4-81fdb18852a4" class=""><code>order</code> 속성은 아이템 요소들의 순서를 결정하는 속성이다. 기본적으로
+		<code>flex</code>는 작성한 순서대로 나열되지만, <code>order</code> 속성을 사용하여 아이템들의 순서를 변경할 수 있다.
+	</p>
+	<p id="896ea647-83d6-4439-a011-5a03417effbd" class=""><strong>order의 특징</strong></p>
+	<ul id="2b6eb500-06c7-48a2-a69c-82a8a5c4eb75" class="bulleted-list">
+		<li style="list-style-type:disc">기본값은 0이며, 음수와 양수를 사용할 수 있다. 값이 작을수록 우선순위가 적용되어 <code>음수 → 0 → 양수</code>
+			순서로 표시된다. </li>
+	</ul>
+	<ul id="d2b3b3e1-26fe-444d-b88a-846b87aee75d" class="bulleted-list">
+		<li style="list-style-type:disc"><code>flex-direction</code> 속성의 방향값(row, row-reverse, column,
+			column-reverse)을 기준으로 낮은 숫자를 먼저 배치한다. </li>
+	</ul>
+	<ul id="d4274293-6ecf-4feb-8561-60e58319923d" class="bulleted-list">
+		<li style="list-style-type:disc">HTML 구조와 상관없이 순서를 시각적으로 변경할 수 있지만, HTML 자체의 구조를 바꾸는 것은 아니다. 따라서 스크린리더가
+			읽을 때는 <code>order</code>값이 적용되지 않고 HTML 마크업 순서대로 읽힌다. </li>
+	</ul>
+	<p id="d41d3c95-81e0-4023-a4b3-b564dc164c35" class="">
+	</p>
+	<p id="6f10a3f3-684f-49c3-a704-2644b477526b" class="">아래는 <code>flex-direction: row;</code> 와
+		<code>flex-direction: column;</code>에서 <code>order</code> 값을 적용하지 않았을 때와 적용했을 때의 모습이다.
+	</p>
+	<p id="4dcb4418-4ac4-49bc-ae47-9c8ef6d83651" class="">
+	</p>
+	<p id="613ec29f-625c-4b9e-adf0-0ea0bf5f3d7a" class=""> <code>flex-direction: row;</code> </p>
+	<p id="9d026f1d-c800-40c0-a1cf-6d98c955010c" class="">
+	</p>
+	<p id="125004ec-9408-41e1-9b0e-01011295b699" class=""><mark class="highlight-red"><strong>실행코드</strong></mark></p>
+	<p id="6b84c751-1787-4032-831c-8b3bb345b8ce" class="">
+	</p>
+	<p id="bc1e7361-68ea-4dc1-8bef-a44a05c40c3f" class=""><strong>order의 사용 예시</strong></p>
+	<ol type="1" id="ac96921f-cc51-4981-8851-12ed88b2980e" class="numbered-list" start="1">
+		<li>날짜와 제목, 내용이 있는 카드 디자인을 만든다고 가정하자. 아래의 이미지처럼 날짜가 제목보다 먼저 위치하게 할 때, 기본 순서로 배치한다면 스크린 리더는 날짜, 제목, 내용
+			순으로 읽을 것이다. 하지만 사용자는 가장 중요한 제목을 먼저 읽은 후 날짜를 읽기를 선호한다. 이럴 경우, 날짜에 <code>order:-1</code>을 주어 시각적 순서만
+			바꿔서 스크린 리더가 읽는 순서를 변경하지 않도록 할 수 있다. </li>
+	</ol>
+	<p id="00b2fa8b-14bc-4190-af74-a6187533285b" class="">
+	</p>
+	<figure id="11e27be6-1e05-4d0c-9f39-4f37f42a8e5c" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Group_1-1.png"><img style="width:384px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/Group_1-1.png" /></a></figure>
+	<p id="bc3fba38-84c5-452f-9117-252451e7dfa4" class="">
+	</p>
+	<ol type="1" id="feba4d23-1991-4d5a-9570-58d686ba03ef" class="numbered-list" start="2">
+		<li>아래와 같은 경우에도 order 속성을 사용할 수 있다.</li>
+	</ol>
+	<p id="1219d208-13cb-47bc-99f9-5a87b5e0132f" class="">이미 만들어진 모듈을 사용하여 웹을 구성한다면 초기에는 아래와 같은 배치가 된다. 마크업 순서가
+		header부터 footer까지 차례대로 되어있으므로, 각 요소의 크기를 조정해주어도 기본적으로 순서는 바뀌지 않는다.</p>
+	<figure id="c91cfcbf-2498-4b9f-8f9d-ed350bef2b6a" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/flex_기타01.png"><img style="width:1138px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/flex_기타01.png" /></a></figure>
+	<p id="70ac9ed2-6d60-441e-b949-8b32f7c92994" class="">
+	</p>
+	<ul id="a15ace46-52b8-4712-b76b-952035f40f54" class="bulleted-list">
+		<li style="list-style-type:disc"><strong>order 속성을 주지 않았을 때</strong></li>
+	</ul>
+	<p id="f72b2846-bda8-4e30-a6b4-2d4ddea25308" class="">요소들의 크기를 조정해주었지만, 마크업 순서대로 배치되기 때문에 order 속성을 주지 않는다면
+		기본적인 순서를 변경할 수 없다.</p>
+	<figure id="397a652e-47c7-49f8-9e8a-6b67c8038915" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/flex_기타02.png"><img style="width:1133px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/flex_기타02.png" /></a></figure>
+	<p id="3290c6f4-3c60-45a7-a48d-de63f44b1278" class="">
+	</p>
+	<ul id="0145bea5-240e-408a-baf5-011eeb7d641a" class="bulleted-list">
+		<li style="list-style-type:disc"><strong>order 속성을 주었을 때</strong></li>
+	</ul>
+	<p id="67104201-262a-4b82-8649-2731097f1280" class="">현재 main 부분을 가운데로 옮기려고 한다. 그러므로 aside-a, main, aside-b
+		요소에 각각 order를 주면 배치가 되지만, 기본적으로 order 값을 1이라도 주게 되면, order 값이 없는 속성이 더 우선시되기 때문에 마크업상 아래에 있는 footer 부분에도
+		order 값을 주어야 한다. 즉 우리가 원하는 순서대로 각 요소에 order를 1, 2, 3, 4를 주게 되면, 우리가 원하는 레이아웃을 만들 수 있다.</p>
+	<figure id="8fa1946a-2a10-43e0-859d-20578afac9f1" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/flex_기타03.png"><img style="width:1122px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/flex_기타03.png" /></a></figure>
+	<pre id="99d646dd-4e47-4168-b6df-fd8fceb91f3f" class="code"><code>.main {
+    width: 60%;
+    order: 2;
+}
+
+.aside {
+    width: 20%;
+}
+
+.aside.aside-a {
+    order: 1;
+}
+
+.aside.aside-b {
+    order: 3;
+}
+
+.footer {
+    order: 4;
+}</code></pre>
+	<h2 id="2d245140-4a6c-4c60-8f3d-8f4a442007e7" class="">9.3. z-index</h2>
+	<p id="54e221b8-ff0e-416b-8a9b-e57eb111e4fe" class="">flex에서도 z-index 속성을 사용할 수 있다. 어떤 요소에 z-index의 값이 1이라도
+		주어진다면 마치 다른 요소를 덮어 씌우는 것과 같은 모습을 표현할 수 있다.</p>
+	<figure id="3f65b182-5893-4651-b18a-b7cefc2fffff" class="image"><a
+			href="Flex%20e8da7a19e36f413d978e9cd80436c7c8/z-index.png"><img style="width:1130px"
+				src="Flex%20e8da7a19e36f413d978e9cd80436c7c8/z-index.png" /></a></figure>
+	<pre id="091dc6bc-b42e-47d1-95bd-22900efaed20" class="code"><code>.main {
+    width: calc(60% - 16px);
+    order: 2;
+    z-index: 1;
+    transform: scale(1.5);
+    opacity: 0.8;
+}</code></pre>
+	<h1 id="42b3488c-fda2-4c96-924f-8ec57365c177" class="">10. IE 지원을 위한 Flex</h1>
+	<h2 id="dee57fc4-b062-4d2d-b188-1ee54a3e1926" class="">10.1. -ms- prefix 사용 예시</h2>
+	<p id="5b06ee21-aeee-46c4-bcd5-328b6d6e2b50" class=""><strong>IE에서 지원하지 않는 Flex 속성</strong></p>
+	<p id="2fdd078d-22aa-42a0-9605-e735e70f0eb2" class=""><code>flex-flox</code> ,
+		<code>justify-content: space-around</code> , <code>align-self</code> , <code>align-content</code> 의 4가지
+		속성들은 현재 지원하고 있지 않다. 또 <code>flex-grow</code> , <code>flex-shrink</code> , <code>flex-basis</code>의 3가지
+		속성들은 단축 속성인 <code>-ms-flex: 0 1 auto;</code> 를 통해 지원하고 있다. (IE10버전 에서는 <code>-ms-flex: 0 0 auto;</code>
+		를 통해 지원하고 있다.)
+	</p>
+	<p id="81308f5f-68be-4f8f-bece-ea7e032b9b93" class="">F<strong>lex 속성 IE 지원 대응표</strong></p>
+	<table id="55dad144-d040-436c-ab4c-ebc097bd18cf" class="simple-table">
+		<tbody>
+			<tr id="13f910dc-45a6-4c4b-85a9-f4b7870a595a">
+				<td id="tKsM" class="" style="width:275px"><mark class="highlight-yellow"><strong>속성</strong></mark>
+				</td>
+				<td id="=hra" class="" style="width:227.78125px"><mark class="highlight-yellow"><strong>IE
+							지원</strong></mark></td>
+			</tr>
+			<tr id="3002740e-4154-41d3-95a6-75540a84365d">
+				<td id="tKsM" class="" style="width:275px">display: flex;</td>
+				<td id="=hra" class="" style="width:227.78125px">display: -ms-flexbox;</td>
+			</tr>
+			<tr id="4e1f3d9d-0e8f-475c-b12b-09e5c4bb289d">
+				<td id="tKsM" class="" style="width:275px">flex-grow</td>
+				<td id="=hra" class="" style="width:227.78125px">-ms-flex</td>
+			</tr>
+			<tr id="6cd86be4-76bf-412c-8e1b-799db26a9c2f">
+				<td id="tKsM" class="" style="width:275px">flex-direction</td>
+				<td id="=hra" class="" style="width:227.78125px">-ms-flex-direction</td>
+			</tr>
+			<tr id="35ddfd15-5794-44af-9caa-9a3150109a3d">
+				<td id="tKsM" class="" style="width:275px">flex-wrap</td>
+				<td id="=hra" class="" style="width:227.78125px">-ms-flex-wrap</td>
+			</tr>
+			<tr id="90498801-48ac-487f-b6cb-e7fb258b32b5">
+				<td id="tKsM" class="" style="width:275px">order</td>
+				<td id="=hra" class="" style="width:227.78125px">-ms-flex-order</td>
+			</tr>
+			<tr id="64d52d72-d9a4-47b7-8fc1-9d8226ed0a9c">
+				<td id="tKsM" class="" style="width:275px">justify-content</td>
+				<td id="=hra" class="" style="width:227.78125px">-ms-flex-pack</td>
+			</tr>
+			<tr id="b5e9a94a-8794-4c87-a51a-3c7e1b79f459">
+				<td id="tKsM" class="" style="width:275px">align-items</td>
+				<td id="=hra" class="" style="width:227.78125px">-ms-flex-align</td>
+			</tr>
+		</tbody>
+	</table>
+	<h2 id="b623552f-cdbd-4a02-84b7-adac1c2e7ba7" class="">10.2. IE에서의 Flex 이슈</h2>
+	<p id="e303cff3-5ca6-449c-abc0-4d68431a3156" class=""><strong>주의해야 할 Flex 이슈</strong></p>
+	<p id="b985e7a8-9cb2-4ba3-a0db-0d74b7138ee3" class="">IE 10/11 버전에서 Flex를 사용 할 때 생각대로 작동되지 않는 이슈들과 맞닥뜨릴 수
+		있는데, 그 중 몇 가지를 소개하겠다.</p>
+	<ul id="84d4bb45-c098-4293-8adb-d40580ecfc48" class="bulleted-list">
+		<li style="list-style-type:disc">IE 10과 11 버전에서 flex-basis 사용 시에 <code>box-sizing: border-box;</code>가
+			인식되지 않는다. IE 10/11에서는 flex-basis로 flex item의 크기를 정할 때, flex item의 크기를 항상 item의 콘텐츠 크기를 기준으로 잡는다.
+			<code>box-sizing: border-box;</code> 속성을 주어도 바뀌지 않는다. 이를 해결하는 방법 중 하나는 flex item을 감싸는(wrapper) 요소를
+			추가해 주는 것이다. 이 때 요소는 border나 padding값이 없어야 한다.
+		</li>
+	</ul>
+	<ul id="0e247a92-0cd9-4f02-b75d-7b3ca7ad08e7" class="bulleted-list">
+		<li style="list-style-type:disc">IE 10/11에서 <code>min-height</code> 속성을 flex container에 사용 시, 자식 태그인
+			flex item은 부모 태그인 flex container의 크기를 인식하지 못한다. 예를 들어, flex item을 수직 정렬하고자 할 때, 부모인 flex container의
+			높이가 인식되어야 하는데, item들이 높이를 인식하지 못하게 된다. 이를 해결하는 방법으로는 flex container를 감싸는 또 다른 flex
+			container요소(wrapper)를 추가하는 것이다. 이때 flex container를 감싸는 부모 요소는 column direction 속성으로 지정해주어야 한다.</li>
+	</ul>
+	<p id="334dc2f3-46a6-4e27-bf2a-aaca7acb67fc" class="">
+	</p>
+	<p id="e11ab671-52df-477b-9ad9-6d81664bc6f3" class=""><strong>flex 이슈 확인 사이트</strong></p>
+	<p id="a89e5b03-7ddf-429c-9f33-fb21b3e04fc2" class="">이 외에도 IE 10/11 버전에서 flex 사용에는 여러 이슈가 있다. 다음은 flex 이슈를
+		확인할 수 있는 사이트이다.</p>
+	<p id="63d59a9b-5a12-4263-8381-e6ce00ed4340" class=""><a
+			href="https://github.com/philipwalton/flexbugs">https://github.com/philipwalton/flexbugs</a></p>
 </body>
+
 </html>
