@@ -1,49 +1,5 @@
 @charset "UTF-8";
 
-/* header css */
-.hamburger-menu {
-    background: url("./src/assets/images/hamburger-menu.svg") no-repeat 100%;
-}
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: var(--white);
-    border-bottom: 1px solid var(--border);
-    z-index: 10;
-}
-
-.header-logo {
-    background: url("./src/assets/images/logo.svg") no-repeat;
-}
-
-.search-btn {
-    background: url("./src/assets/images/icon-search.svg") no-repeat;
-}
-
-.darkmode {
-    background: url("./src/assets/images/icon-darkmode.svg") center no-repeat;
-}
-
-.github {
-    background: url("./src/assets/images/icon-github.svg") center no-repeat;
-}
-
-/* header css - darkmode */
-header.on .header-logo {
-    background: url("./src/assets/images/logo-darkmode.svg") no-repeat;
-}
-
-header.on .darkmode {
-    background: url("./src/assets/images/icon-moon-dark.svg") center no-repeat;
-}
-
-header.on .github {
-    background: url("./src/assets/images/icon-github-dark.svg") center no-repeat;
-}
-
-/* carousel css */
 .main {
     margin: 130px 0 100px;
 }
@@ -94,7 +50,7 @@ header.on .github {
     background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 979px) {
+@media screen and (max-width: 1024px) {
   .section-carousel {
     flex-wrap: wrap;
     margin: 0 20px;
@@ -118,17 +74,21 @@ header.on .github {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .main {
+      margin: 100px 0;
+  }
+}
+
 @media screen and (max-width: 479px) {
+  .main {
+      margin: 65px 0 40px;
+  }
   .section-carousel {
-    gap: 80px;
+    gap: 40px;
   }
 
   .carousel-flex::after {
-    bottom: -40px;
-  }
-
-  .footer-area {
-    height: 215px;
-    line-height: 215px;
+    bottom: -20px;
   }
 }
