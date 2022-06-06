@@ -6,58 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>flexngrid</title>
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
-    <link rel="stylesheet" href="./src/css/default.css">
-    <link rel="stylesheet" href="./src/css/color.css" />
-    <link rel="stylesheet" href="./src/components/gnb-nav.css" />
-    <link rel="stylesheet" href="./src/components/modal2.css" />
-    <link rel="stylesheet" href="./src/components/footer.css">
-    <link rel="stylesheet" href="./utils/editor/editor.css">
-    <link rel="stylesheet" href="./style.css">
-    <!-- <script defer src="./search/search.js"></script> -->
+    <link rel="stylesheet" href="/src/css/default.css">
+    <link rel="stylesheet" href="/src/css/color.css" />
+    <link rel="stylesheet" href="/src/components/gnb-nav.css" />
+    <link rel="stylesheet" href="/src/components/modal2.css" />
+    <link rel="stylesheet" href="/src/components/footer.css">
+    <script defer src="/src/js/darkmode.js"></script>
+    <script defer src="/src/js/search.js"></script>
+    <link rel="stylesheet" href="/utils/editor/editor.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <header class="header">
+    <header class="gnb-header">
+        <h1 class="logo-container">
+            <a href="/" class="header-logo">
+                <span class="a11y-hidden">flex and grid 홈</span>
+            </a>
+        </h1>
         <nav>
             <ul class="nav-left">
-                <li class="hamburger-container hide">
+                <li class="hamburger-container">
                     <a href="/" class="hamburger-menu">
-                        <span class="a11y-hidden">햄버거 메뉴</span>
+                        <span class="a11y-hidden">모바일 메뉴</span>
                     </a>
                 </li>
-                <li class="logo-container">
-                    <a href="#" class="header-logo">
-                        <span class="a11y-hidden">로고</span>
-                    </a>
-                </li>
-                <li class="nav-left-menu">
-                    <a href="#cheatsheet">Cheatsheet</a>
-                </li>
-                <li class="nav-left-menu">
-                    <a href="#flex">Flex</a>
-                </li>
-                <li class="nav-left-menu">
-                    <a href="#grid">Grid</a>
-                </li>
-                <li class="nav-left-menu">
-                    <a href="#try-it">Try it</a>
-                </li>
+                <li class="nav-left-menu nav-cheatsheet"><a href="/cheatsheet">Cheatsheet</a></li>
+                <li class="nav-left-menu nav-flex"><a href="/flex">Flex</a></li>
+                <li class="nav-left-menu nav-grid"><a href="/grid">Grid</a></li>
+                <li class="nav-left-menu nav-tryit"><a href="/try-it">Try it</a></li>
             </ul>
             <ul class="nav-right">
+                <li class="mobile-search">
+                    <button class="search-toggle">
+                        <span class="a11y-hidden">검색 창 활성화</span>
+                    </button>
+                </li>
                 <li class="search">
-                    <input type="text" class="search-input" placeholder="Search"/>
-                    <button class="search-btn">
-                        <span class="a11y-hidden">검색버튼</span>
-                    </button>
+                    <form action="/search" method="get" autocomplete="off">
+                        <input type="text" class="search-input" name="q" placeholder="Search" />
+                        <button type="submit" class="search-btn">
+                            <span class="a11y-hidden">검색 버튼</span>
+                        </button>
+                    </form>
+                    <div class="modal-history">
+                        <div class="header-history">
+                            <strong class="tit-history">최근 검색어</strong>
+                            <button class="btn-del-all">전체 삭제</button>
+                        </div>
+                        <ul class="list-history"></ul>
+                    </div>
                 </li>
-                <li>
-                    <button class="darkmode">
-                        <span class="a11y-hidden">다크 모드 버튼</span>
+                <li class="button-group">
+                    <button class="darkmode-btn">
+                        <span class="a11y-hidden">다크 모드 전환</span>
                     </button>
-                </li>
-                <li>
-                    <button class="github">
-                        <span class="a11y-hidden">깃헙 바로가기 버튼</span>
-                    </button>
+                    <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="github-btn">
+                        <span class="a11y-hidden">깃헙 바로가기</span>
+                    </a>
                 </li>
             </ul>
         </nav>

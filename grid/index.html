@@ -1,16 +1,72 @@
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Grid</title>
+    <meta charset="UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+    <link rel="stylesheet" href="/src/css/default.css" />
+    <link rel="stylesheet" href="/src/css/color.css" />
+    <link rel="stylesheet" href="/src/components/gnb-nav.css" />
+    <link rel="stylesheet" href="/src/components/modal2.css" />
+    <script defer src="/src/js/darkmode.js"></script>
+    <script defer src="/src/js/search.js"></script>
 </head>
 
 <body>
+    <header class="gnb-header">
+        <h1 class="logo-container">
+            <a href="/" class="header-logo">
+                <span class="a11y-hidden">flex and grid 홈</span>
+            </a>
+        </h1>
+        <nav>
+            <ul class="nav-left">
+                <li class="hamburger-container">
+                    <a href="/" class="hamburger-menu">
+                        <span class="a11y-hidden">모바일 메뉴</span>
+                    </a>
+                </li>
+                <li class="nav-left-menu nav-cheatsheet"><a href="/cheatsheet">Cheatsheet</a></li>
+                <li class="nav-left-menu nav-flex"><a href="/flex">Flex</a></li>
+                <li class="nav-left-menu nav-grid"><a href="/grid">Grid</a></li>
+                <li class="nav-left-menu nav-tryit"><a href="/try-it">Try it</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li class="mobile-search">
+                    <button class="search-toggle">
+                        <span class="a11y-hidden">검색 창 활성화</span>
+                    </button>
+                </li>
+                <li class="search">
+                    <form action="/search" method="get" autocomplete="off">
+                        <input type="text" class="search-input" name="q" placeholder="Search" />
+                        <button type="submit" class="search-btn">
+                            <span class="a11y-hidden">검색 버튼</span>
+                        </button>
+                    </form>
+                    <div class="modal-history">
+                        <div class="header-history">
+                            <strong class="tit-history">최근 검색어</strong>
+                            <button class="btn-del-all">전체 삭제</button>
+                        </div>
+                        <ul class="list-history"></ul>
+                    </div>
+                </li>
+                <li class="button-group">
+                    <button class="darkmode-btn">
+                        <span class="a11y-hidden">다크 모드 전환</span>
+                    </button>
+                    <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="github-btn">
+                        <span class="a11y-hidden">깃헙 바로가기</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
 	<article id="dbba5b9d-cc78-4911-a969-ba621a2189de" class="page sans">
-		<header>
-			<div class="page-header-icon undefined"><span class="icon">📝</span></div>
-			<h1 class="page-title">Grid</h1>
-		</header>
 		<div class="page-body">
 			<nav id="8168decc-1030-439b-aff8-91338eadf1be" class="block-color-gray table_of_contents">
 				<div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link"
