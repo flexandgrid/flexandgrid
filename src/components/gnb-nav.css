@@ -23,6 +23,7 @@
     background-color: var(--white);
     color: var(--secondary);
     box-sizing: border-box;
+    transition: transform 0.5s;
     z-index: 10;
 }
 
@@ -191,6 +192,14 @@
 .button-group .darkmode-btn:hover,
 .button-group .github-btn:hover {
     background-color: var(--border);
+}
+
+.scroll-down .gnb-header {
+  transform: translate3d(0, -100%, 0);
+}
+
+.scroll-up .gnb-header {
+  transform: none;
 }
 
 /* 다크모드 */
