@@ -1,146 +1,194 @@
-.btn-mobile-hamburger {
-    position: relative;
+@keyframes slideIn {
+  0% {
+    transform: translateX(-250px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
-.btn-mobile-hamburger::after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-image: url(../assets/images/hamburger-menu.svg);
-}
-.cont-mobile-menu {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    min-height: 728px;
-    background-color: #fff;
-}
-.cont-mobile-menu::before {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 100vw;
-    height: 100%;
-    z-index: -10;
-    opacity: .3;
-    background-color: #2f2f2f;
-}
-.cont-mobile-menu > li:first-child {
-    margin-left: 20px;
-    width: 150px;
-}
-.cont-mobile-menu > li:not(:first-child) {
-    margin-left: 10px;
-}
-.title-mobile {
-    width: 230px;
-    min-height: 54px;
-    padding: 13px 34px 13px 40px;
-    position: relative;
-    font-family: Pretendard;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 28px;
-    border-bottom: 1px solid #E0E2E7;
-}
-.subtitle-mobile {
-    width: 200px;
-    min-height: 34px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 34px;
-}
-.subtitle-mobile:hover {
-    color: #F6866A;
-}
-.subtitle-mobile:first-child {
-    margin-top: 19px;
-}
-.subtitle-mobile > ul > li {
-    margin-left: 10px;
-}
-.cont-mobile-cheatsheet::before,
-.cont-mobile-flex::before,
-.cont-mobile-grid::before,
-.cont-mobile-util::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 18.75px;
-    left: 11px;
-    width: 16px;
-    height: 16px;
-}
-.cont-mobile-cheatsheet::before {
-    background: url(../assets/images/icon-cheatsheet.svg) no-repeat center/contain;
-}
-.cont-mobile-flex::before {
-    background: url(../assets/images/icon-flex.svg) no-repeat center/contain;
-}
-.cont-mobile-grid::before{
-    background: url(../assets/images/icon-grid.svg) no-repeat center/contain;
-}
-.cont-mobile-cheatsheet::after,
-.cont-mobile-flex::after,
-.cont-mobile-grid::after
- {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 18.75px;
-    right: 24.43px;
-    width: 16px;
-    height: 16px;
-    background: url(../assets/images/chevron-down.svg) no-repeat center/contain;
-}
-.cont-mobile-grid {
-    /* display: none; */
-}
-.cont-mobile-util {
-    font-family: Pretendard;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0em;
-    text-align: left;
-}
-.mobile-darkmode {
-    position: relative;
-    margin-bottom: 28px;
-}
-.mobile-darkmode::before {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: -30px;
-    width: 17.96px;
-    height: 17.96px;
-    background: url(../assets/images/icon-darkmode.svg) no-repeat center/contain;
-}
-.mobile-github {
-    position: relative;
-    margin-bottom: 72px;
-}
-.mobile-github:hover, .mobile-darkmode:hover{
-    color: #F6866A;
-}
-.mobile-github::before {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: -30px;
-    width: 17.96px;
-    height: 17.96px;
-    background: url(../assets/images/icon-github.svg) no-repeat center/contain;
-}
-.cont-mobile-util h3 {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    clip: rect(0 0 0 0);
-    overflow: hidden;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
+.btn-mobile-hamburger {
+  position: relative;
+}
+.btn-mobile-hamburger::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-left: 16px;
+  background-image: url(../assets/images/hamburger-menu.svg);
+  background-repeat: no-repeat;
+}
+.modal-mobile-menu {
+  display: none;
+}
+.modal-mobile-menu.on {
+  display: block;
+  position: absolute;
+  top: 0;
+  animation: slideIn;
+  animation-duration: 0.3s;
+}
+.dim-mobile {
+  display: none;
+}
+.dim-mobile.on {
+  display: block;
+  position: absolute;
+  top: 0;
+}
+.dim-mobile.on::after {
+  content: '';
+  position: absolute;
+  width: 100vw;
+  height: 135vh;
+  background-color: #000;
+  z-index: -10;
+  opacity: 0.3;
+}
+.cont-mobile-menu {
+  position: absolute;
+  width: 250px;
+  min-height: 728px;
+  top: 0;
+  padding-top: 33.49px;
+  background-color: #fff;
+  box-shadow: 2px 0 4px 3px rgba(0, 0, 0, 0.2);
+}
+.cont-mobile-menu > li:first-child {
+  width: 150px;
+  margin-left: 20px;
+}
+.cont-mobile-menu > li:not(:first-child) {
+  margin-left: 10px;
+}
+.title-mobile {
+  width: 230px;
+  min-height: 54px;
+  padding: 13px 34px 13px 40px;
+  position: relative;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 28px;
+  border-bottom: 1px solid #e0e2e7;
+}
+.title-mobile button {
+  width: 100%;
+  text-align: start;
+}
+.title-mobile button:hover {
+  color: #f6866a;
+}
+.title-mobile:not(:last-child) ul {
+  display: none;
+}
+.title-mobile:not(:last-child) ul.on {
+  display: block;
+  color: initial;
+}
+.subtitle-mobile {
+  width: 200px;
+  min-height: 34px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 34px;
+}
+.subtitle-mobile:hover {
+  color: #f6866a;
+}
+.subtitle-mobile:first-child {
+  margin-top: 19px;
+}
+.subtitle-mobile > ul > li {
+  margin-left: 10px;
+}
+.cont-mobile-cheatsheet .mobile-tittle-cheatsheet::before,
+.cont-mobile-flex .mobile-tittle-flex::before,
+.cont-mobile-grid .mobile-tittle-grid::before,
+.cont-mobile-util button::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 18.75px;
+  left: 11px;
+  width: 16px;
+  height: 16px;
+}
+.cont-mobile-cheatsheet .mobile-tittle-cheatsheet::before {
+  background: url(../assets/images/icon-cheatsheet.svg) no-repeat center/contain;
+}
+.cont-mobile-flex .mobile-tittle-flex::before {
+  background: url(../assets/images/icon-flex.svg) no-repeat center/contain;
+}
+.cont-mobile-grid .mobile-tittle-grid::before {
+  background: url(../assets/images/icon-grid.svg) no-repeat center/contain;
+}
+.title-mobile button span:last-child::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 18.75px;
+  right: 24.43px;
+  background: url(../assets/images/chevron-down.svg) no-repeat center/contain;
+}
+.title-mobile button span:last-child.on::after {
+  transform: rotate(180deg);
+}
+.cont-mobile-util {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+}
+.mobile-darkmode {
+  position: relative;
+  margin-bottom: 28px;
+}
+.mobile-darkmode::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  width: 17.96px;
+  height: 17.96px;
+  top: 0;
+  left: -30px;
+  background: url(../assets/images/icon-darkmode.svg) no-repeat center/contain;
+}
+.mobile-github {
+  position: relative;
+  margin-bottom: 72px;
+}
+.mobile-github:hover,
+.mobile-darkmode:hover {
+  color: #f6866a;
+}
+.mobile-github::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  width: 17.96px;
+  height: 17.96px;
+  top: 0;
+  left: -30px;
+  background: url(../assets/images/icon-github.svg) no-repeat center/contain;
+}
+.cont-mobile-util h3 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
