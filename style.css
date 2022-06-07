@@ -21,7 +21,7 @@
   top: 20px;
   right: -40px;
   height: 368px;
-  border-right: 2px solid #efefef;
+  border-right: 2px solid var(--border);
 }
 
 .fg-editor {
@@ -32,22 +32,23 @@
 .btn-up {
     position: fixed;
     bottom: 60px;
-    right: 160px;
+    right: 10%;
+    display: none;
     width: 50px;
     height: 50px;
+    cursor: pointer;
     border-radius: 50%;
-    background: #3f3f46;
     box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
-    background-image: url("./src/assets/images/chevron-down.svg");
-    background-position: center;
-    background-repeat: no-repeat;
+    background: #3f3f46 url("./src/assets/images/chevron-down.svg") no-repeat center;
+    transition: all 0.3s;
+}
+
+.btn-up:active, .btn-up.on:active {
+    background-color: var(--secondary);
 }
 
 .btn-up.on {
-    background: #e0e0e0;
-    background-image: url("./src/assets/images/chevron-down-darkmode.svg");
-    background-position: center;
-    background-repeat: no-repeat;
+    background: var(--subtext) url("./src/assets/images/chevron-down-darkmode.svg") no-repeat center;
 }
 
 @media screen and (max-width: 1024px) {
@@ -70,7 +71,7 @@
     bottom: -48px;
     left: 0;
     width: 100%;
-    border-bottom: 2px solid #efefef;
+    border-bottom: 2px solid var(--border);
   }
 }
 
