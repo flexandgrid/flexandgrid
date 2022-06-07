@@ -1,1 +1,5 @@
 @charset "UTF-8";
+
+.gnb-header ul.nav-left li:last-child {
+    font-weight: 700;
+}
