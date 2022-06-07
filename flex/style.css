@@ -4,6 +4,11 @@ body {
     overflow-x: hidden;
 }
 
+main {
+    display: flex;
+    align-items: stretch;
+}
+
 article {
     margin-bottom: 100px;
 }
@@ -81,10 +86,9 @@ article > pre code::-webkit-scrollbar-thumb {
 }
 
 .cont-flex {
+    max-width: 1480px;
     width: 100%;
-    padding: 140px 0 120px;
-    padding-left: 150px;
-    padding-right: 210px;
+    padding: 140px 180px 120px;
     line-height: 1.6em;
 }
 
@@ -101,10 +105,6 @@ article > pre code::-webkit-scrollbar-thumb {
     width: 100%;
     max-width: 700px;
     height: auto;
-}
-
-.footer-area {
-    margin-left: 250px;
 }
 
 /* 반응형 */
@@ -136,9 +136,5 @@ article > pre code::-webkit-scrollbar-thumb {
 
     .cont-flex figure img {
         max-width: 100%;
-    }
-
-    .footer-area {
-        margin: 0;
     }
 }
