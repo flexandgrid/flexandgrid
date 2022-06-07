@@ -81,6 +81,7 @@
     font-weight: 400;
     opacity: 0;
     visibility: hidden;
+    z-index: 999;
 }
 
 .modal-menu .list-menu .list-item {

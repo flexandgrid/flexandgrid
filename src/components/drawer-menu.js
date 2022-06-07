@@ -1,9 +1,11 @@
 const btnDrawer = document.querySelector('.btn-drawer');
 const asideArea = document.querySelector('.aside-area');
+const aside = document.querySelector('aside');
 
 const toggleDrawer = () => {
   btnDrawer.classList.toggle('toggle');
   asideArea.classList.toggle('toggle');
+  aside.classList.toggle('toggle');
 }
 
 const moveDrawerBtn = () => {

@@ -1,6 +1,17 @@
 @charset "UTF-8";
 
+aside {
+  transition: position 0.3s ease-out;
+}
+
+aside.toggle {
+  position: absolute;
+  background: none;
+}
+
 .aside-area {
+  position: sticky;
+  top: 0;
   min-width: 340px;
   padding-left: 90px;
   background: var(--white);
@@ -22,6 +33,7 @@
   border-radius: 0px 0px 4px 0px;
   background: #fff url(/src/assets/images/icon-drawer-menu.svg) no-repeat center;
   transition: left 0.3s ease-out, top 0.5s;
+  z-index: 1;
 }
 
 .btn-drawer:hover {
@@ -38,9 +50,9 @@
 
 /* drawer-menu */
 .drawer-menu {
-  position: fixed;
+  /* position: fixed; */
   width: 250px;
-  height: 100%;
+  height: 100vh;
   padding: 6px 10px 0px;
   background: #fff;
   border-right: 1px solid #EFEFEF;
@@ -285,7 +297,9 @@
 @media screen and (max-width: 1024px) {
   .aside-area {
     position: absolute;
+    min-width: 295px;
     padding-left: 0;
+    background: none;
     transform: translateX(-295px);
   }
 
