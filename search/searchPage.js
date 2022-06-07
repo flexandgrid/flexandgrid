@@ -1,26 +1,42 @@
 const URLSearch = new URLSearchParams(location.search);
-const searchQuery = URLSearch.get('q');
-const searchText = document.querySelector('.text-search');
-const searchResultCount = document.querySelector('.text-search-count');
-const searchItem = document.querySelectorAll('.itemwrap-search');
+const searchQuery = URLSearch.get("q");
+const searchText = document.querySelector(".text-search");
+const searchResultCount = document.querySelector(".text-search-count");
+const searchItem = document.querySelectorAll(".itemwrap-search");
 
 if (searchQuery) {
-  searchText.innerText = `Results for "${searchQuery}"`;
-  searchResultCount.innerText = `Showing ${searchItem.length} results`;
+    searchText.innerText = `Results for "${searchQuery}"`;
+    searchResultCount.innerText = `Showing ${searchItem.length} results`;
 }
-
 
 // fetch
 const contents = [];
-const fetchContents = async () => {
-  try {
-    const dataFlex = await(await fetch('https://flexngrid.com/src/md/flex.md')).text();
-    const dataGrid = await(await fetch('https://flexngrid.com/src/md/grid.md')).text();
-    contents.push(dataFlex, dataGrid);
-  } catch (e) {
-    console.log(e);
-  }
-}
+const fetchContents = async (searchQuery) => {
+    try {
+        const dataFlex = await (
+            await fetch("https://flexngrid.com/src/md/flex.md")
+        ).text();
+        const dataGrid = await (
+            await fetch("https://flexngrid.com/src/md/grid.md")
+        ).text();
+        contents.push(
+            dataFlex
+                .split("\n")
+                .filter((v) => v.includes(`#`))
+                .map((v) => v.toLocaleLowerCase())
+                .filter((v) => v.includes(searchQuery.toLowerCase())),
+            dataGrid
+                .split("\n")
+                .filter((v) => v.includes(`#`))
+                .map((v) => v.toLocaleLowerCase())
+                .filter((v) => v.includes(searchQuery.toLowerCase()))
+        );
+    } catch (e) {
+        console.log(e);
+    }
+};
+fetchContents(searchQuery);
+console.log(contents);
 
 const dummy = ["flex", "grid"];
 const dummydesc = ["플렉스에 대한 설명", "그리드에 대한 설명"];
@@ -57,25 +73,24 @@ const createList = () => {
 
 createList();
 
-
-
-
 // 삭제 예정
-const searchTitles = document.querySelectorAll('.tit-search');
-const searchDescriptions = document.querySelectorAll('.desc-search');
-window.addEventListener('DOMContentLoaded', () => {
-  for (let title of searchTitles) {
-    if (
-      title.textContent.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
-    ) {
-      title.closest('li').style.display = 'block';
+const searchTitles = document.querySelectorAll(".tit-search");
+const searchDescriptions = document.querySelectorAll(".desc-search");
+window.addEventListener("DOMContentLoaded", () => {
+    for (let title of searchTitles) {
+        if (
+            title.textContent.toLowerCase().indexOf(searchQuery.toLowerCase()) >
+            -1
+        ) {
+            title.closest("li").style.display = "block";
+        }
     }
-  }
-  for (let desc of searchDescriptions) {
-    if (
-      desc.textContent.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
-    ) {
-      desc.closest('li').style.display = 'block';
+    for (let desc of searchDescriptions) {
+        if (
+            desc.textContent.toLowerCase().indexOf(searchQuery.toLowerCase()) >
+            -1
+        ) {
+            desc.closest("li").style.display = "block";
+        }
     }
-  }
 });
