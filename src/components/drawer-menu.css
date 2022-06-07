@@ -18,13 +18,16 @@
   background: #fff url(/src/assets/images/icon-drawer-menu.svg) no-repeat center;
 }
 
+.btn-drawer:hover {
+  background-color: #F9F9F9;
+}
+
 /* drawer-menu */
 .drawer-menu {
   position: fixed;
   width: 250px;
-  height: calc(100vh - 80px);
-  margin-top: 80px;
-  padding: 6px 10px 0;
+  height: 100%;
+  padding: 6px 10px 0px;
   background: #fff;
   border-right: 1px solid #EFEFEF;
   overflow: auto;
@@ -47,8 +50,7 @@
 }
 
 .mobile-logo {
-  /* 모바일에서 사용시 block */
-  display: none;
+  display: block;
   margin-left: 11px;
   width: 130px;
   height: 88px;
