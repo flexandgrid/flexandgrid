@@ -265,11 +265,6 @@
   color: #E0E0E0;
 }
 
-/* 기능 */
-/* .focus-tit.scroll-spy {
-  color: red;
-} */
-
 
 /* 반응형 */
 @media screen and (max-width: 1280px) {
@@ -290,12 +285,29 @@
 @media screen and (max-width: 1024px) {
   .aside-area {
     position: absolute;
-    /* transform: translateX(-100%); */
+    padding-left: 0;
+    transform: translateX(-295px);
+  }
+
+  .aside-area.toggle {
+    transform: none;
+  }
+
+  .btn-drawer {
+    left: 0;
+  }
+
+  .btn-drawer.toggle {
+    left: 250px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .aside-area {
+    display: none;
+  }
+
+  .btn-drawer {
     display: none;
   }
 }
