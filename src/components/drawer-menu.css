@@ -39,7 +39,7 @@
   width: 5px;
   height: 40px;
   border-radius: 20px;
-  background-color: var(--gray-4);
+  background-color: none;
 }
 
 .drawer-menu::-webkit-scrollbar-track {
@@ -81,9 +81,9 @@
   background: url(../assets/images/icon-cheatsheet.svg) no-repeat center/contain;
 }
 
-/* .btn-flex::before {
+.btn-flex::before {
   background: url(../assets/images/icon-flex.svg) no-repeat center/contain;
-} */
+}
 
 .btn-grid::before {
   background: url(../assets/images/icon-grid.svg) no-repeat center/contain;
@@ -107,21 +107,21 @@
   background: url(../assets/images/icon-cheatsheet-hover.svg) no-repeat center/contain;
 }
 
-.btn-flex {
+.btn-flex:focus {
   color: #7661E2;
 }
 
-.btn-flex::before {
+.btn-flex:focus::before {
   background: url(../assets/images/icon-flex-hover.svg) no-repeat center/contain;
 }
 
-/* .btn-grid:focus {
+.btn-grid:focus {
   color: #F6866A;
 }
 
 .btn-grid:focus::before {
   background: url(../assets/images/icon-grid-hover.svg) no-repeat center/contain;
-} */
+}
 
 /* drawer-menu 리스트 */
 .list-drawer-menu {
