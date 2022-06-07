@@ -1,9 +1,23 @@
 const btnDrawer = document.querySelector('.btn-drawer');
 const asideArea = document.querySelector('.aside-area');
 
-btnDrawer.addEventListener('click', () => {
+const toggleDrawer = () => {
+  btnDrawer.classList.toggle('toggle');
   asideArea.classList.toggle('toggle');
-})
+}
+
+const moveDrawerBtn = () => {
+  if (body.classList.contains('scroll-down')) {
+    btnDrawer.classList.add('scroll-down');
+  }
+  if (body.classList.contains('scroll-up')) {
+    btnDrawer.classList.remove('scroll-down');
+  }
+}
+
+btnDrawer.addEventListener('click', toggleDrawer);
+window.addEventListener('scroll', moveDrawerBtn);
+
 
 // 스크롤 스파이 
 const drawerTit = document.querySelectorAll('.focus-tit');

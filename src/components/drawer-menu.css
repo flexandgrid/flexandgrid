@@ -21,10 +21,19 @@
   border: 1px solid #EFEFEF;
   border-radius: 0px 0px 4px 0px;
   background: #fff url(/src/assets/images/icon-drawer-menu.svg) no-repeat center;
+  transition: left 0.3s ease-out, top 0.5s;
 }
 
 .btn-drawer:hover {
   background-color: #F9F9F9;
+}
+
+.btn-drawer.toggle {
+  left: 0;
+}
+
+.btn-drawer.scroll-down {
+  top: 0;
 }
 
 /* drawer-menu */
@@ -283,8 +292,6 @@
     position: absolute;
     /* transform: translateX(-100%); */
   }
-  /* .aside-area.toggle {
-  } */
 }
 
 @media screen and (max-width: 768px) {
