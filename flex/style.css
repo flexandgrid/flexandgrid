@@ -25,6 +25,45 @@ h3 {
     font-weight: 600;
 }
 
+
+/* 에디터 추가 후 삭제 */
+pre, pre code {
+    overflow-x: auto;
+    max-width: 700px;
+    margin: 10px auto;
+    padding-bottom: 10px;
+}
+
+article > pre::-webkit-scrollbar,
+article > pre code::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+article > pre::-webkit-scrollbar-thumb,
+article > pre code::-webkit-scrollbar-thumb {
+    width: 5px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: var(--flex-border);
+    background-clip: padding-box;
+}
+
+article > pre::-webkit-scrollbar-track,
+article > pre code::-webkit-scrollbar-thumb {
+    background: none;
+}
+/* 에디터 추가 후 삭제 끝 */
+
+
+.btn-flex {
+    color: #7661E2;
+}
+
+.btn-flex::before {
+    background: url(/src/assets/images/icon-flex-hover.svg) no-repeat center/contain;
+}
+
 .main-flex {
     display: flex;
     width: 100%;
