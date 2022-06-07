@@ -4,6 +4,11 @@
   min-width: 340px;
   padding-left: 90px;
   background: var(--white);
+  transition: transform 0.3s ease-out;
+}
+
+.aside-area.toggle {
+  transform: translateX(-340px);
 }
 
 /* drawer 버튼 */
@@ -171,6 +176,10 @@
   background-color: #3F3F46;
 }
 
+.btn-drawer.on:hover {
+  background-color: var(--border-dark);
+}
+
 .drawer-menu.on {
   background: #3F3F46;
   border: none;
@@ -251,6 +260,10 @@
     padding-left: 45px;
   }
 
+  .aside-area.toggle {
+    transform: translateX(-295px);
+  }
+
   .btn-drawer {
     left: 295px;
   }
@@ -259,8 +272,10 @@
 @media screen and (max-width: 1024px) {
   .aside-area {
     position: absolute;
-    transform: translateX(-100%);
+    /* transform: translateX(-100%); */
   }
+  /* .aside-area.toggle {
+  } */
 }
 
 @media screen and (max-width: 768px) {
