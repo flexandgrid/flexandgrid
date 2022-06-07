@@ -1,1 +1,6 @@
 @charset "UTF-8";
+
+.gnb-header .modal-menu .list-item:first-child {
+    color: var(--flex-primary);
+    font-weight: 700;
+}

@@ -3,7 +3,6 @@
 .modal-menu {
   position: relative;
   padding:8px;
-  /* margin: 10px 8px; */
   width: 244px;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -42,8 +41,8 @@
 }
 
 .modal-menu .list-item .link-menu {
+  display: block;
   padding: 0;
-
 }
 
 .modal-menu .list-menu .list-item:hover {
