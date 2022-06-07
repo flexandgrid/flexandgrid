@@ -31,7 +31,7 @@
   color: var(--primary);
 }
 
-.list-item {
+.modal-history .list-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +42,7 @@
   border-radius: 10px;
 }
 
-.list-item:hover {
+.modal-history .list-item:hover {
   background-color: #f8f8f8;
 }
 

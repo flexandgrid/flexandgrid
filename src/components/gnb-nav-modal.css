@@ -48,6 +48,7 @@
 .modal-menu .list-menu .list-item:hover {
   background: #f8f8f8;
   color: var(--flex-primary);
+  font-weight: 700;
 }
 
 .modal-menu .list-menu .list-item:nth-child(2):hover {
