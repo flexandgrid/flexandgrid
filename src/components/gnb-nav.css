@@ -43,7 +43,9 @@
 
 .gnb-header ul.nav-left {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    width: 320px;
     margin-left: 22px;
     box-sizing: border-box;
 }
@@ -62,11 +64,10 @@
 .gnb-header nav ul.nav-left li a {
     padding: 10px;
     line-height: 28px;
+    transition: font-weight 0.1s ease-in-out;
 }
 
 .gnb-header ul.nav-left li {
-    display: flex;
-    align-items: center;
     padding: 26px 0;
     margin-right: 10px;
 }
@@ -75,16 +76,16 @@
     margin-right: 0;
 }
 
-.gnb-header ul .nav-left-menu:hover {
+.gnb-header ul .nav-left-menu a:hover {
     font-weight: 700;
 }
 
 .gnb-header ul.nav-left li:nth-child(3):hover {
-   color: var(--flex-primary);
+    color: var(--flex-primary);
 }
 
 .gnb-header ul.nav-left li:nth-child(4):hover {
-   color: var(--grid-primary);
+    color: var(--grid-primary);
 }
 
 .gnb-header nav ul.nav-right {
