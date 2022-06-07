@@ -157,14 +157,18 @@
   line-height: 20px;
 }
 
-.tit-drawer-menu:hover, .selected-tit {
+.subtit-drawer-menu li a {
+  display: block;
+}
+
+.tit-drawer-menu:hover, .tit-drawer-menu.scroll-spy {
   background: #F9F9F9;
   color: #3F3F46;
   font-weight: 600;
   border-radius: 10px;
 }
 
-.subtit-drawer-menu>li:hover, .selected-sub-tit {
+.subtit-drawer-menu>li:hover, .scroll-spy {
   color: #3F3F46;
   font-weight: 600;
 }
@@ -253,9 +257,9 @@
 }
 
 /* 기능 */
-.focus-tit.scroll-spy {
+/* .focus-tit.scroll-spy {
   color: red;
-}
+} */
 
 
 /* 반응형 */

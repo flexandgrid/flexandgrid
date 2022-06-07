@@ -12,18 +12,19 @@ const contTit = document.querySelectorAll('.cont-tit');
 
 const checkScroll = () => {
   for(let i = 0; i < contTit.length; i++) {
-    // 단위가 너무 섬세해서 스무스한 스크롤 움직임과 맞지 않음 
-    // console.log(window.pageYOffset + contTit[i].getBoundingClientRect().top, window.pageYOffset);
-    console.log(contTit[i].offsetTop, window.pageYOffset);
+    console.log(contTit[i].offsetTop, contTit[i+1].offsetTop, window.pageYOffset);
   }
 }
   
 const scrollSpy = () => {
-  // filter, map, forEach 등을 연이어 쓰는 거보다 for문 쓰는게 성능에 좋다고 함 
+  let pos = window.pageYOffset;
+  let fullHeight = document.body.scrollHeight;
+
   for(let i = 0; i < contTit.length; i++) {
     for(let i = 0; i < drawerTit.length; i++) {
-      if(contTit[i].offsetTop + 300  == window.pageYOffset && contTit[i].textContent == drawerTit[i].textContent) {
-        // drawerTit[i].style.color = 'red';
+      let target = contTit[i].offsetTop;
+      let nextTarget = (contTit[i + 1]) ? contTit[i + 1].offsetTop : fullHeight;
+      if (target - pos < 20 && pos < nextTarget - 10) {
         drawerTit[i].classList.add('scroll-spy');
       } else {
         drawerTit[i].classList.remove('scroll-spy');
@@ -33,4 +34,5 @@ const scrollSpy = () => {
 };
 
 // window.addEventListener('scroll', checkScroll);
+window.addEventListener('DOMContentLoaded', scrollSpy);
 window.addEventListener('scroll', scrollSpy);
