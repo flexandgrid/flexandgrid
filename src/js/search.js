@@ -1,28 +1,10 @@
-const searchBtn = document.querySelector('.search-btn');
-const searchDataDeleteBtn = document.querySelector('.btn-del-all');
-
+// Modal
 const searchData = localStorage.getItem('searchHistoryData');
-
 let searchHistory = [];
 if (searchData !== null) {
   searchHistory = JSON.parse(searchData);
 }
 
-const searchHistoryList = document.querySelector('.list-history');
-
-const searchItem = document.querySelectorAll('.itemwrap-search');
-const searchText = document.querySelector('.text-search');
-const searchResultCount = document.querySelector('.text-search-count');
-const searchTitles = document.querySelectorAll('.tit-search');
-const searchDescriptions = document.querySelectorAll('.desc-search');
-
-const URLSearch = new URLSearchParams(location.search);
-const searchQuery = URLSearch.get('q');
-
-if (searchQuery) {
-  searchText.innerText = `Results for "${searchQuery}"`;
-  searchResultCount.innerText = `Showing ${searchItem.length} results`;
-}
 
 const searchInput = document.querySelector('.search-input');
 searchInput.addEventListener('click', () => {
@@ -30,11 +12,6 @@ searchInput.addEventListener('click', () => {
   createHistory();
 });
 
-const removeChildAll = (ele) => {
-  while (ele.hasChildNodes()) {
-    ele.removeChild(ele.firstChild);
-  }
-};
 
 document.addEventListener('click', (e) => {
   if (
@@ -70,6 +47,8 @@ const touchList = (touchListText) => {
   }
 };
 
+
+const searchBtn = document.querySelector('.search-btn');
 searchBtn.addEventListener('click', (e) => {
   e.preventDefault();
   if (!searchHistory.includes(searchInput.value) && searchInput.value) {
@@ -90,12 +69,21 @@ searchBtn.addEventListener('click', (e) => {
   location.href = `http://${location.host}/search/?q=${searchInput.value}`;
 });
 
+
+const searchDataDeleteBtn = document.querySelector('.btn-del-all');
 searchDataDeleteBtn.addEventListener('click', () => {
   searchHistory = [];
   localStorage.setItem('searchHistoryData', JSON.stringify(searchHistory));
   createHistory();
 });
 
+
+const searchHistoryList = document.querySelector('.list-history');
+const removeChildAll = (ele) => {
+  while (ele.hasChildNodes()) {
+    ele.removeChild(ele.firstChild);
+  }
+};
 const createHistory = () => {
   removeChildAll(searchHistoryList);
   if (searchHistory.length > 0) {
@@ -128,20 +116,3 @@ const createHistory = () => {
     });
   }
 };
-
-window.addEventListener('DOMContentLoaded', () => {
-  for (let title of searchTitles) {
-    if (
-      title.textContent.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
-    ) {
-      title.closest('li').style.display = 'block';
-    }
-  }
-  for (let desc of searchDescriptions) {
-    if (
-      desc.textContent.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
-    ) {
-      desc.closest('li').style.display = 'block';
-    }
-  }
-});
