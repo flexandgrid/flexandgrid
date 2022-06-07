@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 .main {
-    margin: 130px 0 100px;
+    margin: 130px 120px 100px;
 }
 
 .section-carousel {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 74px;
+    gap: 100px;
 }
 
 .carousel-flex {
@@ -16,80 +16,103 @@
 }
 
 .carousel-flex::before {
-  content: '';
-  position: absolute;
-  top: 20px;
-  right: -40px;
-  height: 368px;
-  border-right: 2px solid var(--border);
+    position: absolute;
+    top: 20px;
+    right: -50px;
+    height: 368px;
+    border-right: 2px solid var(--border);
+    content: '';
 }
 
 .fg-editor {
-    width: 500px;
+    min-width: 450px;
 }
 
-/* topbutton */
 .btn-up {
+    display: none;
     position: fixed;
     bottom: 60px;
     right: 10%;
-    display: none;
     width: 50px;
     height: 50px;
-    cursor: pointer;
     border-radius: 50%;
-    box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
     background: #3f3f46 url("./src/assets/images/chevron-down.svg") no-repeat center;
+    box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
     transition: all 0.3s;
+    cursor: pointer;
 }
 
-.btn-up:active, .btn-up.on:active {
+.btn-up.on:active,
+.btn-up:active {
     background-color: var(--secondary);
+}
+
+.main-body.on {
+    background-color: var(--primary);
 }
 
 .btn-up.on {
     background: var(--subtext) url("./src/assets/images/chevron-down-darkmode.svg") no-repeat center;
 }
 
+.on .carousel-flex::before {
+    border-right: 2px solid #2d2d2db3;
+}
+
+@media screen and (max-width: 1280px) {
+    .main {
+        margin: 130px 60px 100px;
+    }
+    .section-carousel {
+        gap: 73px;
+    }
+    .carousel-flex::before {
+        right: -36.5px;
+    }
+}
+
 @media screen and (max-width: 1024px) {
-  .section-carousel {
-    flex-wrap: wrap;
-    margin: 0 20px;
-  }
+    .section-carousel {
+        flex-wrap: wrap;
+    }
 
-  .fg-editor {
-    width: 100%;
-  }
+    .carousel-flex::before {
+        display: none;
+    }
 
-  .carousel-flex::before {
-    display: none;
-  }
-
-  .carousel-flex::after {
-    content: '';
-    position: absolute;
-    bottom: -48px;
-    left: 0;
-    width: 100%;
-    border-bottom: 2px solid var(--border);
-  }
+    .carousel-flex::after {
+        position: absolute;
+        bottom: -48px;
+        left: 0;
+        width: 100%;
+        border-bottom: 2px solid var(--border);
+        content: '';
+    }
+    .on .carousel-flex::after {
+        border-bottom: 2px solid #2d2d2db3;
+    }
 }
 
 @media screen and (max-width: 768px) {
-  .main {
-      margin: 100px 0;
-  }
+    .main {
+        margin: 100px 40px;
+    }
 }
 
 @media screen and (max-width: 479px) {
-  .main {
-      margin: 65px 0 40px;
-  }
-  .section-carousel {
-    gap: 40px;
-  }
+    .main {
+        margin: 65px 20px 40px;
+    }
 
-  .carousel-flex::after {
-    bottom: -20px;
-  }
+    .section-carousel {
+        gap: 40px;
+    }
+
+    .fg-editor {
+        min-width: 300px;
+    }
+
+    .carousel-flex::after {
+        bottom: -20px;
+    }
 }

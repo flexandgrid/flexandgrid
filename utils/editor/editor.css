@@ -101,16 +101,16 @@
   --gray-5: #b4b4b4;
   --gray-4: #878787;
   --gray-2: #3f3f46;
-  --gray-1: #171718;
-  --white: #23262f;
+  --gray-1: #2d2d2d;
+  --white: #333338;
   --background: #3f3f46;
   --box-shadow-2: #ffffffaa;
-  --box-shadow-1: #aeba6014;
+  --box-shadow-1: #2d2d2d1a;
   --add-button-color: var(--primary-1);
   --add-button-background: var(--primary-3);
   --remove-button-color: #252424;
   --remove-button-background: #878787;
-  --indicator: #252424;
+  --indicator: #2d2d2d;
   --four-color-1: #f9b09e;
 }
 
