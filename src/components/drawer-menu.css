@@ -252,6 +252,11 @@
   color: #E0E0E0;
 }
 
+/* 기능 */
+.focus-tit.scroll-spy {
+  color: red;
+}
+
 
 /* 반응형 */
 @media screen and (max-width: 1280px) {
