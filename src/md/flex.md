@@ -1,5 +1,3 @@
-# Flex
-
 # 1. Flex
 
 ## 1.1. 들어가기에 앞서
@@ -8,7 +6,7 @@
 
 웹 서비스를 만들기 전 서비스의 구조, 대응 기기, 레이아웃, 디자인 등을 계획하여 구현 우선순위를 정하게 된다. 여기서 페이지 레이아웃을 지정하는 방법은 CSS 기술이 발전함에 따라 많은 변화가 있었다. 다양한 화면의 크기에 맞추어 유연하게 대응할 수 있는 레이아웃을 만들기 위해 새롭게 추가된 속성이 Flex와 Grid이다. **Flex는 1차원 적인 레이아웃**을 잡을 때 사용하며, **grid는 2차원 적인 레이아웃**을 잡을 때 용이하다. 쉽게 설명하자면 다음과 같다.
 
-Flex는 부모 요소(컨테이너) 아래에서 ****자식 요소(아이템)들이 한 방향으로 배치가 된다. 따라서 **행 또는 열** 한 가지 방향으로 레이아웃을 배치해야 하는 경우에 사용한다. 또한 다양한 속성을 통해 자식 요소 사이를 일정한 간격으로 줄 수 있고 정렬하기가 매우 편하다.
+Flex는 부모 요소(컨테이너) 아래에서 \***\*자식 요소(아이템)들이 한 방향으로 배치가 된다. 따라서 **행 또는 열\*\* 한 가지 방향으로 레이아웃을 배치해야 하는 경우에 사용한다. 또한 다양한 속성을 통해 자식 요소 사이를 일정한 간격으로 줄 수 있고 정렬하기가 매우 편하다.
 
 Grid는 **행과 열** 두 가지 방향으로 레이아웃을 배치해야 하는 경우 사용한다. 원하는 요소를 어디서부터 어디까지, 어느 방향으로 차지하게 할 건지 정하고 배치하면 된다.
 
@@ -38,11 +36,11 @@ flex로 구현된 UI - 2
 
 ## 1.4. Flex의 특징
 
-Flex는 ul과 li처럼 부모와 자식 태그가 필요하고, 부모 요소(`flex-container`)와 자식 요소(`flex-item`)에 적용하는 속성이 구분되어 있다는 특징을 갖는다. 
+Flex는 ul과 li처럼 부모와 자식 태그가 필요하고, 부모 요소(`flex-container`)와 자식 요소(`flex-item`)에 적용하는 속성이 구분되어 있다는 특징을 갖는다.
 
-flex-container에는 정렬 방식과 item의 배치 흐름을 정의하고, flex-item에는 크기, 속성, 순서를 정의한다. 
+flex-container에는 정렬 방식과 item의 배치 흐름을 정의하고, flex-item에는 크기, 속성, 순서를 정의한다.
 
-`flex-container`의 속성으로는 **flex-direction, flex-wrap, justify-content, align-items, align-content**이 있고, `flex-item`은 **flex, flex-grow, flex-shrink, flex-basis, align-self, order, z-index** 등의 속성이 있다. 
+`flex-container`의 속성으로는 **flex-direction, flex-wrap, justify-content, align-items, align-content**이 있고, `flex-item`은 **flex, flex-grow, flex-shrink, flex-basis, align-self, order, z-index** 등의 속성이 있다.
 
 축이라는 개념이 있어서 이 축을 기준으로 정렬을 할 수도 있고, 흐름도 제어할 수 있다. 주축(main axis)에 따라 정렬되며, 방향은 flex-direction 속성으로 결정한다.
 
@@ -50,9 +48,9 @@ flex-container에는 정렬 방식과 item의 배치 흐름을 정의하고, fle
 
 ### 1.5.1. axis란?
 
-Flex는 부모 요소의 속성을 통해 자식들의 방향을 제어할 수 있다. 이 속성을 통해 자식들을 가로(행 방향)로 배열할 수도 있고, 세로(열 방향)로 배열할 수도 있고 심지어 반대 방향으로도 배치가 가능하다. 
+Flex는 부모 요소의 속성을 통해 자식들의 방향을 제어할 수 있다. 이 속성을 통해 자식들을 가로(행 방향)로 배열할 수도 있고, 세로(열 방향)로 배열할 수도 있고 심지어 반대 방향으로도 배치가 가능하다.
 
-**Axis는 축**을 의미하는데, 축이란 어떠한 것이 움직이는 데에 방향의 기준이 되는 것을 뜻한다. 지구의 자전축이 보이지 않듯, Flex에는 보이지 않지만 두 가지 축이 존재한다. Flex의 이 두 가지 축은 자식들이 어느 방향으로 정렬이 될지 정해주는 기준이 된다. 
+**Axis는 축**을 의미하는데, 축이란 어떠한 것이 움직이는 데에 방향의 기준이 되는 것을 뜻한다. 지구의 자전축이 보이지 않듯, Flex에는 보이지 않지만 두 가지 축이 존재한다. Flex의 이 두 가지 축은 자식들이 어느 방향으로 정렬이 될지 정해주는 기준이 된다.
 
 ![1.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/1.png)
 
@@ -62,10 +60,10 @@ Flex는 부모 요소의 속성을 통해 자식들의 방향을 제어할 수 �
 
 Flex의 주축이 되는 main axis의 방향은 `flex-direction` 이라는 속성에 의해 결정된다. 이는 다음과 같이 **네 가지의 경우**가 있다. 자세한 설명과 코드는 flex-direction 챕터에서 다루게된다.
 
-1. `flex-direction: row` : `flex-direction` 의 기본값으로 아이템들이 행 방향, 가로로 배치된다. 
-2. `flex-direction: row-reverse` : 아이템들이 역순으로 가로로 배치된다.  
-3. `flex-direction: column` : 아이템들이 열 방향으로, 세로로 배치된다. 
-4. `flex-direction: column-reverse` : 아이템들이 역순으로 세로로 배치된다. 
+1. `flex-direction: row` : `flex-direction` 의 기본값으로 아이템들이 행 방향, 가로로 배치된다.
+2. `flex-direction: row-reverse` : 아이템들이 역순으로 가로로 배치된다.
+3. `flex-direction: column` : 아이템들이 열 방향으로, 세로로 배치된다.
+4. `flex-direction: column-reverse` : 아이템들이 역순으로 세로로 배치된다.
 
 ![flex-direction:row](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled.png)
 
@@ -77,7 +75,7 @@ flex-direction:column
 
 - **Cross Axis**
 
-Cross axis는 Main axis 방향의 수직 방향이다. Main axis가 `flex-direction` 에 의해 결정되었다면, Cross axis는 main axis 방향에 따라 결정이 된다. 
+Cross axis는 Main axis 방향의 수직 방향이다. Main axis가 `flex-direction` 에 의해 결정되었다면, Cross axis는 main axis 방향에 따라 결정이 된다.
 
 ### 1.5.3. dir 특성
 
@@ -89,9 +87,7 @@ Cross axis는 Main axis 방향의 수직 방향이다. Main axis가 `flex-direct
 html 요소 텍스트의 방향성을 나타내는 열거된 속성이다. 기본값은 `auto`이다.
 
 ```html
-<div dir = "ltr / rtl / auto">
-...
-</div>
+<div dir="ltr / rtl / auto">...</div>
 ```
 
 - `ltr` : 글자를 읽는 방법이 왼쪽에서 오른쪽으로 쓰이는 언어이다.
@@ -116,11 +112,12 @@ html 요소 텍스트의 방향성을 나타내는 열거된 속성이다. 기�
 
 ```html
 <body>
-    <div dir="rtl" class="container"> //container가 rtl로 변환된다.
-        <div class="item">1</div>
-        <div class="item even">2</div>
-        <div class="item">3</div>
-    </div>
+  <div dir="rtl" class="container">
+    //container가 rtl로 변환된다.
+    <div class="item">1</div>
+    <div class="item even">2</div>
+    <div class="item">3</div>
+  </div>
 </body>
 ```
 
@@ -130,9 +127,9 @@ html 요소 텍스트의 방향성을 나타내는 열거된 속성이다. 기�
 
 ```css
 .container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 ```
 
@@ -142,9 +139,9 @@ html 요소 텍스트의 방향성을 나타내는 열거된 속성이다. 기�
 
 ```css
 .container {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
 }
 ```
 
@@ -152,7 +149,7 @@ html 요소 텍스트의 방향성을 나타내는 열거된 속성이다. 기�
 
 **writing mode(읽기 모드)란?**
 
-문서를 구성하는 텍스트 흐름 방향을 `writing mode`라고 한다. 
+문서를 구성하는 텍스트 흐름 방향을 `writing mode`라고 한다.
 
 **writing mode의 중요성**
 
@@ -172,9 +169,9 @@ html 요소 텍스트의 방향성을 나타내는 열거된 속성이다. 기�
 
 텍스트를 왼쪽에서 시작하여 오른쪽으로 작성된다. 영어나 아랍어에서 주로 사용된다.
 
-**2) vertical-rl** 
+**2) vertical-rl**
 
-텍스트가 오른쪽에서 왼쪽으로 세로로 작성된다. 한국, 일본, 중국 등의 아시아권 국가에서 세로 방향으로 글을 작성할 때에만 적용된다. 
+텍스트가 오른쪽에서 왼쪽으로 세로로 작성된다. 한국, 일본, 중국 등의 아시아권 국가에서 세로 방향으로 글을 작성할 때에만 적용된다.
 
 **3) vertical-lr**
 
@@ -184,29 +181,27 @@ html 요소 텍스트의 방향성을 나타내는 열거된 속성이다. 기�
 
 horizontal-tb 속성처럼 텍스트가 가로로 작성된다. 하지만 `lr`와 `rl` 방향 변화는 파이어폭스에서만 확인 가능하다.
 
- 
-
 **writing mode에 따라 바뀌는 axis 방향**
 
 **1) flex-direction: row**
 
 **`horizontal-tb`**
 
-인라인과 블록 방향이 모두 가로이며, `Main Axis`는 가로, `Cross Axis` 세로이다. 
+인라인과 블록 방향이 모두 가로이며, `Main Axis`는 가로, `Cross Axis` 세로이다.
 
 ![쓰기모드_기본,horizontal-tb.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/%EC%93%B0%EA%B8%B0%EB%AA%A8%EB%93%9C_%EA%B8%B0%EB%B3%B8horizontal-tb.png)
 
 ```css
 .container {
-    writing-mode: horizontal-tb;
+  writing-mode: horizontal-tb;
 }
 ```
 
 ```html
 <div class="container">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
 </div>
 ```
 
@@ -218,15 +213,15 @@ horizontal-tb 속성처럼 텍스트가 가로로 작성된다. 하지만 `lr`�
 
 ```css
 .container {
-    writing-mode: vertical-lr;
+  writing-mode: vertical-lr;
 }
 ```
 
 ```html
 <div class="container">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
 </div>
 ```
 
@@ -234,22 +229,22 @@ horizontal-tb 속성처럼 텍스트가 가로로 작성된다. 하지만 `lr`�
 
 **`horizontal-tb`**
 
-인라인 방향은 가로,  블록 방향은 세로이며 `Main Axis`는 세로, `Cross Axis` 가로이다. 
+인라인 방향은 가로, 블록 방향은 세로이며 `Main Axis`는 세로, `Cross Axis` 가로이다.
 
 ![col_horizontal-tb.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/col_horizontal-tb.png)
 
 ```css
 .container {
-	  flex-direction: column;
-    writing-mode: horizontal-tb;
+  flex-direction: column;
+  writing-mode: horizontal-tb;
 }
 ```
 
 ```html
 <div class="container">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
 </div>
 ```
 
@@ -261,16 +256,16 @@ horizontal-tb 속성처럼 텍스트가 가로로 작성된다. 하지만 `lr`�
 
 ```css
 .container {
-	  flex-direction: column;
-    writing-mode: vertical-lr;
+  flex-direction: column;
+  writing-mode: vertical-lr;
 }
 ```
 
 ```html
 <div class="container">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
 </div>
 ```
 
@@ -280,19 +275,19 @@ horizontal-tb 속성처럼 텍스트가 가로로 작성된다. 하지만 `lr`�
 
 Flex는 flexbox, flexiblebox 라고도 한다. Flex는 행(row)과 열(column)의 형태의 레이아웃을 만들기 위해서 만들어졌다. Flex를 사용할 때, 자식요소(아이템)는 부모 요소(컨테이너)의 크기에 맞춰 변형될 수 있다. 또한, 많은 속성들을 사용하면 더욱 다양한 형태로 사용이 가능하다.
 
-Flex는 자식요소(아이템)이 그 자식요소(아이템)을 포함하는 부모 요소(컨테이너)의 공간에 맞춰 그 크기를 줄이거나, 늘이고 또는 부모 요소(컨테이너)에 맞춰 그 정렬을 맞추는 css display의 하나의 속성이다. flex를 보여주는 간단한 예로 살펴보자. 
+Flex는 자식요소(아이템)이 그 자식요소(아이템)을 포함하는 부모 요소(컨테이너)의 공간에 맞춰 그 크기를 줄이거나, 늘이고 또는 부모 요소(컨테이너)에 맞춰 그 정렬을 맞추는 css display의 하나의 속성이다. flex를 보여주는 간단한 예로 살펴보자.
 
 ![스크린샷 2022-05-21 오전 10.31.12.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-05-21_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.31.12.png)
 
 ```html
 <body>
-    <div class="container">
-        <div class="item">1</div>
-        <div class="item even">2</div>
-        <div class="item">3</div>
-        <div class="item even">4</div>
-        <div class="item">5</div>
-    </div>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item even">2</div>
+    <div class="item">3</div>
+    <div class="item even">4</div>
+    <div class="item">5</div>
+  </div>
 </body>
 ```
 
@@ -302,19 +297,19 @@ Flex는 자식요소(아이템)이 그 자식요소(아이템)을 포함하는 �
 
 ```css
 .container {
-    display: flex;
+  display: flex;
 }
 ```
 
 ```html
 <body>
-    <div class="container">
-        <div class="item">1</div>
-        <div class="item even">2</div>
-        <div class="item">3</div>
-        <div class="item even">4</div>
-        <div class="item">5</div>
-    </div>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item even">2</div>
+    <div class="item">3</div>
+    <div class="item even">4</div>
+    <div class="item">5</div>
+  </div>
 </body>
 ```
 
@@ -324,36 +319,36 @@ Flex는 자식요소(아이템)이 그 자식요소(아이템)을 포함하는 �
 
 ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%202.png)
 
-Flex는 크게 아이템과 컨테이너, 두 가지의 요소로 나누어진다. 위 그림에서는 box1, box2, box3이 `아이템`, 이를 감싼 보라색 테두리가 `컨테이너`이다. 이때 아이템은 자식요소가 되고 컨테이너는 부모요소가 된다. `컨테이너`는 큰 틀에서 전체적인 레이아웃에 영향을 주는 공간이다. 자식요소를 가로로 정렬할지, 세로로 정렬할지 정하는 것도 컨테이너에서 정한다. `아이템`은 각자가 어떤 식으로 정렬될지를 정하기 위해 존재한다. 일괄적으로 모두에게 동일한 속성을 적용하는 것이 아닌, 너비나 배치 순서를 바꾸는 등의 속성을 부여하여 커스텀 하는 것이 가능하다. 
+Flex는 크게 아이템과 컨테이너, 두 가지의 요소로 나누어진다. 위 그림에서는 box1, box2, box3이 `아이템`, 이를 감싼 보라색 테두리가 `컨테이너`이다. 이때 아이템은 자식요소가 되고 컨테이너는 부모요소가 된다. `컨테이너`는 큰 틀에서 전체적인 레이아웃에 영향을 주는 공간이다. 자식요소를 가로로 정렬할지, 세로로 정렬할지 정하는 것도 컨테이너에서 정한다. `아이템`은 각자가 어떤 식으로 정렬될지를 정하기 위해 존재한다. 일괄적으로 모두에게 동일한 속성을 적용하는 것이 아닌, 너비나 배치 순서를 바꾸는 등의 속성을 부여하여 커스텀 하는 것이 가능하다.
 
 ```html
 <div class="container">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
 </div>
 ```
 
-Flex는 새롭게 등장한 display 속성이기 때문에 `display: flex;` 로 적용한다. 이후에는 Flex가 제공하는 속성을 활용해 레이아웃을 변화시킬 수 있다. 
+Flex는 새롭게 등장한 display 속성이기 때문에 `display: flex;` 로 적용한다. 이후에는 Flex가 제공하는 속성을 활용해 레이아웃을 변화시킬 수 있다.
 
-Flex의 속성도 어떤 요소에 적용되는지에 따라 두 가지로 구분된다. 따라서 적용을 원하는 요소에 적절한 속성을 사용하는 것이 중요하다. 이때 속성의 영향은 컨테이너의 직계자식까지만 영향을 준다는 특징이 있으니 주의해야 한다. 
+Flex의 속성도 어떤 요소에 적용되는지에 따라 두 가지로 구분된다. 따라서 적용을 원하는 요소에 적절한 속성을 사용하는 것이 중요하다. 이때 속성의 영향은 컨테이너의 직계자식까지만 영향을 준다는 특징이 있으니 주의해야 한다.
 
 ### 1.6.3. F**lex 기본 속성**
 
 Flex는 기본적으로 **블록 레벨 요소**의 성질을 가지며 주로 부모의 속성을 통해 자식들을 컨트롤한다. 이때 부모를 `Flex-container`, 영향을 받는 자식들을 `Flex-item`이라고 부른다. Flex를 사용하다 보면 기본 속성값에 대해서 한 번쯤 생각하게 된다. 원하는 대로 요소들이 움직이지 않는다면 아래에 첨부한 표를 참조하여 기본 속성에 대해서 찾아보기를 권장한다.
 
-이제 Flex의 다양한 속성들을 배우게 될 텐데, 해당 속성이 어떤 축을 기준으로 적용이 되는지가 모두 다르기 때문에, 반드시 축에 대한 이해를 바탕으로 Flex를 학습해나가는 것이 중요하다.  lex는 기본적으로 블록 레벨 요소의 성질을 가지며 주로 부모의 속성을 통해 자식들을 컨트롤한다. 이때 부모를 `Flex-container`, 영향을 받는 자식들을 `Flex-item`이라고 부른다. 원하는 대로 요소들이 움직이지 않는다면 아래에 첨부한 표를 참조하여 기본 속성에 대해서 찾아보기를 권장한다.
+이제 Flex의 다양한 속성들을 배우게 될 텐데, 해당 속성이 어떤 축을 기준으로 적용이 되는지가 모두 다르기 때문에, 반드시 축에 대한 이해를 바탕으로 Flex를 학습해나가는 것이 중요하다. lex는 기본적으로 블록 레벨 요소의 성질을 가지며 주로 부모의 속성을 통해 자식들을 컨트롤한다. 이때 부모를 `Flex-container`, 영향을 받는 자식들을 `Flex-item`이라고 부른다. 원하는 대로 요소들이 움직이지 않는다면 아래에 첨부한 표를 참조하여 기본 속성에 대해서 찾아보기를 권장한다.
 
-|  | 기본 속성 | 적용 대상 |
-| --- | --- | --- |
-| flex-direction  | row | flex containers |
-| justify-content  | normal | flex containers |
-| align-items | normal | all elements |
-| align-content | normal | multi-line flex containers |
-| flex-wrap | nowrap | flex containers |
-| flex-basis | auto | flex items |
-| flex-grow | 0 | flex items |
-| flex- shrink | 1 | flex items |
+|                 | 기본 속성 | 적용 대상                  |
+| --------------- | --------- | -------------------------- |
+| flex-direction  | row       | flex containers            |
+| justify-content | normal    | flex containers            |
+| align-items     | normal    | all elements               |
+| align-content   | normal    | multi-line flex containers |
+| flex-wrap       | nowrap    | flex containers            |
+| flex-basis      | auto      | flex items                 |
+| flex-grow       | 0         | flex items                 |
+| flex- shrink    | 1         | flex items                 |
 
 어떠한 속성을 적용해야 하는지 헷갈리는 경우, 컨테이너에 flex 속성을 적용한 뒤 크롬 개발자 도구의 스타일 탭을 확인하면 좋다. 주요한 속성 다섯 가지를 GUI 기능으로 제공하여 적용된 모습을 확인해볼 수 있기 때문이다.
 
@@ -365,14 +360,14 @@ Flex는 기본적으로 **블록 레벨 요소**의 성질을 가지며 주로 �
 
 ## 2.1. flex-direction : row
 
-왼쪽에서 오른쪽으로 글씨가 써지는 **행 방향 정렬**이며, `flex-direction`을 따로 설정하지 않으면 초깃값으로 설정된다. 
+왼쪽에서 오른쪽으로 글씨가 써지는 **행 방향 정렬**이며, `flex-direction`을 따로 설정하지 않으면 초깃값으로 설정된다.
 
 ![row.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/row%201.png)
 
 ```css
 .container {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 ```
 
@@ -384,8 +379,8 @@ Flex는 기본적으로 **블록 레벨 요소**의 성질을 가지며 주로 �
 
 ```css
 .container {
-    display: flex;
-    flex-direction: row-reverse;
+  display: flex;
+  flex-direction: row-reverse;
 }
 ```
 
@@ -398,9 +393,9 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 ![col.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/col.png)
 
 ```css
-.container{
-	  display : flex;
-	  flex-direction : column;	
+.container {
+  display: flex;
+  flex-direction: column;
 }
 ```
 
@@ -411,9 +406,9 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 ![col-reverse.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/col-reverse.png)
 
 ```css
-.container{
-	  display : flex;
-	  flex-direction : column-reverse;	
+.container {
+  display: flex;
+  flex-direction: column-reverse;
 }
 ```
 
@@ -429,8 +424,8 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .container {
-    display: flex;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
 }
 ```
 
@@ -458,8 +453,8 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .container {
-	  display: flex;
-	  justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 ```
 
@@ -477,20 +472,20 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .container {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
 }
 ```
 
 ## 3.3. center
 
-`justify-content: center`를 준 경우, Flex-box 내의 요소들을 주축(main-axis)의 중앙을 기준으로 정렬한다. 즉, 요소들을 가운데 정렬해준다. 이때 요소의 간격은 균등 분할된다. 개별적으로 빈 공간을 제어하고 싶다면 해당 요소에 별도의 margin 값을 주어야 한다. `space-between`, `space-around` 역시  동일하다.
+`justify-content: center`를 준 경우, Flex-box 내의 요소들을 주축(main-axis)의 중앙을 기준으로 정렬한다. 즉, 요소들을 가운데 정렬해준다. 이때 요소의 간격은 균등 분할된다. 개별적으로 빈 공간을 제어하고 싶다면 해당 요소에 별도의 margin 값을 주어야 한다. `space-between`, `space-around` 역시 동일하다.
 
 ```css
 .container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 ```
 
@@ -498,9 +493,9 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .container {
-    display: flex;
-    justify-content: center; 
-    align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 ```
 
@@ -508,10 +503,10 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .container {
-    display: flex;
-    flex-direction:column;
-    justify-content: center; 
-    align-items:center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 ```
 
@@ -523,8 +518,8 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .container {
-    display: flex;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
 }
 ```
 
@@ -536,8 +531,8 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 ```
 
@@ -549,8 +544,8 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .container {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 ```
 
@@ -562,8 +557,8 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .container {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 ```
 
@@ -579,9 +574,9 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .container {
-    display: flex;
-    justify-content: normal;
-    align-items: flex-start;
+  display: flex;
+  justify-content: normal;
+  align-items: flex-start;
 }
 ```
 
@@ -593,9 +588,9 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .container {
-    display: flex;
-    justify-content: initial;
-    align-items: flex-start;
+  display: flex;
+  justify-content: initial;
+  align-items: flex-start;
 }
 ```
 
@@ -607,25 +602,25 @@ Flex 내 box들을 수직으로 정렬한다. 컨테이너 내부의 요소들�
 
 ```css
 .wrap-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
-    display: flex;
-    justify-content: inherit;
+  display: flex;
+  justify-content: inherit;
 }
 ```
 
 ```html
 <body>
-    <div class="wrap-container">
-        <div class="container">
-            <div class="item">1</div>
-            <div class="item even">2</div>
-            <div class="item">3</div>
-        </div>
+  <div class="wrap-container">
+    <div class="container">
+      <div class="item">1</div>
+      <div class="item even">2</div>
+      <div class="item">3</div>
     </div>
+  </div>
 </body>
 ```
 
@@ -667,8 +662,8 @@ align-items의 기본값이다. 부모요소(컨테이너)의 높이만큼 자�
 
 ```css
 .container {
-    display: flex;
-    align-items: stretch;
+  display: flex;
+  align-items: stretch;
 }
 ```
 
@@ -680,8 +675,8 @@ align-items의 기본값이다. 부모요소(컨테이너)의 높이만큼 자�
 
 ```css
 .container {
-    display: flex;
-    align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
 }
 ```
 
@@ -693,8 +688,8 @@ align-items의 기본값이다. 부모요소(컨테이너)의 높이만큼 자�
 
 ```css
 .container {
-    display: flex;
-    align-items: flex-end;
+  display: flex;
+  align-items: flex-end;
 }
 ```
 
@@ -706,8 +701,8 @@ align-items의 기본값이다. 부모요소(컨테이너)의 높이만큼 자�
 
 ```css
 .container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 ```
 
@@ -719,8 +714,8 @@ align-items의 기본값이다. 부모요소(컨테이너)의 높이만큼 자�
 
 ```css
 .container {
-    display: flex;
-    align-items: baseline;
+  display: flex;
+  align-items: baseline;
 }
 ```
 
@@ -732,24 +727,24 @@ align-items는 부모 요소(컨테이너) 내에 있는 자식 요소를 대상
 
 ```css
 .container {
-    display: flex;
-    align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
 }
 
 .third_item {
-    align-self: center;
+  align-self: center;
 }
 ```
 
-플렉스 박스 컨테이너에 `align-items : flex-start`를 적용하고 ‘third_item’ 이름을 가진 특정 아이템만 `align-self : center`를 적용했다. 위와 같이 3번 아이템만 중앙정렬 속성이 적용되는 것을 볼 수 있다. 
+플렉스 박스 컨테이너에 `align-items : flex-start`를 적용하고 ‘third_item’ 이름을 가진 특정 아이템만 `align-self : center`를 적용했다. 위와 같이 3번 아이템만 중앙정렬 속성이 적용되는 것을 볼 수 있다.
 
 ## 4.2. align-content
 
 `align-items`는 한 줄을 기준으로 정렬하지만, align-content는 `flex-wrap : wrap;` 이 설정된 경우 두 줄부터 기준으로 정렬한다. 아래 예시를 보면, 더 쉽게 알 수 있다.
 
-![captures_chrome-capture-2022-4-21 (1).png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/captures_chrome-capture-2022-4-21_(1).png)
+![captures_chrome-capture-2022-4-21 (1).png](<%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/captures_chrome-capture-2022-4-21_(1).png>)
 
-![captures_chrome-capture-2022-4-21 (2).png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/captures_chrome-capture-2022-4-21_(2).png)
+![captures_chrome-capture-2022-4-21 (2).png](<%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/captures_chrome-capture-2022-4-21_(2).png>)
 
 좌측은 `align-items : center;` , 우측은 `align-content : center;` 로 정렬한 결과화면이다. align-items는 아이템 한 줄마다 속성이 적용되었기 때문에 두 줄 사이에 간격이 생겨 정렬된 것을 볼 수 있다. 반면에, align-content는 두 줄 이상의 아이템을 수직축 방향으로 라인 자체를 정렬하기 때문에 두 줄 사이에 간격이 생기지 않은 것을 볼 수 있다.
 
@@ -763,9 +758,9 @@ align-items는 부모 요소(컨테이너) 내에 있는 자식 요소를 대상
 
 ```css
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
 }
 ```
 
@@ -777,9 +772,9 @@ align-items는 부모 요소(컨테이너) 내에 있는 자식 요소를 대상
 
 ```css
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 ```
 
@@ -791,9 +786,9 @@ align-items는 부모 요소(컨테이너) 내에 있는 자식 요소를 대상
 
 ```css
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
 }
 ```
 
@@ -805,9 +800,9 @@ align-items는 부모 요소(컨테이너) 내에 있는 자식 요소를 대상
 
 ```css
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
 }
 ```
 
@@ -819,9 +814,9 @@ align-items는 부모 요소(컨테이너) 내에 있는 자식 요소를 대상
 
 ```css
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
 }
 ```
 
@@ -833,9 +828,9 @@ space-between과 마찬가지로 부모요소(컨테이너) 교차 축의 양 �
 
 ```css
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
 }
 ```
 
@@ -847,15 +842,15 @@ space-between과 마찬가지로 부모 요소(컨테이너) 교차 축의 양 �
 
 ```css
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
 }
 ```
 
 # 5. Flex-wrap
 
-웹페이지 레이아웃을 구성할 때 부모 요소(컨테이너) 안의 자식 요소(아이템)들이 많으면 고민할 때가 있다. 예를 들어 영어 단어 웹페이지를 만든다고 가정해보자. 단어 카드들을 한 줄에 길게 배치할 것인지 아니면 한 줄이 아닌 두 줄 이상으로 배치할지 고민이 들 때가 있다. 
+웹페이지 레이아웃을 구성할 때 부모 요소(컨테이너) 안의 자식 요소(아이템)들이 많으면 고민할 때가 있다. 예를 들어 영어 단어 웹페이지를 만든다고 가정해보자. 단어 카드들을 한 줄에 길게 배치할 것인지 아니면 한 줄이 아닌 두 줄 이상으로 배치할지 고민이 들 때가 있다.
 
 ![no-wrap](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%204.png)
 
@@ -871,23 +866,23 @@ wrap-reverse
 
 ```css
 .container {
-    display: flex;
-    /* flex-wrap: nowrap; */
-    /* flex-wrap: wrap; */
-    /* flex-wrap: wrap-reverse; */
+  display: flex;
+  /* flex-wrap: nowrap; */
+  /* flex-wrap: wrap; */
+  /* flex-wrap: wrap-reverse; */
 }
 ```
 
 ```html
 <body>
-    <div class="container">
-        <div class="item">Cat</div>
-        <div class="item even">Mouse</div>
-        <div class="item">Dog</div>
-        <div class="item even">Tiger</div>
-        <div class="item">Monkey</div>
-        <div class="item even">Rabbit</div>
-    </div>
+  <div class="container">
+    <div class="item">Cat</div>
+    <div class="item even">Mouse</div>
+    <div class="item">Dog</div>
+    <div class="item even">Tiger</div>
+    <div class="item">Monkey</div>
+    <div class="item even">Rabbit</div>
+  </div>
 </body>
 ```
 
@@ -919,7 +914,7 @@ flex-wrap 속성 중 nowrap의 속성에 대해서 알아보자. flex-wrap는 
 
 ![스크린샷 2022-05-21 오전 10.34.35.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-05-21_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.34.35.png)
 
-만약 flex-direction의 방향이 row(행)라면 row(행)에 맞춰 주축인 수평으로 자식 요소(아이템)들이 정렬 되게 되고, 교차축인 수직축으로 아이템이 쌓이게 된다. 
+만약 flex-direction의 방향이 row(행)라면 row(행)에 맞춰 주축인 수평으로 자식 요소(아이템)들이 정렬 되게 되고, 교차축인 수직축으로 아이템이 쌓이게 된다.
 
 ![스크린샷 2022-05-21 오전 10.34.35.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-05-21_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.34.35%201.png)
 
@@ -927,7 +922,7 @@ flex-direction의 방향이 column(열)이라면 column(열)에 맞춰 주축인
 
 ![스크린샷 2022-05-21 오전 10.35.24.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-05-21_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.35.24.png)
 
-이러한 자동 맞춤 같은 flex-wrap:wrap의 성질에 따라서 화면이 조정되는 경우(특히 미디어 쿼리를 구현하는 경우), 아이템의 크기가 변하지 않고 위치만 조정될 수 있게 하기 위해서 많이 사용하게 된다. 
+이러한 자동 맞춤 같은 flex-wrap:wrap의 성질에 따라서 화면이 조정되는 경우(특히 미디어 쿼리를 구현하는 경우), 아이템의 크기가 변하지 않고 위치만 조정될 수 있게 하기 위해서 많이 사용하게 된다.
 
 ## 5.3. flex-wrap : wrap-reverse
 
@@ -937,8 +932,8 @@ flex-direction의 방향이 column(열)이라면 column(열)에 맞춰 주축인
 
 ```css
 .container {
-    display: flex;
-    flex-wrap: wrap-reverse;
+  display: flex;
+  flex-wrap: wrap-reverse;
 }
 ```
 
@@ -948,8 +943,8 @@ flex-direction의 방향이 column(열)이라면 column(열)에 맞춰 주축인
 
 ```css
 .container {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 ```
 
@@ -961,8 +956,8 @@ flex-direction의 방향이 column(열)이라면 column(열)에 맞춰 주축인
 
 ```css
 .container {
-    display: flex;
-    flex-wrap: wrap-reverse;
+  display: flex;
+  flex-wrap: wrap-reverse;
 }
 ```
 
@@ -976,9 +971,9 @@ reverse(역순)이기 때문에 배치 되는 기준점이 바뀌기 때문이�
 
 - **flex-direction: column; 값을 준 경우 flex-wrap: wrap-reverse; 는 어떻게 될까?**
 
-`display: flex;` 를 준 경우, flex-direction의 기본값은 row지만, `flex-direction: column;` 을 준다면 위에서 확인한 것들과는 다른 결과를 확인할 수 있다. flex의 방향이 row(행)이 아닌 column(열)으로 변경되기 때문에 주축(main-axis)이 수평(가로)이 아닌 수직(세로) 방향이 된다. 
+`display: flex;` 를 준 경우, flex-direction의 기본값은 row지만, `flex-direction: column;` 을 준다면 위에서 확인한 것들과는 다른 결과를 확인할 수 있다. flex의 방향이 row(행)이 아닌 column(열)으로 변경되기 때문에 주축(main-axis)이 수평(가로)이 아닌 수직(세로) 방향이 된다.
 
-그렇기 때문에, `flex-direction: column;` 인 상태에서  `flex-wrap: wrap-reverse;` 를 주게 되면, 주축(main-axis)의 main-start 지점이 부모 요소(컨테이너)의 오른쪽 끝 지점이 되고, 오른쪽 끝의 열(column)부터 아이템이 차례대로 배치된다.
+그렇기 때문에, `flex-direction: column;` 인 상태에서 `flex-wrap: wrap-reverse;` 를 주게 되면, 주축(main-axis)의 main-start 지점이 부모 요소(컨테이너)의 오른쪽 끝 지점이 되고, 오른쪽 끝의 열(column)부터 아이템이 차례대로 배치된다.
 
 ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2011.png)
 
@@ -990,7 +985,7 @@ flex-basis는 **자식 요소(아이템)**에 사용하는 속성이다.
 
 ```css
 .item {
-    flex-basis: auto; /* 기본값 */
+  flex-basis: auto; /* 기본값 */
 }
 ```
 
@@ -1068,7 +1063,7 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-basis 속성을 직접 사
 
 ```css
 .item {
-    flex-shrink: 0; /* 기본값 */
+  flex-shrink: 0; /* 기본값 */
 }
 ```
 
@@ -1080,13 +1075,13 @@ flex-grow: 1 | 0.5;
 flex-grow: inherit | initial | unset;
 ```
 
-`flex-grow` 속성은 기본값이 0 이다. `flex-grow:0` 일때는 `flex item`을 확장하지 않고 원래의 크기를 유지한다. 
+`flex-grow` 속성은 기본값이 0 이다. `flex-grow:0` 일때는 `flex item`을 확장하지 않고 원래의 크기를 유지한다.
 
 ![예시1. `flex-grow:0` (기본 값)](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-05-15_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_3.55.43.png)
 
 예시1. `flex-grow:0` (기본 값)
 
-`flex-grow:1` 일 때는 `flex item` 이 유연한 박스의 형태로 바뀌며 빈 공간을 채운다. 
+`flex-grow:1` 일 때는 `flex item` 이 유연한 박스의 형태로 바뀌며 빈 공간을 채운다.
 
 ![예시2. `flex-grow:1`](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-05-15_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_3.56.47.png)
 
@@ -1112,7 +1107,7 @@ flex-grow: inherit | initial | unset;
 flex: flex-grow | flex-shrink | flex-basis;
 ```
 
-일반적으로는 모든 값이 설정되었음을 보장하기 위하여 flex 속성을 이용해 **축약형**으로 사용한다. 축약 속성의 순서는 `flex-grow`, `flex-shrink`, `flex-basis` 순으로 적용되며 띄어쓰기로 구분한다. 
+일반적으로는 모든 값이 설정되었음을 보장하기 위하여 flex 속성을 이용해 **축약형**으로 사용한다. 축약 속성의 순서는 `flex-grow`, `flex-shrink`, `flex-basis` 순으로 적용되며 띄어쓰기로 구분한다.
 
 Flex **축약 속성의 기본값**은 **flex: 0 1 auto;** 이다. flex-grow를 제외한 개별 속성은 생략할 수 있다. flex : 1; 할 경우 grow는 1로 변하고 shrink의 값은 0으로 basis의 값을 명시적으로 작성하지 않으면 0으로 입력이 된다.
 
@@ -1147,11 +1142,11 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 
 ```css
 .item {
-    flex-shrink: 1; /* 기본값 */
+  flex-shrink: 1; /* 기본값 */
 }
 ```
 
-`flex-shrink`속성의 **기본값은 1**이다. 즉, 정의하지 않아도 자동으로 **축소**된다. 숫자가 클수록 상대적으로 더 작은 크기를 갖게 된다. 값을 0으로 선언할 경우 너비 혹은 높이를 **고정해서** 항상 유지할 수 있다. 
+`flex-shrink`속성의 **기본값은 1**이다. 즉, 정의하지 않아도 자동으로 **축소**된다. 숫자가 클수록 상대적으로 더 작은 크기를 갖게 된다. 값을 0으로 선언할 경우 너비 혹은 높이를 **고정해서** 항상 유지할 수 있다.
 
 ![예시1. `flex-shrink:1` (기본값)](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/shrink1.png)
 
@@ -1185,7 +1180,7 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 ## 8.4. Flex 축약 속성
 
 ```css
-flex: <flex-grow> <flex-shrink> <flex-basis>
+flex: <flex-grow> <flex-shrink> <flex-basis>;
 ```
 
 `flex-grow` , `flex-shrink` , `flex-basis` 속성의 값을 단축해서 사용할 수 있는 것이 `flex` 축약 속성이다. 순서는 grow, shrink, basis 순으로 적용된다.
@@ -1210,15 +1205,15 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 
 # 9. 그 밖의 Flex-item에 사용하는 속성들
 
-기타 flex-item에 사용하는 속성에는 `align-self`, `order`, 그리고 `z-index`가 있다. 
+기타 flex-item에 사용하는 속성에는 `align-self`, `order`, 그리고 `z-index`가 있다.
 
 ## 9.1. align-self
 
-`align-self`란 교차 축(cross-axis)을 기준으로 개별아이템 요소의 정렬 방법을 결정하는 속성이다. Flex 컨테이너에 적용하여 내부에 있는 전체 아이템을 정렬하는 `align-items`와 달리, `align-self`는 인접한 Flex 아이템에 영향을 주지 않고, 각각의 Flex 아이템 위치를 자유롭게 변경할 수 있다. 따라서 전체 설정인 `align-items`보다, 개별 아이템에 적용되는 `align-self` 속성이 우선한다는 특징이 있다. 
+`align-self`란 교차 축(cross-axis)을 기준으로 개별아이템 요소의 정렬 방법을 결정하는 속성이다. Flex 컨테이너에 적용하여 내부에 있는 전체 아이템을 정렬하는 `align-items`와 달리, `align-self`는 인접한 Flex 아이템에 영향을 주지 않고, 각각의 Flex 아이템 위치를 자유롭게 변경할 수 있다. 따라서 전체 설정인 `align-items`보다, 개별 아이템에 적용되는 `align-self` 속성이 우선한다는 특징이 있다.
 
 **align-self의 속성값**
 
-`align-self`의 속성값은, auto 값을 제외하면 `align-items`의 속성값과 같다. 
+`align-self`의 속성값은, auto 값을 제외하면 `align-items`의 속성값과 같다.
 
 - auto : 기본값으로, 플렉스박스 컨테이너의 `align-items` 속성을 상속받는다. align-items의 기본 속성은 stretch이기 때문에, align-items가 지정되어있지 않는 경우 stretch 속성을 상속받는다.
 - stretch : 교차 축을 기준으로, 컨테이너의 높이를 채우기 위해 플렉스 아이템이 늘어난다.
@@ -1227,52 +1222,68 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 - center : 교차 축을 기준으로, 플렉스 아이템이 컨테이너의 중앙에 정렬된다.
 - baseline : 교차 축을 기준으로, 플렉스 아이템이 컨테이너의 문자 기준선에 정렬된다.
 
-아래는 아이템에 auto, stretch, flex-start, flex-end, center, baseline 속성값을 부여한 모습이다. 컨테이너가 `flex-direction:row;` 인 경우 교차 축인 세로축을 기준으로, 아이템들이 컨테이너를 채운다. 
+아래는 아이템에 auto, stretch, flex-start, flex-end, center, baseline 속성값을 부여한 모습이다. 컨테이너가 `flex-direction:row;` 인 경우 교차 축인 세로축을 기준으로, 아이템들이 컨테이너를 채운다.
 
 ![align-self-word-1.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/align-self-word-1.png)
 
 ```css
-.container{
-    display: flex;
-    flex-direction: row;
+.container {
+  display: flex;
+  flex-direction: row;
 }
-.item:nth-child(1){align-self: auto;}
-.item:nth-child(2){align-self: stretch;}
-.item:nth-child(3){align-self: flex-start;}
-.item:nth-child(4){align-self: flex-end;}
-.item:nth-child(5){align-self: center;}
-.item:nth-child(6){align-self: baseline;}
+.item:nth-child(1) {
+  align-self: auto;
+}
+.item:nth-child(2) {
+  align-self: stretch;
+}
+.item:nth-child(3) {
+  align-self: flex-start;
+}
+.item:nth-child(4) {
+  align-self: flex-end;
+}
+.item:nth-child(5) {
+  align-self: center;
+}
+.item:nth-child(6) {
+  align-self: baseline;
+}
 ```
 
-`flex-direction:column;` 일 때는 교차 축인 가로축을 기준으로, 아이템들이 컨테이너를 채운다. 
+`flex-direction:column;` 일 때는 교차 축인 가로축을 기준으로, 아이템들이 컨테이너를 채운다.
 
 ![align-self-word-2.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/align-self-word-2.png)
 
 ```css
-.container{
-    display: flex;
-    flex-direction: column;
+.container {
+  display: flex;
+  flex-direction: column;
 }
 ```
 
 **align-self의 활용 예시**
 
-아래는 Flex 컨테이너의 아이템들을 align-self 속성을 사용하여 간단하고 쉽게 정렬한 모습이다. 컨테이너에 `flex-direction:column;` 을 부여하고, 첫 번째 Flex 아이템에 `align-self:flex-end;`를, 네 번째 Flex 아이템에 `align-self:flex-start;` 을 주어 배치하였다. 값이 부여되지 않은 두 번째와 세 번째 아이템 요소는 `align-self:auto;`가 되어, 컨테이너의 `align-items`의 기본값인 stretch 속성을 부여받은 것을 확인할 수 있다. 
+아래는 Flex 컨테이너의 아이템들을 align-self 속성을 사용하여 간단하고 쉽게 정렬한 모습이다. 컨테이너에 `flex-direction:column;` 을 부여하고, 첫 번째 Flex 아이템에 `align-self:flex-end;`를, 네 번째 Flex 아이템에 `align-self:flex-start;` 을 주어 배치하였다. 값이 부여되지 않은 두 번째와 세 번째 아이템 요소는 `align-self:auto;`가 되어, 컨테이너의 `align-items`의 기본값인 stretch 속성을 부여받은 것을 확인할 수 있다.
 
 ![card.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/card%201.png)
 
 ```css
-.container{
-    display: flex;
-    flex-direction: column;
+.container {
+  display: flex;
+  flex-direction: column;
 }
-.item:nth-child(1){align-self: flex-end;}
-.item:nth-child(4){align-self: flex-start;}
+.item:nth-child(1) {
+  align-self: flex-end;
+}
+.item:nth-child(4) {
+  align-self: flex-start;
+}
 ```
 
 ## 9.2. order
 
-`order` 속성은 아이템 요소들의 순서를 결정하는 속성이다. 기본적으로 `flex`는 작성한 순서대로 나열되지만, `order` 속성을 사용하여 아이템들의 순서를 변경할 수 있다. 
+`order` 속성은 아이템 요소들의 순서를 결정하는 속성이다. 기본적으로 `flex`는 작성한 순서대로 나열되지만, `order` 속성을 사용하여 아이템들의 순서를 변경할 수 있다.
 
 **order의 특징**
 
@@ -1280,9 +1291,9 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 - `flex-direction` 속성의 방향값(row, row-reverse, column, column-reverse)을 기준으로 낮은 숫자를 먼저 배치한다.
 - HTML 구조와 상관없이 순서를 시각적으로 변경할 수 있지만, HTML 자체의 구조를 바꾸는 것은 아니다. 따라서 스크린리더가 읽을 때는 `order`값이 적용되지 않고 HTML 마크업 순서대로 읽힌다.
 
-아래는 `flex-direction: row;` 와 `flex-direction: column;`에서  `order` 값을 적용하지 않았을 때와 적용했을 때의 모습이다. 
+아래는 `flex-direction: row;` 와 `flex-direction: column;`에서 `order` 값을 적용하지 않았을 때와 적용했을 때의 모습이다.
 
- `flex-direction: row;` 
+`flex-direction: row;`
 
 - order 값을 적용하지 않은 모습
 
@@ -1293,9 +1304,15 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 ![2022-05-13 22 15 44.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/2022-05-13_22_15_44.png)
 
 ```css
-.item:nth-child(1) {order: 2;} 
-.item:nth-child(2) {order: 3;} 
-.item:nth-child(3) {order: 1;}
+.item:nth-child(1) {
+  order: 2;
+}
+.item:nth-child(2) {
+  order: 3;
+}
+.item:nth-child(3) {
+  order: 1;
+}
 ```
 
 `flex-direction: row;`
@@ -1310,7 +1327,7 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 
 **order의 사용 예시**
 
-1. 날짜와 제목, 내용이 있는 카드 디자인을 만든다고 가정하자. 아래의 이미지처럼 날짜가 제목보다 먼저 위치하게 할 때, 기본 순서로 배치한다면 스크린 리더는 날짜, 제목, 내용 순으로 읽을 것이다. 하지만 사용자는 가장 중요한 제목을 먼저 읽은 후 날짜를 읽기를 선호한다. 이럴 경우, 날짜에 `order:-1`을 주어 시각적 순서만 바꿔서 스크린 리더가 읽는 순서를 변경하지 않도록 할 수 있다. 
+1. 날짜와 제목, 내용이 있는 카드 디자인을 만든다고 가정하자. 아래의 이미지처럼 날짜가 제목보다 먼저 위치하게 할 때, 기본 순서로 배치한다면 스크린 리더는 날짜, 제목, 내용 순으로 읽을 것이다. 하지만 사용자는 가장 중요한 제목을 먼저 읽은 후 날짜를 읽기를 선호한다. 이럴 경우, 날짜에 `order:-1`을 주어 시각적 순서만 바꿔서 스크린 리더가 읽는 순서를 변경하지 않도록 할 수 있다.
 
 ![Group 1-1.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Group_1-1.png)
 
@@ -1334,24 +1351,24 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 
 ```css
 .main {
-    width: 60%;
-    order: 2;
+  width: 60%;
+  order: 2;
 }
 
 .aside {
-    width: 20%;
+  width: 20%;
 }
 
 .aside.aside-a {
-    order: 1;
+  order: 1;
 }
 
 .aside.aside-b {
-    order: 3;
+  order: 3;
 }
 
 .footer {
-    order: 4;
+  order: 4;
 }
 ```
 
@@ -1363,11 +1380,11 @@ flex에서도 z-index 속성을 사용할 수 있다. 어떤 요소에 z-index�
 
 ```css
 .main {
-    width: calc(60% - 16px);
-    order: 2;
-    z-index: 1;
-    transform: scale(1.5);
-    opacity: 0.8;
+  width: calc(60% - 16px);
+  order: 2;
+  z-index: 1;
+  transform: scale(1.5);
+  opacity: 0.8;
 }
 ```
 
@@ -1381,15 +1398,15 @@ flex에서도 z-index 속성을 사용할 수 있다. 어떤 요소에 z-index�
 
 F**lex 속성 IE 지원 대응표**
 
-| 속성 | IE 지원 |
-| --- | --- |
-| display: flex; | display: -ms-flexbox; |
-| flex-grow | -ms-flex |
-| flex-direction | -ms-flex-direction |
-| flex-wrap | -ms-flex-wrap |
-| order | -ms-flex-order |
-| justify-content | -ms-flex-pack |
-| align-items | -ms-flex-align |
+| 속성            | IE 지원               |
+| --------------- | --------------------- |
+| display: flex;  | display: -ms-flexbox; |
+| flex-grow       | -ms-flex              |
+| flex-direction  | -ms-flex-direction    |
+| flex-wrap       | -ms-flex-wrap         |
+| order           | -ms-flex-order        |
+| justify-content | -ms-flex-pack         |
+| align-items     | -ms-flex-align        |
 
 ## 10.2. IE에서의 Flex 이슈
 
@@ -1397,7 +1414,7 @@ F**lex 속성 IE 지원 대응표**
 
 IE 10/11 버전에서 Flex를 사용 할 때 생각대로 작동되지 않는 이슈들과 맞닥뜨릴 수 있는데, 그 중 몇 가지를 소개하겠다.
 
-- IE 10과 11 버전에서 flex-basis 사용 시에  `box-sizing: border-box;`가 인식되지 않는다. IE 10/11에서는 flex-basis로 flex item의 크기를 정할 때, flex item의 크기를 항상 item의 콘텐츠 크기를 기준으로 잡는다. `box-sizing: border-box;` 속성을 주어도 바뀌지 않는다. 이를 해결하는 방법 중 하나는 flex item을 감싸는(wrapper) 요소를 추가해 주는 것이다. 이 때 요소는 border나 padding값이 없어야 한다.
+- IE 10과 11 버전에서 flex-basis 사용 시에 `box-sizing: border-box;`가 인식되지 않는다. IE 10/11에서는 flex-basis로 flex item의 크기를 정할 때, flex item의 크기를 항상 item의 콘텐츠 크기를 기준으로 잡는다. `box-sizing: border-box;` 속성을 주어도 바뀌지 않는다. 이를 해결하는 방법 중 하나는 flex item을 감싸는(wrapper) 요소를 추가해 주는 것이다. 이 때 요소는 border나 padding값이 없어야 한다.
 - IE 10/11에서 `min-height` 속성을 flex container에 사용 시, 자식 태그인 flex item은 부모 태그인 flex container의 크기를 인식하지 못한다. 예를 들어, flex item을 수직 정렬하고자 할 때, 부모인 flex container의 높이가 인식되어야 하는데, item들이 높이를 인식하지 못하게 된다. 이를 해결하는 방법으로는 flex container를 감싸는 또 다른 flex container요소(wrapper)를 추가하는 것이다. 이때 flex container를 감싸는 부모 요소는 column direction 속성으로 지정해주어야 한다.
 
 **flex 이슈 확인 사이트**
@@ -1410,96 +1427,103 @@ IE 10/11 버전에서 Flex를 사용 할 때 생각대로 작동되지 않는 �
 
 ## 11.1. Flex 속성을 이용하여 기본 성배 레이아웃 구현하기
 
-**최종코드** 
+**최종코드**
 
 ```html
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>성배레이아웃1</title>
-    <link rel="stylesheet" as="style" crossorigin
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
     <style>
-        :root {
-            --dark: #504975;
-            --white: #ffffff;
-            --background: #fbfbff;
-            --primary: #7661e2;
-            --light: #eceafe;
-        }
+      :root {
+        --dark: #504975;
+        --white: #ffffff;
+        --background: #fbfbff;
+        --primary: #7661e2;
+        --light: #eceafe;
+      }
 
-        * {
-            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-        }
-        body {
-            height: 100%;
-            padding: 10%;
-            box-sizing: border-box;
-        }
-        .container {
-            width: 70%;
-            height: 300px;
-            padding: 22px;
-            margin: 0 auto;
-            border: 1px solid var(--dark);
-            border-radius: 20px;
-            background: #fff;
-            box-shadow: 0px 4px 12px 0px #51459F14;
-        }
-        .item {
-            height: 40px;
-            /* padding: 0px ; 콘텐츠에 따라 조절해주세요 */
-            border: 1px solid var(--dark);
-            border-radius: 20px;
-            background-color: var(--primary);
-            color: var(--white);
-            box-shadow: 0px 4px 15px 0px #51459F14;
-            text-align: center;
-            vertical-align: middle;
-            line-height: 2.5;
-            word-break: keep-all;
-        }
-        .wrap{
-            display: flex;
-            flex-flow: row wrap;
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-        }
-        .main-content, .left-sidebar, .right-sidebar{
-            background-color: var(--light);
-            color: var(--dark);
-            padding: 80px 0;
-        }
-        .main-content{
-            flex-grow: 2;
-            order: 2;
-        }
-        .left-sidebar{
-            flex-grow: 1;
-            order: 1;
-        }
-        .right-sidebar{
-            flex-grow: 1;
-            order: 3;
-        }
+      * {
+        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+          'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+          sans-serif;
+      }
+      body {
+        height: 100%;
+        padding: 10%;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 70%;
+        height: 300px;
+        padding: 22px;
+        margin: 0 auto;
+        border: 1px solid var(--dark);
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0px 4px 12px 0px #51459f14;
+      }
+      .item {
+        height: 40px;
+        /* padding: 0px ; 콘텐츠에 따라 조절해주세요 */
+        border: 1px solid var(--dark);
+        border-radius: 20px;
+        background-color: var(--primary);
+        color: var(--white);
+        box-shadow: 0px 4px 15px 0px #51459f14;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 2.5;
+        word-break: keep-all;
+      }
+      .wrap {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+      }
+      .main-content,
+      .left-sidebar,
+      .right-sidebar {
+        background-color: var(--light);
+        color: var(--dark);
+        padding: 80px 0;
+      }
+      .main-content {
+        flex-grow: 2;
+        order: 2;
+      }
+      .left-sidebar {
+        flex-grow: 1;
+        order: 1;
+      }
+      .right-sidebar {
+        flex-grow: 1;
+        order: 3;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="item header">Header</div>
-        <div class="wrap">
-            <div class="item main-content">Main Content</div>
-            <div class="item left-sidebar">Left Sidebar</div>
-            <div class="item right-sidebar">Right Sidebar</div>
-        </div>
-        <div class="item footer">Footer</div>
+      <div class="item header">Header</div>
+      <div class="wrap">
+        <div class="item main-content">Main Content</div>
+        <div class="item left-sidebar">Left Sidebar</div>
+        <div class="item right-sidebar">Right Sidebar</div>
+      </div>
+      <div class="item footer">Footer</div>
     </div>
-</body>
+  </body>
 </html>
 ```
 
@@ -1511,11 +1535,11 @@ IE 10/11 버전에서 Flex를 사용 할 때 생각대로 작동되지 않는 �
 
 ```html
 <div class="container">
-		<div class="header">Header</div>
-		<div class="main-content">Main Content</div>
-    <div class="left-sidebar">Left Sidebar</div>
-    <div class="right-sidebar">Right Sidebar</div>
-		<div class="footer">Footer</div>
+  <div class="header">Header</div>
+  <div class="main-content">Main Content</div>
+  <div class="left-sidebar">Left Sidebar</div>
+  <div class="right-sidebar">Right Sidebar</div>
+  <div class="footer">Footer</div>
 </div>
 ```
 
@@ -1525,246 +1549,252 @@ IE 10/11 버전에서 Flex를 사용 할 때 생각대로 작동되지 않는 �
 
 ```html
 <div class="container">
-    <div class="header">Header</div>
-    <div class="wrap">
-		    <div class="main-content">Main Content</div>
-        <div class="left-sidebar">Left Sidebar</div>
-        <div class="right-sidebar">Right Sidebar</div>
-    </div>
-		<div class="footer">Footer</div>
+  <div class="header">Header</div>
+  <div class="wrap">
+    <div class="main-content">Main Content</div>
+    <div class="left-sidebar">Left Sidebar</div>
+    <div class="right-sidebar">Right Sidebar</div>
+  </div>
+  <div class="footer">Footer</div>
 </div>
 ```
 
 ```css
-.wrap{
-    display: flex;
+.wrap {
+  display: flex;
 }
 ```
 
 1. 아이템 요소는 윈도우 창 크기에 따라서 작아지기도 하고 커지기도 한다. 이때 비율을 설정해 주기 위해 남은 여백을 나눠 가질 수 있도록 숫자를 지정해준다. `Main Content`가 가장 큰 비율을 차지해야 하므로 `flex-grow:2;` 를 지정해주고 나머지는 `flex-grow:1;` 로 지정한다.
 
-![_Users_yeeeD_Desktop_flex_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A2%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%AE%E1%86%BA_%E1%84%80%E1%85%B5%E1%86%B7%E1%84%90%E1%85%A2%E1%84%92%E1%85%B4_flex-%E1%84%89%E1%8 (1).png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/_Users_yeeeD_Desktop_flex_E18489E185A5E186BCE18487E185A2E18485E185A6E1848BE185B5E1848BE185A1E1848BE185AEE186BA_E18480E185B5E186B7E18490E185A2E18492E185B4_flex-E18489E18_(1).png)
+![_Users_yeeeD_Desktop_flex_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A2%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%AE%E1%86%BA_%E1%84%80%E1%85%B5%E1%86%B7%E1%84%90%E1%85%A2%E1%84%92%E1%85%B4_flex-%E1%84%89%E1%8 (1).png](<%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/_Users_yeeeD_Desktop_flex_E18489E185A5E186BCE18487E185A2E18485E185A6E1848BE185B5E1848BE185A1E1848BE185AEE186BA_E18480E185B5E186B7E18490E185A2E18492E185B4_flex-E18489E18_(1).png>)
 
 ```css
-.main-content{
-    flex-grow: 2;
+.main-content {
+  flex-grow: 2;
 }
 
-.left-sidebar{
-    flex-grow: 1;
+.left-sidebar {
+  flex-grow: 1;
 }
 
-.right-sidebar{
-    flex-grow: 1;
+.right-sidebar {
+  flex-grow: 1;
 }
 ```
 
 1. 마크업 순서에 따라 `Left Sidebar`, `Main Content`, `Right Sidebar` 순으로 쌓이게 되는데, `Main Content`를 가운데로 오게 배치해야 하므로 `order`속성을 각각 정해주어 브라우저 상에 표시되는 모습을 지정하여 완성한다.
 
-![_Users_yeeeD_Desktop_flex_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A2%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%AE%E1%86%BA_%E1%84%80%E1%85%B5%E1%86%B7%E1%84%90%E1%85%A2%E1%84%92%E1%85%B4_flex-%E1%84%89%E1%8 (2).png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/_Users_yeeeD_Desktop_flex_E18489E185A5E186BCE18487E185A2E18485E185A6E1848BE185B5E1848BE185A1E1848BE185AEE186BA_E18480E185B5E186B7E18490E185A2E18492E185B4_flex-E18489E18_(2).png)
+![_Users_yeeeD_Desktop_flex_%E1%84%89%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A2%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%AE%E1%86%BA_%E1%84%80%E1%85%B5%E1%86%B7%E1%84%90%E1%85%A2%E1%84%92%E1%85%B4_flex-%E1%84%89%E1%8 (2).png](<%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/_Users_yeeeD_Desktop_flex_E18489E185A5E186BCE18487E185A2E18485E185A6E1848BE185B5E1848BE185A1E1848BE185AEE186BA_E18480E185B5E186B7E18490E185A2E18492E185B4_flex-E18489E18_(2).png>)
 
 ```css
 .main-content {
-    flex-grow: 2;
-    order: 2;
+  flex-grow: 2;
+  order: 2;
 }
 
 .left-sidebar {
-    flex-grow: 1;
-    order: 1;
+  flex-grow: 1;
+  order: 1;
 }
 
 .right-sidebar {
-    flex-grow: 1;
-    order: 3;
+  flex-grow: 1;
+  order: 3;
 }
 ```
 
 ## 11.2. Flex 속성을 이용하여 변형된 성배 레이아웃 구현하기
 
-**최종코드** 
+**최종코드**
 
 ```html
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flexbox 성배레이아웃2</title>
-    <link rel="stylesheet" as="style" crossorigin
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
     <style>
-        :root {
-            --dark: #504975;
-            --white: #ffffff;
-            --background: #fbfbff;
-            --primary: #7661e2;
-            --light: #eceafe;
-        }
+      :root {
+        --dark: #504975;
+        --white: #ffffff;
+        --background: #fbfbff;
+        --primary: #7661e2;
+        --light: #eceafe;
+      }
 
-        * {
-            font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-        }
-        body {
-            height: 100%;
-            padding: 10%;
-            box-sizing: border-box;
-        }
-        .container {
-            width: 70%;
-            padding: 22px;
-            margin: 0 auto;
-            border: 1px solid var(--dark);
-            border-radius: 20px;
-            background: #fff;
-            box-shadow: 0px 4px 12px 0px #51459F14;
-        }
-        .item {
-            height: 40px;
-            /* padding: 0px ; 콘텐츠에 따라 조절해주세요 */
-            border: 1px solid var(--dark);
-            border-radius: 20px;
-            background-color: var(--primary);
-            color: var(--white);
-            box-shadow: 0px 4px 15px 0px #51459F14;
-            text-align: center;
-            vertical-align: middle;
-            line-height: 2.5;
-            word-break: keep-all;
-        }
-        .wrap{
-            display: flex;
-            flex-flow: row wrap;
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-        }
-        .content, .sidebar{
-            background-color: var(--light);
-            color: var(--dark);
-        }
+      * {
+        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+          'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+          sans-serif;
+      }
+      body {
+        height: 100%;
+        padding: 10%;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 70%;
+        padding: 22px;
+        margin: 0 auto;
+        border: 1px solid var(--dark);
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0px 4px 12px 0px #51459f14;
+      }
+      .item {
+        height: 40px;
+        /* padding: 0px ; 콘텐츠에 따라 조절해주세요 */
+        border: 1px solid var(--dark);
+        border-radius: 20px;
+        background-color: var(--primary);
+        color: var(--white);
+        box-shadow: 0px 4px 15px 0px #51459f14;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 2.5;
+        word-break: keep-all;
+      }
+      .wrap {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+      }
+      .content,
+      .sidebar {
+        background-color: var(--light);
+        color: var(--dark);
+      }
 
-        .content{
-            flex-grow: 1;
-            order: 2;
-            padding: 30px 0;
-        }
+      .content {
+        flex-grow: 1;
+        order: 2;
+        padding: 30px 0;
+      }
 
-        .sidebar{
-            flex-grow: 1;
-            order: 1;
-            padding: 55px 0;
-        }
+      .sidebar {
+        flex-grow: 1;
+        order: 1;
+        padding: 55px 0;
+      }
 
-        .footer{
-            width: 66%;            
-            margin-left: auto;
-            margin-top: -50px;
-        }
+      .footer {
+        width: 66%;
+        margin-left: auto;
+        margin-top: -50px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="item header">Header</div>
-        <div class="wrap">
-            <div class="item content">Content</div>
-            <div class="item content">Content</div>
-            <div class="item sidebar">Sidebar</div>
-        </div>
-        <div class="item footer">Footer</div>        
+      <div class="item header">Header</div>
+      <div class="wrap">
+        <div class="item content">Content</div>
+        <div class="item content">Content</div>
+        <div class="item sidebar">Sidebar</div>
+      </div>
+      <div class="item footer">Footer</div>
     </div>
-</body>
+  </body>
 </html>
 ```
 
 ![스크린샷 2022-05-14 오전 11.57.39.png](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-05-14_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_11.57.39.png)
 
 1. 기본 html 코드를 작성해본다. 큰 `container` 안에 `header`, `content`, `footer` 세가지로 나뉜 상태에서 제작을 한다.
-    
-    ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2023.png)
-    
-    ```html
-    <div class="container">
-        <div class="header">Header</div>
-        <div class="content">Content</div>
-    	  <div class="footer">Footer</div>
-    </div>
-    ```
-    
+
+   ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2023.png)
+
+   ```html
+   <div class="container">
+     <div class="header">Header</div>
+     <div class="content">Content</div>
+     <div class="footer">Footer</div>
+   </div>
+   ```
+
 2. `content`를 세분화하여 2개의 `content`와 1개의 `sidebar`가 새로운 요소로 나올 수 있게끔 분할하고 상위요소로 하나의 `wrap`으로 묶어준다. 우리는 `wrap`요소의 `flex` 를 이용하여 자유롭게 변형된 레이아웃을 배치하는 것이 목적이다.
 
 ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2024.png)
 
 ```html
- <div class="container">
-     <div class="header">Header</div>
-	   <div class="wrap">
-        <div class="content">Content</div>
-        <div class="content">Content</div>
-        <div class="sidebar">Sidebar</div>
-     </div>
-	   <div class="footer">Footer</div>
+<div class="container">
+  <div class="header">Header</div>
+  <div class="wrap">
+    <div class="content">Content</div>
+    <div class="content">Content</div>
+    <div class="sidebar">Sidebar</div>
+  </div>
+  <div class="footer">Footer</div>
 </div>
 ```
 
-1. `content` 와 `sidebar` 요소들의 상위 부모 요소인 `wrap`에  `display:flex` 속성을 부여하고 각 요소 간 여백과 간격을 부여한다. flex의 하위 요소들의 간격을 조정할 때는 `gap` 속성을 이용하며 부모 요소인 `wrap` 자신의 여백을 조정할 때는 `margin`을 이용한다.
-    
-    ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2025.png)
-    
-    ```css
-    .wrap{
-        display: flex;
-        flex-flow: row wrap;
-        gap: 0.5rem;
-        margin: 0.5rem 0;
-    }
-    ```
-    
+1. `content` 와 `sidebar` 요소들의 상위 부모 요소인 `wrap`에 `display:flex` 속성을 부여하고 각 요소 간 여백과 간격을 부여한다. flex의 하위 요소들의 간격을 조정할 때는 `gap` 속성을 이용하며 부모 요소인 `wrap` 자신의 여백을 조정할 때는 `margin`을 이용한다.
+
+   ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2025.png)
+
+   ```css
+   .wrap {
+     display: flex;
+     flex-flow: row wrap;
+     gap: 0.5rem;
+     margin: 0.5rem 0;
+   }
+   ```
+
 2. `contents`의 스타일을 조정해본다. `flex-glow` 속성으로 여백을 동일하게 주도록 프로퍼티 값을 1로 통일해주고, 마크업 순서 상 `content`가 가장 먼저 나와야 하지만 디자인 상으로는 `sidebar`가 앞으로 나오도록 설정해주어야 함으로 `order`값을 `sidebar`보다 높은 양수의 숫자로 표현한다. (패딩 값은 임의의 높이를 설정하기 위하여 임의의 값을 지정하였다)
-    
-    ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2026.png)
-    
-    ```css
-    .content{
-        flex-grow: 1;
-        order: 2;
-        padding: 30px 0;
-    }
-    ```
-    
-    1. `sidebar`의 크기를 조정해준다. `content`와 같은 여백을 가지기 위하여 `flex-glow`값을 1로 통일하였고, `content`보다 레이아웃 상 앞으로 배치하기 위하여 `order`값을 `content`의 `order`값 2보다 작은 1로 작업해본다. `content`와 마찬가지로 `content`보단 높은 임의의 높이값을 설정하기 위하여 패딩값을 주었다.
-    
-    ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2027.png)
-    
-    ```css
-    .sidebar{
-        flex-grow: 1;
-        order: 1;
-        padding: 55px 0;
-    }
-    ```
-    
-    1. `footer`의 스타일링 차례이다. `footer`를 `content`의 바로 아랫공간으로 이동시키기 위해서 전체 `content` 값을 유동적으로 적용할 수 있도록 `footer` 의 `width` 를 퍼센티지의 값으로 넣는다. 그리고 `footer`는 블록 요소이므로 `footer`의 해당 줄 전체를 차지하는 `margin`의 왼쪽값을 `auto`로 부여하여 `footer`의 왼쪽 여백을 자동으로 가져갈 수 있도록 작성한다.
-    
-    ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2028.png)
-    
-    ```css
-    .footer{
-        width: 66%;            
-        margin-left: auto;
-    }
-    ```
-    
-    1. 마지막 단계이다. `footer`여백에 여백의 반대라는 의미인 `nagative margin`을 적용하여 `footer`요소를 위쪽으로 끌어올려주면 `flex`의 변형된 성배레이아웃 작성이 끝난다.
-    
-    ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2029.png)
-    
-    ```css
-    .footer{
-        width: 66%;            
-        margin-left: auto;
-        margin-top: -50px;
-    }
-    ```
+
+   ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2026.png)
+
+   ```css
+   .content {
+     flex-grow: 1;
+     order: 2;
+     padding: 30px 0;
+   }
+   ```
+
+   1. `sidebar`의 크기를 조정해준다. `content`와 같은 여백을 가지기 위하여 `flex-glow`값을 1로 통일하였고, `content`보다 레이아웃 상 앞으로 배치하기 위하여 `order`값을 `content`의 `order`값 2보다 작은 1로 작업해본다. `content`와 마찬가지로 `content`보단 높은 임의의 높이값을 설정하기 위하여 패딩값을 주었다.
+
+   ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2027.png)
+
+   ```css
+   .sidebar {
+     flex-grow: 1;
+     order: 1;
+     padding: 55px 0;
+   }
+   ```
+
+   1. `footer`의 스타일링 차례이다. `footer`를 `content`의 바로 아랫공간으로 이동시키기 위해서 전체 `content` 값을 유동적으로 적용할 수 있도록 `footer` 의 `width` 를 퍼센티지의 값으로 넣는다. 그리고 `footer`는 블록 요소이므로 `footer`의 해당 줄 전체를 차지하는 `margin`의 왼쪽값을 `auto`로 부여하여 `footer`의 왼쪽 여백을 자동으로 가져갈 수 있도록 작성한다.
+
+   ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2028.png)
+
+   ```css
+   .footer {
+     width: 66%;
+     margin-left: auto;
+   }
+   ```
+
+   1. 마지막 단계이다. `footer`여백에 여백의 반대라는 의미인 `nagative margin`을 적용하여 `footer`요소를 위쪽으로 끌어올려주면 `flex`의 변형된 성배레이아웃 작성이 끝난다.
+
+   ![Untitled](%E1%84%8C%E1%85%A6%E1%84%86%E1%85%A9%E1%86%A8%20%E1%84%8B%E1%85%A5%E1%86%B9%E1%84%8B%E1%85%B3%E1%86%B7%208d36b13fdc30410697f10e0ae7d7c0c9/Untitled%2029.png)
+
+   ```css
+   .footer {
+     width: 66%;
+     margin-left: auto;
+     margin-top: -50px;
+   }
+   ```
