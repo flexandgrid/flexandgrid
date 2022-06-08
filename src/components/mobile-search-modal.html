@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>mobile-search-modal</title>
+        <link rel="stylesheet" href="/src/css/default.css">
+        <link rel="stylesheet" href="/src/css/color.css"/>
+        <link rel="stylesheet" href="/src/components/mobile-search-modal.css">
+        <script defer="defer" src="/src/js/search.js"></script>
+    </head>
+    <body>
+        <aside class="search-modal-mobile on">
+            <header>
+                <h1 class="visually-hidden">검색창</h1>
+                <form action="/search" method="get" autocomplete="off">
+                    <input type="text" class="search-input" name="q" placeholder="Search"/>
+                    <button type="submit" class="search-btn">
+                        <span class="visually-hidden">검색 버튼</span>
+                    </button>
+                </form>
+                <button class="close-btn" type="button">취소</button>
+            </header>
+
+            <section class="modal-history clicked">
+                <header class="header-history">
+                    <h2 class="tit-history">최근 검색어</h2>
+                    <button type="button" class="btn-del-all">전체 삭제</button>
+                </header>
+                <ul class="list-history">
+                    <li class="list-item">
+                        <strong class="txt-item">flex란?</strong>
+                        <button type="button" class="btn-del"><img src="../assets/images/icon-close.svg" alt="삭제 버튼"></button>
+                    </li>
+                    <li class="list-item">
+                        <strong class="txt-item">grid</strong>
+                        <button type="button" class="btn-del"><img src="../assets/images/icon-close.svg" alt="삭제 버튼"></button>
+                    </li>
+                    <li class="list-item">
+                        <strong class="txt-item">가운데 정렬</strong>
+                        <button type="button" class="btn-del"><img src="../assets/images/icon-close.svg" alt="삭제 버튼"></button>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="overlay on is-active" aria-hidden></div>
+        <main>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit iusto nam minima officia officiis ut voluptates, laboriosam quisquam nesciunt neque architecto voluptatibus ad aliquam est aut nemo, ea magnam! In.</p>
+        </main>
+    </div>
+</aside>
+
+</body>
+</html>
