@@ -1,83 +1,88 @@
 @charset "UTF-8";
 
 .sr-only {
-    position: absolute;
-    overflow: hidden;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    clip: rect(0, 0, 0, 0);
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
 }
 
 .header-temporary {
-    height: 80px;
-    border: 1px solid #999;
-    box-sizing: border-box;
+  height: 80px;
+  border: 1px solid #999;
+  box-sizing: border-box;
 }
 
 .main {
-    margin: 200px 160px 0 160px;
+  margin: 200px 160px 0 160px;
 }
 
 .text-search {
-    margin: 0 0 10px 20px;
-    font-size: 36px;
-    line-height: 44px;
-    color: #3f3f46;
+  margin: 0 0 10px 20px;
+  font-size: 36px;
+  line-height: 44px;
+  color: #3f3f46;
 }
 
 .text-search-count {
-    margin: 0 0 25px 20px;
-    font-size: 12px;
-    line-height: 16px;
-    color: #878787;
+  margin: 0 0 25px 20px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #878787;
 }
 
 .itemwrap-search {
-    display: none;
+  display: none;
 }
 
 .search-body.on {
-    background-color: #3f3f46;
+  background-color: #3f3f46;
 }
 
 .search-body.on .text-search {
-    color: #e0e0e0;
+  color: #e0e0e0;
 }
 
 .search-body.on .text-search-count {
-    color: #b4b4b4;
+  color: #b4b4b4;
 }
 
 .txt-item {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 /* 모달 엑스버튼 이미지 안눌리게 */
 .close-img {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .btn-up {
-    display: none;
-    position: fixed;
-    bottom: 60px;
-    right: 5%;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #3f3f46 url(/src/assets/images/chevron-down.svg) no-repeat center;
-    box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
-    transition: all 0.3s;
-    cursor: pointer;
-    z-index: 10;
+  display: none;
+  position: fixed;
+  bottom: 60px;
+  right: 5%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #3f3f46 url(/src/assets/images/chevron-down.svg) no-repeat center;
+  box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
+  transition: all 0.3s;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .btn-up.on:active,
 .btn-up:active {
-    background-color: var(--secondary);
+  background-color: var(--secondary);
 }
 
 .btn-up.on {
-    background: var(--subtext) url(/src/assets/images/chevron-down-darkmode.svg) no-repeat center;
+  background: var(--subtext) url(/src/assets/images/chevron-down-darkmode.svg)
+    no-repeat center;
+}
+
+.footer-area {
+  display: none;
 }
