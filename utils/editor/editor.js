@@ -2615,9 +2615,18 @@
     }
   }
 
+  const handleLoad = () => {
+    findEditors().forEach((editor, index) =>
+      new Editor(editor, index).render()
+    );
+    window.removeEventListener('markdownParsed', handleLoad);
+  };
+
   const findEditors = () => {
     return [...document.querySelectorAll('.fg-editor')];
   };
 
   findEditors().forEach((editor, index) => new Editor(editor, index).render());
+
+  window.addEventListener('markdownParsed', handleLoad);
 })();

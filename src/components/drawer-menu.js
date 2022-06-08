@@ -57,9 +57,9 @@ const handleLoad = () => {
   );
   if (drawerTit.length) {
     window.addEventListener('scroll', () => scrollSpy(drawerTit, contTit));
-    window.removeEventListener('DOMContentLoaded', handleLoad);
+    window.removeEventListener('markdownParsed', handleLoad);
   }
 };
 
 // window.addEventListener('scroll', checkScroll);
-window.addEventListener('DOMContentLoaded', handleLoad);
+window.addEventListener('markdownParsed', handleLoad);
