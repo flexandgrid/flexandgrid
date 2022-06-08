@@ -563,16 +563,13 @@
       if (this._mode === 'snippet') {
         this._editor.classList.add('snippet-mode');
       } else if (this._mode === 'free') {
-        this._editor.classList.add('free-mode', `editor-${this._editorId}`);
+        this._editor.classList.add('free-mode');
       } else if (this._mode === 'carousel') {
         this._mode = 'free';
         this._layout = 'carousel';
-        this._editor.classList.add(
-          'free-mode',
-          `editor-${this._editorId}`,
-          'carousel-layout'
-        );
+        this._editor.classList.add('free-mode', 'carousel-layout');
       }
+      this._editor.classList.add(`editor-${this._editorId}`);
     }
 
     _initProps() {
@@ -621,7 +618,17 @@
 
     _initSnippets() {
       const codes = this._editor.querySelectorAll('code');
-      codes.forEach(({ dataset: { snippet, item, struct }, textContent }) => {
+      for (let i = 0; i < codes.length; i++) {
+        const {
+          dataset: { snippet, item, struct, hidden },
+          textContent
+        } = codes[i];
+
+        if (hidden) {
+          this._hiddenStylesheet = this._createStylesheet(textContent);
+          continue;
+        }
+
         let snippetName;
         if (this._mode === 'snippet' && !snippet) {
           snippetName = '제목없음';
@@ -656,7 +663,7 @@
           stylesheet,
           structure
         });
-      });
+      }
     }
 
     _initCurCss() {
@@ -695,6 +702,12 @@
       if (this._mode === 'free') {
         this._style = document.createElement('style');
         this._style.textContent = this._curSnippet.stylesheet;
+        this._preview.appendChild(this._style);
+      }
+
+      if (this._hiddenStylesheet) {
+        this._style = document.createElement('style');
+        this._style.textContent = this._hiddenStylesheet;
         this._preview.appendChild(this._style);
       }
 
