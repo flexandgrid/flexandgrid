@@ -16,7 +16,8 @@
 	<link rel="stylesheet" href="/src/components/footer.css" />
 	<link rel="stylesheet" href="style.css">
 	<script defer src="/src/components/gnb-nav.js"></script>
-  <script defer src="/src/components/button.js"></script>
+	<script defer src="/src/components/drawer-menu.js"></script>
+	<script defer src="/src/components/button.js"></script>
 	<script defer src="/src/js/darkmode.js"></script>
 	<script defer src="/src/js/search.js"></script>
 </head>
@@ -36,16 +37,16 @@
 					</a>
 				</li>
 				<li class="nav-left-menu nav-cheatsheet">Cheatsheet
-						<div class="modal-menu">
-								<ul class="list-menu">
-										<li class="list-item">
-												<a class="link-menu" href="/cheatsheet-flex">Flex Cheatsheet</a>
-										</li>
-										<li class="list-item">
-												<a class="link-menu" href="/cheatsheet-grid">Grid Cheatsheet</a>
-										</li>
-								</ul>
-						</div>
+					<div class="modal-menu">
+						<ul class="list-menu">
+							<li class="list-item">
+								<a class="link-menu" href="/cheatsheet-flex">Flex Cheatsheet</a>
+							</li>
+							<li class="list-item">
+								<a class="link-menu" href="/cheatsheet-grid">Grid Cheatsheet</a>
+							</li>
+						</ul>
+					</div>
 				</li>
 				<li class="nav-left-menu nav-flex"><a href="/flex">Flex</a></li>
 				<li class="nav-left-menu nav-grid"><a href="/grid">Grid</a></li>
@@ -85,66 +86,76 @@
 	</header>
 
 	<main class="main-grid">
-		<aside class="aside-area">
-			<button class="btn-drawer"><span class="a11y-hidden">목차 메뉴 닫기</span></button>
-			<div class="drawer-menu">
-				<a href="../../index.html" class="mobile-logo"></a>
-				<button class="btn-drawer-menu btn-cheatSheet">Cheatsheet</button>
-				<button class="btn-drawer-menu btn-flex">Flex</button>
-				<button class="btn-drawer-menu btn-grid">Grid
-					<ul class="list-drawer-menu">
-						<li>
-							<a class="tit-drawer-menu selected-tit" href="#9355e882-3591-4844-8fa5-ded07e26003e">1.
-								Grid</a>
-							<ul class="subtit-drawer-menu">
-								<li><a class="selected-sub-tit" href="#0efb1a32-353a-48f7-b443-b38082a06bb2">1.1 grid로 할
-										수 있는 것들</a></li>
-								<li><a href="#ce036362-c7ff-4c41-90fd-0e5b2751e0bd">1.2. grid의 대표적인 구성요소</a></li>
-								<li><a href="#84b49958-60c2-47e8-a0be-babba5785791">1.3. 개발자 도구로 그리드 체크하는법</a></li>
-								<li><a href="#ff394193-8028-4db3-8439-87bb1607993c">1.4. grid 사용법</a></li>
-							</ul>
-						</li>
-						<li>
-							<a class="tit-drawer-menu" href="#19721400-a665-4226-8395-98196076ec8f">2. Grid row, Grid
-								column</a>
-							<ul class="subtit-drawer-menu">
-								<li><a href="#5bee33b0-60f6-4bb5-8558-2b6db635ef85">2.1. grid-template-rows,
-										grid-template-columns</a>
-								<li><a href="#39100589-702e-45be-8da0-2d57a5ca7c7a">2.2. repeat / 1fr이란</a></li>
-								<li><a href="#775d97e6-f280-4bf3-9fb8-575e55a8cf1b">2.3. min-max 함수</a></li>
-								<li><a href="#500494a6-9e0f-4a55-9a37-58a5415c5d33">2.4. grid-auto-rows ,
-										grid-auto-columns</a></li>
-							</ul>
-						</li>
-						<li>
-							<a class="tit-drawer-menu" href="#c4e82fd5-f3ec-4c43-a35d-f653daf37435">3. Gap</a>
-							<ul class="subtit-drawer-menu">
-								<li><a href="#68c086ac-3078-4a88-8810-3321d8c2346a">3.1. gap이란?</a></li>
-								<li><a href="#00914b4c-fe1c-4fe7-b39c-4bbfea4707a5">3.2. margin과 gap의 차이점</a></li>
-								<li><a href="#214ad599-c4c5-4e94-8081-06a3a6386bbc">3.3. gap의 종류</a></li>
-							</ul>
-						</li>
-						<li>
-							<a class="tit-drawer-menu" href="#e036f6d9-952d-48fa-8d0d-d18ff71fc5b0">4. 각 셀의 영역 지정</a>
-							<ul class="subtit-drawer-menu">
-								<li><a href="#bdc43875-cf1a-45d9-b2d0-76ee8e4f2dd0">4.1. grid-column-start &amp;
-										grid-column-end </a></li>
-								<li><a href="#8bd5f6b3-2af5-4c13-997e-30c5ce8d1f0f">4.2. grid-row-start &amp;
-										grid-row-end</a></li>
-								<li><a href="#293063b1-8e93-4397-ab65-81eff41d59c9">4.3. 셀의 영역 지정</a></li>
-								<li><a href="#c05ffdc8-43fe-4343-a839-7638319a42fd">4.4. grid-column &amp; grid-row</a>
-								</li>
-								<li><a href="#2b67016e-f5f1-4078-ac96-45b59b970f07">4.5. span 을 이용한 레이아웃 지정 </a></li>
-								<li><a href="#6498ce7d-e095-4364-8f2f-0744a51b1d28">4.6. grid-area </a></li>
-								<li><a href="#128a3621-87f0-4db2-9956-c39e450a8913">4.7. grid-template-areas </a></li>
-								<li><a href="#aefdba5c-b0b4-491d-b605-4e35458ab7d0">4.8. grid line 외의 추가적인 방법</a></li>
-							</ul>
-						</li>
-						<li>
-							<a class="tit-drawer-menu" href="#cb3b3128-0608-4f3f-81be-649ceb595555">5. IE지원을 위한 Grid</a>
-						</li>
-					</ul>
-				</button>
+		<button class="btn-drawer"><span class="a11y-hidden">목차 메뉴 닫기</span></button>
+		<aside>
+			<div class="aside-area">
+				<div class="drawer-menu">
+					<a href="../../index.html" class="mobile-logo"></a>
+					<button class="btn-drawer-menu btn-cheatSheet">Cheatsheet</button>
+					<button class="btn-drawer-menu btn-flex">Flex</button>
+					<button class="btn-drawer-menu btn-grid">Grid
+						<ul class="list-drawer-menu">
+							<li>
+								<a class="tit-drawer-menu selected-tit" href="#9355e882-3591-4844-8fa5-ded07e26003e">1.
+									Grid</a>
+								<ul class="subtit-drawer-menu">
+									<li><a class="selected-sub-tit" href="#0efb1a32-353a-48f7-b443-b38082a06bb2">1.1
+											grid로 할
+											수 있는 것들</a></li>
+									<li><a href="#ce036362-c7ff-4c41-90fd-0e5b2751e0bd">1.2. grid의 대표적인 구성요소</a></li>
+									<li><a href="#84b49958-60c2-47e8-a0be-babba5785791">1.3. 개발자 도구로 그리드 체크하는법</a></li>
+									<li><a href="#ff394193-8028-4db3-8439-87bb1607993c">1.4. grid 사용법</a></li>
+								</ul>
+							</li>
+							<li>
+								<a class="tit-drawer-menu" href="#19721400-a665-4226-8395-98196076ec8f">2. Grid row,
+									Grid
+									column</a>
+								<ul class="subtit-drawer-menu">
+									<li><a href="#5bee33b0-60f6-4bb5-8558-2b6db635ef85">2.1. grid-template-rows,
+											grid-template-columns</a>
+									<li><a href="#39100589-702e-45be-8da0-2d57a5ca7c7a">2.2. repeat / 1fr이란</a></li>
+									<li><a href="#775d97e6-f280-4bf3-9fb8-575e55a8cf1b">2.3. min-max 함수</a></li>
+									<li><a href="#500494a6-9e0f-4a55-9a37-58a5415c5d33">2.4. grid-auto-rows ,
+											grid-auto-columns</a></li>
+								</ul>
+							</li>
+							<li>
+								<a class="tit-drawer-menu" href="#c4e82fd5-f3ec-4c43-a35d-f653daf37435">3. Gap</a>
+								<ul class="subtit-drawer-menu">
+									<li><a href="#68c086ac-3078-4a88-8810-3321d8c2346a">3.1. gap이란?</a></li>
+									<li><a href="#00914b4c-fe1c-4fe7-b39c-4bbfea4707a5">3.2. margin과 gap의 차이점</a></li>
+									<li><a href="#214ad599-c4c5-4e94-8081-06a3a6386bbc">3.3. gap의 종류</a></li>
+								</ul>
+							</li>
+							<li>
+								<a class="tit-drawer-menu" href="#e036f6d9-952d-48fa-8d0d-d18ff71fc5b0">4. 각 셀의 영역
+									지정</a>
+								<ul class="subtit-drawer-menu">
+									<li><a href="#bdc43875-cf1a-45d9-b2d0-76ee8e4f2dd0">4.1. grid-column-start &amp;
+											grid-column-end </a></li>
+									<li><a href="#8bd5f6b3-2af5-4c13-997e-30c5ce8d1f0f">4.2. grid-row-start &amp;
+											grid-row-end</a></li>
+									<li><a href="#293063b1-8e93-4397-ab65-81eff41d59c9">4.3. 셀의 영역 지정</a></li>
+									<li><a href="#c05ffdc8-43fe-4343-a839-7638319a42fd">4.4. grid-column &amp;
+											grid-row</a>
+									</li>
+									<li><a href="#2b67016e-f5f1-4078-ac96-45b59b970f07">4.5. span 을 이용한 레이아웃 지정 </a>
+									</li>
+									<li><a href="#6498ce7d-e095-4364-8f2f-0744a51b1d28">4.6. grid-area </a></li>
+									<li><a href="#128a3621-87f0-4db2-9956-c39e450a8913">4.7. grid-template-areas </a>
+									</li>
+									<li><a href="#aefdba5c-b0b4-491d-b605-4e35458ab7d0">4.8. grid line 외의 추가적인 방법</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a class="tit-drawer-menu" href="#cb3b3128-0608-4f3f-81be-649ceb595555">5. IE지원을 위한
+									Grid</a>
+							</li>
+						</ul>
+					</button>
+				</div>
 			</div>
 		</aside>
 
@@ -152,10 +163,11 @@
 			<div class="cont-grid">
 				<article id="chapter1-grid">
 					<h2 id="9355e882-3591-4844-8fa5-ded07e26003e" class="">1. Grid</h2>
-					<p id="c72242d1-1683-48a9-8baf-696469e7781c" class=""><strong>Flex는</strong> 부모 요소 안에서 <strong>한 방향으로만
-						아이템들을
-						배치</strong>할 수 있지만, <strong>Grid는 행과 열, 두 가지 방향으로 배치가 가능하기 때문에 어렵고 복잡한 레이아웃 작성에 매우
-						적합</strong>하다.
+					<p id="c72242d1-1683-48a9-8baf-696469e7781c" class=""><strong>Flex는</strong> 부모 요소 안에서 <strong>한
+							방향으로만
+							아이템들을
+							배치</strong>할 수 있지만, <strong>Grid는 행과 열, 두 가지 방향으로 배치가 가능하기 때문에 어렵고 복잡한 레이아웃 작성에 매우
+							적합</strong>하다.
 					</p>
 					<h3 id="0efb1a32-353a-48f7-b443-b38082a06bb2" class="">1.1 grid로 할 수 있는 것들</h3>
 					<p id="9abdea89-a83f-42b0-a440-e78ef14a8c4d" class="">
@@ -839,7 +851,8 @@
 					<p id="06c536b4-950d-4300-afcb-c11fb09b1f71" class="">
 					</p>
 					<h3 id="8bd5f6b3-2af5-4c13-997e-30c5ce8d1f0f" class="">4.2. grid-row-start &amp; grid-row-end</h3>
-					<p id="e70b4c0d-cd23-4aa5-9087-829af25ba255" class="">다음은 grid-row-start &amp; grid-row-end에 대해 알아보자.
+					<p id="e70b4c0d-cd23-4aa5-9087-829af25ba255" class="">다음은 grid-row-start &amp; grid-row-end에 대해
+						알아보자.
 						column과 사용 방법은 똑같으며 row의 영역을 지정할 수 있는 속성이다. </p>
 					<p id="2c0e5682-3de5-4964-a616-eb363ba1e57f" class="">
 					</p>
@@ -859,7 +872,8 @@
 							grid-row-start: 1;
 							grid-row-end: 3;
 						}</code></pre>
-					<p id="6ac0c20a-0ee5-4352-bff2-4edda41ac56b" class="">위 예제에서 grid1의 row 영역이 grid line의 1부터 3 까지 차지한 것을 볼
+					<p id="6ac0c20a-0ee5-4352-bff2-4edda41ac56b" class="">위 예제에서 grid1의 row 영역이 grid line의 1부터 3 까지 차지한
+						것을 볼
 						수
 						있다.</p>
 					<p id="254810b2-cbb2-4782-90d4-70551024b213" class="">
@@ -904,9 +918,11 @@
 					<p id="a7c4344f-6dde-4910-96e4-8d43917800a5" class="">
 					</p>
 					<p id="70b4cbe1-d2ed-4c22-bbeb-2210b43619df" class="">지금까지 배운 <code>grid-column-start</code> ,
-						<code>grid-column-end</code> , <code>grid-row-start</code> , <code>grid-row-end</code> 속성을 사용하여 grid
+						<code>grid-column-end</code> , <code>grid-row-start</code> , <code>grid-row-end</code> 속성을 사용하여
+						grid
 						셀의
-						영역을 지정할 수 있다. 하지만 이렇게 column과 row에 start와 end를 각 각 지정해주기에는 코드가 너무 길어지게 된다. start와 end를 한번에 지정 하려면
+						영역을 지정할 수 있다. 하지만 이렇게 column과 row에 start와 end를 각 각 지정해주기에는 코드가 너무 길어지게 된다. start와 end를 한번에 지정
+						하려면
 						start와
 						end의 축약 속성인 <code>grid-column</code> , <code>grid-row</code>를 사용할 수 있다.
 					</p>
@@ -937,11 +953,13 @@
 							grid-column: 1 / 3;
 							grid-row: 3 / 4;
 						}</code></pre>
-					<p id="5e71d5e9-ed00-4aa8-9e49-90f9b3c16a7e" class="">이렇게 grid-column, grid-row 속성을 사용하여 start와 end를 한
+					<p id="5e71d5e9-ed00-4aa8-9e49-90f9b3c16a7e" class="">이렇게 grid-column, grid-row 속성을 사용하여 start와 end를
+						한
 						줄의
 						코드로 줄여 쓸 수 있게 되었다. 여기서 column과 row까지 한 번에 사용하고 싶다면 <code>grid-area</code> 속성을 사용하면 된다.</p>
 					<h3 id="2b67016e-f5f1-4078-ac96-45b59b970f07" class="">4.5. span 을 이용한 레이아웃 지정 </h3>
-					<p id="e6cc4d8e-ca95-4bd7-bcee-b0fb2e251353" class="">Grid 에서 span은 아이템 요소에 쓰이는 속성이며, 몇개의 셀을 차지하게 할 것인지
+					<p id="e6cc4d8e-ca95-4bd7-bcee-b0fb2e251353" class="">Grid 에서 span은 아이템 요소에 쓰이는 속성이며, 몇개의 셀을 차지하게 할
+						것인지
 						지정해줄
 						수 있다. 숫자와 함께 쓰이며 이 숫자만큼 영역을 차지한다. 명시하지 않으면 span 1이 기본값이 된다. </p>
 					<figure id="51868098-0206-4717-8045-4a6ff70749c8" class="image"><a
@@ -972,25 +990,30 @@
 					</p>
 					<p id="7d5da429-6139-40a0-81e3-83b13e888c21" class="">
 					</p>
-					<p id="899423c2-742e-4b35-af6f-51fa886065c6" class="">grid 컨테이너 내의 item에 적용하는 속성이며, 아이템을 그리드에 배치할 때 사용할
+					<p id="899423c2-742e-4b35-af6f-51fa886065c6" class="">grid 컨테이너 내의 item에 적용하는 속성이며, 아이템을 그리드에 배치할 때
+						사용할
 						수 있는
 						방법의 하나이다.</p>
 					<ul id="2f3463bf-8235-4fe6-952f-25e3e1f1177a" class="bulleted-list">
 						<li style="list-style-type:disc"><code>grid-row-start</code>, <code>grid-column-start</code>,
-							<code>grid-row-end</code>, <code>grid-column-end</code>의 단축 속성이며, column과 row를 한 번에 지정할 수 있는 장점이
+							<code>grid-row-end</code>, <code>grid-column-end</code>의 단축 속성이며, column과 row를 한 번에 지정할 수 있는
+							장점이
 							있다.
 						</li>
 					</ul>
 					<ul id="49973bad-00e4-423a-a142-a19af23ca824" class="bulleted-list">
-						<li style="list-style-type:disc">형태: grid-area: grid-row-start / grid-column-start / grid-row-end /
+						<li style="list-style-type:disc">형태: grid-area: grid-row-start / grid-column-start /
+							grid-row-end /
 							grid- column-end</li>
 					</ul>
 					<ul id="9917d207-5522-49a2-ac7c-94a7d0e28f56" class="bulleted-list">
-						<li style="list-style-type:disc">아래 예시의 grid1의 grid-area는 grid-row: 1 / 3, grid-column: 2 / 3과 동일하다.
+						<li style="list-style-type:disc">아래 예시의 grid1의 grid-area는 grid-row: 1 / 3, grid-column: 2 / 3과
+							동일하다.
 						</li>
 					</ul>
 					<ul id="97f2047e-fd7a-4cc3-a2d1-d5bde8d9ed65" class="bulleted-list">
-						<li style="list-style-type:disc">아래 예시의 grid2의 grid-area는 grid-row: 3 / 4, grid-column: 1 / 3과 동일하다.
+						<li style="list-style-type:disc">아래 예시의 grid2의 grid-area는 grid-row: 3 / 4, grid-column: 1 / 3과
+							동일하다.
 						</li>
 					</ul>
 					<figure id="a0762a33-9f1a-4fb9-b5e8-d731844b9b90" class="image"><a
@@ -1013,9 +1036,11 @@
 					</p>
 					<p id="1cff26a6-51bc-4be1-bd43-45bcab676ac5" class="">
 					</p>
-					<p id="31869a37-c136-481b-81c4-a82066ceb17b" class=""><code>grid-template-area</code> 는 그리드 내 각 영역(Grid
+					<p id="31869a37-c136-481b-81c4-a82066ceb17b" class=""><code>grid-template-area</code> 는 그리드 내 각
+						영역(Grid
 						Area)에 이름을 붙여 배치하는 매우 직관적인 방법이다. </p>
-					<p id="38386345-0bb5-44d3-8e97-58b7131835be" class="">각각의 아이템 요소가 차지하는 셀의 개수만큼 원하는 위치에 이름을 적어 영역을 지정해주면
+					<p id="38386345-0bb5-44d3-8e97-58b7131835be" class="">각각의 아이템 요소가 차지하는 셀의 개수만큼 원하는 위치에 이름을 적어 영역을
+						지정해주면
 						지정한
 						자리만큼의 셀을 차지한다.</p>
 					<figure id="14b8c8ee-873c-4d01-ba94-2de36df172bf" class="image"><a
@@ -1064,7 +1089,8 @@
 					<p id="00f09e50-6625-438e-a4d6-0906a087ccac" class=""><mark
 							class="highlight-red"><strong>실행코드</strong></mark>
 					</p>
-					<p id="8a317491-2b33-461a-8828-fef1b3c7543b" class="">그리드 라인은 암묵적으로 그리드 라인 숫자가 지정되어 있는데, 이 라인에 이름을 지정할 수
+					<p id="8a317491-2b33-461a-8828-fef1b3c7543b" class="">그리드 라인은 암묵적으로 그리드 라인 숫자가 지정되어 있는데, 이 라인에 이름을
+						지정할 수
 						있다.
 					</p>
 					<figure id="ad671e1a-0f85-438f-88b0-1310f636c510" class="image"><a
@@ -1115,13 +1141,16 @@
 							있다.</strong>
 					</p>
 					<ul id="7b309e3b-d85c-4af2-a3b5-8a243b0bae59" class="bulleted-list">
-						<li style="list-style-type:disc"><code>display: grid</code> → <code>display: -ms-grid</code></li>
+						<li style="list-style-type:disc"><code>display: grid</code> → <code>display: -ms-grid</code>
+						</li>
 					</ul>
 					<ul id="b68d71c3-b85b-460f-ba0a-5a4444426715" class="bulleted-list">
-						<li style="list-style-type:disc"><code>grid-template-rows</code> → <code>-ms-grid-rows</code></li>
+						<li style="list-style-type:disc"><code>grid-template-rows</code> → <code>-ms-grid-rows</code>
+						</li>
 					</ul>
 					<ul id="b8ce0316-c734-4b6c-8595-cd2b8f69cdd7" class="bulleted-list">
-						<li style="list-style-type:disc"><code>grid-template-columns</code> → <code>-ms-grid-columns</code>
+						<li style="list-style-type:disc"><code>grid-template-columns</code> →
+							<code>-ms-grid-columns</code>
 						</li>
 					</ul>
 					<p id="a54bff12-4884-4ef1-86dd-dfbfebde31be" class="">
@@ -1140,7 +1169,8 @@
 								<td id="tKsM" class="" style="width:275px"><mark
 										class="highlight-yellow"><strong>속성</strong></mark>
 								</td>
-								<td id="=hra" class="" style="width:227.78125px"><mark class="highlight-yellow"><strong>IE
+								<td id="=hra" class="" style="width:227.78125px"><mark
+										class="highlight-yellow"><strong>IE
 											지원</strong></mark></td>
 							</tr>
 							<tr id="bb6d1a74-5118-43b5-96d0-bb33c2843d42">
@@ -1183,8 +1213,10 @@
 					</table>
 					<p id="6566217f-e4c0-42df-82fc-3c09a8c34cb0" class="">
 					</p>
-					<p id="755acc15-8267-4b66-b4b9-17f4b44c31bd" class=""><strong>IE에서 주의해야 할 auto-placement</strong></p>
-					<p id="fb118799-ba27-4849-a109-7d46ebd01b69" class="">IE에서는 아래와 같은 grid의 auto-placement를 지원하지 않는다. IE에서는
+					<p id="755acc15-8267-4b66-b4b9-17f4b44c31bd" class=""><strong>IE에서 주의해야 할 auto-placement</strong>
+					</p>
+					<p id="fb118799-ba27-4849-a109-7d46ebd01b69" class="">IE에서는 아래와 같은 grid의 auto-placement를 지원하지 않는다.
+						IE에서는
 						grid의 자동 배치가 작동하지 않기 때문이다. prefix 사용도 불가능하다.</p>
 					<ul id="56f21e42-523e-4d06-ab44-82522ae17748" class="bulleted-list">
 						<li style="list-style-type:disc">grid-auto-columns</li>
@@ -1203,30 +1235,24 @@
 	<button type="button" class="btn-up"></button>
 
 	<footer class="footer-area">
-			<div class="cont-footer">
-					<div class="cont-txt">
-							<strong class="txt-title">flex, grid 오픈소스 프로젝트 입니다 :)</strong>
-							<p class="txt-main">
-									이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이 사용할 수 있는 공공재입니다.
-							</p>
-							<small class="txt-copyrigt">© 2022, All Rights Reserved</small>
-					</div>
-					<div class="cont-btn">
-							<a
-									class="btn-footer btn-github"
-									href="https://github.com/flexandgrid/flexandgrid"
-									target="_blank">
-									Github
-							</a>
-							<a
-									class="btn-footer btn-file"
-									href="https://ridibooks.com/books/2773000058"
-									target="_blank"
-									download="">
-									PDF Book
-							</a>
-					</div>
+		<div class="cont-footer">
+			<div class="cont-txt">
+				<strong class="txt-title">flex, grid 오픈소스 프로젝트 입니다 :)</strong>
+				<p class="txt-main">
+					이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이 사용할 수 있는 공공재입니다.
+				</p>
+				<small class="txt-copyrigt">© 2022, All Rights Reserved</small>
 			</div>
+			<div class="cont-btn">
+				<a class="btn-footer btn-github" href="https://github.com/flexandgrid/flexandgrid" target="_blank">
+					Github
+				</a>
+				<a class="btn-footer btn-file" href="https://ridibooks.com/books/2773000058" target="_blank"
+					download="">
+					PDF Book
+				</a>
+			</div>
+		</div>
 	</footer>
 </body>
 

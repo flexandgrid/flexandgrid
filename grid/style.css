@@ -4,6 +4,11 @@ body {
     overflow-x: hidden;
 }
 
+main {
+    display: flex;
+    align-items: stretch;
+}
+
 article {
     margin-bottom: 100px;
 }
@@ -81,10 +86,9 @@ article > pre code::-webkit-scrollbar-thumb {
 }
 
 .cont-grid {
+    max-width: 1480px;
     width: 100%;
-    padding: 140px 0 120px;
-    padding-left: 150px;
-    padding-right: 210px;
+    padding: 140px 180px 120px;
     line-height: 1.6em;
 }
 
@@ -144,12 +148,6 @@ article > pre code::-webkit-scrollbar-thumb {
     }
 }
 
-@media (min-width: 768px) and (max-width: 1280) {
-    .sect-grid {
-        width: calc(100% - 295px);
-    }
-}
-
 @media screen and (max-width: 768px) {
     .cont-grid {
         padding-left: 5vw;
@@ -162,9 +160,5 @@ article > pre code::-webkit-scrollbar-thumb {
 
     .cont-grid figure img {
         max-width: 100%;
-    }
-
-    .footer-area {
-        margin: 0;
     }
 }
