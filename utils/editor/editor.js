@@ -674,8 +674,8 @@
     _initElements() {
       this._initPreview();
       this._initCode();
-      this._initSnippetList();
       if (this._mode === 'snippet') {
+        this._initSnippetList();
         this._initButtons();
       }
       if (this._layout === 'carousel') {
@@ -724,6 +724,9 @@
     }
 
     _initSnippetList() {
+      if (this._snippets.length === 1) {
+        return null;
+      }
       this._snippetList = new Tag({ className: 'list-snippet' });
       const form = document.createElement('form');
 
@@ -2585,7 +2588,11 @@
     // _editor에 children을 순서대로 append
     _appendToEditor(children) {
       const fragment = document.createDocumentFragment();
-      children.forEach((child) => fragment.appendChild(child.elem));
+      children.forEach((child) => {
+        if (child?.elem) {
+          fragment.appendChild(child.elem);
+        }
+      });
       this._editor.appendChild(fragment);
     }
 
