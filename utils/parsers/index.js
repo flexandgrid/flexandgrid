@@ -273,6 +273,7 @@
     const html = parseMarkdown(markdown);
     renderMenu(html);
     renderContent(html);
+    window.dispatchEvent(new Event('DOMContentLoaded'));
   };
 
   render();
