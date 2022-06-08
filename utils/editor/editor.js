@@ -624,12 +624,12 @@
           textContent
         } = codes[i];
 
-        if (this._mode === 'snippet' && hidden) {
+        if (hidden) {
           this._hiddenStylesheet = this._createStylesheet(textContent);
           continue;
         }
 
-        if (this._mode === 'snippet' && hiddenText) {
+        if (hiddenText) {
           this._hiddenTexts = this._createTexts(textContent);
           continue;
         }
@@ -704,15 +704,15 @@
         this._previewWrapper.appendChild(container);
       });
 
+      if (this._hiddenStylesheet) {
+        this._hiddenStyle = document.createElement('style');
+        this._hiddenStyle.textContent = this._hiddenStylesheet;
+        this._preview.appendChild(this._hiddenStyle);
+      }
+
       if (this._mode === 'free') {
         this._style = document.createElement('style');
         this._style.textContent = this._curSnippet.stylesheet;
-        this._preview.appendChild(this._style);
-      }
-
-      if (this._hiddenStylesheet) {
-        this._style = document.createElement('style');
-        this._style.textContent = this._hiddenStylesheet;
         this._preview.appendChild(this._style);
       }
 
@@ -2556,7 +2556,6 @@
 
     _updateHtmlCode() {
       this._updateHtml();
-      this._updateFixedTextContents();
       const table = this._createCssCodeElements();
       this._codeWrapper.removeAllChildren();
       this._codeWrapper.appendChild(table);
@@ -2615,11 +2614,31 @@
     }
 
     _updateFixedTextContents() {
-      if (this._hiddenTexts) {
+      if (!this._hiddenTexts) {
+        return;
+      }
+      if (this._mode === 'snippet') {
         const items = this._previewWrapper.querySelectorAll('.item');
         this._hiddenTexts.forEach((text, index) => {
           items[index].textContent = text;
         });
+      } else if (this._mode === 'free') {
+        const stack = [...this._curHtml];
+        let count = this._hiddenTexts.length;
+        while (stack.length && count) {
+          const tag = stack.pop();
+          const index = Number(
+            [...tag.classList]
+              .find((cls) => /item\d+/.test(cls))
+              ?.replace(/item(\d+)/, '$1')
+          );
+          if (Number.isInteger(index)) {
+            tag.text = this._hiddenTexts[index - 1];
+            count--;
+          }
+          stack.push(...tag.children);
+        }
+        this._updateHtml();
       }
     }
 
