@@ -60,8 +60,15 @@
   };
 
   const figure = {
-    regex: /^\s*!\[(.+)\]\((.+)\)/,
-    replace: '<figure><img src="$2"><figcaption>$1</figcaption></figure>'
+    regex: /^\s*!\[(.*)\]\((.+)\)/,
+    replace: (_, g1, g2) => {
+      const width = g2.match(/^\d+_{2}(\d+)\..+$/)?.[1];
+      return `<figure><img src="${
+        window.location.origin
+      }/src/pages/${PAGE_NAME}/images/${g2}"${
+        width ? ` style="width: ${width}px;"` : ''
+      }>${g1 ? `<figcaption>${g1}</figcaption>` : ''}</figure>`;
+    }
   };
 
   const paragraph = {
