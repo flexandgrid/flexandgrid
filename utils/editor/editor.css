@@ -799,7 +799,7 @@
   background-color: var(--gray-5);
 }
 
-@media screen and (max-width: 979px) {
+@media screen and (max-width: 1440px) {
   .fg-editor {
     flex-direction: column;
   }
@@ -810,7 +810,7 @@
   }
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 768px) {
   .fg-editor {
     --inner: var(--mobile-height-inner);
     --inner-free-mode: var(--mobile-height-inner-free-mode);
