@@ -103,8 +103,28 @@ article > pre code::-webkit-scrollbar-thumb {
     height: auto;
 }
 
-.footer-area {
-    margin-left: 250px;
+.btn-up {
+    display: none;
+    position: fixed;
+    bottom: 60px;
+    right: 5%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #3f3f46 url(/src/assets/images/chevron-down.svg) no-repeat center;
+    box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
+    transition: all 0.3s;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.btn-up.on:active,
+.btn-up:active {
+    background-color: var(--secondary);
+}
+
+.btn-up.on {
+    background: var(--subtext) url(/src/assets/images/chevron-down-darkmode.svg) no-repeat center;
 }
 
 /* 반응형 */

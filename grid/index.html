@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="/src/components/footer.css" />
 	<link rel="stylesheet" href="style.css">
 	<script defer src="/src/components/gnb-nav.js"></script>
+  <script defer src="/src/components/button.js"></script>
 	<script defer src="/src/js/darkmode.js"></script>
 	<script defer src="/src/js/search.js"></script>
 </head>
@@ -1199,28 +1200,33 @@
 		</section>
 		<button class="btn-up"></button>
 	</main>
+	<button type="button" class="btn-up"></button>
 
 	<footer class="footer-area">
-		<div class="cont-footer">
-			<div class="cont-logo">
-				<a href="#none">
-					<img class="img-logo" src="/src/assets/images/logo-gray.svg" alt="flexandgrid 로고입니다." />
-				</a>
+			<div class="cont-footer">
+					<div class="cont-txt">
+							<strong class="txt-title">flex, grid 오픈소스 프로젝트 입니다 :)</strong>
+							<p class="txt-main">
+									이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이 사용할 수 있는 공공재입니다.
+							</p>
+							<small class="txt-copyrigt">© 2022, All Rights Reserved</small>
+					</div>
+					<div class="cont-btn">
+							<a
+									class="btn-footer btn-github"
+									href="https://github.com/flexandgrid/flexandgrid"
+									target="_blank">
+									Github
+							</a>
+							<a
+									class="btn-footer btn-file"
+									href="https://ridibooks.com/books/2773000058"
+									target="_blank"
+									download="">
+									PDF Book
+							</a>
+					</div>
 			</div>
-			<div class="cont-txt">
-				<strong class="txt-title">flex, grid 오픈소스 프로젝트 입니다 :)</strong>
-				<p class="txt-main">
-					이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이
-					사용할 수 있는 공공재입니다.
-				</p>
-				<small class="txt-copyrigt">© 2022, All Rights Reserved</small>
-			</div>
-			<div class="cont-btn">
-				<a class="btn-footer btn-github" href="https://github.com/flexandgrid/flexandgrid"
-					target="_blank">Github</a>
-				<a class="btn-footer btn-file" href="#none" download="">PDF Book</a>
-			</div>
-		</div>
 	</footer>
 </body>
 
