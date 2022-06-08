@@ -375,6 +375,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  height: 20px;
   font-size: 14px;
   color: var(--gray-4);
   user-select: none;
