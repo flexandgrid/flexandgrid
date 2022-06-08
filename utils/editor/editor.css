@@ -172,9 +172,6 @@
 }
 
 .fg-editor .wrapper-preview {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   overflow: auto;
   width: 100%;
   max-height: var(--inner);
@@ -322,8 +319,12 @@
 }
 
 .fg-editor .container {
-  flex: 1;
   gap: 12px;
+  margin-top: 16px;
+}
+
+.fg-editor .container:nth-of-type(1) {
+  margin-top: 0;
 }
 
 .fg-editor .container:not(.item):hover {
