@@ -620,12 +620,17 @@
       const codes = this._editor.querySelectorAll('code');
       for (let i = 0; i < codes.length; i++) {
         const {
-          dataset: { snippet, item, struct, hidden },
+          dataset: { snippet, item, struct, hidden, hiddenText },
           textContent
         } = codes[i];
 
-        if (hidden) {
+        if (this._mode === 'snippet' && hidden) {
           this._hiddenStylesheet = this._createStylesheet(textContent);
+          continue;
+        }
+
+        if (this._mode === 'snippet' && hiddenText) {
+          this._hiddenTexts = this._createTexts(textContent);
           continue;
         }
 
@@ -829,6 +834,13 @@
 
     // Create
     // ------------------------------------------------------------------------------
+
+    _createTexts(textContent) {
+      return textContent
+        .split('\n')
+        .map((text) => text.replace(/\s+/g, ' ').trim())
+        .filter(Boolean);
+    }
 
     _createCssCodeElements() {
       if (this._mode === 'snippet') {
@@ -2161,6 +2173,7 @@
       this._updatePreviewDOM();
       this._updateHtml();
       this._updatePreviewStyle();
+      this._updateFixedTextContents();
     }
 
     _removeItemClickEventListener() {
@@ -2170,6 +2183,7 @@
         this._updatePreviewDOM();
         this._updateHtml();
         this._updatePreviewStyle();
+        this._updateFixedTextContents();
       }
     }
 
@@ -2487,6 +2501,7 @@
       containers.forEach((container, index) => {
         container.classList.add(`container${index + 1}`);
       });
+      this._updateFixedTextContents();
     }
 
     // code 안에 table을 통째로 교체
@@ -2541,6 +2556,7 @@
 
     _updateHtmlCode() {
       this._updateHtml();
+      this._updateFixedTextContents();
       const table = this._createCssCodeElements();
       this._codeWrapper.removeAllChildren();
       this._codeWrapper.appendChild(table);
@@ -2598,6 +2614,15 @@
       }
     }
 
+    _updateFixedTextContents() {
+      if (this._hiddenTexts) {
+        const items = this._previewWrapper.querySelectorAll('.item');
+        this._hiddenTexts.forEach((text, index) => {
+          items[index].textContent = text;
+        });
+      }
+    }
+
     // _editor에 children을 순서대로 append
     _appendToEditor(children) {
       const fragment = document.createDocumentFragment();
@@ -2631,7 +2656,7 @@
       }
       this._updateHtml();
       this._updatePreviewStyle();
-      console.log(this);
+      this._updateFixedTextContents();
     }
   }
 
