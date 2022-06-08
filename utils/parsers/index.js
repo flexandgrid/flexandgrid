@@ -13,8 +13,8 @@
   };
 
   const codeBlockStart = {
-    regex: /^\s*`{3}.+/,
-    replace: '<pre><code>'
+    regex: /^\s*`{3}(.+)/,
+    replace: '<pre><code>$1'
   };
 
   const codeBlockEnd = {
@@ -114,6 +114,7 @@
 
   const parseMarkdown = (markdown) => {
     const tokens = normalize(markdown);
+    let isEditor = false;
     let codeBlockStartIndex = -1;
     let tableStartIndex = -1;
     let curListDepth = -1;
@@ -129,6 +130,11 @@
         switch (rule) {
           case codeBlockStart:
             codeBlockStartIndex = i;
+            const codeType = tokens[i].match(/<code>(.+)$/)?.[1];
+            if (codeType === 'editor') {
+              isEditor = true;
+              tokens[i] = '';
+            }
             break;
 
           case unorderedListItem:
@@ -175,6 +181,8 @@
                 tokens[i - 1] += '</table>';
                 tableStartIndex = -1;
               }
+
+              isEditor = false;
             }
         }
         // 코드 블럭일 때
@@ -182,13 +190,16 @@
         if (token.trim() === '') {
           tokens[i] = '\n\n';
         }
-        tokens[i] = token
-          .replaceAll('<', '&#60;')
-          .replaceAll('>', '&#62;')
-          .replaceAll(' ', '&nbsp;');
+        if (!isEditor) {
+          tokens[i] = token
+            .replaceAll('<', '&#60;')
+            .replaceAll('>', '&#62;')
+            .replaceAll(' ', '&nbsp;');
+        }
         if (codeBlockEnd.regex.test(token)) {
           tokens[i] = parse(token, codeBlockEnd);
           codeBlockStartIndex = -1;
+          isEditor = false;
         } else {
           tokens[i] += '\n';
         }
