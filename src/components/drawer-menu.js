@@ -1,7 +1,7 @@
 const btnDrawer = document.querySelector('.btn-drawer');
 const asideArea = document.querySelector('.aside-area');
 const aside = document.querySelector('aside');
-const FILE_NAME = window.location.pathname.split('/')[1];
+const PAGE_NAME = window.location.pathname.split('/')[1];
 
 const toggleDrawer = () => {
   btnDrawer.classList.toggle('toggle');
@@ -51,9 +51,9 @@ const scrollSpy = (drawerTit, contTit) => {
 };
 
 const handleLoad = () => {
-  const drawerTit = asideArea.querySelectorAll(`.btn-${FILE_NAME} a`);
+  const drawerTit = asideArea.querySelectorAll(`.btn-${PAGE_NAME} a`);
   const contTit = document.querySelectorAll(
-    `.cont-${FILE_NAME} h2, .cont-${FILE_NAME} h3, .cont-${FILE_NAME} h4`
+    `.cont-${PAGE_NAME} h2, .cont-${PAGE_NAME} h3, .cont-${PAGE_NAME} h4`
   );
   if (drawerTit.length) {
     window.addEventListener('scroll', () => scrollSpy(drawerTit, contTit));

@@ -1,5 +1,5 @@
 (async function () {
-  const FILE_NAME = window.location.pathname.split('/')[1];
+  const PAGE_NAME = window.location.pathname.split('/')[1];
 
   const normalize = (markdown) => {
     return markdown
@@ -200,7 +200,9 @@
   };
 
   const fetchMarkdown = async () => {
-    const res = await fetch(`${window.location.origin}/src/md/${FILE_NAME}.md`);
+    const res = await fetch(
+      `${window.location.origin}/src/pages/${PAGE_NAME}/article.md`
+    );
     const markdown = await res.text();
     return markdown;
   };
@@ -243,12 +245,12 @@
       }
     });
 
-    const button = document.querySelector(`.btn-${FILE_NAME}`);
+    const button = document.querySelector(`.btn-${PAGE_NAME}`);
     button.appendChild(mainList);
   };
 
   const renderContent = (html) => {
-    const div = document.querySelector(`.cont-${FILE_NAME}`);
+    const div = document.querySelector(`.cont-${PAGE_NAME}`);
     const innerHTML = [...html];
     let isFirst = true;
     innerHTML.forEach((token, index) => {
