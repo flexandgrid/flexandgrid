@@ -497,6 +497,7 @@
       this._snippetIndex = 0;
       this._snippets = [];
       this._init();
+      this.autoCarousel(); //희진 추가 
     }
 
     get _curSnippet() {
@@ -532,8 +533,8 @@
       const containers =
         containerCount > 1
           ? [...Array(containerCount)].map(
-              (_, index) => `container${index + 1}`
-            )
+            (_, index) => `container${index + 1}`
+          )
           : ['container', 'item'];
       const itemCount = this._previewWrapper.querySelectorAll('.item').length;
       const items = [...Array(itemCount)].map((_, index) => `item${index + 1}`);
@@ -542,6 +543,21 @@
 
     // Init
     // ------------------------------------------------------------------------------
+
+    // // 희진 캐러셀 자동화 
+    // // 2초마다 setInterval(실행 함수) 실행
+    // autoCarousel() {
+    //   setInterval(() => {
+    //     this._snippetIndex += 1;
+    //     if (this._snippetIndex === 3) {
+    //       this._snippetIndex = 0;
+    //     }
+
+    //     // 인덱스에 따른 snippet 변화
+    //     this._snippetChangeEventListener(this._snippetIndex);
+    //   }, 2000);
+    // }
+
 
     _init() {
       this._initMode();
@@ -823,12 +839,14 @@
         }
         this._carouselIndicators.appendChild(indicator);
       }
+
       this._carouselIndicators.addEventListener(
         'click',
         ({ currentTarget, target }) => {
           if (target.tagName !== 'BUTTON') {
             return;
           }
+
           const children = [...currentTarget.querySelectorAll('.indicator')];
           const index = children.indexOf(target);
           children[this._snippetIndex].classList.remove('selected');
@@ -836,6 +854,36 @@
           this._snippetChangeEventListener(index);
         }
       );
+    }
+
+    // 희진 캐러셀 자동화 
+    // // 2초마다 setInterval(실행 함수) 실행
+    autoCarousel() {
+      setInterval(() => {
+        const flexTarget = document.querySelectorAll('.container-indicators')[0];
+        const gridTarget = document.querySelectorAll('.container-indicators')[1];
+
+        const flexIndicator = [...flexTarget.querySelectorAll('.indicator')];
+
+        const gridIndicator = [...gridTarget.querySelectorAll('.indicator')];
+
+        console.log(this._snippetIndex)
+
+        //selected 삭제
+        flexIndicator[this._snippetIndex].classList.remove('selected');
+        gridIndicator[this._snippetIndex].classList.remove('selected');
+
+        //index 증가
+        this._snippetIndex += 1;
+        if (this._snippetIndex === 3) {
+          this._snippetIndex = 0;
+        }
+        //인덱스에 따른 indicator 선택
+        flexIndicator[this._snippetIndex].classList.add('selected');
+        gridIndicator[this._snippetIndex].classList.add('selected');
+        //인덱스에 따른 snippet 변화
+        this._snippetChangeEventListener(this._snippetIndex)
+      }, 2000);
     }
 
     // Create
@@ -1110,13 +1158,13 @@
 
         const textInput =
           typeof line.textContent === 'string' &&
-          !isRootContainer &&
-          this._layout !== 'carousel'
+            !isRootContainer &&
+            this._layout !== 'carousel'
             ? Tag.createElement('input', {
-                class: 'button-code text-code',
-                value: line.textContent,
-                spellcheck: false
-              })
+              class: 'button-code text-code',
+              value: line.textContent,
+              spellcheck: false
+            })
             : null;
 
         if (textInput) {
@@ -1156,8 +1204,8 @@
 
         const innerAddButton =
           textInput ||
-          isRootContainer ||
-          (openingTag.length && closingTag && this._layout === 'carousel')
+            isRootContainer ||
+            (openingTag.length && closingTag && this._layout === 'carousel')
             ? this._createAddInnerTagButton(line.tag, 'button-inner')
             : null;
 
@@ -1191,8 +1239,8 @@
       const length = Number.isInteger(Number(item))
         ? Number(item)
         : defaultItemCount
-        ? Number(defaultItemCount)
-        : Editor.DEFAULT_ITEM;
+          ? Number(defaultItemCount)
+          : Editor.DEFAULT_ITEM;
       const container = new PreviewTag({ className: 'container' });
       for (let i = 0; i < length; i++) {
         container.push(new PreviewTag({ className: 'item' }));
@@ -2395,8 +2443,8 @@
             ? [anchorNode, anchorLine, anchorOffset]
             : [focusNode, focusLine, focusOffset]
           : Number(anchorLine.dataset.index) < Number(focusLine.dataset.index)
-          ? [anchorNode, anchorLine, anchorOffset]
-          : [focusNode, focusLine, focusOffset];
+            ? [anchorNode, anchorLine, anchorOffset]
+            : [focusNode, focusLine, focusOffset];
 
       const firstLineChildNodes = [...firstLine.childNodes]
         .reduce((acc, node) => [...acc, node, ...(node.childNodes ?? [])], [])
