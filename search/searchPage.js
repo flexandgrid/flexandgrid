@@ -58,7 +58,7 @@ const createList = (contents) => {
       const searchRoute = document.createElement("span");
       searchRoute.setAttribute("class", "route-search");
       searchRoute.appendChild(
-        document.createTextNode(i == 0 ? "flex" : "grid")
+        document.createTextNode(i == 0 ? `flex > ${value}` : `grid > ${value}`)
       );
 
       const searchTitle = document.createElement("strong");
