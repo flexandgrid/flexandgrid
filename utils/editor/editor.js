@@ -838,7 +838,7 @@
     _createTexts(textContent) {
       return textContent
         .split('\n')
-        .map((text) => text.replace(/\s+/g, ' ').trim())
+        .map((text) => text.replace(/\s+/g, ' ').replace(/\\n/g, '\n').trim())
         .filter(Boolean);
     }
 
@@ -2162,6 +2162,7 @@
       this._updateAllPreviewDOM();
       this._updateCssCode();
       this._updateHtmlCode();
+      this._updateFixedTextContents();
       if (this._mode === 'free') {
         this._style.textContent = this._curSnippet.stylesheet;
       }
