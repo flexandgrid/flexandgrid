@@ -263,6 +263,15 @@ article {
   color: var(--border);
 }
 
+.on .btn-flex {
+  color: #7661e2;
+}
+
+.on .btn-flex::before {
+  background: url(/src/assets/images/icon-flex-hover.svg) no-repeat
+    center/contain;
+}
+
 /* 반응형 */
 @media screen and (max-width: 1280px) {
   .cont-flex {

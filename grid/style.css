@@ -263,6 +263,15 @@ article {
   color: var(--border);
 }
 
+.on .btn-grid {
+  color: #f6866a;
+}
+
+.on .btn-grid::before {
+  background: url(/src/assets/images/icon-grid-hover.svg) no-repeat
+    center/contain;
+}
+
 /* 반응형 */
 @media screen and (max-width: 1280px) {
   .cont-grid {

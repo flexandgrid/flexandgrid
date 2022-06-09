@@ -195,37 +195,41 @@ aside.toggle {
 
 
 /* 다크 모드 */
-.btn-drawer.on {
+.on .aside-area {
+  background-color: #3F3F46;
+}
+
+.on .btn-drawer {
   border: 1px solid #27272A;
   background-color: #3F3F46;
 }
 
-.btn-drawer.on:hover {
+.on .btn-drawer:hover {
   background-color: var(--border-dark);
 }
 
-.drawer-menu.on {
+.on .drawer-menu {
   background: #3F3F46;
   border: none;
 }
 
-.drawer-menu.on .mobile-logo {
+.on .drawer-menu .mobile-logo {
   background: url(../assets/images/logo-gray-darkmode.svg) no-repeat center/contain;
 }
 
-.btn-drawer-menu.on {
+.on .btn-drawer-menu {
   color: #F9F9F9;
 }
 
-.btn-cheatSheet.on::before {
+.on .btn-cheatSheet::before {
   background: url(../assets/images/icon-cheatsheet-darkmode.svg) no-repeat center/contain;
 }
 
-.btn-flex.on::before {
+.on .btn-flex::before {
   background: url(../assets/images/icon-flex-darkmode.svg) no-repeat center/contain;
 }
 
-.btn-grid.on::before {
+.on .btn-grid::before {
   background: url(../assets/images/icon-grid-darkmode.svg) no-repeat center/contain;
 }
 
@@ -233,49 +237,60 @@ aside.toggle {
   background: url(../assets/images/icon-chevron-darkmode.svg) no-repeat center/contain;
 }
 
-.btn-cheatSheet.on:focus::before {
+.on .btn-cheatSheet:focus::before {
   background: url(../assets/images/icon-cheatsheet-hover.svg) no-repeat center/contain;
 }
 
-.btn-flex.on:focus {
+.on .btn-flex:focus {
   color: #7661E2;
 }
 
-.btn-flex.on:focus::before {
+.on .btn-flex:focus::before {
   background: url(../assets/images/icon-flex-hover.svg) no-repeat center/contain;
 }
 
-.btn-grid.on:focus {
+.on .btn-grid:focus {
   color: #F6866A;
 }
 
-.btn-grid.on:focus::before {
+.on .btn-grid:focus::before {
   background: url(../assets/images/icon-grid-hover.svg) no-repeat center/contain;
 }
 
-.btn-flex.on .list-drawer-menu {
+.on .btn-flex .list-drawer-menu {
   color: #B4B4B4;
 }
 
-.list-drawer-menu.on .selected-tit {
+.on .list-drawer-menu .selected-tit {
   background: #252424;
   color: #E0E0E0;
 }
 
-.list-drawer-menu.on .selected-sub-tit {
+.on .list-drawer-menu .selected-sub-tit {
   color: #E0E0E0;
 }
 
-.list-drawer-menu.on .tit-drawer-menu:hover {
+.on .list-drawer-menu .tit-drawer-menu:hover {
   background: #252424;
   color: #E0E0E0;
 }
 
-.list-drawer-menu.on .subtit-drawer-menu>li:hover {
+.on .list-drawer-menu .subtit-drawer-menu>li:hover {
   font-weight: 600;
   color: #E0E0E0;
 }
 
+.on .tit-drawer-menu:hover, .on .tit-drawer-menu.scroll-spy {
+  background: #252424;
+  color: #E0E0E0;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.on .subtit-drawer-menu>li:hover, .on .scroll-spy {
+  color: #E0E0E0;
+  font-weight: 600;
+}
 
 /* 반응형 */
 @media screen and (max-width: 1280px) {
