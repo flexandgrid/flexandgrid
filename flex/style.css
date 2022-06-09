@@ -48,15 +48,16 @@ article {
 }
 
 .cont-flex h2 {
-  margin: 20px 0 50px;
+  padding-top: 100px;
+  margin: -100px 0 50px;
   color: var(--secondary);
   font-size: 36px;
 }
 
 .cont-flex h3,
 .cont-flex h4 {
-  padding-bottom: 20px;
-  margin: 100px 0 20px;
+  padding: 100px 0 20px;
+  margin: -50px 0 20px;
   border-bottom: 1px solid var(--flex-border);
   color: var(--primary);
   font-size: 22px;
