@@ -68,6 +68,10 @@ article {
   border-bottom: none;
 }
 
+.cont-flex p.margin-bottom {
+  margin-bottom: 21px;
+}
+
 .cont-flex ul ul,
 .cont-flex ul ol,
 .cont-flex ol ul,
@@ -293,6 +297,10 @@ article {
     padding-bottom: 15px;
     margin: 35px 0 15px;
     font-size: 18px;
+  }
+
+  .cont-flex p.margin-bottom {
+    margin-bottom: 19px;
   }
 
   .cont-flex ul ul,

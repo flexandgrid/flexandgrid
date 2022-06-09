@@ -63,6 +63,10 @@ article {
   border-bottom: none;
 }
 
+.cont-grid p.margin-bottom {
+  margin-bottom: 21px;
+}
+
 .cont-grid ul ul,
 .cont-grid ul ol,
 .cont-grid ol ul,
@@ -294,6 +298,10 @@ article {
     padding-bottom: 15px;
     margin: 35px 0 15px;
     font-size: 18px;
+  }
+
+  .cont-grid p.margin-bottom {
+    margin-bottom: 19px;
   }
 
   .cont-grid ul ul,
