@@ -5,8 +5,8 @@ body {
 }
 
 main {
-    display: flex;
-    align-items: stretch;
+  display: flex;
+  align-items: stretch;
 }
 
 article {
@@ -19,7 +19,7 @@ article {
 }
 
 .btn-grid {
-  color: #f6866a;
+  color: var(--grid-primary);
 }
 
 .btn-grid::before {
@@ -48,15 +48,16 @@ article {
 }
 
 .cont-grid h2 {
-  margin: 20px 0 50px;
+  padding-top: 100px;
+  margin: -100px 0 50px;
   color: var(--secondary);
   font-size: 36px;
 }
 
 .cont-grid h3,
 .cont-grid h4 {
-  padding-bottom: 20px;
-  margin: 100px 0 20px;
+  padding: 100px 0 20px;
+  margin: -50px 0 20px;
   border-bottom: 1px solid var(--grid-border);
   color: var(--primary);
   font-size: 22px;
@@ -72,14 +73,15 @@ article {
   margin-bottom: 21px;
 }
 
-.cont-grid ul ul,
-.cont-grid ul ol,
-.cont-grid ol ul,
-.cont-grid ol ol {
+.cont-grid article > ul ul,
+.cont-grid article > ul ol,
+.cont-grid article > ol ul,
+.cont-grid article > ol ol {
   padding-left: 20px;
 }
 
-.cont-grid li::before {
+.cont-grid article > ul li::before,
+.cont-grid article > ol li::before {
   content: '·';
   margin-right: 8px;
   font-weight: 900;
@@ -235,7 +237,7 @@ article {
 }
 
 .on .cont-grid figure {
-  background-color: #2d2d2d;
+  background-color: var(--border-dark);
   box-shadow: 0px 10px 25px 0px #2d2d2d1a;
 }
 
@@ -254,12 +256,21 @@ article {
 }
 
 .on .cont-grid article > pre {
-  background-color: #2d2d2d;
+  background-color: var(--border-dark);
 }
 
 .on .cont-grid article > pre code {
   background-color: transparent;
   color: var(--border);
+}
+
+.on .btn-grid {
+  color: var(--grid-primary);
+}
+
+.on .btn-grid::before {
+  background: url(/src/assets/images/icon-grid-hover.svg) no-repeat
+    center/contain;
 }
 
 /* 반응형 */
@@ -309,10 +320,10 @@ article {
     margin-bottom: 19px;
   }
 
-  .cont-grid ul ul,
-  .cont-grid ul ol,
-  .cont-grid ol ul,
-  .cont-grid ol ol {
+  .cont-grid article > ul ul,
+  .cont-grid article > ul ol,
+  .cont-grid article > ol ul,
+  .cont-grid article > ol ol {
     padding-left: 12px;
   }
 

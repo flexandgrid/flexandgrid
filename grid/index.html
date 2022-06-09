@@ -13,13 +13,13 @@
 	<link rel="stylesheet" href="/src/components/search-modal.css" />
 	<link rel="stylesheet" href="/src/components/drawer-menu.css">
 	<link rel="stylesheet" href="/src/components/footer.css" />
-	<link rel="stylesheet" href="/utils/editor/editor.css">
-	<link rel="stylesheet" href="style.css">
-	<script defer src="/utils/parsers/index.js"></script>
-	<script defer src="/utils/editor/editor.js"></script>
+	<link rel="stylesheet" href="/src/utils/editor/editor.css" />
+	<link rel="stylesheet" href="style.css" />
+	<script defer src="/src/js/parser.js"></script>
+	<script defer src="/src/utils/editor/editor.js"></script>
 	<script defer src="/src/components/gnb-nav.js"></script>
 	<script defer src="/src/components/drawer-menu.js"></script>
-  <script defer src="/src/components/button.js"></script>
+	<script defer src="/src/components/button.js"></script>
 	<script defer src="/src/js/darkmode.js"></script>
 	<script defer src="/src/js/search.js"></script>
 </head>
@@ -88,13 +88,15 @@
 	</header>
 
 	<main class="main-grid">
-		<aside class="aside-area">
-			<button class="btn-drawer"><span class="a11y-hidden">목차 메뉴 닫기</span></button>
-			<div class="drawer-menu">
-				<a href="../../index.html" class="mobile-logo"></a>
-				<button class="btn-drawer-menu btn-cheatSheet">Cheatsheet</button>
-				<button class="btn-drawer-menu btn-flex">Flex</button>
-				<button class="btn-drawer-menu btn-grid">Grid</button>
+		<button class="btn-drawer"><span class="a11y-hidden">목차 메뉴 닫기</span></button>
+		<aside>
+			<div class="aside-area">
+				<div class="drawer-menu">
+					<a href="../../index.html" class="mobile-logo"></a>
+					<button class="btn-drawer-menu btn-cheatSheet">Cheatsheet</button>
+					<button class="btn-drawer-menu btn-flex">Flex</button>
+					<button class="btn-drawer-menu btn-grid">Grid</button>
+				</div>
 			</div>
 		</aside>
 

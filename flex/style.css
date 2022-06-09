@@ -19,7 +19,7 @@ article {
 }
 
 .btn-flex {
-  color: #7661e2;
+  color: var(--flex-primary);
 }
 
 .btn-flex::before {
@@ -48,15 +48,16 @@ article {
 }
 
 .cont-flex h2 {
-  margin: 20px 0 50px;
+  padding-top: 100px;
+  margin: -100px 0 50px;
   color: var(--secondary);
   font-size: 36px;
 }
 
 .cont-flex h3,
 .cont-flex h4 {
-  padding-bottom: 20px;
-  margin: 100px 0 20px;
+  padding: 100px 0 20px;
+  margin: -50px 0 20px;
   border-bottom: 1px solid var(--flex-border);
   color: var(--primary);
   font-size: 22px;
@@ -72,14 +73,15 @@ article {
   margin-bottom: 21px;
 }
 
-.cont-flex ul ul,
-.cont-flex ul ol,
-.cont-flex ol ul,
-.cont-flex ol ol {
+.cont-flex article > ul ul,
+.cont-flex article > ul ol,
+.cont-flex article > ol ul,
+.cont-flex article > ol ol {
   padding-left: 20px;
 }
 
-.cont-flex li::before {
+.cont-flex article > ul li::before,
+.cont-flex article > ol li::before {
   content: '·';
   margin-right: 8px;
   font-weight: 900;
@@ -235,7 +237,7 @@ article {
 }
 
 .on .cont-flex figure {
-  background-color: #2d2d2d;
+  background-color: var(--border-dark);
   box-shadow: 0px 10px 25px 0px #2d2d2d1a;
 }
 
@@ -254,12 +256,21 @@ article {
 }
 
 .on .cont-flex article > pre {
-  background-color: #2d2d2d;
+  background-color: var(--border-dark);
 }
 
 .on .cont-flex article > pre code {
   background-color: transparent;
   color: var(--border);
+}
+
+.on .btn-flex {
+  color: var(--flex-primary);
+}
+
+.on .btn-flex::before {
+  background: url(/src/assets/images/icon-flex-hover.svg) no-repeat
+    center/contain;
 }
 
 /* 반응형 */
@@ -303,10 +314,10 @@ article {
     margin-bottom: 19px;
   }
 
-  .cont-flex ul ul,
-  .cont-flex ul ol,
-  .cont-flex ol ul,
-  .cont-flex ol ol {
+  .cont-flex article > ul ul,
+  .cont-flex article > ul ol,
+  .cont-flex article > ol ul,
+  .cont-flex article > ol ol {
     padding-left: 12px;
   }
 

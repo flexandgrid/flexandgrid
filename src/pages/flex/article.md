@@ -20,19 +20,19 @@ Grid는 **행과 열 Matrix 형태로** 레이아웃을 배치해야 하는 경�
 
 같은 이미지로 grid도 설명하니 비교해보면서 보길 권한다. 첫번째 이미지에 있는 빨간색 박스를 모두 flex로 구현할 수 있다.
 
-![](001.png)
+![](images/001.png)
 
-![](002.png)
+![](images/002.png)
 
 ## 1.3. Flex를 알면 만들 수 있는 것
 
 카드를 순서대로 배치할 수 있고, 각 카드 내부에서 Flex를 이용해서 요소를 보다 쉽게 배치할 수 있다.
 
-![flex로 구현된 UI - 1](003.png)
+![flex로 구현된 UI - 1](images/003.png)
 
 Flex를 활용한 홈페이지다. 로고 배치, 검색창, 메뉴 모든 UI에 flex를 활용하였다.
 
-![flex로 구현된 UI - 2](004.png)
+![flex로 구현된 UI - 2](images/004.png)
 
 ## 1.4. Flex의 특징
 
@@ -56,7 +56,7 @@ Flex는 부모와 자식 태그가 필요하고, 부모 요소(`flex-container`)
 
 어떠한 속성을 적용해야 하는지 헷갈리는 경우, 컨테이너에 flex 속성을 적용한 뒤 크롬 개발자 도구의 스타일 탭을 확인하면 좋다. 주요한 속성 다섯 가지를 GUI 기능으로 제공하여 적용된 모습을 확인해볼 수 있기 때문이다.
 
-![](005__336.png)
+![](images/005__336.png)
 
 ## 1.5. axis와 cross-axis
 
@@ -64,7 +64,7 @@ Flex는 부모와 자식 태그가 필요하고, 부모 요소(`flex-container`)
 
 axis로 자식 요소의 정렬 방향을 제어할 수 있다. 행방향, 열방향으로 각각 반대 방향도 지원한다.
 
-![](006.png)
+![](images/006.png)
 
 ### 1.5.2. 주축과 교차축
 
@@ -798,13 +798,13 @@ flex-basis 속성은 **유연한**(flexible) **크기**를 가진다. 즉, 고�
 
 `flex-basis: auto;`가 기본값이다. 이때는 지정해 준 width(또는 height) 값을 사용하거나, 다른 박스가 늘어날 때 같이 늘어난다(stretch). 또한, 추가 공간이 flex-grow 값에 따라 분배된다. `auto` 일 때와는 달리 `flex-basis: 0;`으로 설정하면 내용 주위의 추가 공간이 고려되지 않는다.
 
-![flex-basis 값이 0일 때와 auto일 때의 차이](007.png)
+![flex-basis 값이 0일 때와 auto일 때의 차이](images/007.png)
 
 ## 6.6. flex-basis: content;
 
 `flex-basis: content;`는 콘텐츠 크기에 맞게 자동으로 크기가 조절된다. 고유 크기 조정 키워드로는 `fill`, `min-content`, `max-content`, `fit-content` 가 있다.
 
-![](008.png)
+![](images/008.png)
 
 이 키워드는 잘 지원되지 않기 때문에 테스트하기 어렵다 (2022년 기준). 따라서 `min-content`, `max-content` 및 `fit-content`의 기능을 완전히 파악하여 원하는 의도대로 사용하기엔 아직 무리가 있다.
 
@@ -812,11 +812,11 @@ flex-basis 속성은 **유연한**(flexible) **크기**를 가진다. 즉, 고�
 
 CSS 표준을 관리하는 **W3C**에 따르면, flex-basis 속성을 직접 사용하기보다는 **flex 축약 속성**으로 사용하는 것을 권장하고 있다.
 
-![출처: [https://www.w3.org/TR/css-flexbox-1/#flex-basis-property](https://www.w3.org/TR/css-flexbox-1/#flex-basis-property)](009.png)
+![출처: [https://www.w3.org/TR/css-flexbox-1/#flex-basis-property](https://www.w3.org/TR/css-flexbox-1/#flex-basis-property)](images/009.png)
 
 ## 6.8. flex-basis 호환성
 
-![출처: [https://caniuse.com/?search=flex-basis](https://caniuse.com/?search=flex-basis)](010.png)
+![출처: [https://caniuse.com/?search=flex-basis](https://caniuse.com/?search=flex-basis)](images/010.png)
 
 # 7. flex-grow
 
@@ -979,15 +979,15 @@ Flex **축약 속성의 기본값**은 **flex: 0 1 auto;** 이다. flex-grow를 
 CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사용하기보다는
 **flex 축약 속성**으로 사용하는 것을 권장하고 있다.
 
-![[https://www.w3.org/TR/css-flexbox-1/#propdef-flex-grow](https://www.w3.org/TR/css-flexbox-1/#propdef-flex-grow)](011.png)
+![[https://www.w3.org/TR/css-flexbox-1/#propdef-flex-grow](https://www.w3.org/TR/css-flexbox-1/#propdef-flex-grow)](images/011.png)
 
 ## 7.6. flex-grow 호환성
 
 지원버전
 
-![출처: [mdn](https://developer.mozilla.org/ko/docs/Web/CSS/flex-grow)](012.png)
+![출처: [mdn](https://developer.mozilla.org/ko/docs/Web/CSS/flex-grow)](images/012.png)
 
-![출처: [https://caniuse.com/?search=flex-grow](https://caniuse.com/?search=flex-grow)](013.png)
+![출처: [https://caniuse.com/?search=flex-grow](https://caniuse.com/?search=flex-grow)](images/013.png)
 
 # 8. flex-shrink
 
@@ -1205,11 +1205,11 @@ flex: <flex-grow> <flex-shrink> <flex-basis>;
 
 CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사용하기보다는 **flex 축약 속성**으로 사용하는 것을 권장하고 있다.
 
-![[https://www.w3.org/TR/css-flexbox-1/#propdef-flex-shrink](https://www.w3.org/TR/css-flexbox-1/#propdef-flex-shrink)](014.png)
+![[https://www.w3.org/TR/css-flexbox-1/#propdef-flex-shrink](https://www.w3.org/TR/css-flexbox-1/#propdef-flex-shrink)](images/014.png)
 
 ## 8.6. flex-shrink 호환성 (caniuse)
 
-![출처: [https://caniuse.com/?search=flex-shrink](https://caniuse.com/?search=flex-shrink)](015.png)
+![출처: [https://caniuse.com/?search=flex-shrink](https://caniuse.com/?search=flex-shrink)](images/015.png)
 
 # 9. 그 밖의 flex-item에 사용하는 속성들
 
@@ -1425,7 +1425,7 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 
 1. 날짜와 제목, 내용이 있는 카드 디자인을 만든다고 가정하자. 아래의 이미지처럼 날짜가 제목보다 먼저 위치하게 할 때, 기본 순서로 배치한다면 스크린 리더는 날짜, 제목, 내용 순으로 읽을 것이다. 하지만 사용자는 가장 중요한 제목을 먼저 읽은 후 날짜를 읽기를 선호한다. 이럴 경우, 날짜에 `order:-1`을 주어 시각적 순서만 바꿔서 스크린 리더가 읽는 순서를 변경하지 않도록 할 수 있다.
 
-![](016__384.png)
+![](images/016__384.png)
 
 1. 아래와 같은 경우에도 order 속성을 사용할 수 있다.
 
