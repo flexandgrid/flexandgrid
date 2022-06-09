@@ -5,8 +5,8 @@ body {
 }
 
 main {
-    display: flex;
-    align-items: stretch;
+  display: flex;
+  align-items: stretch;
 }
 
 article {
@@ -72,14 +72,15 @@ article {
   margin-bottom: 21px;
 }
 
-.cont-grid ul ul,
-.cont-grid ul ol,
-.cont-grid ol ul,
-.cont-grid ol ol {
+.cont-grid article > ul ul,
+.cont-grid article > ul ol,
+.cont-grid article > ol ul,
+.cont-grid article > ol ol {
   padding-left: 20px;
 }
 
-.cont-grid li::before {
+.cont-grid article > ul li::before,
+.cont-grid article > ol li::before {
   content: '·';
   margin-right: 8px;
   font-weight: 900;
@@ -309,10 +310,10 @@ article {
     margin-bottom: 19px;
   }
 
-  .cont-grid ul ul,
-  .cont-grid ul ol,
-  .cont-grid ol ul,
-  .cont-grid ol ol {
+  .cont-grid article > ul ul,
+  .cont-grid article > ul ol,
+  .cont-grid article > ol ul,
+  .cont-grid article > ol ol {
     padding-left: 12px;
   }
 
