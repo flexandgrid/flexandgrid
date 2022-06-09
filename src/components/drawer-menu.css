@@ -29,7 +29,7 @@ aside.toggle {
   top: 80px;
   width: 40px;
   height: 40px;
-  border: 1px solid #EFEFEF;
+  border: 1px solid var(--border);
   border-radius: 0px 0px 4px 0px;
   background: #fff url(/src/assets/images/icon-drawer-menu.svg) no-repeat center;
   transition: left 0.3s ease-out, top 0.5s;
@@ -37,7 +37,7 @@ aside.toggle {
 }
 
 .btn-drawer:hover {
-  background-color: #F9F9F9;
+  background-color: var(--background);
 }
 
 .btn-drawer.toggle {
@@ -54,7 +54,7 @@ aside.toggle {
   height: 100vh;
   padding: 6px 10px 0px;
   background: #fff;
-  border-right: 1px solid #EFEFEF;
+  border-right: 1px solid var(--border);
   overflow: auto;
 }
 
@@ -135,7 +135,7 @@ aside.toggle {
 }
 
 .btn-flex:focus {
-  color: #7661E2;
+  color: var(--flex-primary);
 }
 
 .btn-flex:focus::before {
@@ -143,7 +143,7 @@ aside.toggle {
 }
 
 .btn-grid:focus {
-  color: #F6866A;
+  color: var(--grid-primary);
 }
 
 .btn-grid:focus::before {
@@ -154,7 +154,7 @@ aside.toggle {
 .list-drawer-menu {
   /* display: none; */
   margin: 6px 0 0 -40px;
-  color: #878787;
+  color: var(--secondary);
   font-weight: 400;
 }
 
@@ -172,7 +172,6 @@ aside.toggle {
 }
 
 .subtit-drawer-menu li {
-  /* list-style-position: inside; */
   margin: 10px 0;
   line-height: 20px;
 }
@@ -182,26 +181,39 @@ aside.toggle {
 }
 
 .tit-drawer-menu:hover, .tit-drawer-menu.scroll-spy {
-  background: #F9F9F9;
-  color: #3F3F46;
+  background: var(--background);
+  color: var(--primary);
   font-weight: 600;
   border-radius: 10px;
 }
 
 .subtit-drawer-menu>li:hover, .scroll-spy {
-  color: #3F3F46;
+  color: var(--primary);
   font-weight: 600;
 }
 
 
 /* 다크 모드 */
+.on aside {
+  background-color: var(--primary);
+}
+
+.on aside.toggle {
+  position: absolute;
+  background: none;
+}
+
 .on .aside-area {
-  background-color: #3F3F46;
+  background-color: var(--primary);
+}
+
+.on .aside-area.toggle {
+  background: none;
 }
 
 .on .btn-drawer {
-  border: 1px solid #27272A;
-  background-color: #3F3F46;
+  border: 1px solid var(--black);
+  background-color: var(--primary);
 }
 
 .on .btn-drawer:hover {
@@ -209,7 +221,7 @@ aside.toggle {
 }
 
 .on .drawer-menu {
-  background: #3F3F46;
+  background: var(--primary);
   border: none;
 }
 
@@ -218,7 +230,7 @@ aside.toggle {
 }
 
 .on .btn-drawer-menu {
-  color: #F9F9F9;
+  color: var(--background);
 }
 
 .on .btn-cheatSheet::before {
@@ -242,7 +254,7 @@ aside.toggle {
 }
 
 .on .btn-flex:focus {
-  color: #7661E2;
+  color: var(--flex-primary);
 }
 
 .on .btn-flex:focus::before {
@@ -250,45 +262,45 @@ aside.toggle {
 }
 
 .on .btn-grid:focus {
-  color: #F6866A;
+  color: var(--grid-primary);
 }
 
 .on .btn-grid:focus::before {
   background: url(../assets/images/icon-grid-hover.svg) no-repeat center/contain;
 }
 
-.on .btn-flex .list-drawer-menu {
-  color: #B4B4B4;
+.on .btn-flex .list-drawer-menu, .on .btn-grid .list-drawer-menu {
+  color: var(--tertiary);
 }
 
 .on .list-drawer-menu .selected-tit {
   background: #252424;
-  color: #E0E0E0;
+  color: var(--subtext);
 }
 
 .on .list-drawer-menu .selected-sub-tit {
-  color: #E0E0E0;
+  color: var(--subtext);
 }
 
 .on .list-drawer-menu .tit-drawer-menu:hover {
   background: #252424;
-  color: #E0E0E0;
+  color: var(--subtext);
 }
 
 .on .list-drawer-menu .subtit-drawer-menu>li:hover {
   font-weight: 600;
-  color: #E0E0E0;
+  color: var(--subtext);
 }
 
 .on .tit-drawer-menu:hover, .on .tit-drawer-menu.scroll-spy {
   background: #252424;
-  color: #E0E0E0;
+  color: var(--subtext);
   font-weight: 600;
   border-radius: 10px;
 }
 
 .on .subtit-drawer-menu>li:hover, .on .scroll-spy {
-  color: #E0E0E0;
+  color: var(--subtext);
   font-weight: 600;
 }
 

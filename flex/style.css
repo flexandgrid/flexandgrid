@@ -19,7 +19,7 @@ article {
 }
 
 .btn-flex {
-  color: #7661e2;
+  color: var(--flex-primary);
 }
 
 .btn-flex::before {
@@ -237,7 +237,7 @@ article {
 }
 
 .on .cont-flex figure {
-  background-color: #2d2d2d;
+  background-color: var(--border-dark);
   box-shadow: 0px 10px 25px 0px #2d2d2d1a;
 }
 
@@ -256,7 +256,7 @@ article {
 }
 
 .on .cont-flex article > pre {
-  background-color: #2d2d2d;
+  background-color: var(--border-dark);
 }
 
 .on .cont-flex article > pre code {
@@ -265,7 +265,7 @@ article {
 }
 
 .on .btn-flex {
-  color: #7661e2;
+  color: var(--flex-primary);
 }
 
 .on .btn-flex::before {
