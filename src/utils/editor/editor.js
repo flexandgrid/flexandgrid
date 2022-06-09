@@ -544,21 +544,6 @@
     // Init
     // ------------------------------------------------------------------------------
 
-    // // 희진 캐러셀 자동화 
-    // // 2초마다 setInterval(실행 함수) 실행
-    // autoCarousel() {
-    //   setInterval(() => {
-    //     this._snippetIndex += 1;
-    //     if (this._snippetIndex === 3) {
-    //       this._snippetIndex = 0;
-    //     }
-
-    //     // 인덱스에 따른 snippet 변화
-    //     this._snippetChangeEventListener(this._snippetIndex);
-    //   }, 2000);
-    // }
-
-
     _init() {
       this._initMode();
       this._initProps();
@@ -878,9 +863,11 @@
         if (this._snippetIndex === 3) {
           this._snippetIndex = 0;
         }
+
         //인덱스에 따른 indicator 선택
         flexIndicator[this._snippetIndex].classList.add('selected');
         gridIndicator[this._snippetIndex].classList.add('selected');
+
         //인덱스에 따른 snippet 변화
         this._snippetChangeEventListener(this._snippetIndex)
       }, 2000);
