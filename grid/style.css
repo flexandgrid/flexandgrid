@@ -72,7 +72,7 @@ article {
 
 .cont-grid li::before {
   content: '·';
-  margin-right: 6px;
+  margin-right: 8px;
   font-weight: 900;
 }
 
@@ -80,9 +80,10 @@ article {
   width: 100%;
   max-width: 700px;
   height: auto;
-  padding: 10px;
+  padding: 20px;
   margin: 30px auto;
   border-radius: 15px;
+  background-color: var(--white);
   text-align: center;
   box-shadow: 0px 4px 15px 0px #51459f14;
 }
@@ -160,6 +161,7 @@ article {
 }
 
 .cont-grid article > pre code {
+  background-color: transparent;
   font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
     Liberation Mono, monospace;
   font-size: 16px;
@@ -202,6 +204,53 @@ article {
 .btn-up.on {
   background: var(--subtext) url(/src/assets/images/chevron-down-darkmode.svg)
     no-repeat center;
+}
+
+/* 다크 모드 */
+.on .sect-grid,
+.on .cont-grid {
+  background-color: var(--primary);
+}
+
+.on .cont-grid {
+  color: var(--border);
+}
+
+.on .cont-grid h2 {
+  color: var(--subtext);
+}
+
+.on .cont-grid h3,
+.on .cont-grid h4 {
+  color: var(--border);
+}
+
+.on .cont-grid figure {
+  background-color: #2d2d2d;
+  box-shadow: 0px 10px 25px 0px #2d2d2d1a;
+}
+
+.on .cont-grid article > table {
+  box-shadow: 0 0 0 3px var(--grid-primary);
+}
+
+.on .cont-grid article > table td,
+.on .cont-grid article > table th {
+  border: 1px solid var(--grid-dark);
+}
+
+.on .cont-grid code {
+  background-color: var(--black);
+  color: var(--flex-border);
+}
+
+.on .cont-grid article > pre {
+  background-color: #2d2d2d;
+}
+
+.on .cont-grid article > pre code {
+  background-color: transparent;
+  color: var(--border);
 }
 
 /* 반응형 */
