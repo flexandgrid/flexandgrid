@@ -290,11 +290,27 @@
     div.innerHTML = innerHTML.join('');
   };
 
+  const deleteDivisionLine = () => {
+    document
+      .querySelectorAll(`.cont-${PAGE_NAME} h3, cont-${PAGE_NAME} h4`)
+      .forEach((elem) => {
+        const sibling = elem.nextElementSibling;
+        if (sibling && (sibling.tagName === 'H3' || sibling.tagName === 'H4')) {
+          elem.classList.add('no-border');
+        }
+      });
+  };
+
+  const modifyStyle = () => {
+    deleteDivisionLine();
+  };
+
   const render = async () => {
     const markdown = await fetchMarkdown();
     const html = parseMarkdown(markdown);
     renderMenu(html);
     renderContent(html);
+    modifyStyle();
     window.dispatchEvent(new Event('markdownParsed'));
   };
 
