@@ -1,164 +1,366 @@
 @charset "UTF-8";
 
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 main {
-    display: flex;
-    align-items: stretch;
+  display: flex;
+  align-items: stretch;
 }
 
 article {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 }
-
-h2, h3, h4 {
-    padding-top: 140px;
-    margin-top: -140px;
-}
-
-h2 {
-    margin-bottom: 100px;
-    color: var(--secondary);
-    font-size: 36px;
-}
-
-h3 {
-    color: var(--primary);
-    font-size: 22px;
-    font-weight: 600;
-}
-
-
-/* 에디터 추가 후 삭제 */
-pre, pre code {
-    overflow-x: auto;
-    max-width: 700px;
-    margin: 10px auto;
-    padding-bottom: 10px;
-}
-
-article > pre::-webkit-scrollbar,
-article > pre code::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-
-article > pre::-webkit-scrollbar-thumb,
-article > pre code::-webkit-scrollbar-thumb {
-    width: 5px;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    background-color: var(--flex-border);
-    background-clip: padding-box;
-}
-
-article > pre::-webkit-scrollbar-track,
-article > pre code::-webkit-scrollbar-thumb {
-    background: none;
-}
-/* 에디터 추가 후 삭제 끝 */
 
 .gnb-header ul.nav-left li:nth-child(3) {
-    color: var(--flex-primary);
-    font-weight: 700;
+  color: var(--flex-primary);
+  font-weight: 700;
 }
 
 .btn-flex {
-    color: #7661E2;
+  color: #7661e2;
 }
 
 .btn-flex::before {
-    background: url(/src/assets/images/icon-flex-hover.svg) no-repeat center/contain;
+  background: url(/src/assets/images/icon-flex-hover.svg) no-repeat
+    center/contain;
 }
 
 .main-flex {
-    display: flex;
-    width: 100%;
-    background: var(--flex-background)
+  display: flex;
+  width: 100%;
+  background: var(--flex-background);
 }
 
 .sect-flex {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .cont-flex {
-    max-width: 1480px;
-    width: 100%;
-    padding: 140px 180px 120px;
-    line-height: 1.6em;
+  max-width: 1480px;
+  width: 100%;
+  padding: 140px 180px 120px;
+  font-size: 18px;
+  line-height: 1.6em;
+}
+
+.cont-flex h2 {
+  margin: 20px 0 50px;
+  color: var(--secondary);
+  font-size: 36px;
+}
+
+.cont-flex h3,
+.cont-flex h4 {
+  padding-bottom: 20px;
+  margin: 100px 0 20px;
+  border-bottom: 1px solid var(--flex-border);
+  color: var(--primary);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.cont-flex h3.no-border,
+.cont-flex h4.no-border {
+  border-bottom: none;
+}
+
+.cont-flex p.margin-bottom {
+  margin-bottom: 21px;
+}
+
+.cont-flex ul ul,
+.cont-flex ul ol,
+.cont-flex ol ul,
+.cont-flex ol ol {
+  padding-left: 20px;
+}
+
+.cont-flex li::before {
+  content: '·';
+  margin-right: 8px;
+  font-weight: 900;
 }
 
 .cont-flex figure {
-    display: block;
-    width: 100%;
-    max-width: 700px;
-    height: auto;
-    margin: 0 auto;
-    text-align: center;
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  padding: 20px;
+  margin: 30px auto;
+  border-radius: 15px;
+  background-color: var(--white);
+  text-align: center;
+  box-shadow: 0px 4px 15px 0px #51459f14;
+}
+
+.cont-flex figcaption {
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .cont-flex figure img {
-    width: 100%;
-    max-width: 700px;
-    height: auto;
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+}
+
+.cont-flex article > table {
+  margin: 30px auto;
+  border-collapse: collapse;
+  border-radius: 15px;
+  border-style: hidden;
+  box-shadow: 0 0 0 3px var(--flex-border);
+}
+
+.cont-flex article > table td,
+.cont-flex article > table th {
+  padding: 5px 10px;
+  border: 1px solid var(--flex-hover);
+  text-align: center;
+}
+
+.cont-flex article > table th {
+  font-weight: 600;
+}
+
+.cont-flex .fg-editor {
+  margin: 30px auto;
+}
+
+.cont-flex strong {
+  font-weight: 700;
+}
+
+.cont-flex code {
+  padding: 1px 5px;
+  border-radius: 3px;
+  background-color: var(--border);
+  color: var(--grid-primary);
+}
+
+.cont-flex article > pre {
+  overflow: auto;
+  max-width: 700px;
+  max-height: 500px;
+  padding: 15px 20px;
+  margin: 30px auto;
+  border-radius: 15px;
+  background-color: var(--border);
+}
+
+.cont-flex article > pre::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+.cont-flex article > pre::-webkit-scrollbar-thumb {
+  width: 15px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: var(--flex-border);
+  background-clip: padding-box;
+}
+
+.cont-flex article > pre::-webkit-scrollbar-track {
+  background: none;
+}
+
+.cont-flex article > pre code {
+  background-color: transparent;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+    Liberation Mono, monospace;
+  font-size: 16px;
+  color: var(--black);
+}
+
+.cont-flex a {
+  color: var(--flex-primary);
+  text-decoration: underline;
+}
+
+.cont-flex a:hover {
+  color: var(--flex-border);
+}
+
+.cont-flex a:visited {
+  color: var(--grid-primary);
 }
 
 .btn-up {
-    display: none;
-    position: fixed;
-    bottom: 60px;
-    right: 5%;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #3f3f46 url(/src/assets/images/chevron-down.svg) no-repeat center;
-    box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
-    transition: all 0.3s;
-    cursor: pointer;
-    z-index: 10;
+  display: none;
+  position: fixed;
+  bottom: 60px;
+  right: 5%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #3f3f46 url(/src/assets/images/chevron-down.svg) no-repeat center;
+  box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
+  transition: all 0.3s;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .btn-up.on:active,
 .btn-up:active {
-    background-color: var(--secondary);
+  background-color: var(--secondary);
 }
 
 .btn-up.on {
-    background: var(--subtext) url(/src/assets/images/chevron-down-darkmode.svg) no-repeat center;
+  background: var(--subtext) url(/src/assets/images/chevron-down-darkmode.svg)
+    no-repeat center;
+}
+
+/* 다크 모드 */
+.on .sect-flex,
+.on .cont-flex {
+  background-color: var(--primary);
+}
+
+.on .cont-flex {
+  color: var(--border);
+}
+
+.on .cont-flex h2 {
+  color: var(--subtext);
+}
+
+.on .cont-flex h3,
+.on .cont-flex h4 {
+  color: var(--border);
+}
+
+.on .cont-flex figure {
+  background-color: #2d2d2d;
+  box-shadow: 0px 10px 25px 0px #2d2d2d1a;
+}
+
+.on .cont-flex article > table {
+  box-shadow: 0 0 0 3px var(--flex-primary);
+}
+
+.on .cont-flex article > table td,
+.on .cont-flex article > table th {
+  border: 1px solid var(--flex-dark);
+}
+
+.on .cont-flex code {
+  background-color: var(--black);
+  color: var(--grid-border);
+}
+
+.on .cont-flex article > pre {
+  background-color: #2d2d2d;
+}
+
+.on .cont-flex article > pre code {
+  background-color: transparent;
+  color: var(--border);
 }
 
 /* 반응형 */
 @media screen and (max-width: 1280px) {
-    .cont-flex {
-        padding-left: 5vw;
-        padding-right: 5vw;
-        width: 80%;
-    }
+  .cont-flex {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    width: 80%;
+  }
 
-    .cont-flex figure {
-        max-width: 90%;
-    }
+  .cont-flex figure {
+    max-width: 90%;
+  }
 
-    .cont-flex figure img {
-        max-width: 90%;
-    }
+  .cont-flex figure img {
+    max-width: 90%;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .cont-flex {
-        padding-left: 5vw;
-        padding-right: 5vw;
-    }
+  .cont-flex {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-size: 16px;
+  }
 
-    .cont-flex figure {
-        max-width: 100%;
-    }
+  .cont-flex h2 {
+    margin: 15px 0 20px;
+    color: var(--secondary);
+    font-size: 28px;
+  }
 
-    .cont-flex figure img {
-        max-width: 100%;
-    }
+  .cont-flex h3,
+  .cont-flex h4 {
+    padding-bottom: 15px;
+    margin: 35px 0 15px;
+    font-size: 18px;
+  }
+
+  .cont-flex p.margin-bottom {
+    margin-bottom: 19px;
+  }
+
+  .cont-flex ul ul,
+  .cont-flex ul ol,
+  .cont-flex ol ul,
+  .cont-flex ol ol {
+    padding-left: 12px;
+  }
+
+  .cont-flex figure {
+    max-width: 100%;
+    margin: 15px auto;
+    border-radius: 10px;
+  }
+
+  .cont-flex figcaption {
+    font-size: 16px;
+  }
+
+  .cont-flex figure img {
+    max-width: 100%;
+  }
+
+  .cont-flex article > table {
+    margin: 15px auto;
+    border-radius: 10px;
+  }
+
+  .cont-flex article > table td,
+  .cont-flex article > table th {
+    padding: 4px 8px;
+  }
+
+  .cont-flex .fg-editor {
+    margin: 15px auto;
+  }
+
+  .cont-flex code {
+    padding: 1px 3px;
+  }
+
+  .cont-flex article > pre {
+    max-height: 400px;
+    padding: 10px 15px;
+    margin: 15px auto;
+    border-radius: 10px;
+  }
+
+  .cont-flex article > pre::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .cont-flex article > pre::-webkit-scrollbar-thumb {
+    width: 8px;
+    border-radius: 6px;
+  }
+
+  .cont-flex article > pre code {
+    font-size: 13px;
+    line-height: 1;
+  }
 }
