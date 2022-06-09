@@ -778,6 +778,12 @@
     }
 
     _initButtons() {
+      const {
+        dataset: { hideButtons }
+      } = this._editor;
+      if (hideButtons) {
+        return null;
+      }
       this._buttons = new Tag({ className: 'buttons' });
 
       const addButton = Tag.createElement(
