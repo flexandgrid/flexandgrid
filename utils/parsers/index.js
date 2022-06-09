@@ -134,6 +134,8 @@
             if (codeType === 'editor') {
               isEditor = true;
               tokens[i] = '';
+            } else {
+              tokens[i] = tokens[i].replace(codeType, '');
             }
             break;
 
