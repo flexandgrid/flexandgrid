@@ -50,7 +50,6 @@ aside.toggle {
 
 /* drawer-menu */
 .drawer-menu {
-  /* position: fixed; */
   width: 250px;
   height: 100vh;
   padding: 6px 10px 0px;
@@ -296,7 +295,7 @@ aside.toggle {
 
 @media screen and (max-width: 1024px) {
   .aside-area {
-    position: absolute;
+    position: fixed;
     min-width: 295px;
     padding-left: 0;
     background: none;

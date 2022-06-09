@@ -1,119 +1,138 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>search</title>
-        <link rel="stylesheet" href="/src/css/default.css" />
-        <link rel="stylesheet" href="/src/css/color.css" />
-        <link rel="stylesheet" href="/search/style.css" />
-        <link rel="stylesheet" href="/src/components/gnb-nav-modal.css">
-        <link rel="stylesheet" href="/src/components/gnb-nav.css" />
-        <link rel="stylesheet" href="/src/components/search-item.css" />
-        <link rel="stylesheet" href="/src/components/search-modal.css" />
-        <script defer src="/src/components/gnb-nav.js"></script>
-        <script defer src="/src/components/button.js"></script>
-        <script defer src="/src/js/darkmode.js"></script>
-        <script defer src="/src/js/search.js"></script>
-        <script defer src="searchPage.js"></script>
-    </head>
-    <body class="search-body">
-        <h1 class="sr-only">검색 페이지입니다.</h1>
-        <header class="gnb-header">
-            <h1 class="logo-container">
-                <a href="/" class="header-logo">
-                    <span class="a11y-hidden">flex and grid 홈</span>
-                </a>
-            </h1>
-            <nav>
-                <ul class="nav-left">
-                    <li class="hamburger-container">
-                        <a href="/" class="hamburger-menu">
-                            <span class="a11y-hidden">모바일 메뉴</span>
-                        </a>
-                    </li>
-                    <li class="nav-left-menu nav-cheatsheet">Cheatsheet
-                        <div class="modal-menu">
-                            <ul class="list-menu">
-                                <li class="list-item">
-                                    <a class="link-menu" href="/cheatsheet-flex">Flex Cheatsheet</a>
-                                </li>
-                                <li class="list-item">
-                                    <a class="link-menu" href="/cheatsheet-grid">Grid Cheatsheet</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-left-menu nav-flex"><a href="/flex">Flex</a></li>
-                    <li class="nav-left-menu nav-grid"><a href="/grid">Grid</a></li>
-                    <li class="nav-left-menu nav-tryit"><a href="/try-it">Try it</a></li>
-                </ul>
-                <ul class="nav-right">
-                    <li class="mobile-search">
-                        <button class="search-toggle">
-                            <span class="a11y-hidden">검색 창 활성화</span>
-                        </button>
-                    </li>
-                    <li class="search">
-                        <form action="/search" method="get" autocomplete="off">
-                            <input type="text" class="search-input" name="q" placeholder="Search" />
-                            <button type="submit" class="search-btn">
-                                <span class="a11y-hidden">검색 버튼</span>
-                            </button>
-                        </form>
-                        <div class="modal-history">
-                            <div class="header-history">
-                                <strong class="tit-history">최근 검색어</strong>
-                                <button class="btn-del-all">전체 삭제</button>
-                            </div>
-                            <ul class="list-history"></ul>
-                        </div>
-                    </li>
-                    <li class="button-group">
-                        <button class="darkmode-btn">
-                            <span class="a11y-hidden">다크 모드 전환</span>
-                        </button>
-                        <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="github-btn">
-                            <span class="a11y-hidden">깃헙 바로가기</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
-        <main class="main">
-            <p class="text-search">Results for ""</p>
-            <p class="text-search-count">Showing 0 results</p>
-
-            <ul class="list-search">
-                <li class="itemwrap-search">
-                    <a href="javascript:void(0)" class="item-search">
-                        <span class="route-search">Flex > flex-direction</span>
-                        <strong class="tit-search">flex-direction</strong>
-                        <p class="desc-search">
-                            Nulla Lorem mollit cupidatat irure. Laborumb magna
-                            nulla duis ullamco cillum dolor. Voluptate
-                            exercitation incididunt aliquip deserunt
-                            reprehenderit elit laborum.
-                        </p>
-                    </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>search</title>
+    <link rel="stylesheet" href="/src/css/default.css" />
+    <link rel="stylesheet" href="/src/css/color.css" />
+    <link rel="stylesheet" href="/search/style.css" />
+    <link rel="stylesheet" href="/src/components/gnb-nav-modal.css" />
+    <link rel="stylesheet" href="/src/components/gnb-nav.css" />
+    <link rel="stylesheet" href="/src/components/search-item.css" />
+    <link rel="stylesheet" href="/src/components/search-modal.css" />
+    <script defer src="/src/components/gnb-nav.js"></script>
+    <script defer src="/src/components/button.js"></script>
+    <script defer src="/src/js/darkmode.js"></script>
+    <script defer src="/src/js/search.js"></script>
+    <script defer src="searchPage.js"></script>
+  </head>
+  <body class="search-body">
+    <h1 class="sr-only">검색 페이지입니다.</h1>
+    <header class="gnb-header">
+      <h1 class="logo-container">
+        <a href="/" class="header-logo">
+          <span class="a11y-hidden">flex and grid 홈</span>
+        </a>
+      </h1>
+      <nav>
+        <ul class="nav-left">
+          <li class="hamburger-container">
+            <a href="/" class="hamburger-menu">
+              <span class="a11y-hidden">모바일 메뉴</span>
+            </a>
+          </li>
+          <li class="nav-left-menu nav-cheatsheet">
+            Cheatsheet
+            <div class="modal-menu">
+              <ul class="list-menu">
+                <li class="list-item">
+                  <a class="link-menu" href="/cheatsheet-flex"
+                    >Flex Cheatsheet</a
+                  >
                 </li>
-
-                <li class="itemwrap-search">
-                    <a href="javascript:void(0)" class="item-search on">
-                        <span class="route-search">Flex > flex-direction</span>
-                        <strong class="tit-search">flex-direction</strong>
-                        <p class="desc-search">
-                            Nulla Lorem mollit cupidatat irure. Laborumb magna
-                            nulla duis ullamco cillum dolor. Voluptate
-                            exercitation incididunt aliquip deserunt
-                            reprehenderit elit laborum.
-                        </p>
-                    </a>
+                <li class="list-item">
+                  <a class="link-menu" href="/cheatsheet-grid"
+                    >Grid Cheatsheet</a
+                  >
                 </li>
-            </ul>
-        </main>
-        <button type="button" class="btn-up"></button>
-    </body>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-left-menu nav-flex"><a href="/flex">Flex</a></li>
+          <li class="nav-left-menu nav-grid"><a href="/grid">Grid</a></li>
+          <li class="nav-left-menu nav-tryit"><a href="/try-it">Try it</a></li>
+        </ul>
+        <ul class="nav-right">
+          <li class="mobile-search">
+            <button class="search-toggle">
+              <span class="a11y-hidden">검색 창 활성화</span>
+            </button>
+          </li>
+          <li class="search">
+            <form action="/search" method="get" autocomplete="off">
+              <input
+                type="text"
+                class="search-input"
+                name="q"
+                placeholder="Search"
+              />
+              <button type="submit" class="search-btn">
+                <span class="a11y-hidden">검색 버튼</span>
+              </button>
+            </form>
+            <div class="modal-history">
+              <div class="header-history">
+                <strong class="tit-history">최근 검색어</strong>
+                <button class="btn-del-all">전체 삭제</button>
+              </div>
+              <ul class="list-history"></ul>
+            </div>
+          </li>
+          <li class="button-group">
+            <button class="darkmode-btn">
+              <span class="a11y-hidden">다크 모드 전환</span>
+            </button>
+            <a
+              href="https://github.com/flexandgrid/flexandgrid"
+              target="_blank"
+              class="github-btn"
+            >
+              <span class="a11y-hidden">깃헙 바로가기</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main">
+      <p class="text-search">Results for ""</p>
+      <p class="text-search-count">Showing 0 results</p>
+
+      <ul class="list-search"></ul>
+    </main>
+    <button type="button" class="btn-up"></button>
+    <footer class="footer-area">
+      <div class="cont-footer">
+        <div class="cont-txt">
+          <strong class="txt-title"
+            >flex, grid 오픈소스 프로젝트 입니다 :)</strong
+          >
+          <p class="txt-main">
+            이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이
+            사용할 수 있는 공공재입니다.
+          </p>
+          <small class="txt-copyrigt">© 2022, All Rights Reserved</small>
+        </div>
+        <div class="cont-btn">
+          <a
+            class="btn-footer btn-github"
+            href="https://github.com/flexandgrid/flexandgrid"
+            target="_blank"
+          >
+            Github
+          </a>
+          <a
+            class="btn-footer btn-file"
+            href="https://ridibooks.com/books/2773000058"
+            target="_blank"
+            download=""
+          >
+            PDF Book
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
