@@ -2,13 +2,17 @@
 
 ## 1.1. 들어가기에 앞서
 
-기기가 다양해짐에 따라 화면 크기도 다양하게 변화되었다. 다양한 기기에 대응하기 위해 웹 서비스를 유연하게 만드는 것은 선택이 아닌 필수가 되었다.
+기기가 다양해짐에 따라 화면 크기도 다양하게 변화되었다. 다양한 기기에 대응하기 위해 웹 서비스를 유연하게 만드는 것은 선택이 아닌 필수가 되었다. 다양한 화면의 크기에 맞추어 유연하게 대응할 수 있는 레이아웃을 만들기 위해 새롭게 추가된 속성이 Flex와 Grid이다. **Flex는 1차원 적인 레이아웃**을 잡을 때 사용하며, **grid는 2차원 적인 레이아웃**을 잡을 때 용이하다.
 
-다양한 화면의 크기에 맞추어 유연하게 대응할 수 있는 레이아웃을 만들기 위해 새롭게 추가된 속성이 Flex와 Grid이다. **Flex는 1차원 적인 레이아웃**을 잡을 때 사용하며, **grid는 2차원 적인 레이아웃**을 잡을 때 용이하다.
+<br />
 
 **Flex**는 부모 요소(컨테이너) 아래에서 자식 요소(아이템)들이 **한 방향으로 배치**가 된다. 따라서 **행 또는 열** 한 가지 방향으로 레이아웃을 배치해야 하는 경우에 사용한다. 또한 다양한 속성을 통해 자식 요소 사이를 일정한 간격으로 줄 수 있고 정렬하기가 매우 편하다.
 
+<br />
+
 Grid는 **행과 열 Matrix 형태로** 레이아웃을 배치해야 하는 경우 사용한다. 원하는 요소를 어디서부터 어디까지, 어느 방향으로 차지하게 할 건지 정하고 배치하면 된다.
+
+<br />
 
 지금부터 ‘알아서 잘 딱 깔끔하고 센스 있게’ Flex를 배워보자.
 
@@ -32,11 +36,9 @@ Flex를 활용한 홈페이지다. 로고 배치, 검색창, 메뉴 모든 UI에
 
 ## 1.4. Flex의 특징
 
-Flex는 부모와 자식 태그가 필요하고, 부모 요소(`flex-container`)와 자식 요소(`flex-item`)에 적용하는 속성이 구분되어 있다.
+Flex는 부모와 자식 태그가 필요하고, 부모 요소(`flex-container`)와 자식 요소(`flex-item`)에 적용하는 속성이 구분되어 있다. 이 때, 속성의 영향은 **컨테이너의 직계자식까지만 영향**을 준다는 특징이 있으니 주의해야 한다. `flex-container`에는 정렬 방식과 item의 배치 흐름을 정의하고, `flex-item`에는 크기, 속성, 순서를 정의한다.
 
-이때 속성의 영향은 **컨테이너의 직계자식까지만 영향**을 준다는 특징이 있으니 주의해야 한다.
-
-flex-container에는 정렬 방식과 item의 배치 흐름을 정의하고, flex-item에는 크기, 속성, 순서를 정의한다.
+<br />
 
 - `flex-container`의 속성 : **flex-direction, flex-wrap, justify-content, align-items, align-content** 등
 - `flex-item`의 속성 : **flex, flex-grow, flex-shrink, flex-basis, align-self, order, z-index** 등
@@ -50,7 +52,7 @@ flex-container에는 정렬 방식과 item의 배치 흐름을 정의하고, fle
 | flex-wrap       | nowrap    | flex containers            |
 | flex-basis      | auto      | flex items                 |
 | flex-grow       | 0         | flex items                 |
-| flex- shrink    | 1         | flex items                 |
+| flex-shrink     | 1         | flex items                 |
 
 어떠한 속성을 적용해야 하는지 헷갈리는 경우, 컨테이너에 flex 속성을 적용한 뒤 크롬 개발자 도구의 스타일 탭을 확인하면 좋다. 주요한 속성 다섯 가지를 GUI 기능으로 제공하여 적용된 모습을 확인해볼 수 있기 때문이다.
 
@@ -77,19 +79,17 @@ Flex의 주축이 되는 main axis의 방향은 `flex-direction` 이라는 속�
 3. `flex-direction: column` : 아이템들이 열 방향으로, 세로로 배치된다.
 4. `flex-direction: column-reverse` : 아이템들이 역순으로 세로로 배치된다.
 
+<br />
+
 - **Cross Axis**
 
 Cross axis는 Main axis 방향의 수직 방향이다. Main axis가 `flex-direction` 에 의해 결정되었다면, Cross axis는 main axis 방향에 따라 결정이 된다.
-
-**실행코드(flex-direction)**
 
 ## 1.6. 기본 속성 정보
 
 ### 1.6.1. display:flex
 
 Flex는 자식요소(아이템)이 그 자식요소(아이템)을 포함하는 부모 요소(컨테이너)의 공간에 맞춰 그 크기를 줄이거나, 늘이고 또는 부모 요소(컨테이너)에 맞춰 그 정렬을 맞추는 css display의 하나의 속성이다. flex를 보여주는 간단한 예로 살펴보자.
-
-**실행코드(display:black, display:flex)**
 
 # 2. flex-direction
 
@@ -227,6 +227,7 @@ align의 사전적 정의는 ‘일직선으로 맞추다’이다. 즉, flex에
 <div data-mode="snippet" class="fg-editor css-flex">
   <code data-hidden="true">
     .container {
+      min-height: 250px;
       height: 100%;
     }
     .item {
@@ -288,6 +289,7 @@ align의 사전적 정의는 ‘일직선으로 맞추다’이다. 즉, flex에
 <div data-mode="snippet" class="fg-editor css-flex">
   <code data-hidden="true">
     .container {
+      min-height: 250px;
       height: 100%;
     }
     .item {
@@ -376,7 +378,7 @@ align의 사전적 정의는 ‘일직선으로 맞추다’이다. 즉, flex에
   <code data-hidden="true">
     .container {
       padding: 10px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
   </code>
@@ -405,7 +407,7 @@ flex-wrap 속성 중 nowrap의 속성에 대해서 알아보자. flex-wrap는 
   <code data-hidden="true">
     .container {
       padding: 10px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
   </code>
@@ -427,7 +429,7 @@ flex-wrap 속성 중 nowrap의 속성에 대해서 알아보자. flex-wrap는 
   <code data-hidden="true">
     .container {
       padding: 10px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
   </code>
@@ -457,9 +459,8 @@ flex-wrap 속성 중 nowrap의 속성에 대해서 알아보자. flex-wrap는 
 <div data-mode="snippet" class="fg-editor css-flex">
   <code data-hidden="true">
     .container {
-      justify-content: space-between;
       padding: 10px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
   </code>
@@ -480,7 +481,7 @@ flex-direction의 방향이 column(열)이라면 column(열)에 맞춰 주축인
     .container {
       align-items: center;
       padding: 10px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
   </code>
@@ -517,7 +518,7 @@ flex-direction의 방향이 column(열)이라면 column(열)에 맞춰 주축인
   <code data-hidden="true">
     .container {
       padding: 10px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
   </code>
@@ -539,7 +540,7 @@ flex-direction의 방향이 column(열)이라면 column(열)에 맞춰 주축인
   <code data-hidden="true">
     .container {
       padding: 10px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
   </code>
@@ -559,7 +560,7 @@ reverse(역순)이기 때문에 배치 되는 기준점이 바뀌기 때문이�
   <code data-hidden="true">
     .container {
       padding: 10px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
   </code>
@@ -580,7 +581,7 @@ reverse(역순)이기 때문에 배치 되는 기준점이 바뀌기 때문이�
   <code data-hidden="true">
     .container {
       padding: 10px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
   </code>
@@ -606,7 +607,7 @@ reverse(역순)이기 때문에 배치 되는 기준점이 바뀌기 때문이�
   <code data-hidden="true">
     .container {
       padding: 10px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
   </code>
@@ -650,7 +651,7 @@ flex-basis 속성은 **유연한**(flexible) **크기**를 가진다. 즉, 고�
       display: block;
       width: auto;
       font-size: 15px;
-      color: black;
+      color: var(--gray-8);
       line-height: 18px;
     }
   </code>
@@ -685,7 +686,7 @@ flex-basis 속성은 **유연한**(flexible) **크기**를 가진다. 즉, 고�
       width: auto;
       height: auto;
       font-size: 15px;
-      color: black;
+      color: var(--gray-8);
       line-height: 18px;
     }
   </code>
@@ -1014,7 +1015,7 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
   <code data-hidden="true">
     .container {
       padding: 5px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
     .item {
@@ -1047,7 +1048,7 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
   <code data-hidden="true">
     .container {
       padding: 5px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
     .item {
@@ -1080,7 +1081,7 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
   <code data-hidden="true">
     .container {
       padding: 5px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
     .item {
@@ -1125,7 +1126,7 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
   <code data-hidden="true">
     .container {
       padding: 5px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
     .item {
@@ -1161,7 +1162,7 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
   <code data-hidden="true">
     .container {
       padding: 5px;
-      border: 3px solid black;
+      border: 3px solid var(--gray-8);
       border-radius: 16px;
     }
     .item {
@@ -1243,6 +1244,7 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
   </code>
   <code data-hidden="true">
     .container {
+      min-height: 250px;
       height: 100%;
     }
     .item {
