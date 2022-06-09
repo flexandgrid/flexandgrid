@@ -41,11 +41,18 @@ const listSearch = document.querySelector(".list-search");
 const createList = (contents) => {
   contents.forEach((v) => {
     v.forEach((value) => {
+      //정규식으로 텍스트남기기(임시)
+      value = value.replace(/[#0-9.]/g, "");
+      value = value.replace(/^\s+|\s+$/g, "");
+
+      //html 기준인 경우 태그 날리는 정규식
+      //value = value.replace(/<\/?[^>]+(>|$)/g, "");
+
       const searchListItem = document.createElement("li");
       searchListItem.setAttribute("class", "itemwrap-search");
 
       const searchListItemLink = document.createElement("a");
-      searchListItemLink.setAttribute("href", "javascript:void(0)");
+      searchListItemLink.setAttribute("href", `"javascript:void(0)"`);
       searchListItemLink.setAttribute("class", "item-search");
 
       const searchRoute = document.createElement("span");
