@@ -16,7 +16,7 @@
 }
 
 .main {
-  margin: 200px 160px 0 160px;
+  margin: 200px 160px 200px 160px;
 }
 
 .text-search {
@@ -32,10 +32,6 @@
   line-height: 16px;
   color: #878787;
 }
-
-/* .itemwrap-search {
-  display: none;
-} */
 
 .search-body.on {
   background-color: #3f3f46;
