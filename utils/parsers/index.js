@@ -71,6 +71,11 @@
     }
   };
 
+  const lineBreak = {
+    regex: /^<br\s*\/>$/,
+    replace: '<br />'
+  };
+
   const paragraph = {
     regex: /(?<=^|\n)(.+)$/,
     tagName: 'p',
@@ -107,7 +112,8 @@
     tableDivision,
     tableRow,
     heading,
-    figure
+    figure,
+    lineBreak
   ];
 
   const inlineRules = [link, strong, code];
@@ -301,8 +307,20 @@
       });
   };
 
+  const deleteLineBreak = () => {
+    document.querySelectorAll(`.cont-${PAGE_NAME} p`).forEach((elem) => {
+      const parent = elem.parentElement;
+      const sibling = elem.nextElementSibling;
+      if (sibling?.tagName === 'BR') {
+        elem.classList.add('margin-bottom');
+        parent.removeChild(sibling);
+      }
+    });
+  };
+
   const modifyStyle = () => {
     deleteDivisionLine();
+    deleteLineBreak();
   };
 
   const render = async () => {
