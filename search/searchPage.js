@@ -2,11 +2,10 @@ const URLSearch = new URLSearchParams(location.search);
 const searchQuery = URLSearch.get("q");
 const searchText = document.querySelector(".text-search");
 const searchResultCount = document.querySelector(".text-search-count");
-const searchItem = document.querySelectorAll(".itemwrap-search");
+let searchItem;
 
 if (searchQuery) {
   searchText.innerText = `Results for "${searchQuery}"`;
-  searchResultCount.innerText = `Showing ${searchItem.length} results`;
 }
 
 // fetch
@@ -69,6 +68,8 @@ const createList = (contents) => {
       listSearch.appendChild(searchListItem);
     });
   });
+  searchItem = document.querySelectorAll(".itemwrap-search");
+  searchResultCount.innerText = `Showing ${searchItem.length} results`;
 };
 
 // 삭제 예정
