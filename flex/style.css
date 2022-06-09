@@ -73,14 +73,15 @@ article {
   margin-bottom: 21px;
 }
 
-.cont-flex ul ul,
-.cont-flex ul ol,
-.cont-flex ol ul,
-.cont-flex ol ol {
+.cont-flex article > ul ul,
+.cont-flex article > ul ol,
+.cont-flex article > ol ul,
+.cont-flex article > ol ol {
   padding-left: 20px;
 }
 
-.cont-flex li::before {
+.cont-flex article > ul li::before,
+.cont-flex article > ol li::before {
   content: '·';
   margin-right: 8px;
   font-weight: 900;
@@ -304,10 +305,10 @@ article {
     margin-bottom: 19px;
   }
 
-  .cont-flex ul ul,
-  .cont-flex ul ol,
-  .cont-flex ol ul,
-  .cont-flex ol ol {
+  .cont-flex article > ul ul,
+  .cont-flex article > ul ol,
+  .cont-flex article > ol ul,
+  .cont-flex article > ol ol {
     padding-left: 12px;
   }
 

@@ -6,23 +6,23 @@
 
 Grid는 1차원, 2차원 레이아웃을 구상할 수 있다. 아래와 같이 헤더-사이드바-컨테이너-푸터로 이루어진 기본적인 웹 페이지의 전체적인 레이아웃을 짜는 것이 가능하다.
 
-![](001.png)
+![](images/001.png)
 
 Grid 안의 아이템들도 또다시 grid 레이아웃으로 만드는게 가능하다. 아주 작은 텍스트 단위의 요소도 grid를 사용하여 아이템을 배치할 수 있다.
 
-![](002.png)
+![](images/002.png)
 
 Grid 레이아웃으로 쉽게 만들 수 있는 홈페이지의 예이다. 헤더-사이드바-컨테이너로 구성되어 있고, 컨테이너 안의 아이템들도 grid를 사용한 것을 확인할 수 있다.
 
-![](003.png)
+![](images/003.png)
 
-![](004.png)
+![](images/004.png)
 
 ## 1.2. grid의 대표적인 구성요소
 
-![](005.png)
+![](images/005.png)
 
-![](006.png)
+![](images/006.png)
 
 - **그리드 컨테이너 (Grid Container)**
   - grid를 적용하는 전체 영역을 의미. 열(Columns)과 행(Rows)을 가지며, 그리드 아이템(Items)을 배치
@@ -51,35 +51,35 @@ Chrome에서 개발자 도구를 이용하면 HTML 요소에 grid 속성이 적�
 
 맥은 `<command + option + i>`, 윈도우는 `<ctrl + shift + i>` 또는 F12를 이용하여 개발자 도구로 진입할 수 있다.
 
-![](007.png)
+![](images/007.png)
 
-![](008.png)
+![](images/008.png)
 
 또한, Styles 탭에서 `display : grid;` 속성 옆의 버튼을 이용해서 요소에 grid의 다양한 속성을 바로 적용하여 어떻게 변하는지 바로 확인할 수 있다.
 
-![](009.png)
+![](images/009.png)
 
 Styles 탭 옆의 Layout 탭에 들어가게 되면 그리드가 적용된 요소를 더욱 상세하게 볼 수 있다.
 
-![](010.png)
+![](images/010.png)
 
 **Show track sizes :** 그리드 셀(Grid Cell)의 크기를 표시한다.
 
-![](011.png)
+![](images/011.png)
 
-![](012.png)
+![](images/012.png)
 
 **Show area names : `grid-template-areas`** 속성이 적용되어 있다면, 그 영역의 이름을 표시한다.
 
-![](013.png)
+![](images/013.png)
 
-![](014.png)
+![](images/014.png)
 
 **Extend grid lines :** 그리드 라인(Grid Line)을 확장한다.
 
-![](015.png)
+![](images/015.png)
 
-![](016.png)
+![](images/016.png)
 
 ## 1.4. grid 사용법
 
@@ -557,17 +557,17 @@ fr 단위가 gap의 속성값이 될 수 없는 이유는, fr은 사용 가능�
 
 아래 예제는 `gap:2fr`을 그리드 컨테이너에 부여하였지만 적용되지 않는 모습이며, 개발자 도구에서도 마찬가지로 fr이 잘못된 속성값이라 표시되는 것을 확인할 수 있다.
 
-![](017__367.png)
+![](images/017__367.png)
 
 ## 3.2. margin과 gap의 차이점
 
 margin의 경우 인접한 요소의 존재와 상관없이 스타일이 적용되 불필요한 공간을 만든다.
 
-![](018.png)
+![](images/018.png)
 
 gap은 인접한 요소가 있을때만 사이에 공간을 만들어 불필요한 공간을 만들지 않는다.
 
-![](019.png)
+![](images/019.png)
 
 ## 3.3. gap의 종류
 
@@ -691,7 +691,7 @@ Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. colu
 - grid-column-start : column(열)시작의 라인 번호를 지정해준다.
 - grid-column-end : column(열) 마지막의 라인 번호를 지정해준다.
 
-![](020.png)
+![](images/020.png)
 
 ```editor
 <div data-mode="snippet" class="fg-editor css-grid theme-grid">
@@ -723,7 +723,7 @@ Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. colu
 - grid-row-start : row의 시작 위치를 지정해준다.
 - grid-row-end : row의 끝 위치를 지정해준다.
 
-![](021.png)
+![](images/021.png)
 
 ```editor
 <div data-mode="snippet" class="fg-editor css-grid theme-grid">
@@ -985,7 +985,7 @@ grid 컨테이너 내의 item에 적용하는 속성이며, 아이템을 그리�
 
 각각의 아이템 요소가 차지하는 셀의 개수만큼 원하는 위치에 이름을 적어 영역을 지정해주면 지정한 자리만큼의 셀을 차지한다.
 
-![](022.png)
+![](images/022.png)
 
 ```editor
 <div data-mode="snippet" data-hide-buttons="true" class="fg-editor css-grid theme-grid">
@@ -1042,7 +1042,7 @@ grid 컨테이너 내의 item에 적용하는 속성이며, 아이템을 그리�
 
 그리드 라인은 암묵적으로 그리드 라인 숫자가 지정되어 있는데, 이 라인에 이름을 지정할 수 있다.
 
-![](023.png)
+![](images/023.png)
 
 ```css
 .container {
@@ -1056,7 +1056,7 @@ grid 컨테이너 내의 item에 적용하는 속성이며, 아이템을 그리�
 
 각각의 라인에 이름을 정해주고 이 이름을 각 아이템 요소의 `grid-column-start` , `grid-column-end` , `grid-row-start` , `grid-row-end` 속성에 지정해주면 된다.
 
-![](024.png)
+![](images/024.png)
 
 ```editor
 <div data-mode="snippet" data-hide-buttons="true" class="fg-editor css-grid theme-grid">
