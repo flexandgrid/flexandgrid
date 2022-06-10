@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/src/components/search-modal.css" />
     <link rel="stylesheet" href="/src/components/mobile-search-modal.css">
     <link rel="stylesheet" href="/src/components/footer.css">
+    <link rel="stylesheet" href="/src/utils/editor/editor.css">
     <link rel="stylesheet" href="style.css">
     <script defer src="/src/components/gnb-nav.js"></script>
     <script defer src="/src/components/button.js"></script>
@@ -105,7 +106,76 @@
     </aside>
     <div class="overlay" aria-hidden></div>
 
-    <main></main>
+    <main class="main-tryit">
+        <section class="sect-tryit">
+        <h2>Try it</h2>
+        <section>
+            <h3 class="visually-hidden">에디터 프리모드</h3>
+            <!-- free mode -->
+            <div data-mode="free" data-title="Flex Code" class="fg-editor">
+                <code data-struct="[1][2][2][1]">
+                    .container {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                    .item3 {
+                        flex: 1;
+                        opacity: 0.2;
+                    }
+                    .item1, .item4 {
+                        flex: 1;
+                    }
+                    .item5 {
+                        flex: 2;
+                        opacity: 0.5;
+                        order: -1;
+                    }
+                    .item6 {
+                        flex: 1;
+                        opacity: 0.2;
+                    }
+                </code>
+            </div>
+            <div data-mode="free" data-title="Grid Code" class="fg-editor theme-grid">
+                <code data-struct="[6]">
+                    .container {
+                        display: grid;
+                        grid-template-areas:
+                        "header header header"
+                        "sidebar content1 content2"
+                        "sidebar content3 content3"
+                        "footer footer footer";
+                    }
+                    .item {
+                        width: auto !important;
+                        height: auto !important;
+                    }
+                    .item1 {
+                        grid-area: header;
+                        background-color: #F9B09E;
+                    }
+                    .item2 {
+                        grid-area: sidebar;
+                        opacity: 0.3;
+                    }
+                    .item3 {
+                        grid-area: content1;
+                    }
+                    .item4 {
+                        grid-area: content2;
+                    }
+                    .item5 {
+                        grid-area: content3;
+                        opacity: 0.3;
+                    }
+                    .item6 {
+                        grid-area: footer;                    
+                    }
+                </code>
+            </div>
+        </section>
+    </main>
     <button type="button" class="btn-up"></button>
 
     <footer class="footer-area">
@@ -134,6 +204,6 @@
             </div>
         </div>
     </footer>
-
+    <script src="/src/utils/editor/editor.js"></script>
 </body>
 </html>

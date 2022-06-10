@@ -1,15 +1,58 @@
 @charset "UTF-8";
 
-body {
+.main-tryit {
+    display: flex;
+    justify-content: center;
+    padding: 140px 108px 120px;
     background-color: var(--background);
 }
 
-main {
-    height: 100vh;
+.main-tryit .sect-tryit {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1600px;
+}
+
+.main-tryit section {
+    width: 100%;
 }
 
 .gnb-header ul.nav-left li:nth-child(5) {
     font-weight: 700;
+}
+
+.main-tryit h2 {
+    padding-top: 100px;
+    margin: -100px 0 50px;
+    color: var(--secondary);
+    font-size: 36px;
+    font-weight: 300;
+}
+
+.main-tryit .fg-editor {
+    flex-wrap: nowrap;
+    gap: 40px;
+}
+
+.main-tryit .fg-editor:nth-child(2) {
+    margin: 10px 0 90px;
+}
+
+.fg-editor .preview, 
+.fg-editor .code {
+    box-shadow: none;
+}
+
+.main-tryit .fg-editor .preview, 
+.main-tryit .fg-editor .code {
+    background-color: var(--white);
+    box-shadow: 0px 4px 12px 0px rgba(135, 135, 135, 0.15);;
+}
+
+.footer-area {
+    border-top: 1px solid var(--border);
 }
 
 .btn-up {
@@ -34,4 +77,58 @@ main {
 
 .btn-up.on {
     background: var(--subtext) url(/src/assets/images/icon-chevron-up-darkmode.svg) no-repeat center;
+}
+
+.on .main-tryit {
+    background-color: var(--primary);
+}
+
+.on .main-tryit h2  {
+  color: var(--subtext);
+}
+
+.on .footer-area {
+    border-top: none;
+}
+
+.on .main-tryit .fg-editor .preview, 
+.on .main-tryit .fg-editor .code {
+    box-shadow: 0px 4px 12px 0px #2d2d2d1a;
+}
+
+/* 반응형 */
+@media screen and (max-width: 1280px) {
+    .main-tryit {
+        padding: 140px 60px 120px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1280) {
+    .main-tryit {
+        padding: 140px 40px 120px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-tryit {
+        padding: 100px 40px 80px;
+    }
+
+    .main-tryit h2 {
+        font-size: 28px;
+    }
+
+    .main-tryit .fg-editor {
+        gap: 20px;
+    }
+
+    .main-tryit .fg-editor:nth-child(2) {
+        margin: 0 0 40px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .main-tryit {
+        padding: 100px 40px 80px;
+    }
 }
