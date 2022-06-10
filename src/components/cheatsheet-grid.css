@@ -6,11 +6,99 @@ body {
   background-color: #e5e5e5;
 }
 
+
+/* 임시 여백 */
+
+.fg-cheat {
+  width: 525px;
+  padding-bottom: 70px;
+  border-bottom: 1px solid var(--grid-border);
+}
+
+
+.radio-cheat {
+  margin: 20px 0;
+}
+
+.fg-cheat *,
+.fg-cheat *::before,
+.fg-cheat *::after {
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.fg-cheat form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 30px;
+  width: 100%;
+}
+
+.fg-cheat .input-option {
+  display: none;
+}
+
+
+.fg-cheat .input-option {
+  display: none;
+}
+
+.fg-cheat .label-option {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 14px;
+  color: var(--tertiary);
+  user-select: none;
+}
+
+.fg-cheat .label-option::before {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 1px solid var(--tertiary);
+  border-radius: 50%;
+  content: '';
+}
+
+.fg-cheat .label-option:hover,
+.fg-cheat .label-option:hover::before {
+  border-color: var(--grid-primary);
+  color: var(--grid-primary);
+}
+
+.fg-cheat .label-option::after {
+  display: inline-block;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  content: '';
+}
+
+.fg-cheat .input-option:checked+.label-option {
+  color: var(--grid-primary);
+}
+
+.fg-cheat .input-option:checked+.label-option::before {
+  border-color: var(--grid-primary);
+}
+
+.fg-cheat .input-option:checked+.label-option::after {
+  background-color: var(--grid-primary);
+}
+
+
+/* 컴포넌트 CSS */
+
 /* 박스 타이틀 데이타임모드 */
 
-.box-title {
+.tit-title a {
   width: 113px;
-  margin: 0 0 50px 9px;
   color: #3f3f46;
   font-family: Pretendard;
   font-weight: 500;
@@ -18,12 +106,12 @@ body {
   line-height: 36px;
 }
 
-.box-title:hover {
+.tit-title a:hover {
   width: 142px;
   color: #878787;
 }
 
-.box-title:hover:before {
+.tit-title a:hover:before {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -35,8 +123,11 @@ body {
 }
 
 
-.box-wrapper {
+/* 그림예제부분 */
+
+.container {
   display: flex;
+  align-items: flex-start;
   gap: 22px 12px;
   width: 525px;
   min-height: 150px;
@@ -45,8 +136,9 @@ body {
   margin-bottom: 20px;
   border-radius: 20px;
   background-color: white;
-  box-shadow: 0px 4px 12px rgba(81, 69, 159, 0.08);
+  box-shadow: 0px 4px 15px rgba(197, 96, 70, 0.08);
 }
+
 
 .item {
   width: 70px;
@@ -70,7 +162,7 @@ body {
   /* 아래박스와 구분을 위해 마진바텀을 임시로 넣어주었습니다. */
   margin-bottom: 20px;
   border-radius: 20px;
-  box-shadow: 0px 4px 12px rgba(81, 69, 159, 0.08);
+  box-shadow: 0px 4px 15px rgba(197, 96, 70, 0.08);
   box-sizing: border-box;
   background-color: white;
   font-family: 'Pretendard';
@@ -92,30 +184,36 @@ body {
 
 /* 나이트모드 스타일링 */
 
-.box-wrapper.on, .box-code-area.on {
+.container.on,
+.box-code-area.on {
   box-shadow: 0px 10px 25px 0px rgba(45, 45, 45, 0.1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: #252424;
 }
 
+/* 라디오 나이트모드  */
+
+.fg-cheat .label-option.on::before {
+  border: 1px solid var(--secondary);
+}
+
 /* 박스 타이틀 나이트모드 */
 
-.box-title.on {
+.tit-title.on a {
   width: 113px;
-  margin: 0 0 50px 9px;
-  color: #f9f9f9;
+  color: var(--border);
   font-family: Pretendard;
   font-weight: 500;
   font-size: 22px;
   line-height: 36px;
 }
 
-.box-title.on:hover {
+.tit-title.on a:hover {
   width: 142px;
   color: #b4b4b4;
 }
 
-.box-title.on:hover:before {
+.tit-title.on a:hover:before {
   display: inline-block;
   width: 24px;
   height: 24px;
