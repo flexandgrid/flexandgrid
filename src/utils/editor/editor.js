@@ -532,8 +532,8 @@
       const containers =
         containerCount > 1
           ? [...Array(containerCount)].map(
-              (_, index) => `container${index + 1}`
-            )
+            (_, index) => `container${index + 1}`
+          )
           : ['container', 'item'];
       const itemCount = this._previewWrapper.querySelectorAll('.item').length;
       const items = [...Array(itemCount)].map((_, index) => `item${index + 1}`);
@@ -568,7 +568,7 @@
         this._mode = 'free';
         this._layout = 'carousel';
         this._editor.classList.add('free-mode', 'carousel-layout');
-        this.autoCarousel();
+        // this.autoCarousel();
       }
       this._editor.classList.add(`editor-${this._editorId}`);
     }
@@ -825,26 +825,8 @@
         this._carouselIndicators.appendChild(indicator);
       }
 
-      this._carouselIndicators.addEventListener(
-        'click',
-        ({ currentTarget, target }) => {
-          if (target.tagName !== 'BUTTON') {
-            return;
-          }
-
-          const children = [...currentTarget.querySelectorAll('.indicator')];
-          const index = children.indexOf(target);
-          children[this._snippetIndex].classList.remove('selected');
-          target.classList.add('selected');
-          this._snippetChangeEventListener(index);
-        }
-      );
-    }
-
-    // 희진 캐러셀 자동화
-    // // 2초마다 setInterval(실행 함수) 실행
-    autoCarousel() {
-      setInterval(() => {
+      //희진 자동 캐러셀;
+      let autoCarousel = setInterval(() => {
         const flexTarget = document.querySelectorAll(
           '.container-indicators'
         )[0];
@@ -871,7 +853,27 @@
 
         //인덱스에 따른 snippet 변화
         this._snippetChangeEventListener(this._snippetIndex);
-      }, 2000);
+      }, 3000);
+      //setInterval끝
+
+      this._carouselIndicators.addEventListener(
+        'click',
+        ({ currentTarget, target }) => {
+          if (target.tagName !== 'BUTTON') {
+            return;
+          }
+
+          const children = [...currentTarget.querySelectorAll('.indicator')];
+          const index = children.indexOf(target);
+          children[this._snippetIndex].classList.remove('selected');
+          target.classList.add('selected');
+          this._snippetChangeEventListener(index);
+
+          // indicator click하면 자동캐러셀 멈추기
+          clearInterval(autoCarousel)
+
+        }
+      );
     }
 
     // Create
@@ -1146,13 +1148,13 @@
 
         const textInput =
           typeof line.textContent === 'string' &&
-          !isRootContainer &&
-          this._layout !== 'carousel'
+            !isRootContainer &&
+            this._layout !== 'carousel'
             ? Tag.createElement('input', {
-                class: 'button-code text-code',
-                value: line.textContent,
-                spellcheck: false
-              })
+              class: 'button-code text-code',
+              value: line.textContent,
+              spellcheck: false
+            })
             : null;
 
         if (textInput) {
@@ -1192,8 +1194,8 @@
 
         const innerAddButton =
           textInput ||
-          isRootContainer ||
-          (openingTag.length && closingTag && this._layout === 'carousel')
+            isRootContainer ||
+            (openingTag.length && closingTag && this._layout === 'carousel')
             ? this._createAddInnerTagButton(line.tag, 'button-inner')
             : null;
 
@@ -1227,8 +1229,8 @@
       const length = Number.isInteger(Number(item))
         ? Number(item)
         : defaultItemCount
-        ? Number(defaultItemCount)
-        : Editor.DEFAULT_ITEM;
+          ? Number(defaultItemCount)
+          : Editor.DEFAULT_ITEM;
       const container = new PreviewTag({ className: 'container' });
       for (let i = 0; i < length; i++) {
         container.push(new PreviewTag({ className: 'item' }));
@@ -2431,8 +2433,8 @@
             ? [anchorNode, anchorLine, anchorOffset]
             : [focusNode, focusLine, focusOffset]
           : Number(anchorLine.dataset.index) < Number(focusLine.dataset.index)
-          ? [anchorNode, anchorLine, anchorOffset]
-          : [focusNode, focusLine, focusOffset];
+            ? [anchorNode, anchorLine, anchorOffset]
+            : [focusNode, focusLine, focusOffset];
 
       const firstLineChildNodes = [...firstLine.childNodes]
         .reduce((acc, node) => [...acc, node, ...(node.childNodes ?? [])], [])
