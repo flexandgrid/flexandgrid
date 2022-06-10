@@ -25,8 +25,8 @@ aside.toggle {
 /* drawer 버튼 */
 .btn-drawer {
   position: fixed;
-  left: 340px;
-  top: 80px;
+  left: 339px;
+  top: 79px;
   width: 40px;
   height: 40px;
   border: 1px solid var(--border);
@@ -41,11 +41,11 @@ aside.toggle {
 }
 
 .btn-drawer.toggle {
-  left: 0;
+  left: -1px;
 }
 
 .btn-drawer.scroll-down {
-  top: 0;
+  top: -1px;
 }
 
 /* drawer-menu */
@@ -124,6 +124,7 @@ aside.toggle {
   width: 16px;
   height: 16px;
   background: url(../assets/images/icon-chevron.svg) no-repeat center/contain;
+  transition: transform 200ms ease-in-out;
 }
 
 .btn-drawer-menu:focus::after {
@@ -212,7 +213,7 @@ aside.toggle {
 }
 
 .on .btn-drawer {
-  border: 1px solid var(--black);
+  border: 1px solid var(--border-dark);
   background-color: var(--primary);
 }
 
@@ -222,7 +223,7 @@ aside.toggle {
 
 .on .drawer-menu {
   background: var(--primary);
-  border: none;
+  border-right: 1px solid var(--border-dark);
 }
 
 .on .drawer-menu .mobile-logo {
@@ -231,6 +232,7 @@ aside.toggle {
 
 .on .btn-drawer-menu {
   color: var(--background);
+  border-bottom: 1px solid var(--border-dark);
 }
 
 .on .btn-cheatSheet::before {
@@ -245,7 +247,7 @@ aside.toggle {
   background: url(../assets/images/icon-grid-darkmode.svg) no-repeat center/contain;
 }
 
-.on::after {
+.on .btn-drawer-menu::after {
   background: url(../assets/images/icon-chevron-darkmode.svg) no-repeat center/contain;
 }
 
@@ -316,7 +318,7 @@ aside.toggle {
   }
 
   .btn-drawer {
-    left: 295px;
+    left: 294px;
   }
 }
 
@@ -338,7 +340,7 @@ aside.toggle {
   }
 
   .btn-drawer.toggle {
-    left: 250px;
+    left: 249px;
   }
 }
 

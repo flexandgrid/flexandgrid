@@ -52,6 +52,7 @@ article {
   margin: -100px 0 50px;
   color: var(--secondary);
   font-size: 36px;
+  font-weight: 300;
 }
 
 .cont-grid h3,
@@ -96,7 +97,7 @@ article {
   border-radius: 15px;
   background-color: var(--white);
   text-align: center;
-  box-shadow: 0px 4px 15px 0px #51459f14;
+  box-shadow: 0px 4px 12px 0px #c5604614;
 }
 
 .cont-grid figcaption {

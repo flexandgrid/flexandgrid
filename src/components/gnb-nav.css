@@ -127,8 +127,8 @@
 
 .mobile-search .search-toggle {
     position: absolute;
-    top: 12px;
-    right: 20px;
+    top: 29px;
+    right: 100px;
     width: 24px;
     height: 24px;
     background: url(/src/assets/images/icon-search.svg) no-repeat center / contain;
@@ -156,7 +156,7 @@
     color: transparent;
 }
 
-.modal-history {
+.gnb-header .modal-history {
     position: absolute;
     top: 50px;
     left: 0;
@@ -173,6 +173,7 @@
     height: 32px;
     border-radius: 50%;
     color: transparent;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .button-group .darkmode-btn {
@@ -252,14 +253,18 @@
         padding: 0 60px;
     }
 
-    .search-input {
+    .gnb-header .search-input,
+    .gnb-header .search-btn {
         display: none;
     }
 
-    .search-btn {
-        position: relative;
-        left: 0;
-        top: -1px;
+    .gnb-header .search-btn {
+        display: none;
+    }
+
+    .gnb-header .mobile-search,
+    .gnb-header ul.nav-left .hamburger-container {
+        display: block;
     }
 }
 
@@ -283,13 +288,8 @@
         align-items: center;
     }
 
-    .mobile-search,
-    .gnb-header ul.nav-left .hamburger-container {
-        display: block;
-    }
-
     .gnb-header ul.nav-left .nav-left-menu,
-    .search-input,
+    .gnb-header .search-input,
     .search-btn,
     .button-group {
         display: none;
@@ -302,5 +302,10 @@
         top: 50%;
         padding: 10px;
         z-index: 1;
+    }
+
+    .mobile-search .search-toggle {
+        top: 12px;
+        right: 20px;
     }
 }

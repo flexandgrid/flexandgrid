@@ -52,6 +52,7 @@ article {
   margin: -100px 0 50px;
   color: var(--secondary);
   font-size: 36px;
+  font-weight: 300;
 }
 
 .cont-flex h3,
