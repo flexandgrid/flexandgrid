@@ -279,9 +279,10 @@ const listSearch = document.querySelector(".list-search");
 const createList = (contents) => {
   contents.forEach((v, i) => {
     v.forEach((value) => {
-      //html 기준인 경우 태그 날리는 정규식
       value = value.replace(/<\/?[^>]+(>|$)/g, "");
-
+      if (value.match(/\(([^)]+)\)/g) == "(w3c)") {
+        value = value.replace(/\(([^)]+)\)/g, "(W3C)");
+      }
       const searchListItem = document.createElement("li");
       searchListItem.setAttribute("class", "itemwrap-search");
 
@@ -292,7 +293,8 @@ const createList = (contents) => {
       );
       searchListItemLink.setAttribute("class", "item-search");
 
-      value = value.replace(/[0-9.]/g, "");
+      value = value.replace(/.+(?=....)[0-9.]/g, "");
+
       const searchRoute = document.createElement("span");
       searchRoute.setAttribute("class", "route-search");
       searchRoute.appendChild(
