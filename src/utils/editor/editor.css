@@ -91,6 +91,7 @@
   --accent-3: #b6abed;
   --accent-2: #eceafe;
   --accent-1: #fbfbff;
+  --box-shadow-1: #c5604614;
   --four-color-1: #504975;
 }
 
@@ -156,7 +157,6 @@
   overflow: hidden;
   width: calc(50% - 10px);
   max-height: var(--outer);
-  background-color: var(--white);
   box-shadow: 0px 4px 12px 0px var(--box-shadow-1);
 }
 
@@ -190,6 +190,7 @@
   padding: var(--height-padding) 10px;
   min-height: var(--min-height);
   border-radius: 20px;
+  background-color: var(--white);
   font-size: 16px;
   color: var(--gray-6);
 }
@@ -746,7 +747,6 @@
   overflow: visible;
   max-height: none;
   border: none;
-  background-color: var(--background);
   box-shadow: none;
 }
 
@@ -761,12 +761,12 @@
   height: auto;
   padding: 40px;
   border-radius: 40px;
-  box-shadow: 0px 6px 20px rgba(81, 69, 159, 0.1);
+  /* box-shadow: 0px 6px 20px rgba(80, 70, 195, 0.1); */
 }
 
-.fg-editor.carousel-layout.theme-grid .item:not(.container) {
+/* .fg-editor.carousel-layout.theme-grid .item:not(.container) {
   box-shadow: 0px 4px 39px rgba(246, 134, 106, 0.09);
-}
+} */
 
 .fg-editor.carousel-layout .container:not(.item):hover {
   background-color: transparent;

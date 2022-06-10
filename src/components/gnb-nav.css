@@ -173,6 +173,7 @@
     height: 32px;
     border-radius: 50%;
     color: transparent;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .button-group .darkmode-btn {

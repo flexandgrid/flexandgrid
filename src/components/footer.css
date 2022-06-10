@@ -28,7 +28,7 @@ body {
     left: 108px;
     width: 144px;
     height: 20px;
-    background: url("../assets/images/logo-gray.svg") no-repeat center/contain;
+    background: url(../assets/images/logo-gray.svg) no-repeat center/contain;
     content: "";
 }
 
@@ -43,7 +43,7 @@ body {
     color: var(--tertiary);
     font-size: 14px;
     line-height: 1.6;
-    letter-spacing: -0.2%;
+    letter-spacing: -0.2px;
 }
 
 .footer-area .txt-title {
@@ -77,6 +77,7 @@ body {
 
 .footer-area .btn-footer:hover {
     background-color: var(--secondary);
+    transition: background-color 0.2s ease-in-out;
 }
 
 .footer-area .btn-github {
@@ -89,7 +90,7 @@ body {
     width: 24px;
     height: 24px;
     margin: 0 5px 0 8px;
-    background: url("../assets/images/icon-github-footer.svg") no-repeat center/contain;
+    background: url(../assets/images/icon-github-footer.svg) no-repeat center/contain;
     vertical-align: -5px;
     content: "";
 }
@@ -104,7 +105,7 @@ body {
     width: 24px;
     height: 24px;
     margin: 0 8px;
-    background: url("../assets/images/icon-download.svg") no-repeat center/contain;
+    background: url(../assets/images/icon-download.svg) no-repeat center/contain;
     vertical-align: -5px;
 }
 
@@ -134,7 +135,7 @@ body {
     width: 24px;
     height: 24px;
     margin: 0 5px 0 8px;
-    background: url("../assets/images/icon-github-footer-darkmode.svg") no-repeat center/contain;
+    background: url(../assets/images/icon-github-footer-darkmode.svg) no-repeat center/contain;
     vertical-align: -5px;
 }
 
@@ -144,7 +145,7 @@ body {
     width: 24px;
     height: 24px;
     margin-right: 8px;
-    background: url("../assets/images/icon-download-darkmode.svg") no-repeat center/contain;
+    background: url(../assets/images/icon-download-darkmode.svg) no-repeat center/contain;
     vertical-align: -5px;
 }
 
@@ -192,6 +193,8 @@ body {
 @media screen and (max-width: 479px) {
     .footer-area::before {
         top: 32px;
+        width: 130px;
+        height: 18px;
     }
 
     .footer-area .cont-txt {
@@ -200,15 +203,19 @@ body {
     }
 
     .footer-area .txt-title {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .footer-area .txt-main {
-        font-size: 12px;
+        font-size: 13px;
         width: 100%;
     }
 
-    .footer-area .txt-copyright {
-        font-size: 10px;
+    .footer-area .txt-copyrigt {
+        font-size: 12px;
+    }
+
+    .footer-area .btn-github {
+        margin-right: 15px;
     }
 }
