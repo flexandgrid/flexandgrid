@@ -284,7 +284,7 @@ max 값을 auto로 입력하면 그리드 영역 범위를 최대 크기의 영�
 </div>
 ```
 
-minmax(auto, max-content를 사용하면 그리드 아이템 콘텐츠 크기에 맞추어 영역이 설정된다.
+minmax(auto, max-content)를 사용하면 그리드 아이템 콘텐츠 크기에 맞추어 영역이 설정된다.
 
 ```editor
 <div data-mode="snippet" class="fg-editor css-grid theme-grid">
