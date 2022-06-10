@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.modal-history {
+.gnb-header .modal-history {
   display: none;
   width: 264px;
   min-height: 270px;
@@ -11,27 +11,27 @@
   box-shadow: 0px 8px 10px 0px rgba(135, 135, 135, 0.08);
 }
 
-.modal-history.clicked {
+.gnb-header .modal-history.clicked {
   display: block;
 }
 
-.header-history {
+.gnb-header .header-history {
   display: flex;
   justify-content: space-between;
   margin: 0 7px 8px 8px;
   line-height: 14px;
 }
 
-.tit-history, .btn-del-all {
+.gnb-header .tit-history, .btn-del-all {
   font-size: 12px;
   font-weight: 400;
   color: var(--secondary);}
 
-.btn-del-all:hover {
+.gnb-header .btn-del-all:hover {
   color: var(--primary);
 }
 
-.modal-history .list-item {
+.gnb-header .modal-history .list-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,40 +42,46 @@
   border-radius: 10px;
 }
 
-.modal-history .list-item:hover {
+.gnb-header .modal-history .list-item:hover {
   background-color: #f8f8f8;
 }
 
-.modal-history .btn-del {
+.gnb-header .modal-history .btn-del {
   width: 16px;
   height: 16px;
   border-radius: 50%;
 }
 
-.modal-history .txt-item {
+.gnb-header .modal-history .txt-item {
   color: var(--primary);
 }
 
 /* Dark mode */
-.modal-history.on {
+.gnb-header .modal-history.on {
   border: solid 1px var(--border-dark);
   background-color: #333338;
   box-shadow: 0px 10px 25px rgba(45, 45, 45, 0.1);
 }
 
-.modal-history.on .btn-del-all:hover {
+.gnb-header .modal-history.on .btn-del-all:hover {
   color:#EFEFEF;
 }
 
-.modal-history.on .list-item:hover {
+.gnb-header .modal-history.on .list-item:hover {
   background-color: var(--primary);
 }
 
-.modal-history.on .txt-item {
+.gnb-header .modal-history.on .txt-item {
   color: var(--border);
 }
 
-.modal-history.on .btn-del img {
-  content: url('../assets/images/icon-close-darkmode.svg');
+.gnb-header .modal-history.on .btn-del img {
+  content: url(../assets/images/icon-close-darkmode.svg);
 }
 
+
+@media screen and (max-width: 1024px) {
+  .gnb-header .modal-history.clicked {
+    display: none;
+  }
+}

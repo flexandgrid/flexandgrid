@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/src/components/gnb-nav.css" />
     <link rel="stylesheet" href="/src/components/search-item.css" />
     <link rel="stylesheet" href="/src/components/search-modal.css" />
+    <link rel="stylesheet" href="/src/components/mobile-search-modal.css">
     <link rel="stylesheet" href="/src/components/footer.css">
     <link rel="stylesheet" href="style.css">
     <script defer src="/src/components/gnb-nav.js"></script>
@@ -81,6 +82,28 @@
             </ul>
         </nav>
     </header>
+
+    <aside class="search-modal-mobile">
+      <header>
+          <h1 class="visually-hidden">검색창</h1>
+          <form action="/search" method="get" autocomplete="off">
+              <input type="text" class="search-input" name="q" placeholder="Search"/>
+              <button type="submit" class="search-btn">
+                  <span class="visually-hidden">검색 버튼</span>
+              </button>
+          </form>
+          <button class="close-btn" type="button">취소</button>
+      </header>
+
+      <section class="modal-history">
+          <header class="header-history">
+              <h2 class="tit-history">최근 검색어</h2>
+              <button type="button" class="btn-del-all">전체 삭제</button>
+          </header>
+          <ul class="list-history"></ul>
+      </section>
+    </aside>
+    <div class="overlay" aria-hidden></div>
 
     <main class="cheatsheet-flex">
     </main>
