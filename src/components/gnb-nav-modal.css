@@ -33,8 +33,8 @@
 
 .modal-menu .list-menu .list-item {
   display: block;
-  padding: 10px 8px;
-  color: var(--primary);
+  padding: 0;
+  color: var(--secondary);
   line-height: 24px;
   cursor: pointer;
   border-radius: 10px;
@@ -42,7 +42,8 @@
 
 .modal-menu .list-item .link-menu {
   display: block;
-  padding: 0;
+  padding: 10px 8px;
+  transition: font-weight 0.1s ease-in-out;
 }
 
 .modal-menu .list-menu .list-item:hover {

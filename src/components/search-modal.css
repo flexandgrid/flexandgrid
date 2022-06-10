@@ -46,14 +46,14 @@
   background-color: #f8f8f8;
 }
 
-.btn-del {
+.modal-history .btn-del {
   width: 16px;
   height: 16px;
   border-radius: 50%;
 }
 
-.txt-item {
-  font-weight: 400;
+.modal-history .txt-item {
+  color: var(--primary);
 }
 
 /* Dark mode */
