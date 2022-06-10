@@ -5,8 +5,35 @@ body {
 }
 
 main {
+    width: 1080px;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px;
 }
+
+.main-title {
+    color: var(--secondary);
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 80px;
+}
+
+/* Grid Cheetsheet 타이틀 다크모드  */
+.main-title.on {
+    color: var(--subtext);
+}
+
+.main-wrapper {
+    display: flex;
+    gap: 30px;
+    /* display: grid; */
+    /* grid-template-columns: repeat(2, 525px); */
+}
+
 
 .gnb-header .modal-menu .list-item:last-child {
     color: var(--grid-primary);
@@ -35,4 +62,8 @@ main {
 
 .btn-up.on {
     background: var(--subtext) url(/src/assets/images/icon-chevron-up-darkmode.svg) no-repeat center;
+}
+
+.footer-area {
+    display: block;
 }
