@@ -1,46 +1,82 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>flex X grid</title>
-    <link rel="stylesheet" href="../css/default.css" />
-    <link rel="stylesheet" href="cheatsheet-grid.css" />
-  </head>
-  <body>
-    <!-- daytime모드 -->
-    <h2 class="box-title">align-items</h2>
-    <div class="box-wrapper">
-      <div class="item">1</div>
-      <div class="item">2</div>
-      <div class="item">3</div>
-    </div>
-    <div class="box-code-area">
-      <p class="txt-code"><span class="number-code">1</span>.container {</p>
-      <p class="txt-code"><span class="number-code">2</span>display:flex;</p>
-      <p class="txt-code">
-        <span class="number-code">3</span>flex-direction:row;
-      </p>
-      <p class="txt-code"><span class="number-code">4</span>}</p>
-      <p class="txt-code"><span class="number-code">5</span></p>
-    </div>
 
-    <!-- 다크모드 -->
-    <h2 class="box-title on">align-items</h2>
-    <div class="box-wrapper on">
-      <div class="item">1</div>
-      <div class="item">2</div>
-      <div class="item">3</div>
-    </div>
-    <div class="box-code-area on">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>flex X grid</title>
+  <link rel="stylesheet" href="../css/default.css" />
+  <link rel="stylesheet" href="cheatsheet-grid.css" />
+</head>
+
+<body>
+  <!-- daytime모드 -->
+  <article class="fg-cheat">
+    <h2 class="tit-title" id="justify-content"><a href="#justify-content">justify-content</a></h2>
+    <form class="radio-cheat">
+      <input type="radio" id="cheat0-option1" name="cheat0" class="input-option" checked="true">
+      <label for="cheat0-option1" class="label-option cheat0-option1">start</label>
+      <input type="radio" id="cheat0-option2" name="cheat0" class="input-option">
+      <label for="cheat0-option2" class="label-option cheat0-option2">end</label>
+      <input type="radio" id="cheat0-option3" name="cheat0" class="input-option">
+      <label for="cheat0-option3" class="label-option cheat0-option3">center</label>
+      <input type="radio" id="cheat0-option4" name="cheat0" class="input-option">
+      <label for="cheat0-option4" class="label-option cheat0-option4">space-between</label>
+      <input type="radio" id="cheat0-option5" name="cheat0" class="input-option">
+      <label for="cheat0-option5" class="label-option cheat0-option5">space-around</label>
+    </form>
+    <section class="box-area">
+      <div class="container cheat0" id="cont-cheat0">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+      </div>
+    </section>
+    <section class="box-code-area">
       <p class="txt-code"><span class="number-code">1</span>.container {</p>
-      <p class="txt-code"><span class="number-code">2</span>display:flex;</p>
+      <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
       <p class="txt-code">
-        <span class="number-code">3</span>flex-direction:row;
+        <span class="number-code">3</span><em>flex-direction: row;</em>
       </p>
       <p class="txt-code"><span class="number-code">4</span>}</p>
       <p class="txt-code"><span class="number-code">5</span></p>
-    </div>
-  </body>
+    </section>
+  </article>
+
+  <!-- 다크모드 -->
+
+  <article class="fg-cheat">
+    <h2 class="tit-title on" id="justify-content"><a href="#justify-content">justify-content</a></h2>
+    <form class="radio-cheat">
+      <input type="radio" id="cheat0-option1" name="cheat0" class="input-option" checked="true">
+      <label for="cheat0-option1" class="label-option cheat0-option1 on">start</label>
+      <input type="radio" id="cheat0-option2" name="cheat0" class="input-option">
+      <label for="cheat0-option2" class="label-option cheat0-option2 on">end</label>
+      <input type="radio" id="cheat0-option3" name="cheat0" class="input-option">
+      <label for="cheat0-option3" class="label-option cheat0-option3 on">center</label>
+      <input type="radio" id="cheat0-option4" name="cheat0" class="input-option">
+      <label for="cheat0-option4" class="label-option cheat0-option4 on">space-between</label>
+      <input type="radio" id="cheat0-option5" name="cheat0" class="input-option">
+      <label for="cheat0-option5" class="label-option cheat0-option5 on">space-around</label>
+    </form>
+    <section class="box-area">
+      <div class="container cheat0 on" id="cont-cheat0">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+      </div>
+    </section>
+    <section class="box-code-area on">
+      <p class="txt-code"><span class="number-code">1</span>.container {</p>
+      <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
+      <p class="txt-code">
+        <span class="number-code">3</span><em>flex-direction: row;</em>
+      </p>
+      <p class="txt-code"><span class="number-code">4</span>}</p>
+      <p class="txt-code"><span class="number-code">5</span></p>
+    </section>
+  </article>
+</body>
+
 </html>

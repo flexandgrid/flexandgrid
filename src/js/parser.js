@@ -1,11 +1,11 @@
 (async function () {
-  const PAGE_NAME = window.location.pathname.split('/')[1];
+  const PAGE_NAME = window.location.pathname.split("/")[1];
 
   const normalize = (markdown) => {
     return markdown
-      .replace(/\r\n?/g, '\n')
-      .replace(/\n{2,}/g, '\n\n')
-      .split('\n');
+      .replace(/\r\n?/g, "\n")
+      .replace(/\n{2,}/g, "\n\n")
+      .split("\n");
   };
 
   const parse = (token, { regex, tagName, replace }) => {
@@ -14,38 +14,38 @@
 
   const codeBlockStart = {
     regex: /^\s*`{3}(.+)/,
-    replace: '<pre><code>$1'
+    replace: "<pre><code>$1",
   };
 
   const codeBlockEnd = {
     regex: /(.*)`{3}\s*$/,
-    replace: '$1</code></pre>'
+    replace: "$1</code></pre>",
   };
 
   const unorderedListItem = {
     regex: /^\s*-\s(.+)/,
-    replace: '<li>$1'
+    replace: "<li>$1",
   };
 
   const orderedListItem = {
     regex: /^\s*(\d+\.\s.+)/,
-    replace: '<li>$1'
+    replace: "<li>$1",
   };
 
   const tableRow = {
     regex: /^\|(.+)\|$/,
     replace: (_, group) => {
       const heads = group
-        .split('|')
+        .split("|")
         .map((text) => `<td>${text.trim()}</td>`)
-        .join('');
+        .join("");
       return `<tr>${heads}</tr>`;
-    }
+    },
   };
 
   const tableDivision = {
     regex: /^\|(([-|]|\s)+)\|$/,
-    replace: ''
+    replace: "",
   };
 
   const heading = {
@@ -54,9 +54,9 @@
       const tagName = `h${mark.length + 1}`;
       return `<${tagName} id="${group.replace(
         /(\*{2})|`/g,
-        ''
+        ""
       )}">${group}</${tagName}>`;
-    }
+    },
   };
 
   const figure = {
@@ -66,38 +66,38 @@
       return `<figure><img src="${
         window.location.origin
       }/src/pages/${PAGE_NAME}/${g2}"${
-        width ? ` style="width: ${width}px;"` : ''
-      }>${g1 ? `<figcaption>${g1}</figcaption>` : ''}</figure>`;
-    }
+        width ? ` style="width: ${width}px;"` : ""
+      }>${g1 ? `<figcaption>${g1}</figcaption>` : ""}</figure>`;
+    },
   };
 
   const lineBreak = {
     regex: /^<br\s*\/>$/,
-    replace: '<br />'
+    replace: "<br />",
   };
 
   const paragraph = {
     regex: /(?<=^|\n)(.+)$/,
-    tagName: 'p',
+    tagName: "p",
     replace: (matched) =>
       /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img|code)/.test(matched)
         ? matched
-        : '<p>' + matched + '</p>'
+        : "<p>" + matched + "</p>",
   };
 
   const link = {
     regex: /\[(.+)\]\((.+)\)/g,
-    replace: '<a href="$2">$1</a>'
+    replace: '<a href="$2">$1</a>',
   };
 
   const strong = {
     regex: /\*{2}(([^*])+)\*{2}/g,
-    tagName: 'strong'
+    tagName: "strong",
   };
 
   const code = {
     regex: /`([^`]+)`/g,
-    tagName: 'code'
+    tagName: "code",
   };
 
   const listDepth = (token) => {
@@ -113,7 +113,7 @@
     tableRow,
     heading,
     figure,
-    lineBreak
+    lineBreak,
   ];
 
   const inlineRules = [link, strong, code];
@@ -137,17 +137,17 @@
           case codeBlockStart:
             codeBlockStartIndex = i;
             const codeType = tokens[i].match(/<code>(.+)$/)?.[1];
-            if (codeType === 'editor') {
+            if (codeType === "editor") {
               isEditor = true;
-              tokens[i] = '';
+              tokens[i] = "";
             } else {
-              tokens[i] = tokens[i].replace(codeType, '');
+              tokens[i] = tokens[i].replace(codeType, "");
             }
             break;
 
           case unorderedListItem:
           case orderedListItem:
-            const tagName = rule === unorderedListItem ? 'ul' : 'ol';
+            const tagName = rule === unorderedListItem ? "ul" : "ol";
             const depth = listDepth(token);
             if (depth > curListDepth) {
               tokens[i] = `<${tagName}>` + tokens[i];
@@ -166,18 +166,18 @@
               tokens[i - 1] += listStack.pop();
             }
             curListDepth = depth;
-            listStack.push('</li>');
+            listStack.push("</li>");
             break;
 
           case tableRow:
             if (tableStartIndex === -1) {
               tableStartIndex = i;
-              tokens[i] = '<table>' + tokens[i].replace(/(\<\/?)td>/g, '$1th>');
+              tokens[i] = "<table>" + tokens[i].replace(/(\<\/?)td>/g, "$1th>");
             }
             break;
 
           default:
-            if (token.trim() === '') {
+            if (token.trim() === "") {
               if (listStack.length) {
                 while (listStack.length) {
                   tokens[i - 1] += listStack.pop();
@@ -186,7 +186,7 @@
               }
 
               if (tableStartIndex >= 0) {
-                tokens[i - 1] += '</table>';
+                tokens[i - 1] += "</table>";
                 tableStartIndex = -1;
               }
 
@@ -195,21 +195,21 @@
         }
         // 코드 블럭일 때
       } else {
-        if (token.trim() === '') {
-          tokens[i] = '\n\n';
+        if (token.trim() === "") {
+          tokens[i] = "\n\n";
         }
         if (!isEditor) {
           tokens[i] = token
-            .replaceAll('<', '&#60;')
-            .replaceAll('>', '&#62;')
-            .replaceAll(' ', '&nbsp;');
+            .replaceAll("<", "&#60;")
+            .replaceAll(">", "&#62;")
+            .replaceAll(" ", "&nbsp;");
         }
         if (codeBlockEnd.regex.test(token)) {
           tokens[i] = parse(token, codeBlockEnd);
           codeBlockStartIndex = -1;
           isEditor = false;
         } else {
-          tokens[i] += '\n';
+          tokens[i] += "\n";
         }
       }
     }
@@ -238,33 +238,33 @@
       .filter((v) => /^<h\d+\sid=/.test(v))
       .map((heading) => {
         const title = heading
-          .replace(/^<h(\d+)\sid="(.+)">(.+)<\/h\d>$/, '$1 $2')
-          .split(' ');
-        return [Number(title[0]), title.slice(1).join(' ')];
+          .replace(/^<h(\d+)\sid="(.+)">(.+)<\/h\d>$/, "$1 $2")
+          .split(" ");
+        return [Number(title[0]), title.slice(1).join(" ")];
       });
 
     let subMenu = null;
 
-    const mainList = document.createElement('ol');
-    mainList.setAttribute('class', 'list-drawer-menu');
+    const mainList = document.createElement("ol");
+    mainList.setAttribute("class", "list-drawer-menu");
 
     menuTitles.forEach(([depth, title]) => {
       if (depth === 2) {
-        const item = document.createElement('li');
-        const link = document.createElement('a');
-        link.setAttribute('href', `#${title}`);
-        link.setAttribute('class', 'tit-drawer-menu');
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.setAttribute("href", `#${title}`);
+        link.setAttribute("class", "tit-drawer-menu");
         link.textContent = title;
-        const list = document.createElement('ol');
-        list.setAttribute('class', 'subtit-drawer-menu');
+        const list = document.createElement("ol");
+        list.setAttribute("class", "subtit-drawer-menu");
         item.appendChild(link);
         item.appendChild(list);
         mainList.appendChild(item);
         subMenu = list;
       } else {
-        const item = document.createElement('li');
-        const link = document.createElement('a');
-        link.setAttribute('href', `#${title}`);
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.setAttribute("href", `#${title}`);
         link.textContent = title;
         item.appendChild(link);
         subMenu.appendChild(item);
@@ -280,20 +280,20 @@
     const innerHTML = [...html];
     let isFirst = true;
     innerHTML.forEach((token, index) => {
-      if (/^<h\d+/.test(token) && token.match(/^<h(\d+)/)[1] === '2') {
+      if (/^<h\d+/.test(token) && token.match(/^<h(\d+)/)[1] === "2") {
         if (isFirst) {
-          innerHTML[index] = '<article>' + token;
+          innerHTML[index] = "<article>" + token;
           isFirst = false;
         } else {
-          innerHTML[index - 1] += '</article>';
-          innerHTML[index] = '<article>' + token;
+          innerHTML[index - 1] += "</article>";
+          innerHTML[index] = "<article>" + token;
         }
       }
       if (index === innerHTML.length - 1) {
-        innerHTML[index] += '</article>';
+        innerHTML[index] += "</article>";
       }
     });
-    div.innerHTML = innerHTML.join('');
+    div.innerHTML = innerHTML.join("");
   };
 
   const deleteDivisionLine = () => {
@@ -301,8 +301,8 @@
       .querySelectorAll(`.cont-${PAGE_NAME} h3, cont-${PAGE_NAME} h4`)
       .forEach((elem) => {
         const sibling = elem.nextElementSibling;
-        if (sibling && (sibling.tagName === 'H3' || sibling.tagName === 'H4')) {
-          elem.classList.add('no-border');
+        if (sibling && (sibling.tagName === "H3" || sibling.tagName === "H4")) {
+          elem.classList.add("no-border");
         }
       });
   };
@@ -311,8 +311,8 @@
     document.querySelectorAll(`.cont-${PAGE_NAME} p`).forEach((elem) => {
       const parent = elem.parentElement;
       const sibling = elem.nextElementSibling;
-      if (sibling?.tagName === 'BR') {
-        elem.classList.add('margin-bottom');
+      if (sibling?.tagName === "BR") {
+        elem.classList.add("margin-bottom");
         parent.removeChild(sibling);
       }
     });
@@ -329,8 +329,18 @@
     renderMenu(html);
     renderContent(html);
     modifyStyle();
-    window.dispatchEvent(new Event('markdownParsed'));
+    window.dispatchEvent(new Event("markdownParsed"));
   };
 
   render();
+
+  const isChrome =
+    /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+  if (isChrome) {
+    window.addEventListener("markdownParsed", () => {
+      const hash = window.location.hash;
+      window.location.hash = "";
+      window.location.hash = hash;
+    });
+  }
 })();
