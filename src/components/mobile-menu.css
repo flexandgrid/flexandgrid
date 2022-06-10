@@ -25,7 +25,7 @@
   width: 20px;
   height: 20px;
   margin-left: 16px;
-  background-image: url(../assets/images/hamburger-menu.svg);
+  background-image: url(../assets/images/icon-hamburger-menu.svg);
   background-repeat: no-repeat;
 }
 .modal-mobile-menu {
@@ -141,7 +141,7 @@
   height: 16px;
   top: 18.75px;
   right: 24.43px;
-  background: url(../assets/images/chevron-down.svg) no-repeat center/contain;
+  background: url(../assets/images/icon-chevron-up.svg) no-repeat center/contain;
 }
 .title-mobile button span:last-child.on::after {
   transform: rotate(180deg);
@@ -165,7 +165,7 @@
   height: 17.96px;
   top: 0;
   left: -30px;
-  background: url(../assets/images/icon-darkmode.svg) no-repeat center/contain;
+  background: url(/src/assets/images/icon-moon.svg) no-repeat center/contain;
 }
 .mobile-github {
   position: relative;
@@ -183,7 +183,7 @@
   height: 17.96px;
   top: 0;
   left: -30px;
-  background: url(../assets/images/icon-github.svg) no-repeat center/contain;
+  background: url(/src/assets/images/icon-github.svg) no-repeat center/contain;
 }
 .cont-mobile-util h3 {
   position: absolute;

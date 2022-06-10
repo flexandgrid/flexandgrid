@@ -60,7 +60,7 @@
     display: none;
     width: 20px;
     height: 18px;
-    background: url(/src/assets/images/hamburger-menu.svg) no-repeat 100%;
+    background: url(/src/assets/images/icon-hamburger-menu.svg) no-repeat 100%;
 }
 
 .gnb-header nav ul.nav-left li a {
@@ -133,7 +133,6 @@
     height: 24px;
     background: url(/src/assets/images/icon-search.svg) no-repeat center / contain;
     color: transparent;
-    font-size: 1;
 }
 
 .search-input {
@@ -155,7 +154,6 @@
     height: 24px;
     background: url(/src/assets/images/icon-search.svg) no-repeat center / contain;
     color: transparent;
-    font-size: 1;
 }
 
 .modal-history {
@@ -175,14 +173,13 @@
     height: 32px;
     border-radius: 50%;
     color: transparent;
-    font-size: 1;
 }
 
 .button-group .darkmode-btn {
     display: flex;
     justify-content: center;
     margin-left: 26px;
-    background: url(/src/assets/images/icon-darkmode.svg) no-repeat center / 28px 28px;
+    background: url(/src/assets/images/icon-moon.svg) no-repeat center / 28px 28px;
 }
 
 .button-group .github-btn {
@@ -227,15 +224,15 @@
 }
 
 .gnb-header.on .darkmode-btn {
-    background: url(/src/assets/images/icon-moon-dark.svg) no-repeat center / 28px 28px;
+    background: url(/src/assets/images/icon-moon-darkmode.svg) no-repeat center / 28px 28px;
 }
 
 .gnb-header.on .github-btn {
-    background: url(/src/assets/images/icon-github-dark.svg) no-repeat center / 28px 28px;
+    background: url(/src/assets/images/icon-github-darkmode.svg) no-repeat center / 28px 28px;
 }
 
 .gnb-header.on .hamburger-menu {
-    background: url(/src/assets/images/hamburger-menu-darkmode.svg) no-repeat center / contain;
+    background: url(/src/assets/images/icon-hamburger-menu-darkmode.svg) no-repeat center / contain;
 }
 
 .gnb-header.on .button-group .darkmode-btn:hover,

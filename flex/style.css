@@ -200,7 +200,7 @@ article {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #3f3f46 url(/src/assets/images/chevron-down.svg) no-repeat center;
+  background: #3f3f46 url(/src/assets/images/icon-chevron-up.svg) no-repeat center;
   box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
   transition: all 0.3s;
   cursor: pointer;
@@ -213,7 +213,7 @@ article {
 }
 
 .btn-up.on {
-  background: var(--subtext) url(/src/assets/images/chevron-down-darkmode.svg)
+  background: var(--subtext) url(/src/assets/images/icon-chevron-up-darkmode.svg)
     no-repeat center;
 }
 

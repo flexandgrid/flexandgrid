@@ -3,11 +3,6 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
 /*radio button*/
-
-/* body {
-  background-color: black; 
-} */
-
 li {
     list-style: none;
 }
@@ -106,19 +101,17 @@ li {
     content: "";
     width: 21px;
     height: 21px;
-    background-image: url(../assets/imges/github-logo-link.svg);
-    background-size: 21px;
+    background: url(/src/assets/images/icon-github.svg) no-repeat center/contain;
     vertical-align: top;
     margin-right: 11px;
 }
-
 /* github link button Dark mode on추가 */
 .mobile-github.on {
     color: var(--tertiary);
 }
 
 .mobile-github::before {
-    background-image: url(../assets/imges/github-darkmode-logo-link.svg);
+    background-image: url(/src/assets/images/icon-github.svg);
 }
 
 .carousel-container {
@@ -155,14 +148,14 @@ li {
     border-radius: 50%;
     background: #3f3f46;
     box-shadow: 0px 10px 25px rgba(135, 135, 135, 0.15);
-    background-image: url("/src/assets/images/chevron-down.svg");
+    background-image: url(/src/assets/images/icon-chevron-up.svg);
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .btn-up.on {
     background: #e0e0e0;
-    background-image: url("/src/assets/images/chevron-down-darkmode.svg");
+    background-image: url(/src/assets/images/icon-chevron-up-darkmode.svg);
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -194,9 +187,7 @@ li {
     content: "";
     width: 24px;
     height: 24px;
-    background-image: url("../assets/images/github.svg");
-    background-repeat: no-repeat;
-    vertical-align: middle;
+    background: url(/src/assets/images/icon-github.svg) no-repeat center / contain;
     margin-right: 8px;
 }
 
@@ -213,7 +204,7 @@ li {
     content: "";
     width: 24px;
     height: 24px;
-    background-image: url("../assets/images/github-darkmode.svg");
+    background-image: url(/src/assets/images/icon-github-darkmode.svg);
     background-repeat: no-repeat;
     vertical-align: middle;
     margin-right: 8px;
