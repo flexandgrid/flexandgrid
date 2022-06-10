@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 .main {
+    display: flex;
+    justify-content: center;
     margin: 130px 120px 100px;
 }
 
@@ -9,6 +11,8 @@
     justify-content: center;
     align-items: flex-start;
     gap: 100px;
+    width: 100%;;
+    max-width: 1600px;
 }
 
 .carousel-flex {
