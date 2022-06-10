@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,10 +9,11 @@
     <link rel="stylesheet" href="/src/css/default.css" />
     <link rel="stylesheet" href="/src/css/color.css" />
     <link rel="stylesheet" href="/search/style.css" />
-     <link rel="stylesheet" href="/src/components/gnb-nav-modal.css">
+    <link rel="stylesheet" href="/src/components/gnb-nav-modal.css">
     <link rel="stylesheet" href="/src/components/gnb-nav.css" />
     <link rel="stylesheet" href="/src/components/search-item.css" />
     <link rel="stylesheet" href="/src/components/search-modal.css" />
+    <link rel="stylesheet" href="/src/components/cheatsheet-grid.css" />
     <link rel="stylesheet" href="/src/components/footer.css">
     <link rel="stylesheet" href="style.css">
     <script defer src="/src/components/gnb-nav.js"></script>
@@ -19,6 +21,7 @@
     <script defer src="/src/js/darkmode.js"></script>
     <script defer src="/src/js/search.js"></script>
 </head>
+
 <body>
     <header class="gnb-header">
         <h1 class="logo-container">
@@ -82,10 +85,76 @@
         </nav>
     </header>
 
-    <main class="cheatsheet-flex">
+    <main class="cheatsheet-grid">
+        <h1 id="Grid-Cheatsheet" class="main-title">
+            <a href="#Grid-Cheatsheet">Grid Cheetsheet</a>
+        </h1>
+        <div class="main-wrapper">
+            <article class="fg-cheat">
+                <h2 class="tit-title" id="justify-content"><a href="#justify-content">justify-content</a></h2>
+                <form class="radio-cheat">
+                    <input type="radio" id="cheat0-option1" name="cheat0" class="input-option" checked="true">
+                    <label for="cheat0-option1" class="label-option cheat0-option1">start</label>
+                    <input type="radio" id="cheat0-option2" name="cheat0" class="input-option">
+                    <label for="cheat0-option2" class="label-option cheat0-option2">end</label>
+                    <input type="radio" id="cheat0-option3" name="cheat0" class="input-option">
+                    <label for="cheat0-option3" class="label-option cheat0-option3">center</label>
+                    <input type="radio" id="cheat0-option4" name="cheat0" class="input-option">
+                    <label for="cheat0-option4" class="label-option cheat0-option4">space-between</label>
+                    <input type="radio" id="cheat0-option5" name="cheat0" class="input-option">
+                    <label for="cheat0-option5" class="label-option cheat0-option5">space-around</label>
+                </form>
+                <section class="box-area">
+                    <div class="container cheat0" id="cont-cheat0">
+                        <div class="item">1</div>
+                        <div class="item">2</div>
+                        <div class="item">3</div>
+                    </div>
+                </section>
+                <section class="box-code-area">
+                    <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                    <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
+                    <p class="txt-code">
+                        <span class="number-code">3</span><em>flex-direction: row;</em>
+                    </p>
+                    <p class="txt-code"><span class="number-code">4</span>}</p>
+                    <p class="txt-code"><span class="number-code">5</span></p>
+                </section>
+            </article>
+            <article class="fg-cheat">
+                <h2 class="tit-title" id="align-items"><a href="#align-items">align-items</a></h2>
+                <form class="radio-cheat">
+                    <input type="radio" id="cheat1-option1" name="cheat1" class="input-option" checked="true">
+                    <label for="cheat1-option1" class="label-option cheat1-option1">flex-start</label>
+                    <input type="radio" id="cheat1-option2" name="cheat1" class="input-option">
+                    <label for="cheat1-option2" class="label-option chea1-option2">flex-end</label>
+                    <input type="radio" id="cheat1-option3" name="cheat1" class="input-option">
+                    <label for="cheat1-option3" class="label-option cheat1-option3">center</label>
+                    <input type="radio" id="cheat1-option4" name="cheat1" class="input-option">
+                    <label for="cheat1-option4" class="label-option cheat1-option4">stretch</label>
+
+                </form>
+                <section class="box-area">
+                    <div class="container cheat1" id="cont-cheat1">
+                        <div class="item">1</div>
+                        <div class="item">2</div>
+                        <div class="item">3</div>
+                    </div>
+                </section>
+                <section class="box-code-area ">
+                    <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                    <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
+                    <p class="txt-code">
+                        <span class="number-code">3</span><em>flex-direction: row;</em>
+                    </p>
+                    <p class="txt-code"><span class="number-code">4</span>}</p>
+                    <p class="txt-code"><span class="number-code">5</span></p>
+                </section>
+            </article>
+        </div>
     </main>
     <button type="button" class="btn-up"></button>
-    
+
     <footer class="footer-area">
         <div class="cont-footer">
             <div class="cont-txt">
@@ -96,16 +165,10 @@
                 <small class="txt-copyrigt">© 2022, All Rights Reserved</small>
             </div>
             <div class="cont-btn">
-                <a
-                    class="btn-footer btn-github"
-                    href="https://github.com/flexandgrid/flexandgrid"
-                    target="_blank">
+                <a class="btn-footer btn-github" href="https://github.com/flexandgrid/flexandgrid" target="_blank">
                     Github
                 </a>
-                <a
-                    class="btn-footer btn-file"
-                    href="https://ridibooks.com/books/2773000058"
-                    target="_blank"
+                <a class="btn-footer btn-file" href="https://ridibooks.com/books/2773000058" target="_blank"
                     download="">
                     PDF Book
                 </a>
@@ -113,4 +176,5 @@
         </div>
     </footer>
 </body>
+
 </html>
