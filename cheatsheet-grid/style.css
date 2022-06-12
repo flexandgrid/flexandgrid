@@ -4,14 +4,18 @@ body {
     background-color: var(--grid-background);
 }
 
-main {
-    width: 1080px;
-    height: 100vh;
+.main-cheatsheet-grid {
+    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    padding: 20px;
+}
+
+.cheatsheet-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 140px 0px 120px;
 }
 
 .main-title {
@@ -23,17 +27,22 @@ main {
 }
 
 /* Grid Cheetsheet 타이틀 다크모드  */
-.main-title.on {
+.main-cheatsheet-grid.on .main-title {
     color: var(--subtext);
 }
 
 .main-wrapper {
-    display: flex;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    /* display: grid; */
-    /* grid-template-columns: repeat(2, 525px); */
 }
 
+/* @media(max-width:768px) {
+    .main-wrapper {
+        grid-template-columns: 1fr;
+    }
+} */
 
 .gnb-header .modal-menu .list-item:last-child {
     color: var(--grid-primary);
