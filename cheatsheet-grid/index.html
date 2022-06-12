@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="/src/components/gnb-nav.css" />
     <link rel="stylesheet" href="/src/components/search-item.css" />
     <link rel="stylesheet" href="/src/components/search-modal.css" />
-    <link rel="stylesheet" href="/src/components/mobile-search-modal.css">
     <link rel="stylesheet" href="/src/components/cheatsheet-grid.css" />
+    <link rel="stylesheet" href="/src/components/buttons.css">
     <link rel="stylesheet" href="/src/components/footer.css">
     <link rel="stylesheet" href="style.css">
     <script defer src="/src/components/gnb-nav.js"></script>
@@ -25,168 +25,221 @@
 
 <body>
     <header class="gnb-header">
-        <div class="gnb-cont">
-            <h1 class="logo-container">
-                <a href="/" class="header-logo">
-                    <span class="a11y-hidden">flex and grid 홈</span>
-                </a>
-            </h1>
-            <nav>
-                <ul class="nav-left">
-                    <li class="hamburger-container">
-                        <a href="/" class="hamburger-menu">
-                            <span class="a11y-hidden">모바일 메뉴</span>
-                        </a>
-                    </li>
-                    <li class="nav-left-menu nav-cheatsheet">Cheatsheet
-                        <div class="modal-menu">
-                            <ul class="list-menu">
-                                <li class="list-item">
-                                    <a class="link-menu" href="/cheatsheet-flex">Flex Cheatsheet</a>
-                                </li>
-                                <li class="list-item">
-                                    <a class="link-menu" href="/cheatsheet-grid">Grid Cheatsheet</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-left-menu nav-flex">
-                        <a href="/flex">Flex</a>
-                    </li>
-                    <li class="nav-left-menu nav-grid">
-                        <a href="/grid">Grid</a>
-                    </li>
-                    <li class="nav-left-menu nav-tryit">
-                        <a href="/try-it">Try it</a>
-                    </li>
-                </ul>
-                <ul class="nav-right">
-                    <li class="mobile-search">
-                        <button class="search-toggle">
-                            <span class="a11y-hidden">검색 창 활성화</span>
+        <h1 class="logo-container">
+            <a href="/" class="header-logo">
+                <span class="a11y-hidden">flex and grid 홈</span>
+            </a>
+        </h1>
+        <nav>
+            <ul class="nav-left">
+                <li class="hamburger-container">
+                    <a href="/" class="hamburger-menu">
+                        <span class="a11y-hidden">모바일 메뉴</span>
+                    </a>
+                </li>
+                <li class="nav-left-menu nav-cheatsheet">Cheatsheet
+                    <div class="modal-menu">
+                        <ul class="list-menu">
+                            <li class="list-item">
+                                <a class="link-menu" href="/cheatsheet-flex">Flex Cheatsheet</a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link-menu" href="/cheatsheet-grid">Grid Cheatsheet</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-left-menu nav-flex"><a href="/flex">Flex</a></li>
+                <li class="nav-left-menu nav-grid"><a href="/grid">Grid</a></li>
+                <li class="nav-left-menu nav-tryit"><a href="/try-it">Try it</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li class="mobile-search">
+                    <button class="search-toggle">
+                        <span class="a11y-hidden">검색 창 활성화</span>
+                    </button>
+                </li>
+                <li class="search">
+                    <form action="/search" method="get" autocomplete="off">
+                        <input type="text" class="search-input" name="q" placeholder="Search" />
+                        <button type="submit" class="search-btn">
+                            <span class="a11y-hidden">검색 버튼</span>
                         </button>
-                    </li>
-                    <li class="search">
-                        <form action="/search" method="get" autocomplete="off">
-                            <input type="text" class="search-input" name="q" placeholder="Search"/>
-                            <button type="submit" class="search-btn">
-                                <span class="a11y-hidden">검색 버튼</span>
-                            </button>
-                        </form>
-                        <div class="modal-history">
-                            <div class="header-history">
-                                <strong class="tit-history">최근 검색어</strong>
-                                <button class="btn-del-all">전체 삭제</button>
-                            </div>
-                            <ul class="list-history"></ul>
+                    </form>
+                    <div class="modal-history">
+                        <div class="header-history">
+                            <strong class="tit-history">최근 검색어</strong>
+                            <button class="btn-del-all">전체 삭제</button>
                         </div>
-                    </li>
-                    <li class="button-group">
-                        <button class="darkmode-btn">
-                            <span class="a11y-hidden">다크 모드 전환</span>
-                        </button>
-                        <a
-                            href="https://github.com/flexandgrid/flexandgrid"
-                            target="_blank"
-                            class="github-btn">
-                            <span class="a11y-hidden">깃헙 바로가기</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+                        <ul class="list-history"></ul>
+                    </div>
+                </li>
+                <li class="button-group">
+                    <button class="darkmode-btn">
+                        <span class="a11y-hidden">다크 모드 전환</span>
+                    </button>
+                    <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="github-btn">
+                        <span class="a11y-hidden">깃헙 바로가기</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
-    <aside class="search-modal-mobile">
-      <header>
-          <h1 class="visually-hidden">검색창</h1>
-          <form action="/search" method="get" autocomplete="off">
-              <input type="text" class="search-input" name="q" placeholder="Search"/>
-              <button type="submit" class="search-btn">
-                  <span class="visually-hidden">검색 버튼</span>
-              </button>
-          </form>
-          <button class="close-btn" type="button">취소</button>
-      </header>
+    <main class="main-cheatsheet-grid">
+        <div class="cheatsheet-grid">
+            <h1 id="Grid-Cheatsheet" class="main-title">
+                <a href="#Grid-Cheatsheet">Grid Cheetsheet</a>
+            </h1>
+            <div class="main-wrapper">
+                <article class="fg-cheat">
+                    <h2 class="tit-title" id="grid-template-rows-columns"><a href="#grid-template-rows-columns">
+                            grid-template-rows
+                        </a>
+                        <br>
+                        <a href="#grid-template-rows-columns">
+                            grid-template-columns
+                        </a>
+                    </h2>
 
-      <section class="modal-history">
-          <header class="header-history">
-              <h2 class="tit-history">최근 검색어</h2>
-              <button type="button" class="btn-del-all">전체 삭제</button>
-          </header>
-          <ul class="list-history"></ul>
-      </section>
-    </aside>
-    <div class="overlay" aria-hidden></div>
-
-    <main class="cheatsheet-grid">
-        <h1 id="Grid-Cheatsheet" class="main-title">
-            <a href="#Grid-Cheatsheet">Grid Cheetsheet</a>
-        </h1>
-        <div class="main-wrapper">
-            <article class="fg-cheat">
-                <h2 class="tit-title" id="justify-content"><a href="#justify-content">justify-content</a></h2>
-                <form class="radio-cheat">
-                    <input type="radio" id="cheat0-option1" name="cheat0" class="input-option" checked="true">
-                    <label for="cheat0-option1" class="label-option cheat0-option1">start</label>
-                    <input type="radio" id="cheat0-option2" name="cheat0" class="input-option">
-                    <label for="cheat0-option2" class="label-option cheat0-option2">end</label>
-                    <input type="radio" id="cheat0-option3" name="cheat0" class="input-option">
-                    <label for="cheat0-option3" class="label-option cheat0-option3">center</label>
-                    <input type="radio" id="cheat0-option4" name="cheat0" class="input-option">
-                    <label for="cheat0-option4" class="label-option cheat0-option4">space-between</label>
-                    <input type="radio" id="cheat0-option5" name="cheat0" class="input-option">
-                    <label for="cheat0-option5" class="label-option cheat0-option5">space-around</label>
-                </form>
-                <section class="box-area">
-                    <div class="container cheat0" id="cont-cheat0">
-                        <div class="item">1</div>
-                        <div class="item">2</div>
-                        <div class="item">3</div>
+                    <section class="box-area">
+                        <div class="container cheat0" id="cont-cheat0">
+                            <div class="item">1</div>
+                            <div class="item">2</div>
+                            <div class="item">3</div>
+                            <div class="item">4</div>
+                        </div>
+                    </section>
+                    <section class="box-code-area">
+                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
+                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-columns: 200px
+                            200px;</p>
+                        <p class="txt-code"><span class="number-code">4</span>&nbsp;&nbsp;grid-template-rows: 100px
+                            100px;
+                        </p>
+                        <p class="txt-code"><span class="number-code">5</span>}</p>
+                    </section>
+                    <div class="buttons">
+                        <button type="button" class="button button-add">+ Add Box</button>
+                        <button type="button" class="button button-remove">- Remove Box</button>
                     </div>
-                </section>
-                <section class="box-code-area">
-                    <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                    <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
-                    <p class="txt-code">
-                        <span class="number-code">3</span><em>flex-direction: row;</em>
-                    </p>
-                    <p class="txt-code"><span class="number-code">4</span>}</p>
-                    <p class="txt-code"><span class="number-code">5</span></p>
-                </section>
-            </article>
-            <article class="fg-cheat">
-                <h2 class="tit-title" id="align-items"><a href="#align-items">align-items</a></h2>
-                <form class="radio-cheat">
-                    <input type="radio" id="cheat1-option1" name="cheat1" class="input-option" checked="true">
-                    <label for="cheat1-option1" class="label-option cheat1-option1">flex-start</label>
-                    <input type="radio" id="cheat1-option2" name="cheat1" class="input-option">
-                    <label for="cheat1-option2" class="label-option chea1-option2">flex-end</label>
-                    <input type="radio" id="cheat1-option3" name="cheat1" class="input-option">
-                    <label for="cheat1-option3" class="label-option cheat1-option3">center</label>
-                    <input type="radio" id="cheat1-option4" name="cheat1" class="input-option">
-                    <label for="cheat1-option4" class="label-option cheat1-option4">stretch</label>
+                </article>
+                <article class="fg-cheat">
+                    <h2 class="tit-title" id="repeat_1fr"><a href="#repeat_1fr">repeat
+                        </a>
+                        <br>
+                        <a href="#repeat_1fr">1fr</a>
 
-                </form>
-                <section class="box-area">
-                    <div class="container cheat1" id="cont-cheat1">
-                        <div class="item">1</div>
-                        <div class="item">2</div>
-                        <div class="item">3</div>
+                    </h2>
+
+                    <section class="box-area">
+                        <div class="container cheat1" id="cont-cheat1">
+                            <div class="item cheat1">1</div>
+                            <div class="item">2</div>
+                            <div class="item">3</div>
+                        </div>
+                    </section>
+                    <section class="box-code-area ">
+                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
+                        <p class="txt-code">
+                            <span class="number-code">3</span><em>&nbsp;&nbsp;grid-template-columns: repeat(3,
+                                1fr);</em>
+                        </p>
+                        <p class="txt-code"><span class="number-code">4</span>}</p>
+                    </section>
+                    <div class="buttons">
+                        <button type="button" class="button button-add">+ Add Box</button>
+                        <button type="button" class="button button-remove">- Remove Box</button>
                     </div>
-                </section>
-                <section class="box-code-area ">
-                    <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                    <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
-                    <p class="txt-code">
-                        <span class="number-code">3</span><em>flex-direction: row;</em>
-                    </p>
-                    <p class="txt-code"><span class="number-code">4</span>}</p>
-                    <p class="txt-code"><span class="number-code">5</span></p>
-                </section>
-            </article>
+                </article>
+
+                <article class="fg-cheat">
+                    <h2 class="tit-title" id="minmax"><a href="#minmax">min-max 함수</a></h2>
+
+                    <form class="radio-cheat">
+                        <input type="radio" id="cheat2-option1" name="cheat2" class="input-option" checked="true">
+                        <label for="cheat2-option1" class="label-option cheat0-option1">min</label>
+                        <input type="radio" id="cheat2-option2" name="cheat2" class="input-option">
+                        <label for="cheat2-option2" class="label-option cheat0-option2">max</label>
+                        <input type="radio" id="cheat2-option3" name="cheat2" class="input-option">
+                        <label for="cheat2-option3" class="label-option cheat0-option3">max:auto</label>
+                        <input type="radio" id="cheat2-option4" name="cheat2" class="input-option">
+                        <label for="cheat2-option4" class="label-option cheat0-option4">px</label>
+                        <input type="radio" id="cheat2-option5" name="cheat2" class="input-option">
+                        <label for="cheat2-option5" class="label-option cheat0-option5">max-content</label>
+                    </form>
+                    <section class="box-area">
+                        <div class="container cheat2" id="cont-cheat2">
+                            <div class="item">1</div>
+                            <div class="item">2</div>
+                            <div class="item">3</div>
+                        </div>
+                    </section>
+                    <section class="box-code-area ">
+                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp; display: grid;</p>
+                        <p class="txt-code">
+                            <span class="number-code">3</span><em> &nbsp;&nbsp;grid-template-columns: repeat(3,
+                                minmax(30px,
+                                100px));</em>
+                        </p>
+                        <p class="txt-code"><span class="number-code">4</span>&nbsp;&nbsp; width: 100px;</p>
+                        <p class="txt-code"><span class="number-code">5</span>}</p>
+                    </section>
+                    <div class="buttons">
+                        <button type="button" class="button button-add">+ Add Box</button>
+                        <button type="button" class="button button-remove">- Remove Box</button>
+                    </div>
+                </article>
+                <article class="fg-cheat">
+                    <h2 class="tit-title" id="grid-auto"><a href="#grid-auto">grid-auto-rows</a>
+                        <br>
+                        <a href="#grid-auto">
+                            grid-auto-columns
+                        </a>
+                    </h2>
+                    <form class="radio-cheat">
+                        <input type="radio" id="cheat3-option1" name="cheat3" class="input-option" checked="true">
+                        <label for="cheat3-option1" class="label-option cheat3-option1">1fr</label>
+                        <input type="radio" id="cheat3-option2" name="cheat3" class="input-option">
+                        <label for="cheat3-option2" class="label-option cheat3-option2">minmax</label>
+                    </form>
+                    <section class="box-area">
+                        <div class="container cheat3" id="cont-cheat3">
+                            <div class="item">1</div>
+                            <div class="item">2</div>
+                            <div class="item">3</div>
+                            <div class="item">4</div>
+                            <div class="item">5</div>
+                            <div class="item">6</div>
+                            <div class="item">7</div>
+                            <div class="item">8</div>
+                            <div class="item">9</div>
+                        </div>
+                    </section>
+
+                    <section class="box-code-area ">
+                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
+                        <p class="txt-code">
+                            <span class="number-code">3</span><em>&nbsp;&nbsp;grid-template-columns: repeat(3,
+                                1fr);</em>
+                        </p>
+                        <p class="txt-code"><span class="number-code">4</span>&nbsp;&nbsp;grid-auto-rows: 1fr;</p>
+                        <p class="txt-code"><span class="number-code">5</span>}</p>
+                    </section>
+                    <div class="buttons">
+                        <button type="button" class="button button-add">+ Add Box</button>
+                        <button type="button" class="button button-remove">- Remove Box</button>
+                    </div>
+                </article>
+
+            </div>
         </div>
     </main>
+
     <button type="button" class="btn-up"></button>
 
     <footer class="footer-area">
