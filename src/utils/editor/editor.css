@@ -878,6 +878,11 @@
     right: 65px;
   }
 
+  .fg-editor .item.stressed,
+  .fg-editor .container.stressed {
+    outline: 2px solid var(--primary-3) !important;
+  }
+
   .fg-editor.carousel-layout .code,
   .fg-editor.carousel-layout .container-indicators {
     display: none;
