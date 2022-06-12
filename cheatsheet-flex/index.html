@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/src/components/search-modal.css" />
     <link rel="stylesheet" href="/src/components/mobile-search-modal.css">
     <link rel="stylesheet" href="/src/components/footer.css">
+    <link rel="stylesheet" href="/src/components/cheatsheet-flex.css">
     <link rel="stylesheet" href="style.css">
     <script defer src="/src/components/gnb-nav.js"></script>
     <script defer src="/src/components/button.js"></script>
@@ -117,9 +118,385 @@
     <div class="overlay" aria-hidden></div>
 
     <main class="cheatsheet-flex">
+        <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-direction</a></h2>
+            <form class="radio-cheat">
+                <input type="radio" id="cheat0-option1" name="cheat0" class="input-option" checked="true">
+                <label for="cheat0-option1" class="label-option cheat0-option1">row</label>
+                <input type="radio" id="cheat0-option2" name="cheat0" class="input-option">
+                <label for="cheat0-option2" class="label-option cheat0-option2">row-reverse</label>
+                <input type="radio" id="cheat0-option3" name="cheat0" class="input-option">
+                <label for="cheat0-option3" class="label-option cheat0-option3">column</label>
+                <input type="radio" id="cheat0-option4" name="cheat0" class="input-option">
+                <label for="cheat0-option4" class="label-option cheat0-option4">column-reverse</label>
+            </form>
+            <section class="box-area">
+                <div class="container cheat0" id="cont-cheat0">
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                </div>
+            </section>
+            <section class="box-code-area">
+                <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
+                <p class="txt-code">
+                    <span class="number-code">3</span><em>flex-direction: row;</em>
+                </p>
+                <p class="txt-code"><span class="number-code">4</span>}</p>
+                <p class="txt-code"><span class="number-code">5</span></p>
+            </section>
+            <div class="buttons">
+            <button type="button" class="button button-add">+ Add Box</button>
+            <button type="button" class="button button-remove">- Remove Box</button>
+            </div>
+        </article>
+        
+        <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">justify-content</a></h2>
+            <form class="radio-cheat">
+                <input type="radio" id="cheat1-option1" name="cheat1" class="input-option" checked="true">
+                <label for="cheat1-option1" class="label-option cheat1-option1">flex-start</label>
+                <input type="radio" id="cheat1-option2" name="cheat1" class="input-option">
+                <label for="cheat1-option2" class="label-option cheat1-option2">center</label>
+                <input type="radio" id="cheat1-option3" name="cheat1" class="input-option">
+                <label for="cheat1-option3" class="label-option cheat1-option3">flex-end</label>
+                <input type="radio" id="cheat1-option4" name="cheat1" class="input-option">
+                <label for="cheat1-option4" class="label-option cheat1-option4">space-between</label>
+                <input type="radio" id="cheat1-option5" name="cheat1" class="input-option">
+                <label for="cheat1-option5" class="label-option cheat1-option5">space-around</label>
+                <input type="radio" id="cheat1-option6" name="cheat1" class="input-option">
+                <label for="cheat1-option6" class="label-option cheat1-option6">space-evenly</label>
+            </form>
+            <section class="box-area">
+                <div class="container cheat1" id="cont-cheat1">
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                </div>
+            </section>
+            <section class="box-code-area">
+                <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
+                <p class="txt-code">
+                    <span class="number-code">3</span><em>justify-content: flex-start;</em>
+                </p>
+                <p class="txt-code"><span class="number-code">4</span>}</p>
+                <p class="txt-code"><span class="number-code">5</span></p>
+            </section>
+            <div class="buttons">
+                <button type="button" class="button button-add">+ Add Box</button>
+                <button type="button" class="button button-remove">- Remove Box</button>
+            </div>
+        </article>
+        <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">align-items</a></h2>
+            <form class="radio-cheat">
+                <input type="radio" id="cheat2-option1" name="cheat2" class="input-option" checked="true">
+                <label for="cheat2-option1" class="label-option cheat2-option1">flex-start</label>
+                <input type="radio" id="cheat2-option2" name="cheat2" class="input-option">
+                <label for="cheat2-option2" class="label-option cheat2-option2">center</label>
+                <input type="radio" id="cheat2-option3" name="cheat2" class="input-option">
+                <label for="cheat2-option3" class="label-option cheat2-option3">flex-end</label>
+                <input type="radio" id="cheat2-option4" name="cheat2" class="input-option">
+                <label for="cheat2-option4" class="label-option cheat2-option4">baseline</label>
+                <input type="radio" id="cheat2-option5" name="cheat2" class="input-option">
+                <label for="cheat2-option5" class="label-option cheat2-option5">stretch</label>
+            </form>
+            <section class="box-area">
+                <div class="container cheat2" id="cont-cheat2">
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                </div>
+            </section>
+            <section class="box-code-area">
+                <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
+                <p class="txt-code">
+                    <span class="number-code">3</span><em>align-items: flex-start;</em>
+                </p>
+                <p class="txt-code"><span class="number-code">4</span>}</p>
+                <p class="txt-code"><span class="number-code">5</span></p>
+            </section>
+            <div class="buttons">
+                <button type="button" class="button button-add">+ Add Box</button>
+                <button type="button" class="button button-remove">- Remove Box</button>
+            </div>
+        </article>
+        <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">align-content</a></h2>
+            <form class="radio-cheat">
+                <input type="radio" id="cheat3-option1" name="cheat3" class="input-option" checked="true">
+                <label for="cheat3-option1" class="label-option cheat3-option1">stretch</label>
+                <input type="radio" id="cheat3-option2" name="cheat3" class="input-option">
+                <label for="cheat3-option2" class="label-option cheat3-option2">flex-start</label>
+                <input type="radio" id="cheat3-option3" name="cheat3" class="input-option">
+                <label for="cheat3-option3" class="label-option cheat3-option3">center</label>
+                <input type="radio" id="cheat3-option4" name="cheat3" class="input-option">
+                <label for="cheat3-option4" class="label-option cheat3-option4">flex-end</label>
+                <input type="radio" id="cheat3-option5" name="cheat3" class="input-option">
+                <label for="cheat3-option5" class="label-option cheat3-option5">space-between</label>
+                <input type="radio" id="cheat3-option6" name="cheat3" class="input-option">
+                <label for="cheat3-option6" class="label-option cheat3-option6">space-around</label>
+                <input type="radio" id="cheat3-option7" name="cheat3" class="input-option">
+                <label for="cheat3-option7" class="label-option cheat3-option7">space-evenly</label>
+            </form>
+            <section class="box-area">
+                <div class="container cheat3" id="cont-cheat3">
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                    <div class="item">4</div>
+                    <div class="item">5</div>
+                    <div class="item">6</div>
+                </div>
+            </section>
+            <section class="box-code-area">
+                <p class="txt-code"><span class="number-code">1</span>.item {</p>
+                <p class="txt-code">
+                    <span class="number-code">2</span><em>align-content: stretch;</em>
+                </p>
+                <p class="txt-code"><span class="number-code">3</span>}</p>
+            </section>
+            <div class="buttons">
+                <button type="button" class="button button-add">+ Add Box</button>
+                <button type="button" class="button button-remove">- Remove Box</button>
+            </div>
+        </article>
+        <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-wrap</a></h2>
+            <form class="radio-cheat">
+                <input type="radio" id="cheat4-option1" name="cheat4" class="input-option" checked="true">
+                <label for="cheat4-option1" class="label-option cheat4-option1">nowrap</label>
+                <input type="radio" id="cheat4-option2" name="cheat4" class="input-option">
+                <label for="cheat4-option2" class="label-option cheat4-option2">wrap</label>
+                <input type="radio" id="cheat4-option3" name="cheat4" class="input-option">
+                <label for="cheat4-option3" class="label-option cheat4-option3">wrap-reverse</label>
+            </form>
+            <section class="box-area">
+                <div class="container cheat4" id="cont-cheat4">
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                </div>
+            </section>
+            <section class="box-code-area">
+                <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
+                <p class="txt-code">
+                    <span class="number-code">3</span><em>flex-wrap: nowrap;</em>
+                </p>
+                <p class="txt-code"><span class="number-code">4</span>}</p>
+                <p class="txt-code"><span class="number-code">5</span></p>
+            </section>
+            <div class="buttons">
+                <button type="button" class="button button-add">+ Add Box</button>
+                <button type="button" class="button button-remove">- Remove Box</button>
+            </div>
+        </article>
+        <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-basis</a></h2>
+            <form class="radio-cheat">
+                <input type="radio" id="cheat5-option1" name="cheat5" class="input-option" checked="true">
+                <label for="cheat5-option1" class="label-option cheat5-option1">auto</label>
+                <input type="radio" id="cheat5-option2" name="cheat5" class="input-option">
+                <label for="cheat5-option2" class="label-option cheat5-option2">0</label>
+                <input type="radio" id="cheat5-option3" name="cheat5" class="input-option">
+                <label for="cheat5-option3" class="label-option cheat5-option3">max-content</label>
+                <input type="radio" id="cheat5-option4" name="cheat5" class="input-option">
+                <label for="cheat5-option4" class="label-option cheat5-option4">min-content</label>
+                <input type="radio" id="cheat5-option5" name="cheat5" class="input-option">
+                <label for="cheat5-option5" class="label-option cheat5-option5">fit-content</label>
+                <input type="radio" id="cheat5-option6" name="cheat5" class="input-option">
+                <label for="cheat5-option6" class="label-option cheat5-option6">fill</label>
+                <input type="radio" id="cheat5-option7" name="cheat5" class="input-option">
+                <label for="cheat5-option7" class="label-option cheat5-option7">입력값</label>
+            </form>
+            <section class="box-area">
+                <div class="container cheat5" id="cont-cheat5">
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                </div>
+            </section>
+            <section class="box-code-area">
+                <p class="txt-code"><span class="number-code">1</span>.item {</p>
+                <p class="txt-code">
+                    <span class="number-code">2</span><em>flex-basis: auto;</em>
+                </p>
+                <p class="txt-code"><span class="number-code">3</span>}</p>
+            </section>
+            <div class="buttons">
+                <button type="button" class="button button-add">+ Add Box</button>
+                <button type="button" class="button button-remove">- Remove Box</button>
+            </div>
+        </article>
+
+        <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-grow</a></h2>
+            <form class="radio-cheat">
+                <input type="radio" id="cheat6-option1" name="cheat6" class="input-option" checked="true">
+                <label for="cheat6-option1" class="label-option cheat6-option1">0</label>
+                <input type="radio" id="cheat6-option2" name="cheat6" class="input-option">
+                <label for="cheat6-option2" class="label-option cheat6-option2">1</label>
+                <input type="radio" id="cheat6-option3" name="cheat6" class="input-option">
+                <label for="cheat6-option3" class="label-option cheat6-option3">입력값</label>
+            </form>
+            <section class="box-area">
+                <div class="container cheat6" id="cont-cheat6">
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                </div>
+            </section>
+            <section class="box-code-area">
+                <p class="txt-code"><span class="number-code">1</span>.item {</p>
+                <p class="txt-code">
+                    <span class="number-code">2</span><em>flex-grow: 0;</em>
+                </p>
+                <p class="txt-code"><span class="number-code">3</span>}</p>
+            </section>
+            <div class="buttons">
+                <button type="button" class="button button-add">+ Add Box</button>
+                <button type="button" class="button button-remove">- Remove Box</button>
+            </div>
+        </article>
+
+        <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-shrink</a></h2>
+            <form class="radio-cheat">
+                <input type="radio" id="cheat7-option1" name="cheat7" class="input-option" checked="true">
+                <label for="cheat7-option1" class="label-option cheat7-option1">0</label>
+                <input type="radio" id="cheat7-option2" name="cheat7" class="input-option">
+                <label for="cheat7-option2" class="label-option cheat7-option2">1</label>
+                <input type="radio" id="cheat7-option3" name="cheat7" class="input-option">
+                <label for="cheat7-option3" class="label-option cheat7-option3">입력값</label>
+            </form>
+            <section class="box-area">
+                <div class="container cheat7" id="cont-cheat7">
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                </div>
+            </section>
+            <section class="box-code-area">
+                <p class="txt-code"><span class="number-code">1</span>.item {</p>
+                <p class="txt-code">
+                    <span class="number-code">2</span><em>flex-shrink: 0;</em>
+                </p>
+                <p class="txt-code"><span class="number-code">3</span>}</p>
+            </section>
+            <div class="buttons">
+                <button type="button" class="button button-add">+ Add Box</button>
+                <button type="button" class="button button-remove">- Remove Box</button>
+            </div>
+        </article>
+
+        <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">align-self</a></h2>
+            <form class="radio-cheat">
+                <input type="radio" id="cheat8-option1" name="cheat8" class="input-option" checked="true">
+                <label for="cheat8-option1" class="label-option cheat8-option1">auto</label>
+                <input type="radio" id="cheat8-option2" name="cheat8" class="input-option">
+                <label for="cheat8-option2" class="label-option cheat8-option2">stretch</label>
+                <input type="radio" id="cheat8-option3" name="cheat8" class="input-option">
+                <label for="cheat8-option3" class="label-option cheat8-option3">flex-start</label>
+                <input type="radio" id="cheat8-option4" name="cheat8" class="input-option">
+                <label for="cheat8-option4" class="label-option cheat8-option4">flex-end</label>
+                <input type="radio" id="cheat8-option5" name="cheat8" class="input-option">
+                <label for="cheat8-option5" class="label-option cheat8-option5">center</label>
+                <input type="radio" id="cheat8-option6" name="cheat8" class="input-option">
+                <label for="cheat8-option6" class="label-option cheat8-option6">baseline</label>
+            </form>
+            <section class="box-area">
+                <div class="container cheat8" id="cont-cheat8">
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                </div>
+            </section>
+            <section class="box-code-area">
+                <p class="txt-code"><span class="number-code">1</span>.item {</p>
+                <p class="txt-code">
+                    <span class="number-code">2</span><em>align-self: auto;</em>
+                </p>
+                <p class="txt-code"><span class="number-code">3</span>}</p>
+            </section>
+            <div class="buttons">
+                <button type="button" class="button button-add">+ Add Box</button>
+                <button type="button" class="button button-remove">- Remove Box</button>
+            </div>
+        </article>
+
+        <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">order</a></h2>
+            <form class="radio-cheat">
+                <input type="radio" id="cheat9-option1" name="cheat9" class="input-option" checked="true">
+                <label for="cheat9-option1" class="label-option cheat9-option1">item1 : 입력값</label>
+                <input type="radio" id="cheat9-option2" name="cheat9" class="input-option">
+                <label for="cheat9-option2" class="label-option cheat9-option2">item2 : 입력값</label>
+                <input type="radio" id="cheat9-option3" name="cheat9" class="input-option">
+                <label for="cheat9-option3" class="label-option cheat9-option3">item3 : 입력값</label>
+            </form>
+            <section class="box-area">
+                <div class="container cheat9" id="cont-cheat9">
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                </div>
+            </section>
+            <section class="box-code-area">
+                <p class="txt-code"><span class="number-code">1</span>.item {</p>
+                <p class="txt-code">
+                    <span class="number-code">2</span><em>order: 0;</em>
+                </p>
+                <p class="txt-code"><span class="number-code">3</span>}</p>
+            </section>
+            <div class="buttons">
+                <button type="button" class="button button-add">+ Add Box</button>
+                <button type="button" class="button button-remove">- Remove Box</button>
+            </div>
+        </article>
+
+
+        <!-- Z index는 cheatsheet에서 필수적인 속성은 아니라 생각하여 우선 주석표시 해두었습니다.... -->
+
+        <!-- <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">z-index</a></h2>
+            <form class="radio-cheat">
+                <input type="radio" id="cheat0-option1" name="cheat0" class="input-option" checked="true">
+                <label for="cheat0-option1" class="label-option cheat0-option1">row</label>
+                <input type="radio" id="cheat0-option2" name="cheat0" class="input-option">
+                <label for="cheat0-option2" class="label-option cheat0-option2">row-reverse</label>
+                <input type="radio" id="cheat0-option3" name="cheat0" class="input-option">
+                <label for="cheat0-option3" class="label-option cheat0-option3">column</label>
+                <input type="radio" id="cheat0-option4" name="cheat0" class="input-option">
+                <label for="cheat0-option4" class="label-option cheat0-option4">column-reverse</label>
+            </form>
+            <section class="box-area">
+                <div class="container cheat0" id="cont-cheat0">
+                    <div class="item">1</div>
+                    <div class="item">2</div>
+                    <div class="item">3</div>
+                </div>
+            </section>
+            <section class="box-code-area">
+                <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
+                <p class="txt-code">
+                    <span class="number-code">3</span><em>flex-direction: row;</em>
+                </p>
+                <p class="txt-code"><span class="number-code">4</span>}</p>
+                <p class="txt-code"><span class="number-code">5</span></p>
+            </section>
+            <div class="buttons">
+                <button type="button" class="button button-add">+ Add Box</button>
+                <button type="button" class="button button-remove">- Remove Box</button>
+            </div>
+        </article> -->
     </main>
     <button type="button" class="btn-up"></button>
-    
     <footer class="footer-area">
         <div class="cont-footer">
             <div class="cont-txt">
@@ -146,5 +523,6 @@
             </div>
         </div>
     </footer>
+    <script src="/src/components/cheatsheet-flex.js"></script>
 </body>
 </html>
