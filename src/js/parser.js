@@ -106,7 +106,11 @@
   };
 
   const encodeEntity = (token) => {
-    return token.replaceAll('<', '&#60;').replaceAll('>', '&#62;');
+    return token
+      .replace(/<br\s*\/>/g, '&br /&')
+      .replaceAll('<', '&#60;')
+      .replaceAll('>', '&#62;')
+      .replaceAll('&br /&', '<br />');
   };
 
   const encodeCodeEntity = (token) => {
