@@ -9,10 +9,6 @@ main {
   align-items: stretch;
 }
 
-article {
-  margin-bottom: 100px;
-}
-
 .gnb-header ul.nav-left li:nth-child(3) {
   color: var(--flex-primary);
   font-weight: 700;
@@ -45,6 +41,10 @@ article {
   padding: 140px 180px 120px;
   font-size: 18px;
   line-height: 1.6em;
+}
+
+.cont-flex article {
+  margin-bottom: 100px;
 }
 
 .cont-flex h2 {
@@ -201,7 +201,8 @@ article {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #3f3f46 url(/src/assets/images/icon-chevron-up.svg) no-repeat center;
+  background: #3f3f46 url(/src/assets/images/icon-chevron-up.svg) no-repeat
+    center;
   box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
   transition: all 0.3s;
   cursor: pointer;
@@ -214,8 +215,8 @@ article {
 }
 
 .btn-up.on {
-  background: var(--subtext) url(/src/assets/images/icon-chevron-up-darkmode.svg)
-    no-repeat center;
+  background: var(--subtext)
+    url(/src/assets/images/icon-chevron-up-darkmode.svg) no-repeat center;
 }
 
 /* 다크 모드 */
@@ -282,6 +283,21 @@ article {
     width: 80%;
   }
 
+  .cont-flex article {
+    margin-bottom: 80px;
+  }
+
+  .cont-flex h2 {
+    padding: 35px 0 0;
+    margin: 20px 0;
+  }
+
+  .cont-flex h3,
+  .cont-flex h4 {
+    padding: 0 0 15px 0;
+    margin: 35px 0 15px;
+  }
+
   .cont-flex figure {
     max-width: 90%;
   }
@@ -293,21 +309,16 @@ article {
 
 @media screen and (max-width: 768px) {
   .cont-flex {
-    padding-left: 5vw;
-    padding-right: 5vw;
+    padding: 50px 5vw;
     font-size: 16px;
   }
 
   .cont-flex h2 {
-    margin: 15px 0 20px;
-    color: var(--secondary);
     font-size: 28px;
   }
 
   .cont-flex h3,
   .cont-flex h4 {
-    padding-bottom: 15px;
-    margin: 35px 0 15px;
     font-size: 18px;
   }
 
