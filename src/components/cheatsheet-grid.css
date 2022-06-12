@@ -2,19 +2,17 @@
 
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
+
 body {
+  width: 100%;
   background-color: #e5e5e5;
 }
 
-
-/* 임시 여백 */
-
-.fg-cheat {
-  width: 525px;
+.fg-cheat:nth-child(1),
+.fg-cheat:nth-child(2) {
   padding-bottom: 70px;
   border-bottom: 1px solid var(--grid-border);
 }
-
 
 .radio-cheat {
   margin: 20px 0;
@@ -92,26 +90,25 @@ body {
   background-color: var(--grid-primary);
 }
 
-
 /* 컴포넌트 CSS */
 
 /* 박스 타이틀 데이타임모드 */
 
-.tit-title a {
-  width: 113px;
+.tit-title {
+  width: fit-content;
   color: #3f3f46;
   font-family: Pretendard;
   font-weight: 500;
   font-size: 22px;
   line-height: 36px;
+  margin-bottom: 20px;
 }
 
-.tit-title a:hover {
-  width: 142px;
+.tit-title:hover {
   color: #878787;
 }
 
-.tit-title a:hover:before {
+.tit-title:hover>a:nth-child(1)::before {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -122,42 +119,77 @@ body {
   content: '';
 }
 
+.tit-title:hover>a:nth-child(3)::before {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  content: '';
+}
 
 /* 그림예제부분 */
 
+.box-area {
+  width: 100%;
+}
+
 .container {
-  display: flex;
-  align-items: flex-start;
-  gap: 22px 12px;
-  width: 525px;
+  overflow: auto;
+  display: grid;
+  grid-template-rows: 50px;
+  gap: 12px;
   min-height: 150px;
-  padding: 22px 30px;
-  /* 아래박스와 구분을 위해 마진바텀을 임시로 넣어주었습니다. */
+  padding: 20px;
   margin-bottom: 20px;
   border-radius: 20px;
   background-color: white;
   box-shadow: 0px 4px 15px rgba(197, 96, 70, 0.08);
 }
 
-
 .item {
-  width: 70px;
-  height: 70px;
+  width: auto;
+  height: auto;
   border-radius: 15px;
   background: #f6866a;
   color: white;
   font-family: Pretendard;
   font-size: 22px;
-  line-height: 70px;
+  line-height: 50px;
   text-align: center;
   box-shadow: 0px 4px 15px rgba(81, 69, 159, 0.08);
+}
+
+/* cheat 속성 별 스타일  */
+
+.container.cheat0 {
+  grid-template-columns: 200px 200px;
+  grid-template-rows: 100px 100px;
+}
+
+.container.cheat0 .item {
+  line-height: 100px;
+}
+
+.container.cheat1 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.container.cheat2 {
+  overflow: visible;
+  grid-template-columns: repeat(3, minmax(30px, 100px));
+  width: 100px;
+}
+
+.container.cheat3 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
 }
 
 /* 코드예제부분 */
 
 .box-code-area {
   width: 525px;
-  min-height: 180px;
+  min-height: 184px;
   padding: 22px 0 22px 20px;
   /* 아래박스와 구분을 위해 마진바텀을 임시로 넣어주었습니다. */
   margin-bottom: 20px;
@@ -182,25 +214,82 @@ body {
   line-height: 28px;
 }
 
-/* 나이트모드 스타일링 */
+/* 임의로 버튼 css 작업  */
 
-.container.on,
-.box-code-area.on {
+.fg-cheat .buttons {
+  width: 100%;
+}
+
+.fg-cheat .buttons .button {
+  height: 41px;
+  padding: 10px 16px;
+  border-radius: 10px;
+}
+
+.fg-cheat .buttons .button-add {
+  margin-right: 12px;
+  background-color: var(--grid-hover);
+  color: var(--grid-primary);
+}
+
+.fg-cheat .buttons .button-remove {
+  background-color: var(--subtext);
+  color: var(--secondary);
+}
+
+.fg-cheat .buttons .button:hover {
+  box-shadow: 0 0 2px 2px #00000033;
+}
+
+.fg-cheat .buttons .button:active {
+  box-shadow: inset 0 0 2px 2px #00000033;
+}
+
+/* 나이트모드 스타일링 
+main-cheatsheet-grid 에 on 클래스 넣으면 일괄 나이트 모드*/
+
+.on {
+  background-color: var(--primary);
+}
+
+.main-cheatsheet-grid.on .container,
+.main-cheatsheet-grid.on .box-code-area {
   box-shadow: 0px 10px 25px 0px rgba(45, 45, 45, 0.1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: #252424;
 }
 
+.main-cheatsheet-grid.on .number-code {
+  color: var(--secondary);
+}
+
 /* 라디오 나이트모드  */
 
-.fg-cheat .label-option.on::before {
+.main-cheatsheet-grid.on .fg-cheat .label-option::before {
   border: 1px solid var(--secondary);
+}
+
+.main-cheatsheet-grid.on .fg-cheat .label-option:hover,
+.main-cheatsheet-grid.on .fg-cheat .label-option:hover::before {
+  border-color: var(--border);
+  color: var(--border);
+}
+
+.main-cheatsheet-grid.on .fg-cheat .input-option:checked+.label-option {
+  color: var(--grid-primary);
+}
+
+.main-cheatsheet-grid.on .fg-cheat .input-option:checked+.label-option::before {
+  border-color: var(--grid-primary);
+}
+
+.main-cheatsheet-grid.on .fg-cheat .input-option:checked+.label-option::after {
+  background-color: var(--grid-primary);
 }
 
 /* 박스 타이틀 나이트모드 */
 
-.tit-title.on a {
-  width: 113px;
+.main-cheatsheet-grid.on .tit-title {
   color: var(--border);
   font-family: Pretendard;
   font-weight: 500;
@@ -208,19 +297,38 @@ body {
   line-height: 36px;
 }
 
-.tit-title.on a:hover {
-  width: 142px;
+.main-cheatsheet-grid.on .tit-title:hover {
   color: #b4b4b4;
 }
 
-.tit-title.on a:hover:before {
+.main-cheatsheet-grid.on .tit-title:hover>a:nth-child(1)::before {
   display: inline-block;
   width: 24px;
   height: 24px;
   margin-right: 5px;
   background-image: url(../assets/images/icon-link.svg);
   background-repeat: no-repeat;
-  filter: opacity(0.5) drop-shadow(0 0 0 #b4b4b4);
   vertical-align: text-bottom;
+  filter: opacity(0.5) drop-shadow(0 0 0 #b4b4b4);
   content: '';
+}
+
+/* 버튼 다크모드  */
+
+.main-cheatsheet-grid.on .fg-cheat .buttons .button-add {
+  background-color: #f9b09e;
+  color: #fffcfa;
+}
+
+.main-cheatsheet-grid.on .fg-cheat .buttons .button-remove {
+  background-color: #878787;
+  color: #252424;
+}
+
+.main-cheatsheet-grid.on .fg-cheat .buttons .button:hover {
+  box-shadow: 0 0 2px 2px #ffffffaa;
+}
+
+.main-cheatsheet-grid.on .fg-cheat .buttons .button:active {
+  box-shadow: inset 0 0 2px 2px #ffffffaa;
 }
