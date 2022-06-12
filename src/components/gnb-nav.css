@@ -258,10 +258,6 @@
         display: none;
     }
 
-    .gnb-header .search-btn {
-        display: none;
-    }
-
     .gnb-header .mobile-search,
     .gnb-header ul.nav-left .hamburger-container {
         display: block;
@@ -290,7 +286,7 @@
 
     .gnb-header ul.nav-left .nav-left-menu,
     .gnb-header .search-input,
-    .search-btn,
+    .gnb-header .search-btn,
     .button-group {
         display: none;
     }
