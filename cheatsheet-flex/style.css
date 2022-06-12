@@ -5,13 +5,54 @@ body {
 }
 
 main {
-    height: 100vh;
+    width: 100vw;
+    /* height: 100vh */
+    /* height: 100%; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; 
 }
+
+article {
+    flex-basis: 50%;
+}
+
 
 .gnb-header .modal-menu .list-item:first-child {
     color: var(--flex-primary);
     font-weight: 700;
 }
+
+.fg-cheat .buttons {
+    width: 100%;
+  }
+  
+.fg-cheat .buttons .button {
+    height: 41px;
+    padding: 10px 16px;
+    border-radius: 10px;
+  }
+
+.fg-cheat .buttons .button:hover {
+    box-shadow: 0 0 2px 2px #00000033;
+  }
+  
+.fg-cheat .buttons .button:active {
+    box-shadow: inset 0 0 2px 2px #00000033;
+  }
+
+.fg-cheat .buttons .button-add {
+    margin-right: 12px;
+    background-color: var(--flex-hover);
+    color: var(--flex-primary);
+  }
+  
+.fg-cheat .buttons .button-remove {
+    background-color: var(--subtext);
+    color: var(--secondary);
+  }
+
 
 .btn-up {
     display: none;
@@ -35,4 +76,8 @@ main {
 
 .btn-up.on {
     background: var(--subtext) url(/src/assets/images/icon-chevron-up-darkmode.svg) no-repeat center;
+}
+
+.footer-area{
+    display: block;
 }
