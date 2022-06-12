@@ -127,7 +127,7 @@
         <section class="section-carousel">
             <h2 class="visually-hidden">flex, grid 코드 에디터</h2>
             <!-- carousel mode (flex) -->
-            <div data-mode="carousel" data-title="Flex Code" class="fg-editor carousel-flex">
+            <div data-mode="carousel" data-title="Flex Code" class="fg-editor carousel-flex theme-double-color-1">
                 <code data-struct="[1][2][2][2]" class="carousel-flex">
                     .container {
                       display: flex;
@@ -140,18 +140,15 @@
                     }
                     .item3 {
                       flex: 1;
-                      background-color: #eceafe;
                     }
                     .item4 {
                       flex: 1;
                     }
                     .item5 {
                       flex: 2;
-                      background-color: #eceafe;
                     }
                     .item7 {
                       flex: 1;
-                      background-color: #eceafe;
                     }
                 </code>
                 <code data-struct="[2][2][2][2]" class="carousel-flex">
@@ -165,19 +162,16 @@
                       flex: 1;        
                     }
                     .item2 {
-                      flex: 3; 
-                      background-color: #eceafe;
+                      flex: 3;
                     }
                     .item3 {
                       flex: 1;
                     }
                     .item4 {
                       flex: 0;
-                      background-color: #eceafe;s
                     }
                     .item5 {
                       flex: 1;
-                      background-color: #eceafe;
                     }
                     .item6 {
                       flex: 1;
@@ -187,7 +181,6 @@
                     }
                     .item8 {
                       flex: 1;
-                      background-color: #eceafe;
                     }
                 </code>
                 <code data-struct="[2][2][2][2]" class="carousel-flex">
@@ -203,64 +196,31 @@
                     }
                     .item2 {
                       flex: 0; 
-                      background-color: #eceafe;
                     }
                     .item3 {
                       flex: 1;
                     }
                     .item4 {
                       flex: 3;
-                      background-color: #eceafe;
                     }
                     .item5 {
                       flex-basis: 30%;
                     }
                     .item6 {
                       flex-basis: 40%;
-                      background-color: #eceafe;
                     }
                     .item7 {
                       flex: 1;
                     }
                     .item8 {
-                      background-color: #eceafe;
                     }
                 </code>
             </div>
             <!-- carousel mode (grid) -->
-            <div data-mode="carousel" data-title="Grid Code" class="fg-editor carousel-grid theme-grid">
-                <code data-struct="[8]">
+            <div data-mode="carousel" data-title="Grid Code" class="fg-editor carousel-grid theme-grid theme-double-color-2">
+                <code data-hidden="true">
                     .container {
-                      display: grid;
-                      grid-template-columns: repeat(10, 1fr);
-                      grid-template-rows: repeat(4, 1fr);
-                      row-gap: 16px;
-                    }
-                    .item1 {
-                      grid-area: 1/3/2/8;
-                    }
-                    .item2 {
-                      grid-area: 1/9/2/11;
-                      background-color: #FFF0E6;
-                    }
-                    .item3 {
-                      grid-area: 2/1/3/5;
-                    }
-                    .item4 {
-                      grid-area: 2/6/3/11;
-                      background-color: #FFF0E6;
-                    }
-                    .item5 {
-                      grid-area: 3/1/4/5;
-                    }
-                    .item6 {
-                      grid-area: 3/7/4/11;
-                    }
-                    .item7 {
-                      grid-area: 4/3/5/8;
-                    }
-                    .item8 {
-                      grid-area: 4/9/5/11;
+                        gap: 0;
                     }
                 </code>
                 <code data-struct="[8]">
@@ -271,31 +231,28 @@
                       row-gap: 16px;
                     }
                     .item1 {
-                      grid-area: 1/1/2/6;
+                      grid-area: 1 / 3 / 2 / 8;
                     }
                     .item2 {
-                      grid-area: 1/7/2/11;
-                      background-color: #FFF0E6;
+                      grid-area: 1 / 9 / 2 / 11;
                     }
                     .item3 {
-                      grid-area: 2/3/3/7;
+                      grid-area: 2 / 1 / 3 / 5;
                     }
                     .item4 {
-                      grid-area: 2/8/3/11;
-                      background-color: #FFF0E6;
+                      grid-area: 2 / 6 / 3 / 11;
                     }
                     .item5 {
-                      grid-area: 3/1/4/5;
+                      grid-area: 3 / 1 / 4 / 5;
                     }
                     .item6 {
-                      grid-area: 3/6/4/11;
-                      background-color: #FFF0E6;
+                      grid-area: 3 / 7 / 4 / 11;
                     }
                     .item7 {
-                      grid-area: 4/1/5/4;
+                      grid-area: 4 / 3 / 5 / 8;
                     }
                     .item8 {
-                      grid-area: 4/5/5/11;
+                      grid-area: 4 / 9 / 5 / 11;
                     }
                 </code>
                 <code data-struct="[8]">
@@ -306,31 +263,60 @@
                       row-gap: 16px;
                     }
                     .item1 {
-                      grid-area: 1/1/2/5;
-                      background-color: #FFF0E6;
+                      grid-area: 1 / 1 / 2 / 6;
                     }
                     .item2 {
-                      grid-area: 1/6/2/11;
+                      grid-area: 1 / 7 / 2 / 11;
                     }
                     .item3 {
-                      grid-area: 2/3/3/5;
+                      grid-area: 2 / 3 / 3 / 7;
                     }
                     .item4 {
-                      grid-area: 2/7/3/11;
-                      background-color: #FFF0E6;
+                      grid-area: 2 / 8 / 3 / 11;
                     }
                     .item5 {
-                      grid-area: 3/1/4/4;
-                      background-color: #FFF0E6;
+                      grid-area: 3 / 1 / 4 / 5;
                     }
                     .item6 {
-                      grid-area: 3/5/4/10;
+                      grid-area: 3 / 6 / 4 / 11;
                     }
                     .item7 {
-                      grid-area: 4/1/5/6;
+                      grid-area: 4 / 1 / 5 / 4;
                     }
                     .item8 {
-                      grid-area: 4/8/5/11;
+                      grid-area: 4 / 5 / 5 / 11;
+                    }
+                </code>
+                <code data-struct="[8]">
+                    .container {
+                      display: grid;
+                      grid-template-columns: repeat(10, 1fr);
+                      grid-template-rows: repeat(4, 1fr);
+                      row-gap: 16px;
+                    }
+                    .item1 {
+                      grid-area: 1 / 1 / 2 / 5;
+                    }
+                    .item2 {
+                      grid-area: 1 / 6 / 2 / 11;
+                    }
+                    .item3 {
+                      grid-area: 2 / 3 / 3 / 5;
+                    }
+                    .item4 {
+                      grid-area: 2 / 7 / 3 / 11;
+                    }
+                    .item5 {
+                      grid-area: 3 / 1 / 4 / 4;
+                    }
+                    .item6 {
+                      grid-area: 3 / 5 / 4 / 10;
+                    }
+                    .item7 {
+                      grid-area: 4 / 1 / 5 / 6;
+                    }
+                    .item8 {
+                      grid-area: 4 / 8 / 5 / 11;
                     }
                 </code>
             </div>

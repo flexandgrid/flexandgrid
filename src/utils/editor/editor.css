@@ -119,6 +119,24 @@
   --four-color-1: #b6abed;
 }
 
+.fg-editor.theme-double-color-1 .container .item:nth-of-type(even) {
+  background-color: var(--primary-2);
+}
+
+.on .fg-editor.theme-double-color-1 .container .item:nth-of-type(even) {
+  background-color: var(--primary-6);
+}
+
+.fg-editor.theme-double-color-2 .container .item:nth-of-type(4n-1),
+.fg-editor.theme-double-color-2 .container .item:nth-of-type(4n-2) {
+  background-color: var(--primary-2);
+}
+
+.on .fg-editor.theme-double-color-2 .container .item:nth-of-type(4n-1),
+.on .fg-editor.theme-double-color-2 .container .item:nth-of-type(4n-2) {
+  background-color: var(--primary-6);
+}
+
 @keyframes mountItem {
   0% {
     transform: translateY(-10%);
