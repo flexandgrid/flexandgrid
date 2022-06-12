@@ -21,20 +21,22 @@ body {
     max-width: 1600px;
 }
 
-.footer-area::before {
+.footer-area .cont-txt {
+    position: relative;
+    min-width: 400px;
+    padding: 0 60px 0 240px;
+}
+
+
+.footer-area .cont-txt::before {
     display: inline-block;
     position: absolute;
-    top: 60px;
-    left: 108px;
+    top: 5px;
+    left: 0;
     width: 144px;
     height: 20px;
     background: url(../assets/images/logo-gray.svg) no-repeat center/contain;
     content: "";
-}
-
-.footer-area .cont-txt {
-    min-width: 400px;
-    padding: 0 60px 0 240px;
 }
 
 .footer-area .txt-copyrigt,
@@ -151,10 +153,6 @@ body {
 
 /* 반응형 */
 @media screen and (max-width: 1280px) {
-    .footer-area::before {
-        left: 60px;
-    }
-
     .footer-area .cont-footer {
         margin: 60px;
     }
@@ -173,10 +171,6 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    .footer-area::before {
-        left: 38px;
-    }
-
     .footer-area .cont-footer {
         margin: 60px 38px;
     }
@@ -191,8 +185,12 @@ body {
 }
 
 @media screen and (max-width: 479px) {
-    .footer-area::before {
-        top: 32px;
+    .footer-area .cont-footer {
+        margin-bottom: 45px;
+    }
+
+    .footer-area .cont-txt::before {
+        top: -18px;
         width: 130px;
         height: 18px;
     }
