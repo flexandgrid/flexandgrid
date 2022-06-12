@@ -832,7 +832,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 479px) {
   .fg-editor {
     --inner: var(--mobile-height-inner);
     --inner-free-mode: var(--mobile-height-inner-free-mode);
