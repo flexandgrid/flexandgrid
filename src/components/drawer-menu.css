@@ -87,6 +87,7 @@ aside.toggle {
 }
 
 .btn-drawer-menu {
+  display: block;
   position: relative;
   width: 100%;
   padding: 14px 0 11px 40px;
