@@ -74,6 +74,10 @@ aside.toggle {
   background: none;
 }
 
+.drawer-menu > ol {
+  height: auto;
+}
+
 .mobile-logo {
   display: block;
   margin-left: 11px;
@@ -127,7 +131,7 @@ aside.toggle {
   transition: transform 200ms ease-in-out;
 }
 
-.btn-drawer-menu:focus::after {
+.btn-drawer-menu.fold::after {
   transform: rotate(180deg);
 }
 
@@ -153,10 +157,17 @@ aside.toggle {
 
 /* drawer-menu 리스트 */
 .list-drawer-menu {
-  /* display: none; */
   margin: 6px 0 0 -40px;
   color: var(--secondary);
   font-weight: 400;
+}
+
+.btn-drawer-menu.fold ol {
+  height: 0;
+}
+
+.btn-drawer-menu.fold ol li {
+  display: none;
 }
 
 .tit-drawer-menu {

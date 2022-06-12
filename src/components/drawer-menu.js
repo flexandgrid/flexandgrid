@@ -63,3 +63,17 @@ const handleLoad = () => {
 
 // window.addEventListener('scroll', checkScroll);
 window.addEventListener('markdownParsed', handleLoad);
+
+
+
+const menuBtn = document.querySelectorAll('.btn-drawer-menu');
+
+// 메뉴 드롭다운
+
+const toggleBtn = (e) => {
+  e.target.classList.toggle('fold');
+}
+
+for(let i = 0; i < menuBtn.length; i++) {
+  menuBtn[i].addEventListener('click', (e) => toggleBtn(e));
+}
