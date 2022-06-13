@@ -106,13 +106,15 @@ for (let i = 0; i < searchBtns.length; i++) {
   });
 }
 
-const searchDataDeleteBtn = document.querySelector('.btn-del-all');
-searchDataDeleteBtn.addEventListener('click', () => {
-  searchHistory = [];
-  localStorage.setItem('searchHistoryData', JSON.stringify(searchHistory));
-  createHistory(searchHistoryList);
-  createHistory(mobileSearchHistoryList);
-});
+const searchDataDeleteBtn = document.querySelectorAll('.btn-del-all');
+searchDataDeleteBtn.forEach((deleteBtn) => {
+  deleteBtn.addEventListener('click', () => {
+    searchHistory = [];
+    localStorage.setItem('searchHistoryData', JSON.stringify(searchHistory));
+    createHistory(searchHistoryList);
+    createHistory(mobileSearchHistoryList);
+  });
+})
 
 const searchHistoryList = document.querySelector('.list-history');
 const mobileSearchHistoryList = document.querySelector('.list-history-m');
