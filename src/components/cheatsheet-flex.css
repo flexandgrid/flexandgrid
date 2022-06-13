@@ -6,7 +6,7 @@ body {
 
 /* 임시 여백 */
 .fg-cheat {
-  padding: 10vh 5vw;
+   width: 525px;
 }
 
 .radio-cheat {
@@ -165,18 +165,18 @@ body {
 
 /* 다크모드 스타일링 */
 
-.fg-cheat.on {
+.on {
   background-color: var(--primary);
 }
 
-.fg-cheat.on .container,
-.fg-cheat.on .box-code-area {
+.on .fg-cheat .container,
+.on .fg-cheat .box-code-area {
   box-shadow: 0px 10px 25px 0px rgba(45, 45, 45, 0.1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: #252424;
 }
 
-.fg-cheat.on .tit-cheat a {
+.on .fg-cheat .tit-cheat a {
   width: 113px;
   margin: 0 0 50px 9px;
   color: var(--background);
@@ -185,12 +185,12 @@ body {
   line-height: 36px;
 }
 
-.fg-cheat.on .tit-cheat a:hover {
+.on .fg-cheat .tit-cheat a:hover {
   width: 142px;
   color: var(--tertiary);
 }
 
-.fg-cheat.on .tit-cheat a:hover:before {
+.on .fg-cheat .tit-cheat a:hover:before {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -202,8 +202,8 @@ body {
   content: '';
 }
 
-.fg-cheat.on .label-option:hover,
-.fg-cheat.on .label-option:hover::before {
+.on .fg-cheat .label-option:hover,
+.on .fg-cheat .label-option:hover::before {
   border-color: var(--white);
   color: var(--white);
 }
