@@ -9,12 +9,13 @@ if (searchData !== null) {
 const searchInput = document.querySelector('.search-input');
 const searchToggle = document.querySelector('.mobile-search');
 const searchMobileModal = document.querySelector('.search-modal-mobile');
-const searchMobalCloseBtn = searchMobileModal.querySelector('.close-btn');
+const searchModalCloseBtn = searchMobileModal.querySelector('.close-btn');
 const searchOverlay = document.querySelector('.overlay');
 
 searchInput.addEventListener('click', () => {
   searchModal.classList.add('clicked');
-  createHistory();
+  createHistory(searchHistoryList);
+  createHistory(mobileSearchHistoryList);
 });
 
 function openSearchModal() {
@@ -22,7 +23,8 @@ function openSearchModal() {
     searchMobileModal.classList.add('clicked');
     searchOverlay.classList.add('clicked');
     window.addEventListener('click', closeSearchModal)
-    createHistory();
+    createHistory(searchHistoryList);
+    createHistory(mobileSearchHistoryList);
   }
 }
 
@@ -31,10 +33,11 @@ searchToggle.addEventListener('click', openSearchModal);
 function closeSearchModalBtn() {
   searchMobileModal.classList.remove('clicked');
   searchOverlay.classList.remove('clicked');
-  createHistory();
+  createHistory(searchHistoryList);
+  createHistory(mobileSearchHistoryList);
 }
 
-searchMobalCloseBtn.addEventListener('click', closeSearchModalBtn);
+searchModalCloseBtn.addEventListener('click', closeSearchModalBtn);
 
 function closeSearchModal(e) {
   if (e.target.className === 'overlay clicked') {
@@ -60,7 +63,8 @@ document.addEventListener('click', (e) => {
       return text !== inText;
     });
     localStorage.setItem('searchHistoryData', JSON.stringify(searchHistory));
-    createHistory();
+    createHistory(searchHistoryList);
+    createHistory(mobileSearchHistoryList);
   }
 
   if (e.target.classList.value == 'list-item') {
@@ -105,18 +109,20 @@ const searchDataDeleteBtn = document.querySelector('.btn-del-all');
 searchDataDeleteBtn.addEventListener('click', () => {
   searchHistory = [];
   localStorage.setItem('searchHistoryData', JSON.stringify(searchHistory));
-  createHistory();
+  createHistory(searchHistoryList);
+  createHistory(mobileSearchHistoryList);
 });
 
 
 const searchHistoryList = document.querySelector('.list-history');
+const mobileSearchHistoryList = document.querySelector('.list-history-m');
 const removeChildAll = (ele) => {
   while (ele.hasChildNodes()) {
     ele.removeChild(ele.firstChild);
   }
 };
-const createHistory = () => {
-  removeChildAll(searchHistoryList);
+const createHistory = (list) => {
+  removeChildAll(list);
   if (searchHistory.length > 0) {
     searchHistory.forEach((v) => {
       const searchList = document.createElement('li');
@@ -143,7 +149,7 @@ const createHistory = () => {
 
       searchList.appendChild(listItem);
 
-      searchHistoryList.appendChild(searchList);
+      list.appendChild(searchList);
     });
   }
 };

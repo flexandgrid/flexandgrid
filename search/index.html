@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,8 +19,9 @@
     <script defer src="/src/js/darkmode.js"></script>
     <script defer src="/src/js/search.js"></script>
     <script defer src="searchPage.js"></script>
-  </head>
-  <body class="search-body">
+</head>
+
+<body class="search-body">
     <h1 class="sr-only">검색 페이지입니다.</h1>
     <header class="gnb-header">
         <div class="gnb-cont">
@@ -65,7 +67,7 @@
                     </li>
                     <li class="search">
                         <form action="/search" method="get" autocomplete="off">
-                            <input type="text" class="search-input" name="q" placeholder="Search"/>
+                            <input type="text" class="search-input" name="q" placeholder="Search" />
                             <button type="submit" class="search-btn">
                                 <span class="a11y-hidden">검색 버튼</span>
                             </button>
@@ -82,10 +84,7 @@
                         <button class="darkmode-btn">
                             <span class="a11y-hidden">다크 모드 전환</span>
                         </button>
-                        <a
-                            href="https://github.com/flexandgrid/flexandgrid"
-                            target="_blank"
-                            class="github-btn">
+                        <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="github-btn">
                             <span class="a11y-hidden">깃헙 바로가기</span>
                         </a>
                     </li>
@@ -93,65 +92,56 @@
             </nav>
         </div>
     </header>
-  
+
     <aside class="search-modal-mobile">
-      <header>
-          <h1 class="visually-hidden">검색창</h1>
-          <form action="/search" method="get" autocomplete="off">
-              <input type="text" class="search-input" name="q" placeholder="Search"/>
-              <button type="submit" class="search-btn">
-                  <span class="visually-hidden">검색 버튼</span>
-              </button>
-          </form>
-          <button class="close-btn" type="button">취소</button>
-      </header>
-      <section class="modal-history">
-          <header class="header-history">
-              <h2 class="tit-history">최근 검색어</h2>
-              <button type="button" class="btn-del-all">전체 삭제</button>
-          </header>
-          <ul class="list-history"></ul>
-      </section>
+        <header>
+            <h1 class="visually-hidden">검색창</h1>
+            <form action="/search" method="get" autocomplete="off">
+                <input type="text" class="search-input" name="q" placeholder="Search" />
+                <button type="submit" class="search-btn">
+                    <span class="visually-hidden">검색 버튼</span>
+                </button>
+            </form>
+            <button class="close-btn" type="button">취소</button>
+        </header>
+        <section class="modal-history">
+            <header class="header-history">
+                <h2 class="tit-history">최근 검색어</h2>
+                <button type="button" class="btn-del-all">전체 삭제</button>
+            </header>
+            <ul class="list-history-m"></ul>
+        </section>
     </aside>
     <div class="overlay" aria-hidden></div>
 
     <main class="main">
-      <p class="text-search">Results for ""</p>
-      <p class="text-search-count">Showing 0 results</p>
+        <p class="text-search">Results for ""</p>
+        <p class="text-search-count">Showing 0 results</p>
 
-      <ul class="list-search"></ul>
+        <ul class="list-search"></ul>
     </main>
     <button type="button" class="btn-up"></button>
     <footer class="footer-area">
-      <div class="cont-footer">
-        <div class="cont-txt">
-          <strong class="txt-title"
-            >flex, grid 오픈소스 프로젝트 입니다 :)</strong
-          >
-          <p class="txt-main">
-            이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이
-            사용할 수 있는 공공재입니다.
-          </p>
-          <small class="txt-copyrigt">© 2022, All Rights Reserved</small>
+        <div class="cont-footer">
+            <div class="cont-txt">
+                <strong class="txt-title">flex, grid 오픈소스 프로젝트 입니다 :)</strong>
+                <p class="txt-main">
+                    이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이
+                    사용할 수 있는 공공재입니다.
+                </p>
+                <small class="txt-copyrigt">© 2022, All Rights Reserved</small>
+            </div>
+            <div class="cont-btn">
+                <a class="btn-footer btn-github" href="https://github.com/flexandgrid/flexandgrid" target="_blank">
+                    Github
+                </a>
+                <a class="btn-footer btn-file" href="https://ridibooks.com/books/2773000058" target="_blank"
+                    download="">
+                    PDF Book
+                </a>
+            </div>
         </div>
-        <div class="cont-btn">
-          <a
-            class="btn-footer btn-github"
-            href="https://github.com/flexandgrid/flexandgrid"
-            target="_blank"
-          >
-            Github
-          </a>
-          <a
-            class="btn-footer btn-file"
-            href="https://ridibooks.com/books/2773000058"
-            target="_blank"
-            download=""
-          >
-            PDF Book
-          </a>
-        </div>
-      </div>
     </footer>
-  </body>
+</body>
+
 </html>
