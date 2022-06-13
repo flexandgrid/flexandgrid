@@ -306,7 +306,7 @@ const createList = (contents) => {
         );
         searchListItemLink.setAttribute("class", "item-search");
 
-        value = value.replace(/.+(?=....)[0-9.]/g, "");
+        value = value.replace(/.+(?=......)[0-9.]/g, "");
 
         const searchRoute = document.createElement("span");
         searchRoute.setAttribute("class", "route-search");
