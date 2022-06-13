@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-aside {
+.aside {
   transition: position 0.3s ease-out;
 }
 
-aside.toggle {
+.aside.toggle {
   position: absolute;
   background: none;
 }
