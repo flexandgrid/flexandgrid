@@ -5,24 +5,25 @@ if (searchData !== null) {
   searchHistory = JSON.parse(searchData);
 }
 
-
-const searchInput = document.querySelector('.search-input');
+const searchInputs = document.querySelectorAll('.search-input');
 const searchToggle = document.querySelector('.mobile-search');
 const searchMobileModal = document.querySelector('.search-modal-mobile');
 const searchModalCloseBtn = searchMobileModal.querySelector('.close-btn');
 const searchOverlay = document.querySelector('.overlay');
 
-searchInput.addEventListener('click', () => {
-  searchModal.classList.add('clicked');
-  createHistory(searchHistoryList);
-  createHistory(mobileSearchHistoryList);
-});
+searchInputs.forEach((input) =>
+  input.addEventListener('click', () => {
+    searchModal.classList.add('clicked');
+    createHistory(searchHistoryList);
+    createHistory(mobileSearchHistoryList);
+  })
+);
 
 function openSearchModal() {
   if (!searchMobileModal.classList.contains('clicked')) {
     searchMobileModal.classList.add('clicked');
     searchOverlay.classList.add('clicked');
-    window.addEventListener('click', closeSearchModal)
+    window.addEventListener('click', closeSearchModal);
     createHistory(searchHistoryList);
     createHistory(mobileSearchHistoryList);
   }
@@ -43,7 +44,7 @@ function closeSearchModal(e) {
   if (e.target.className === 'overlay clicked') {
     searchMobileModal.classList.remove('clicked');
     searchOverlay.classList.remove('clicked');
-    window.removeEventListener('click', closeSearchModal)
+    window.removeEventListener('click', closeSearchModal);
   }
 }
 
@@ -82,28 +83,30 @@ const touchList = (touchListText) => {
   }
 };
 
-
-const searchBtn = document.querySelector('.search-btn');
-searchBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (!searchHistory.includes(searchInput.value) && searchInput.value) {
-    if (searchHistory.length > 4) {
-      searchHistory.pop();
-      searchHistory.unshift(searchInput.value);
-    } else {
-      searchHistory.unshift(searchInput.value);
-    }
-  } else if (searchHistory.includes(searchInput.value)) {
-    searchHistory = searchHistory.filter((text) => {
-      return text !== searchInput.value;
+const searchBtns = document.querySelectorAll('.search-btn');
+searchBtns.forEach((searchBtn) => {
+  searchBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    searchInputs.forEach((searchInput) => {
+      if (!searchHistory.includes(searchInput.value) && searchInput.value) {
+        if (searchHistory.length > 4) {
+          searchHistory.pop();
+          searchHistory.unshift(searchInput.value);
+        } else {
+          searchHistory.unshift(searchInput.value);
+        }
+      } else if (searchHistory.includes(searchInput.value)) {
+        searchHistory = searchHistory.filter((text) => {
+          return text !== searchInput.value;
+        });
+        searchHistory.unshift(searchInput.value);
+      }
+      localStorage.setItem('search', searchInput.value);
+      localStorage.setItem('searchHistoryData', JSON.stringify(searchHistory));
+      location.href = `http://${location.host}/search/?q=${searchInput.value}`;
     });
-    searchHistory.unshift(searchInput.value);
-  }
-  localStorage.setItem('search', searchInput.value);
-  localStorage.setItem('searchHistoryData', JSON.stringify(searchHistory));
-  location.href = `http://${location.host}/search/?q=${searchInput.value}`;
+  });
 });
-
 
 const searchDataDeleteBtn = document.querySelector('.btn-del-all');
 searchDataDeleteBtn.addEventListener('click', () => {
@@ -112,7 +115,6 @@ searchDataDeleteBtn.addEventListener('click', () => {
   createHistory(searchHistoryList);
   createHistory(mobileSearchHistoryList);
 });
-
 
 const searchHistoryList = document.querySelector('.list-history');
 const mobileSearchHistoryList = document.querySelector('.list-history-m');
