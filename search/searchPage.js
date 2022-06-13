@@ -262,12 +262,10 @@ const contents = [];
     contents.push(
       flexhtml
         .filter((v) => v.includes(`h2`) || v.includes(`h3`) || v.includes(`h4`))
-        .map((v) => v.toLocaleLowerCase())
-        .filter((v) => v.includes(searchQuery.toLowerCase())),
+        .map((v) => v.toLocaleLowerCase()),
       gridhtml
         .filter((v) => v.includes(`h2`) || v.includes(`h3`) || v.includes(`h4`))
         .map((v) => v.toLocaleLowerCase())
-        .filter((v) => v.includes(searchQuery.toLowerCase()))
     );
     createList(contents);
   };
@@ -276,45 +274,63 @@ const contents = [];
 })();
 
 const listSearch = document.querySelector(".list-search");
+let highTag = "";
 const createList = (contents) => {
   contents.forEach((v, i) => {
-    v.forEach((value) => {
-      value = value.replace(/<\/?[^>]+(>|$)/g, "");
-      if (value.match(/\(([^)]+)\)/g) == "(w3c)") {
-        value = value.replace(/\(([^)]+)\)/g, "(W3C)");
+    v.forEach((value, j) => {
+      if (value.includes(searchQuery.toLowerCase())) {
+        if (value.includes("h3") || value.includes("h4")) {
+          while (!contents[i][j].includes("h2")) {
+            j--;
+            if (j < 0) {
+              break;
+            }
+          }
+          highTag = contents[i][j];
+        } else if (value.includes("h2")) {
+          highTag = value;
+        }
+        value = value.replace(/<\/?[^>]+(>|$)/g, "");
+        highTag = highTag.replace(/<\/?[^>]+(>|$)/g, "");
+        highTag = highTag.replace(/.+(?=....)[0-9.]/g, "");
+        if (value.match(/\(([^)]+)\)/g) == "(w3c)") {
+          value = value.replace(/\(([^)]+)\)/g, "(W3C)");
+        }
+        const searchListItem = document.createElement("li");
+        searchListItem.setAttribute("class", "itemwrap-search");
+
+        const searchListItemLink = document.createElement("a");
+        searchListItemLink.setAttribute(
+          "href",
+          `${i == 0 ? `/flex/#${value}` : `/grid/#${value}`}`
+        );
+        searchListItemLink.setAttribute("class", "item-search");
+
+        value = value.replace(/.+(?=....)[0-9.]/g, "");
+
+        const searchRoute = document.createElement("span");
+        searchRoute.setAttribute("class", "route-search");
+        searchRoute.appendChild(
+          document.createTextNode(
+            i == 0 ? `flex > ${highTag}` : `grid > ${highTag}`
+          )
+        );
+
+        const searchTitle = document.createElement("strong");
+        searchTitle.setAttribute("class", "tit-search");
+        searchTitle.appendChild(document.createTextNode(value));
+
+        const searchDesc = document.createElement("p");
+        searchDesc.setAttribute("class", "desc-search");
+        searchDesc.appendChild(document.createTextNode(""));
+
+        searchListItemLink.appendChild(searchRoute);
+        searchListItemLink.appendChild(searchTitle);
+        searchListItemLink.appendChild(searchDesc);
+
+        searchListItem.appendChild(searchListItemLink);
+        listSearch.appendChild(searchListItem);
       }
-      const searchListItem = document.createElement("li");
-      searchListItem.setAttribute("class", "itemwrap-search");
-
-      const searchListItemLink = document.createElement("a");
-      searchListItemLink.setAttribute(
-        "href",
-        `${i == 0 ? `/flex/#${value}` : `/grid/#${value}`}`
-      );
-      searchListItemLink.setAttribute("class", "item-search");
-
-      value = value.replace(/.+(?=....)[0-9.]/g, "");
-
-      const searchRoute = document.createElement("span");
-      searchRoute.setAttribute("class", "route-search");
-      searchRoute.appendChild(
-        document.createTextNode(i == 0 ? `flex > ${value}` : `grid > ${value}`)
-      );
-
-      const searchTitle = document.createElement("strong");
-      searchTitle.setAttribute("class", "tit-search");
-      searchTitle.appendChild(document.createTextNode(value));
-
-      const searchDesc = document.createElement("p");
-      searchDesc.setAttribute("class", "desc-search");
-      searchDesc.appendChild(document.createTextNode(""));
-
-      searchListItemLink.appendChild(searchRoute);
-      searchListItemLink.appendChild(searchTitle);
-      searchListItemLink.appendChild(searchDesc);
-
-      searchListItem.appendChild(searchListItemLink);
-      listSearch.appendChild(searchListItem);
     });
   });
   searchItem = document.querySelectorAll(".itemwrap-search");
