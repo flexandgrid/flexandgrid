@@ -974,9 +974,9 @@ flex: flex-grow | flex-shrink | flex-basis;
 
 Flex **축약 속성의 기본값**은 **flex: 0 1 auto;** 이다. flex-grow를 제외한 개별 속성은 생략할 수 있다. flex : 1; 할 경우 grow는 1로 변하고 shrink의 값은 0으로 basis의 값을 명시적으로 작성하지 않으면 0으로 입력이 된다.
 
-## 7.5. flex-shrink보다는 flex 축약 속성을! (W3C)
+## 7.5. flex-grow보다는 flex 축약 속성을! (W3C)
 
-CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사용하기보다는
+CSS 표준을 관리하는 **W3C**에 따르면, flex-grow속성을 직접 사용하기보다는
 **flex 축약 속성**으로 사용하는 것을 권장하고 있다.
 
 ![[https://www.w3.org/TR/css-flexbox-1/#propdef-flex-grow](https://www.w3.org/TR/css-flexbox-1/#propdef-flex-grow)](images/011.png)
