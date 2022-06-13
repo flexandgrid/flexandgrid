@@ -36,7 +36,7 @@ const handleDarkMode = () => {
   pageBody.classList.toggle("on");
   upBtn.classList.toggle("on");
   footerArea.classList.toggle("on");
-
+ 
   isDark = !isDark;
   localStorage.setItem("darkmode", isDark);
 };
