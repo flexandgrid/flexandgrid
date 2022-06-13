@@ -84,29 +84,27 @@ const touchList = (touchListText) => {
 };
 
 const searchBtns = document.querySelectorAll('.search-btn');
-searchBtns.forEach((searchBtn) => {
-  searchBtn.addEventListener('click', (e) => {
+for (let i = 0; i < searchBtns.length; i++) {
+  searchBtns[i].addEventListener('click', (e) => {
     e.preventDefault();
-    searchInputs.forEach((searchInput) => {
-      if (!searchHistory.includes(searchInput.value) && searchInput.value) {
-        if (searchHistory.length > 4) {
-          searchHistory.pop();
-          searchHistory.unshift(searchInput.value);
-        } else {
-          searchHistory.unshift(searchInput.value);
-        }
-      } else if (searchHistory.includes(searchInput.value)) {
-        searchHistory = searchHistory.filter((text) => {
-          return text !== searchInput.value;
-        });
-        searchHistory.unshift(searchInput.value);
+    if (!searchHistory.includes(searchInputs[i].value) && searchInputs[i].value) {
+      if (searchHistory.length > 4) {
+        searchHistory.pop();
+        searchHistory.unshift(searchInputs[i].value);
+      } else {
+        searchHistory.unshift(searchInputs[i].value);
       }
-      localStorage.setItem('search', searchInput.value);
-      localStorage.setItem('searchHistoryData', JSON.stringify(searchHistory));
-      location.href = `http://${location.host}/search/?q=${searchInput.value}`;
-    });
+    } else if (searchHistory.includes(searchInputs[i].value)) {
+      searchHistory = searchHistory.filter((text) => {
+        return text !== searchInputs[i].value;
+      });
+      searchHistory.unshift(searchInputs[i].value);
+    }
+    localStorage.setItem('search', searchInputs[i].value);
+    localStorage.setItem('searchHistoryData', JSON.stringify(searchHistory));
+    location.href = `http://${location.host}/search/?q=${searchInputs[i].value}`;
   });
-});
+}
 
 const searchDataDeleteBtn = document.querySelector('.btn-del-all');
 searchDataDeleteBtn.addEventListener('click', () => {
