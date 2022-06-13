@@ -2,6 +2,7 @@ const headerArea = document.querySelector(".gnb-header");
 const cheatsheetModal = document.querySelector(".modal-menu");
 const searchModal = document.querySelector(".modal-history");
 const pageBody = document.querySelector("body");
+const cheatsheetGrid = document.querySelector(".main-cheatsheet-grid");
 const upBtn = document.querySelector(".btn-up");
 const footerArea = document.querySelector(".footer-area");
 
@@ -15,6 +16,7 @@ const checkDarkMode = () => {
     cheatsheetModal.classList.add("on");
     searchModal.classList.add("on");
     pageBody.classList.add("on");
+    cheatsheetGrid.classList.add("on");
     upBtn.classList.add("on");
     footerArea.classList.add("on");
   } else {
@@ -23,6 +25,7 @@ const checkDarkMode = () => {
     cheatsheetModal.classList.remove("on");
     searchModal.classList.remove("on");
     pageBody.classList.remove("on");
+    cheatsheetGrid.classList.remove("on");
     upBtn.classList.remove("on");
     footerArea.classList.remove("on");
   }
@@ -34,6 +37,8 @@ const handleDarkMode = () => {
   cheatsheetModal.classList.toggle("on");
   searchModal.classList.toggle("on");
   pageBody.classList.toggle("on");
+  cheatsheetGrid.classList.toggle("on");
+
   upBtn.classList.toggle("on");
   footerArea.classList.toggle("on");
 
