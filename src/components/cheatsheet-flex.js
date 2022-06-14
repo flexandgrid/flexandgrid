@@ -1,4 +1,4 @@
-const titles = document.querySelectorAll("h2");
+const titles = document.querySelectorAll(".fg-cheat h2");
 const properties = [];
 titles.forEach((v) => {
   properties.push(v.textContent);
@@ -36,3 +36,5 @@ for (let radio of radios) {
     }
   });
 }
+
+
