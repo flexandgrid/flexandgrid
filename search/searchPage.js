@@ -349,6 +349,10 @@ const createList = (contents) => {
               contents[i][j].includes("h4")
             ) {
               currentTitle = contents[i][j];
+              if (contents[i][j].includes("h2")) {
+                highTag = contents[i][j];
+                break;
+              }
               while (!contents[i][j].includes("h2")) {
                 j--;
                 if (contents[i][j].includes("h2")) {
