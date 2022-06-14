@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/src/components/gnb-nav.css" />
     <link rel="stylesheet" href="/src/components/search-item.css" />
     <link rel="stylesheet" href="/src/components/search-modal.css" />
+    <link rel="stylesheet" href="/src/components/mobile-search-modal.css">
     <link rel="stylesheet" href="/src/components/cheatsheet-grid.css" />
     <link rel="stylesheet" href="/src/components/buttons.css">
     <link rel="stylesheet" href="/src/components/footer.css">
@@ -143,101 +144,20 @@
                         </div>
                     </section>
 
-                    <div data-mode="snippet" class="fg-editor css-grid theme-grid snippet-mode editor-3">
-                        <div class="code">
-                            <div class="wrapper-code">
-                                <table>
-                                    <tr>
-                                        <td class="number-line">1</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete"
-                                                data-selector-index="0">-</button>.
-                                            <span class="button-code selector-code" data-selector-index="0">
-                                                container
-                                            </span>&nbsp;{
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">2</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="0"
-                                                data-prop-index="0">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="0"
-                                                data-prop-index="0">
-                                                display
-                                            </span>:&nbsp;
-                                            <span class="button-code value-code" data-selector-index="0"
-                                                data-prop-index="0">
-                                                grid
-                                            </span>;
-                                            <button type="button" data-selector-index="0" class="button-add"
-                                                data-prop-index="0">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">3</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="0"
-                                                data-prop-index="1">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="0"
-                                                data-prop-index="1">
-                                                grid-template-columns
-                                            </span>:&nbsp;
-                                            <input class="button-code value-code" value="200px 200px"
-                                                data-selector-index="0" data-prop-index="1" style="width: 108px;">
-                                            ;
-                                            <button type="button" data-selector-index="0" class="button-add"
-                                                data-prop-index="1">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">4</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="0"
-                                                data-prop-index="1">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="0"
-                                                data-prop-index="2">
-                                                grid-template-rows
-                                            </span>:&nbsp;
-                                            <input class="button-code value-code" value="100px 100px"
-                                                data-selector-index="0" data-prop-index="2" style="width:108px">
-                                            ;
-                                            <button type="button" data-selector-index="0" class="button-add"
-                                                data-prop-index="2">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">5</td>
-                                        <td class="code-line">}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">6</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">7</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">8</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    <section class="box-code-area">
+                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
+                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;<em>grid-template-columns:
+                                200px
+                                200px;</em>
+                        </p>
+
+                        <p class="txt-code"><span class="number-code">4</span>&nbsp;&nbsp;<em>grid-template-rows:
+                                100px
+                                100px;</em>
+                        </p>
+                        <p class="txt-code"><span class="number-code">5</span>}</p>
+                    </section>
 
                     <div class="buttons">
                         <button type="button" class="button button-add">+ Add Box</button>
@@ -268,94 +188,14 @@
                             <div class="item">3</div>
                         </div>
                     </section>
-                    <div data-mode="snippet" class="fg-editor css-grid theme-grid snippet-mode editor-3">
-                        <div class="code">
-                            <div class="wrapper-code">
-                                <table>
-                                    <tr>
-                                        <td class="number-line">1</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete"
-                                                data-selector-index="0">-</button>.
-                                            <span class="button-code selector-code" data-selector-index="0">
-                                                container
-                                            </span>&nbsp;{
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">2</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="0"
-                                                data-prop-index="0">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="0"
-                                                data-prop-index="0">
-                                                display
-                                            </span>:&nbsp;
-                                            <span class="button-code value-code" data-selector-index="0"
-                                                data-prop-index="0">
-                                                grid
-                                            </span>;
-                                            <button type="button" data-selector-index="0" class="button-add"
-                                                data-prop-index="0">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">3</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="0"
-                                                data-prop-index="1">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="0"
-                                                data-prop-index="1">
-                                                grid-template-columns
-                                            </span>:&nbsp;
-                                            <span class="button-code value-code" data-selector-index="0"
-                                                data-prop-index="1">
-                                                1fr 1fr 1fr
-                                            </span>;
-                                            <button type="button" data-selector-index="0" class="button-add"
-                                                data-prop-index="1">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">4</td>
-                                        <td class="code-line">
-                                            }
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">5</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">6</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">7</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">8</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    <section class="box-code-area ">
+                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
+                        <p class="txt-code">
+                            <span class="number-code">3</span>&nbsp;&nbsp;<em>grid-template-columns: 1fr 1fr 1fr;</em>
+                        </p>
+                        <p class="txt-code"><span class="number-code">4</span>}</p>
+                    </section>
                     <div class="buttons">
                         <button type="button" class="button button-add">+ Add Box</button>
                         <button type="button" class="button button-remove">- Remove Box</button>
@@ -390,104 +230,16 @@
                             <div class="item">9</div>
                         </div>
                     </section>
+                    <section class="box-code-area ">
+                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp; display: grid;</p>
+                        <p class="txt-code">
+                            <span class="number-code">3</span>&nbsp;&nbsp; grid-template-columns: repeat(3,1fr);
+                        </p>
+                        <p class="txt-code"><span class="number-code">4</span>&nbsp;&nbsp; gap: <em>0</em>;</p>
+                        <p class="txt-code"><span class="number-code">5</span>}</p>
+                    </section>
 
-                    <div data-mode="snippet" class="fg-editor css-grid theme-grid snippet-mode editor-3">
-                        <div class="code">
-                            <div class="wrapper-code">
-                                <table>
-                                    <tr>
-                                        <td class="number-line">1</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete"
-                                                data-selector-index="0">-</button>.
-                                            <span class="button-code selector-code" data-selector-index="0">
-                                                container
-                                            </span>&nbsp;{
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">2</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="0"
-                                                data-prop-index="0">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="0"
-                                                data-prop-index="0">
-                                                display
-                                            </span>:&nbsp;
-                                            <span class="button-code value-code" data-selector-index="0"
-                                                data-prop-index="0">
-                                                grid
-                                            </span>;
-                                            <button type="button" data-selector-index="0" class="button-add"
-                                                data-prop-index="0">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">3</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="0"
-                                                data-prop-index="1">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="0"
-                                                data-prop-index="1">
-                                                grid-template-columns
-                                            </span>:&nbsp;
-                                            <span class="button-code value-code" data-selector-index="0"
-                                                data-prop-index="1">
-                                                repeat(3,1fr)
-                                            </span>;
-                                            <button type="button" data-selector-index="0" class="button-add"
-                                                data-prop-index="1">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">4</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="0"
-                                                data-prop-index="1">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="0"
-                                                data-prop-index="2">
-                                                gap
-                                            </span>:&nbsp;
-                                            <span class="button-code value-code" data-selector-index="0"
-                                                data-prop-index="2">
-                                                10%
-                                            </span>;
-                                            <button type="button" data-selector-index="0" class="button-add"
-                                                data-prop-index="2">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">5</td>
-                                        <td class="code-line">}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">6</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">7</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">8</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
                     <div class="buttons">
                         <button type="button" class="button button-add">+ Add Box</button>
                         <button type="button" class="button button-remove">- Remove Box</button>
@@ -509,149 +261,29 @@
                             <div class="item">3</div>
                         </div>
                     </section>
-                    <div data-mode="snippet" class="fg-editor css-grid theme-grid snippet-mode editor-3">
-                        <div class="code">
-                            <div class="wrapper-code">
-                                <table>
-                                    <tr>
-                                        <td class="number-line">1</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete"
-                                                data-selector-index="0">-</button>.
-                                            <span class="button-code selector-code" data-selector-index="0">
-                                                container
-                                            </span>&nbsp;{
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">2</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="0"
-                                                data-prop-index="0">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="0"
-                                                data-prop-index="0">
-                                                display
-                                            </span>:&nbsp;
-                                            <span class="button-code value-code" data-selector-index="0"
-                                                data-prop-index="0">
-                                                grid
-                                            </span>;
-                                            <button type="button" data-selector-index="0" class="button-add"
-                                                data-prop-index="0">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">3</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="0"
-                                                data-prop-index="1">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="0"
-                                                data-prop-index="1">
-                                                grid-template-columns
-                                            </span>:&nbsp;
-                                            <input class="button-code value-code" value="1fr 1fr"
-                                                data-selector-index="0" data-prop-index="1" style="width: 72px">
-                                            ;
-                                            <button type="button" data-selector-index="0" class="button-add"
-                                                data-prop-index="1">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">4</td>
-                                        <td class="code-line">}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">5</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">6</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete"
-                                                data-selector-index="1">-</button>
-                                            .
-                                            <span class="button-code selector-code" data-selector-index="1">
-                                                item
-                                            </span>&nbsp;{
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">7</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="1"
-                                                data-prop-index="0">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="1"
-                                                data-prop-index="0">
-                                                grid-column-start
-                                            </span>:&nbsp;
-                                            <input class="button-code value-code" value="1" data-selector-index="1"
-                                                data-prop-index="0" style="width:18px">
-                                            ;
-                                            <button type="button" data-selector-index="1" class="button-add"
-                                                data-prop-index="0">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">8</td>
-                                        <td class="code-line">
-                                            <button type="button" class="button-delete" data-selector-index="1"
-                                                data-prop-index="1">-</button>
-                                            &nbsp;&nbsp;
-                                            <span class="button-code prop-code" data-selector-index="1"
-                                                data-prop-index="1">
-                                                grid-column-end
-                                            </span>:&nbsp;
-                                            <input class="button-code value-code" value="3" data-selector-index="1"
-                                                data-prop-index="1" style="width:18px">
-                                            ;
-                                            <button type="button" data-selector-index="1" class="button-add"
-                                                data-prop-index="1">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">9</td>
-                                        <td class="code-line">
-                                            }
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">10</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">11</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">12</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="number-line">13</td>
-                                        <td class="code-line">
-                                            <button type="button" data-selector-index="1"
-                                                class="button-add button-add-selector">+</button>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    <section class="box-code-area ">
+                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
+                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-columns: 1fr
+                            1fr;</p>
+                        <p class="txt-code"><span class="number-code">4</span>}</p>
+                        <p class="txt-code"><span class="number-code">5</span></p>
+                        <p class="txt-code">
+                            <span class="number-code">6</span>
+                            .item1 {
+                        </p>
+                        <p class="txt-code">
+                            <span class="number-code">7</span>&nbsp;&nbsp;
+                            grid-column-start : <em>1</em>;
+                        </p>
+                        <p class="txt-code">
+                            <span class="number-code">8</span>&nbsp;&nbsp;
+                            grid-column-end : <em>3</em>;
+                        </p>
+                        <p class="txt-code"><span class="number-code">9</span>}</p>
+                        <p class="txt-code"><span class="number-code">10</span></p>
+                        <p class="txt-code"><span class="number-code">11</span></p>
+                    </section>
 
                     <div class="buttons">
                         <button type="button" class="button button-add">+ Add Box</button>
@@ -825,10 +457,10 @@
                     <section class="box-code-area">
                         <p class="txt-code"><span class="number-code">1</span>.container {</p>
                         <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
-                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-columns: 1fr 1fr
-                            1fr;</p>
-                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-rows: 1fr 1fr
-                            1fr;</p>
+                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-columns:
+                            repeat(3, 1fr);</p>
+                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-rows: repeat(3,
+                            1fr);</p>
                         <p class="txt-code"><span class="number-code">4</span>}</p>
                         <p class="txt-code"><span class="number-code">5</span></p>
                         <p class="txt-code">
