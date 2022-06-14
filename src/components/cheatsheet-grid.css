@@ -8,10 +8,16 @@ body {
   background-color: #e5e5e5;
 }
 
-.fg-cheat:nth-child(1),
-.fg-cheat:nth-child(2) {
+article {
   padding-bottom: 70px;
+}
+
+article:not(:last-child, :nth-last-of-type(2)) {
   border-bottom: 1px solid var(--grid-border);
+}
+
+.fg-cheat {
+  width: 525px;
 }
 
 .radio-cheat {
@@ -136,7 +142,6 @@ body {
 .container {
   overflow: auto;
   display: grid;
-  grid-template-rows: 50px;
   gap: 12px;
   min-height: 150px;
   padding: 20px;
@@ -146,7 +151,10 @@ body {
   box-shadow: 0px 4px 15px rgba(197, 96, 70, 0.08);
 }
 
-.item {
+.container .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: auto;
   height: auto;
   border-radius: 15px;
@@ -154,7 +162,6 @@ body {
   color: white;
   font-family: Pretendard;
   font-size: 22px;
-  line-height: 50px;
   text-align: center;
   box-shadow: 0px 4px 15px rgba(81, 69, 159, 0.08);
 }
@@ -170,20 +177,52 @@ body {
   line-height: 100px;
 }
 
-.container.cheat1 {
+.container.cheat1,
+.container.cheat2,
+.container.cheat4,
+.container.cheat6,
+.container.cheat7 {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
 .container.cheat2 {
-  overflow: visible;
-  grid-template-columns: repeat(3, minmax(30px, 100px));
-  width: 100px;
+  gap: 0;
 }
 
 .container.cheat3 {
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(2, 1fr);
 }
+
+.container.cheat3 .item:first-child {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+
+.container.cheat4 .item:first-child {
+  grid-column: 1 / 3;
+}
+
+.container.cheat5 {
+  line-height: 1;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.container.cheat5 .item:first-child {
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+
+.container.cheat6 .item:first-child {
+  grid-row: 1 / span 3;
+}
+
+.container.cheat7 .item:first-child {
+  grid-area: 1 / 2 / 3/4;
+}
+
+
 
 /* 코드예제부분 */
 
@@ -245,51 +284,66 @@ body {
   box-shadow: inset 0 0 2px 2px #00000033;
 }
 
-/* 나이트모드 스타일링 
-main-cheatsheet-grid 에 on 클래스 넣으면 일괄 나이트 모드*/
+/* 코드에디터  */
+
+.fg-editor.css-grid .code {
+  width: 100%;
+  margin-bottom: 20px;
+  overflow: hidden;
+  max-height: var(--outer);
+  background-color: var(--white);
+  box-shadow: 0px 4px 12px 0px var(--box-shadow-1);
+}
+
+/* 나이트모드 스타일링 */
 
 .on {
   background-color: var(--primary);
 }
 
-.main-cheatsheet-grid.on .container,
-.main-cheatsheet-grid.on .box-code-area {
+.on .container,
+.on .box-code-area {
   box-shadow: 0px 10px 25px 0px rgba(45, 45, 45, 0.1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: #252424;
 }
 
-.main-cheatsheet-grid.on .number-code {
+.on .number-code {
   color: var(--secondary);
 }
 
+
 /* 라디오 나이트모드  */
 
-.main-cheatsheet-grid.on .fg-cheat .label-option::before {
+.on .fg-cheat .label-option::before {
   border: 1px solid var(--secondary);
 }
 
-.main-cheatsheet-grid.on .fg-cheat .label-option:hover,
-.main-cheatsheet-grid.on .fg-cheat .label-option:hover::before {
+.on .fg-cheat .label-option:hover,
+.on .fg-cheat .label-option:hover::before {
   border-color: var(--border);
   color: var(--border);
 }
 
-.main-cheatsheet-grid.on .fg-cheat .input-option:checked+.label-option {
+.on .fg-cheat .input-option:checked+.label-option {
   color: var(--grid-primary);
 }
 
-.main-cheatsheet-grid.on .fg-cheat .input-option:checked+.label-option::before {
+.on .fg-cheat .input-option:checked+.label-option::before {
   border-color: var(--grid-primary);
 }
 
-.main-cheatsheet-grid.on .fg-cheat .input-option:checked+.label-option::after {
+.on .fg-cheat .input-option:checked+.label-option::after {
   background-color: var(--grid-primary);
+}
+
+.on .fg-cheat .label-option::before {
+  border: 1px solid var(--secondary);
 }
 
 /* 박스 타이틀 나이트모드 */
 
-.main-cheatsheet-grid.on .tit-title {
+.on .tit-title {
   color: var(--border);
   font-family: Pretendard;
   font-weight: 500;
@@ -297,11 +351,11 @@ main-cheatsheet-grid 에 on 클래스 넣으면 일괄 나이트 모드*/
   line-height: 36px;
 }
 
-.main-cheatsheet-grid.on .tit-title:hover {
-  color: #b4b4b4;
+.on .tit-title:hover {
+  color: var(--tertiary);
 }
 
-.main-cheatsheet-grid.on .tit-title:hover>a:nth-child(1)::before {
+.on .tit-title:hover>a:nth-child(1)::before {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -309,26 +363,26 @@ main-cheatsheet-grid 에 on 클래스 넣으면 일괄 나이트 모드*/
   background-image: url(../assets/images/icon-link.svg);
   background-repeat: no-repeat;
   vertical-align: text-bottom;
-  filter: opacity(0.5) drop-shadow(0 0 0 #b4b4b4);
+  filter: opacity(0.5) drop-shadow(0 0 0 var(--tertiary));
   content: '';
 }
 
 /* 버튼 다크모드  */
 
-.main-cheatsheet-grid.on .fg-cheat .buttons .button-add {
-  background-color: #f9b09e;
-  color: #fffcfa;
+.on .fg-cheat .buttons .button-add {
+  background-color: var(--grid-border);
+  color: var(--grid-background);
 }
 
-.main-cheatsheet-grid.on .fg-cheat .buttons .button-remove {
-  background-color: #878787;
+.on .fg-cheat .buttons .button-remove {
+  background-color: var(--secondary);
   color: #252424;
 }
 
-.main-cheatsheet-grid.on .fg-cheat .buttons .button:hover {
+.on .fg-cheat .buttons .button:hover {
   box-shadow: 0 0 2px 2px #ffffffaa;
 }
 
-.main-cheatsheet-grid.on .fg-cheat .buttons .button:active {
+.on .fg-cheat .buttons .button:active {
   box-shadow: inset 0 0 2px 2px #ffffffaa;
 }
