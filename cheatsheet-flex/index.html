@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/src/components/mobile-search-modal.css">
     <link rel="stylesheet" href="/src/components/footer.css">
     <link rel="stylesheet" href="/src/components/cheatsheet-flex.css">
+    <link rel="stylesheet" href="/src/utils/editor/editor.css">
     <link rel="stylesheet" href="style.css">
     <script defer src="/src/components/gnb-nav.js"></script>
     <script defer src="/src/components/button.js"></script>
@@ -119,7 +120,7 @@
     <main class="cheatsheet-flex">
         <div class="flex-wrapper">
         <h1 id="Flex-Cheatsheet" class="main-title">
-            <a href="#Grid-Cheatsheet">Flex Cheetsheet</a>
+            <a href="#Grid-Cheatsheet">Flex Cheatsheet</a>
         </h1>
         <div class="flex-cont">
         <article class="fg-cheat">
@@ -437,11 +438,13 @@
             <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">order</a></h2>
             <form class="radio-cheat">
                 <input type="radio" id="cheat9-option1" name="cheat9" class="input-option" checked="true">
-                <label for="cheat9-option1" class="label-option cheat9-option1">item1 : 입력값</label>
+                <label for="cheat9-option1" class="label-option cheat9-option1">row</label>
                 <input type="radio" id="cheat9-option2" name="cheat9" class="input-option">
-                <label for="cheat9-option2" class="label-option cheat9-option2">item2 : 입력값</label>
+                <label for="cheat9-option2" class="label-option cheat9-option2">row & order</label>
                 <input type="radio" id="cheat9-option3" name="cheat9" class="input-option">
-                <label for="cheat9-option3" class="label-option cheat9-option3">item3 : 입력값</label>
+                <label for="cheat9-option3" class="label-option cheat9-option3">column</label>
+                <input type="radio" id="cheat9-option4" name="cheat9" class="input-option">
+                <label for="cheat9-option4" class="label-option cheat9-option4">column & order</label>
             </form>
             <section class="box-area">
                 <div class="container cheat9" id="cont-cheat9">
@@ -451,9 +454,9 @@
                 </div>
             </section>
             <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.item {</p>
+                <p class="txt-code"><span class="number-code">1</span>.container {</p>
                 <p class="txt-code">
-                    <span class="number-code">2</span><em>order: 0;</em>
+                    <span class="number-code">2</span><em>display: flex;</em>
                 </p>
                 <p class="txt-code"><span class="number-code">3</span>}</p>
             </section>
@@ -486,6 +489,7 @@
             </div>
         </div>
     </footer>
+    <script src="/src/utils/editor/editor.js"></script>
     <script src="/src/components/cheatsheet-flex.js"></script>
 </body>
 
