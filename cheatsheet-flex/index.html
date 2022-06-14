@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +22,7 @@
     <script defer src="/src/js/darkmode.js"></script>
     <script defer src="/src/js/search.js"></script>
 </head>
+
 <body>
     <header class="gnb-header">
         <div class="gnb-cont">
@@ -66,7 +68,7 @@
                     </li>
                     <li class="search">
                         <form action="/search" method="get" autocomplete="off">
-                            <input type="text" class="search-input" name="q" placeholder="Search"/>
+                            <input type="text" class="search-input" name="q" placeholder="Search" />
                             <button type="submit" class="search-btn">
                                 <span class="a11y-hidden">검색 버튼</span>
                             </button>
@@ -83,10 +85,7 @@
                         <button class="darkmode-btn">
                             <span class="a11y-hidden">다크 모드 전환</span>
                         </button>
-                        <a
-                            href="https://github.com/flexandgrid/flexandgrid"
-                            target="_blank"
-                            class="github-btn">
+                        <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="github-btn">
                             <span class="a11y-hidden">깃헙 바로가기</span>
                         </a>
                     </li>
@@ -96,28 +95,33 @@
     </header>
 
     <aside class="search-modal-mobile">
-      <header>
-          <h1 class="visually-hidden">검색창</h1>
-          <form action="/search" method="get" autocomplete="off">
-              <input type="text" class="search-input" name="q" placeholder="Search"/>
-              <button type="submit" class="search-btn">
-                  <span class="visually-hidden">검색 버튼</span>
-              </button>
-          </form>
-          <button class="close-btn" type="button">취소</button>
-      </header>
+        <header>
+            <h1 class="visually-hidden">검색창</h1>
+            <form action="/search" method="get" autocomplete="off">
+                <input type="text" class="search-input" name="q" placeholder="Search" />
+                <button type="submit" class="search-btn">
+                    <span class="visually-hidden">검색 버튼</span>
+                </button>
+            </form>
+            <button class="close-btn" type="button">취소</button>
+        </header>
 
-      <section class="modal-history">
-          <header class="header-history">
-              <h2 class="tit-history">최근 검색어</h2>
-              <button type="button" class="btn-del-all">전체 삭제</button>
-          </header>
-          <ul class="list-history"></ul>
-      </section>
+        <section class="modal-history">
+            <header class="header-history">
+                <h2 class="tit-history">최근 검색어</h2>
+                <button type="button" class="btn-del-all">전체 삭제</button>
+            </header>
+            <ul class="list-history-m"></ul>
+        </section>
     </aside>
     <div class="overlay" aria-hidden></div>
 
     <main class="cheatsheet-flex">
+        <div class="flex-wrapper">
+        <h1 id="Flex-Cheatsheet" class="main-title">
+            <a href="#Grid-Cheatsheet">Flex Cheetsheet</a>
+        </h1>
+        <div class="flex-cont">
         <article class="fg-cheat">
             <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-direction</a></h2>
             <form class="radio-cheat">
@@ -147,11 +151,11 @@
                 <p class="txt-code"><span class="number-code">5</span></p>
             </section>
             <div class="buttons">
-            <button type="button" class="button button-add">+ Add Box</button>
-            <button type="button" class="button button-remove">- Remove Box</button>
+                <button type="button" class="button button-add">+ Add Box</button>
+                <button type="button" class="button button-remove">- Remove Box</button>
             </div>
         </article>
-        
+
         <article class="fg-cheat">
             <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">justify-content</a></h2>
             <form class="radio-cheat">
@@ -458,43 +462,8 @@
                 <button type="button" class="button button-remove">- Remove Box</button>
             </div>
         </article>
-
-
-        <!-- Z index는 cheatsheet에서 필수적인 속성은 아니라 생각하여 우선 주석표시 해두었습니다.... -->
-
-        <!-- <article class="fg-cheat">
-            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">z-index</a></h2>
-            <form class="radio-cheat">
-                <input type="radio" id="cheat0-option1" name="cheat0" class="input-option" checked="true">
-                <label for="cheat0-option1" class="label-option cheat0-option1">row</label>
-                <input type="radio" id="cheat0-option2" name="cheat0" class="input-option">
-                <label for="cheat0-option2" class="label-option cheat0-option2">row-reverse</label>
-                <input type="radio" id="cheat0-option3" name="cheat0" class="input-option">
-                <label for="cheat0-option3" class="label-option cheat0-option3">column</label>
-                <input type="radio" id="cheat0-option4" name="cheat0" class="input-option">
-                <label for="cheat0-option4" class="label-option cheat0-option4">column-reverse</label>
-            </form>
-            <section class="box-area">
-                <div class="container cheat0" id="cont-cheat0">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                </div>
-            </section>
-            <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
-                <p class="txt-code">
-                    <span class="number-code">3</span><em>flex-direction: row;</em>
-                </p>
-                <p class="txt-code"><span class="number-code">4</span>}</p>
-                <p class="txt-code"><span class="number-code">5</span></p>
-            </section>
-            <div class="buttons">
-                <button type="button" class="button button-add">+ Add Box</button>
-                <button type="button" class="button button-remove">- Remove Box</button>
+        </div>
             </div>
-        </article> -->
     </main>
     <button type="button" class="btn-up"></button>
     <footer class="footer-area">
@@ -507,16 +476,10 @@
                 <small class="txt-copyrigt">© 2022, All Rights Reserved</small>
             </div>
             <div class="cont-btn">
-                <a
-                    class="btn-footer btn-github"
-                    href="https://github.com/flexandgrid/flexandgrid"
-                    target="_blank">
+                <a class="btn-footer btn-github" href="https://github.com/flexandgrid/flexandgrid" target="_blank">
                     Github
                 </a>
-                <a
-                    class="btn-footer btn-file"
-                    href="https://ridibooks.com/books/2773000058"
-                    target="_blank"
+                <a class="btn-footer btn-file" href="https://ridibooks.com/books/2773000058" target="_blank"
                     download="">
                     PDF Book
                 </a>
@@ -525,4 +488,5 @@
     </footer>
     <script src="/src/components/cheatsheet-flex.js"></script>
 </body>
+
 </html>

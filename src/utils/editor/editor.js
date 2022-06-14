@@ -532,8 +532,8 @@
       const containers =
         containerCount > 1
           ? [...Array(containerCount)].map(
-            (_, index) => `container${index + 1}`
-          )
+              (_, index) => `container${index + 1}`
+            )
           : ['container', 'item'];
       const itemCount = this._previewWrapper.querySelectorAll('.item').length;
       const items = [...Array(itemCount)].map((_, index) => `item${index + 1}`);
@@ -568,7 +568,6 @@
         this._mode = 'free';
         this._layout = 'carousel';
         this._editor.classList.add('free-mode', 'carousel-layout');
-        // this.autoCarousel();
       }
       this._editor.classList.add(`editor-${this._editorId}`);
     }
@@ -825,36 +824,8 @@
         this._carouselIndicators.appendChild(indicator);
       }
 
-      //희진 자동 캐러셀;
-      let autoCarousel = setInterval(() => {
-        const flexTarget = document.querySelectorAll(
-          '.container-indicators'
-        )[0];
-        const gridTarget = document.querySelectorAll(
-          '.container-indicators'
-        )[1];
-
-        const flexIndicator = [...flexTarget.querySelectorAll('.indicator')];
-        const gridIndicator = [...gridTarget.querySelectorAll('.indicator')];
-
-        //selected 삭제
-        flexIndicator[this._snippetIndex].classList.remove('selected');
-        gridIndicator[this._snippetIndex].classList.remove('selected');
-
-        //index 증가
-        this._snippetIndex += 1;
-        if (this._snippetIndex === this._snippets.length) {
-          this._snippetIndex = 0;
-        }
-
-        //인덱스에 따른 indicator 선택
-        flexIndicator[this._snippetIndex].classList.add('selected');
-        gridIndicator[this._snippetIndex].classList.add('selected');
-
-        //인덱스에 따른 snippet 변화
-        this._snippetChangeEventListener(this._snippetIndex);
-      }, 3000);
-      //setInterval끝
+      // 즉시 타이머 set
+      this._setCarouselTimer(0, 3000);
 
       this._carouselIndicators.addEventListener(
         'click',
@@ -869,11 +840,42 @@
           target.classList.add('selected');
           this._snippetChangeEventListener(index);
 
-          // indicator click하면 자동캐러셀 멈추기
-          clearInterval(autoCarousel)
-
+          // 타이머 clear, 2초 후 타이머 다시 set(누르고 5초 후에 첫 전환 시작)
+          this._clearCarouselTimer();
+          this._setCarouselTimer(2000, 3000);
         }
       );
+
+      // code 부분에 마우스 올리면 clear
+      // 벗어나면 2초 후에 타이머 set(마우스 벗어나고 5초후에 첫 전환 시작)
+      const innerCode = this._code.querySelector('.inner-code');
+      Tag.addEventListeners(innerCode, {
+        mouseover: () => this._clearCarouselTimer(),
+        mouseout: ({ currentTarget, clientX, clientY }) => {
+          // textarea에 focus된 상태에서 일어난 mouseout 무시
+          const activeElem = document.activeElement;
+          if (
+            activeElem.classList.contains('textarea-code') &&
+            currentTarget.contains(activeElem)
+          ) {
+            return;
+          }
+
+          const { top, bottom, left, right } =
+            currentTarget.getBoundingClientRect();
+
+          // 마우스가 innerCode 바깥(또는 경계)에 나갔을 때에만 타이머 set
+          // (마우스를 빠르게 움직이면 mouseout 이벤트가 일어나지 않는 현상 방지)
+          if (
+            clientX <= left ||
+            clientX >= right ||
+            clientY <= top ||
+            clientY >= bottom
+          ) {
+            this._setCarouselTimer(2000, 3000);
+          }
+        }
+      });
     }
 
     // Create
@@ -1148,13 +1150,13 @@
 
         const textInput =
           typeof line.textContent === 'string' &&
-            !isRootContainer &&
-            this._layout !== 'carousel'
+          !isRootContainer &&
+          this._layout !== 'carousel'
             ? Tag.createElement('input', {
-              class: 'button-code text-code',
-              value: line.textContent,
-              spellcheck: false
-            })
+                class: 'button-code text-code',
+                value: line.textContent,
+                spellcheck: false
+              })
             : null;
 
         if (textInput) {
@@ -1194,8 +1196,8 @@
 
         const innerAddButton =
           textInput ||
-            isRootContainer ||
-            (openingTag.length && closingTag && this._layout === 'carousel')
+          isRootContainer ||
+          (openingTag.length && closingTag && this._layout === 'carousel')
             ? this._createAddInnerTagButton(line.tag, 'button-inner')
             : null;
 
@@ -1229,8 +1231,8 @@
       const length = Number.isInteger(Number(item))
         ? Number(item)
         : defaultItemCount
-          ? Number(defaultItemCount)
-          : Editor.DEFAULT_ITEM;
+        ? Number(defaultItemCount)
+        : Editor.DEFAULT_ITEM;
       const container = new PreviewTag({ className: 'container' });
       for (let i = 0; i < length; i++) {
         container.push(new PreviewTag({ className: 'item' }));
@@ -2320,6 +2322,9 @@
       this._codeWrapper.removeAllChildren();
       const table = this._createCssCodeTextTable();
       this._codeWrapper.appendChild(table);
+      if (this._mode === 'free' && this._layout === 'carousel') {
+        this._setCarouselTimer(2000, 3000);
+      }
     }
 
     _textareaKeydownEventListener(e, numbers) {
@@ -2433,8 +2438,8 @@
             ? [anchorNode, anchorLine, anchorOffset]
             : [focusNode, focusLine, focusOffset]
           : Number(anchorLine.dataset.index) < Number(focusLine.dataset.index)
-            ? [anchorNode, anchorLine, anchorOffset]
-            : [focusNode, focusLine, focusOffset];
+          ? [anchorNode, anchorLine, anchorOffset]
+          : [focusNode, focusLine, focusOffset];
 
       const firstLineChildNodes = [...firstLine.childNodes]
         .reduce((acc, node) => [...acc, node, ...(node.childNodes ?? [])], [])
@@ -2469,6 +2474,38 @@
 
     // Update
     // ------------------------------------------------------------------------------
+
+    _setCarouselTimer(timeoutDelay, carouselDelay) {
+      if (this._autoCarouselTimer) {
+        return;
+      }
+
+      if (this._delayTimer) {
+        clearTimeout(this._delayTimer);
+      }
+
+      this._delayTimer = setTimeout(() => {
+        this._autoCarouselTimer = setInterval(() => {
+          let index = this._snippetIndex;
+          const indicators =
+            this._carouselIndicators.querySelectorAll('.indicator');
+
+          indicators[index].classList.remove('selected');
+          index += 1;
+          if (index === this._snippets.length) {
+            index = 0;
+          }
+          indicators[index].classList.add('selected');
+          this._snippetChangeEventListener(index);
+        }, carouselDelay);
+      }, timeoutDelay);
+    }
+
+    _clearCarouselTimer() {
+      clearTimeout(this._delayTimer);
+      clearInterval(this._autoCarouselTimer);
+      this._autoCarouselTimer = null;
+    }
 
     // curHtml의 elem으로 Preview DOM 교체
     _updatePreviewDOM(dom = this._previewWrapper.elem, tag = this._curHtml) {

@@ -95,6 +95,28 @@
         </div>
     </header>
 
+    <aside class="search-modal-mobile">
+        <header>
+            <h1 class="visually-hidden">검색창</h1>
+            <form action="/search" method="get" autocomplete="off">
+                <input type="text" class="search-input" name="q" placeholder="Search" />
+                <button type="submit" class="search-btn">
+                    <span class="visually-hidden">검색 버튼</span>
+                </button>
+            </form>
+            <button class="close-btn" type="button">취소</button>
+        </header>
+
+        <section class="modal-history">
+            <header class="header-history">
+                <h2 class="tit-history">최근 검색어</h2>
+                <button type="button" class="btn-del-all">전체 삭제</button>
+            </header>
+            <ul class="list-history-m"></ul>
+        </section>
+    </aside>
+    <div class="overlay" aria-hidden></div>
+
     <main class="main-cheatsheet-grid">
         <div class="cheatsheet-grid">
             <h1 id="Grid-Cheatsheet" class="main-title">
@@ -136,7 +158,7 @@
                         </p>
                         <p class="txt-code"><span class="number-code">5</span>}</p>
                     </section>
-
+             
                     <div class="buttons">
                         <button type="button" class="button button-add">+ Add Box</button>
                         <button type="button" class="button button-remove">- Remove Box</button>
@@ -166,6 +188,7 @@
                             <div class="item">3</div>
                         </div>
                     </section>
+
                     <section class="box-code-area ">
                         <p class="txt-code"><span class="number-code">1</span>.container {</p>
                         <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
@@ -174,6 +197,7 @@
                         </p>
                         <p class="txt-code"><span class="number-code">4</span>}</p>
                     </section>
+
                     <div class="buttons">
                         <button type="button" class="button button-add">+ Add Box</button>
                         <button type="button" class="button button-remove">- Remove Box</button>
@@ -208,15 +232,8 @@
                             <div class="item">9</div>
                         </div>
                     </section>
-                    <section class="box-code-area ">
-                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp; display: grid;</p>
-                        <p class="txt-code">
-                            <span class="number-code">3</span>&nbsp;&nbsp; grid-template-columns: repeat(3,1fr);
-                        </p>
-                        <p class="txt-code"><span class="number-code">4</span>&nbsp;&nbsp; gap: <em>0</em>;</p>
-                        <p class="txt-code"><span class="number-code">5</span>}</p>
-                    </section>
+
+                    
                     <div class="buttons">
                         <button type="button" class="button button-add">+ Add Box</button>
                         <button type="button" class="button button-remove">- Remove Box</button>
@@ -238,6 +255,96 @@
                             <div class="item">3</div>
                         </div>
                     </section>
+                 
+                    <div class="buttons">
+                        <button type="button" class="button button-add">+ Add Box</button>
+                        <button type="button" class="button button-remove">- Remove Box</button>
+                    </div>
+                </article>
+                <!-- grid-column  -->
+                <article class="fg-cheat">
+                    <h2 class="tit-title" id="grid-column"><a href="#grid-column">grid-column</a>
+                    </h2>
+                    <form class="radio-cheat">
+                        <input type="radio" id="cheat4-option1" name="cheat4" class="input-option" checked="true">
+                        <label for="cheat4-option1" class="label-option cheat1-option1">1 / 3</label>
+                        <input type="radio" id="cheat4-option2" name="cheat4" class="input-option">
+                        <label for="cheat4-option2" class="label-option cheat1-option1">2 / 3</label>
+                        <input type="radio" id="cheat4-option3" name="cheat4" class="input-option">
+                        <label for="cheat4-option3" class="label-option cheat4-option2">1 / span 3</label>
+                        <input type="radio" id="cheat4-option4" name="cheat4" class="input-option">
+                        <label for="cheat4-option4" class="label-option cheat4-option2">2 / span 2</label>
+                    </form>
+                    <section class="box-area">
+                        <div class="container cheat4" id="cont-cheat4">
+                            <div class="item">1</div>
+                            <div class="item">2</div>
+                            <div class="item">3</div>
+                            <div class="item">4</div>
+                            <div class="item">5</div>
+                        </div>
+                    </section>
+
+                    <section class="box-code-area">
+                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
+                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
+                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-columns: 1fr
+                            1fr;</p>
+                        <p class="txt-code"><span class="number-code">4</span>}</p>
+                        <p class="txt-code"><span class="number-code">5</span></p>
+                        <p class="txt-code">
+<<<<<<< HEAD
+                            <span class="number-code">3</span>&nbsp;&nbsp; grid-template-columns: repeat(3,1fr);
+                        </p>
+                        <p class="txt-code"><span class="number-code">4</span>&nbsp;&nbsp; gap: <em>0</em>;</p>
+                        <p class="txt-code"><span class="number-code">5</span>}</p>
+=======
+                            <span class="number-code">6</span>
+                            .item1 {
+                        </p>
+                        <p class="txt-code">
+                            <span class="number-code">7</span>&nbsp;&nbsp;
+                            grid-column : <em>1 / 3</em>;
+                        </p>
+                        <p class="txt-code"><span class="number-code">8</span>}</p>
+                        <p class="txt-code"><span class="number-code">9</span></p>
+                        <p class="txt-code"><span class="number-code">10</span></p>
+>>>>>>> 56922a9278d43935a13b9bc9dd1442f8ef72bd08
+                    </section>
+                    <div class="buttons">
+                        <button type="button" class="button button-add">+ Add Box</button>
+                        <button type="button" class="button button-remove">- Remove Box</button>
+                    </div>
+                </article>
+<<<<<<< HEAD
+                <!-- grid-column-start grid-column-end  -->
+                <article class="fg-cheat">
+                    <h2 class="tit-title" id="grid-column-start-end"><a
+                            href="#grid-column-start-end">grid-column-start</a>
+                        <br>
+                        <a href="#grid-column-start-end">
+                            grid-column-end
+                        </a>
+                    </h2>
+                    <section class="box-area">
+                        <div class="container cheat3" id="cont-cheat3">
+=======
+                <!-- grid-row-start grid-row-end  -->
+                <article class="fg-cheat">
+                    <h2 class="tit-title" id="grid-row-start-end"><a href="#grid-row-start-end">grid-row-start</a>
+                        <br>
+                        <a href="#grid-row-start-end">
+                            grid-row-end
+                        </a>
+                    </h2>
+                    <section class="box-area">
+                        <div class="container cheat5" id="cont-cheat5">
+>>>>>>> 56922a9278d43935a13b9bc9dd1442f8ef72bd08
+                            <div class="item">1</div>
+                            <div class="item">2</div>
+                            <div class="item">3</div>
+                        </div>
+                    </section>
 
                     <section class="box-code-area ">
                         <p class="txt-code"><span class="number-code">1</span>.container {</p>
@@ -252,11 +359,19 @@
                         </p>
                         <p class="txt-code">
                             <span class="number-code">7</span>&nbsp;&nbsp;
+<<<<<<< HEAD
                             grid-column-start : <em>1</em>;
                         </p>
                         <p class="txt-code">
                             <span class="number-code">8</span>&nbsp;&nbsp;
                             grid-column-end : <em>3</em>;
+=======
+                            grid-row-start : <em>1</em>;
+                        </p>
+                        <p class="txt-code">
+                            <span class="number-code">8</span>&nbsp;&nbsp;
+                            grid-row-end : <em>3</em>;
+>>>>>>> 56922a9278d43935a13b9bc9dd1442f8ef72bd08
                         </p>
                         <p class="txt-code"><span class="number-code">9</span>}</p>
                         <p class="txt-code"><span class="number-code">10</span></p>
@@ -267,6 +382,7 @@
                         <button type="button" class="button button-remove">- Remove Box</button>
                     </div>
                 </article>
+<<<<<<< HEAD
                 <!-- grid-column  -->
                 <article class="fg-cheat">
                     <h2 class="tit-title" id="grid-column"><a href="#grid-column">grid-column</a>
@@ -283,11 +399,30 @@
                     </form>
                     <section class="box-area">
                         <div class="container cheat4" id="cont-cheat4">
+=======
+                <!-- grid-row  -->
+                <article class="fg-cheat">
+                    <h2 class="tit-title" id="grid-row"><a href="#grid-row">grid-row</a>
+                    </h2>
+                    <form class="radio-cheat">
+                        <input type="radio" id="cheat6-option1" name="cheat6" class="input-option" checked="true">
+                        <label for="cheat6-option1" class="label-option cheat6-option1">1 / 3</label>
+                        <input type="radio" id="cheat6-option2" name="cheat6" class="input-option">
+                        <label for="cheat6-option2" class="label-option cheat6-option1">2 / 3</label>
+                        <input type="radio" id="cheat6-option3" name="cheat6" class="input-option">
+                        <label for="cheat6-option3" class="label-option cheat6-option2">1 / span 3</label>
+                        <input type="radio" id="cheat6-option4" name="cheat6" class="input-option">
+                        <label for="cheat6-option4" class="label-option cheat6-option2">2 / span 2</label>
+                    </form>
+                    <section class="box-area">
+                        <div class="container cheat6" id="cont-cheat6">
+>>>>>>> 56922a9278d43935a13b9bc9dd1442f8ef72bd08
                             <div class="item">1</div>
                             <div class="item">2</div>
                             <div class="item">3</div>
                             <div class="item">4</div>
                             <div class="item">5</div>
+<<<<<<< HEAD
                         </div>
                     </section>
 
@@ -328,16 +463,19 @@
                             <div class="item">1</div>
                             <div class="item">2</div>
                             <div class="item">3</div>
+=======
+>>>>>>> 56922a9278d43935a13b9bc9dd1442f8ef72bd08
                         </div>
                     </section>
 
-                    <section class="box-code-area ">
+                    <section class="box-code-area">
                         <p class="txt-code"><span class="number-code">1</span>.container {</p>
                         <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
                         <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-columns: 1fr
                             1fr;</p>
                         <p class="txt-code"><span class="number-code">4</span>}</p>
                         <p class="txt-code"><span class="number-code">5</span></p>
+<<<<<<< HEAD
                         <p class="txt-code">
                             <span class="number-code">6</span>
                             .item1 {
@@ -398,6 +536,16 @@
                             <span class="number-code">7</span>&nbsp;&nbsp;
                             grid-row : <em>1 / 3</em>;
                         </p>
+=======
+                        <p class="txt-code">
+                            <span class="number-code">6</span>
+                            .item1 {
+                        </p>
+                        <p class="txt-code">
+                            <span class="number-code">7</span>&nbsp;&nbsp;
+                            grid-row : <em>1 / 3</em>;
+                        </p>
+>>>>>>> 56922a9278d43935a13b9bc9dd1442f8ef72bd08
                         <p class="txt-code"><span class="number-code">8</span>}</p>
                         <p class="txt-code"><span class="number-code">9</span></p>
                         <p class="txt-code"><span class="number-code">10</span></p>

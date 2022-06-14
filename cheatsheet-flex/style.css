@@ -5,23 +5,45 @@ body {
 }
 
 main {
-    width: 100vw;
-    /* height: 100vh */
-    /* height: 100%; */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center; 
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-article {
-    flex-basis: 50%;
+.flex-wrapper{
+  width: fit-content;
+  padding: 0 180px;
 }
 
+.flex-cont{
+  margin-top: 80px;
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 28px;
+  grid-row-gap: 50px;
+}
+
+article{
+  padding-bottom: 70px;
+}
+
+article:not(:last-child, :nth-last-of-type(2)){
+  border-bottom: 1px solid var(--flex-border);
+}
 
 .gnb-header .modal-menu .list-item:first-child {
     color: var(--flex-primary);
     font-weight: 700;
+}
+
+.main-title{
+  color: var(--secondary);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 44px;
+  margin-top: 140px;
 }
 
 .fg-cheat .buttons {
@@ -54,6 +76,25 @@ article {
   }
 
 
+  /* 다크모드 버튼 */
+ 
+  .on .fg-cheat .buttons .button-add {
+    margin-right: 12px;
+    background-color: var(--flex-border);
+    color: var(--flex-background);
+  }
+
+  .on .fg-cheat .buttons .button-remove {
+    background-color: var(--secondary);
+    color: #252424;
+  }
+
+  .on .fg-cheat .buttons .button:hover {
+    box-shadow: 0 0 2px 2px #ffffffaa;
+  }
+
+  
+
 .btn-up {
     display: none;
     position: fixed;
@@ -76,8 +117,4 @@ article {
 
 .btn-up.on {
     background: var(--subtext) url(/src/assets/images/icon-chevron-up-darkmode.svg) no-repeat center;
-}
-
-.footer-area{
-    display: block;
 }
