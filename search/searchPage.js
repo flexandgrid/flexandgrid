@@ -261,10 +261,22 @@ const contents = [];
     const gridhtml = parseMarkdown(markdowngrid);
     contents.push(
       flexhtml
-        .filter((v) => v.includes(`h2`) || v.includes(`h3`) || v.includes(`h4`))
+        .filter(
+          (v) =>
+            v.includes(`h2`) ||
+            v.includes(`h3`) ||
+            v.includes(`h4`) ||
+            v.includes(`<p>`)
+        )
         .map((v) => v.toLocaleLowerCase()),
       gridhtml
-        .filter((v) => v.includes(`h2`) || v.includes(`h3`) || v.includes(`h4`))
+        .filter(
+          (v) =>
+            v.includes(`h2`) ||
+            v.includes(`h3`) ||
+            v.includes(`h4`) ||
+            v.includes(`<p>`)
+        )
         .map((v) => v.toLocaleLowerCase())
     );
     createList(contents);
@@ -275,61 +287,145 @@ const contents = [];
 
 const listSearch = document.querySelector(".list-search");
 let highTag = "";
+let currentTitle = "";
+let currentDesc = "";
+let prev = "";
+let firstDesc;
+let desc = [];
+const contentsList = [];
 const createList = (contents) => {
+  contents.forEach((check, i) => {
+    for (let j = 0; j < contents[i].length - 1; j++) {
+      if (check[j].includes("<p>")) {
+        firstDesc = j;
+
+        while (contents[i][j].includes("<p>")) {
+          desc += contents[i][j];
+          contents[i].splice(j, 1);
+          if (j < contents[i].length - 1) {
+          } else {
+            break;
+          }
+          if (contents[i][j].includes("<p>")) {
+            continue;
+          } else {
+            break;
+          }
+        }
+        contents[i].splice(firstDesc, 0, desc);
+        desc = [];
+      }
+    }
+  });
+
   contents.forEach((v, i) => {
     v.forEach((value, j) => {
       if (value.includes(searchQuery.toLowerCase())) {
         if (value.includes("h3") || value.includes("h4")) {
+          currentTitle = value;
+          while (!contents[i][j].includes("<p>")) {
+            j++;
+            if (contents[i][j].includes("<p>")) {
+              currentDesc = contents[i][j];
+            }
+          }
+
           while (!contents[i][j].includes("h2")) {
             j--;
+            if (contents[i][j].includes("h2")) {
+              highTag = contents[i][j];
+              break;
+            }
             if (j < 0) {
               break;
             }
           }
-          highTag = contents[i][j];
+        } else if (value.includes("<p>")) {
+          currentDesc = value;
+          while (!contents[i][j].includes("h2")) {
+            j--;
+            if (
+              contents[i][j].includes("h2") ||
+              contents[i][j].includes("h3") ||
+              contents[i][j].includes("h4")
+            ) {
+              currentTitle = contents[i][j];
+              while (!contents[i][j].includes("h2")) {
+                j--;
+                if (contents[i][j].includes("h2")) {
+                  highTag = contents[i][j];
+                  break;
+                }
+              }
+              break;
+            }
+            if (j < 0) {
+              break;
+            }
+          }
         } else if (value.includes("h2")) {
           highTag = value;
+          currentTitle = value;
+          while (!contents[i][j].includes("<p>")) {
+            j++;
+            if (contents[i][j].includes("<p>")) {
+              currentDesc = contents[i][j];
+            } else if (
+              contents[i][j].includes("h3") ||
+              contents[i][j].includes("h3")
+            ) {
+              currentDesc = "";
+              break;
+            }
+          }
         }
-        value = value.replace(/<\/?[^>]+(>|$)/g, "");
+
+        currentTitle = currentTitle.replace(/<\/?[^>]+(>|$)/g, "");
+        currentDesc = currentDesc.replace(/<\/?[^>]+(>|$)/g, "");
         highTag = highTag.replace(/<\/?[^>]+(>|$)/g, "");
         highTag = highTag.replace(/.+(?=....)[0-9.]/g, "");
-        if (value.match(/\(([^)]+)\)/g) == "(w3c)") {
-          value = value.replace(/\(([^)]+)\)/g, "(W3C)");
+        if (currentTitle.match(/\(([^)]+)\)/g) == "(w3c)") {
+          currentTitle = currentTitle.replace(/\(([^)]+)\)/g, "(W3C)");
         }
-        const searchListItem = document.createElement("li");
-        searchListItem.setAttribute("class", "itemwrap-search");
+        if (prev != currentTitle) {
+          prev = currentTitle;
+          const searchListItem = document.createElement("li");
+          searchListItem.setAttribute("class", "itemwrap-search");
 
-        const searchListItemLink = document.createElement("a");
-        searchListItemLink.setAttribute(
-          "href",
-          `${i == 0 ? `/flex/#${value}` : `/grid/#${value}`}`
-        );
-        searchListItemLink.setAttribute("class", "item-search");
+          const searchListItemLink = document.createElement("a");
+          searchListItemLink.setAttribute(
+            "href",
+            `${i == 0 ? `/flex/#${currentTitle}` : `/grid/#${currentTitle}`}`
+          );
+          searchListItemLink.setAttribute("class", "item-search");
 
-        value = value.replace(/.+(?=......)[0-9.]/g, "");
+          currentTitle = currentTitle.replace(/.+(?=......)[0-9.]/g, "");
 
-        const searchRoute = document.createElement("span");
-        searchRoute.setAttribute("class", "route-search");
-        searchRoute.appendChild(
-          document.createTextNode(
-            i == 0 ? `flex > ${highTag}` : `grid > ${highTag}`
-          )
-        );
+          const searchRoute = document.createElement("span");
+          searchRoute.setAttribute("class", "route-search");
+          searchRoute.appendChild(
+            document.createTextNode(
+              i == 0 ? `flex > ${highTag}` : `grid > ${highTag}`
+            )
+          );
 
-        const searchTitle = document.createElement("strong");
-        searchTitle.setAttribute("class", "tit-search");
-        searchTitle.appendChild(document.createTextNode(value));
+          const searchTitle = document.createElement("strong");
+          searchTitle.setAttribute("class", "tit-search");
+          searchTitle.appendChild(document.createTextNode(currentTitle));
 
-        const searchDesc = document.createElement("p");
-        searchDesc.setAttribute("class", "desc-search");
-        searchDesc.appendChild(document.createTextNode(""));
+          const searchDesc = document.createElement("p");
+          searchDesc.setAttribute("class", "desc-search");
+          searchDesc.appendChild(document.createTextNode(currentDesc));
 
-        searchListItemLink.appendChild(searchRoute);
-        searchListItemLink.appendChild(searchTitle);
-        searchListItemLink.appendChild(searchDesc);
+          searchListItemLink.appendChild(searchRoute);
+          searchListItemLink.appendChild(searchTitle);
+          searchListItemLink.appendChild(searchDesc);
 
-        searchListItem.appendChild(searchListItemLink);
-        listSearch.appendChild(searchListItem);
+          searchListItem.appendChild(searchListItemLink);
+          listSearch.appendChild(searchListItem);
+        } else {
+          prev = currentTitle;
+        }
       }
     });
   });
