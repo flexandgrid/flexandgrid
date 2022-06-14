@@ -372,7 +372,7 @@ const createList = (contents) => {
               currentDesc = contents[i][j];
             } else if (
               contents[i][j].includes("h3") ||
-              contents[i][j].includes("h3")
+              contents[i][j].includes("h4")
             ) {
               currentDesc = "";
               break;
