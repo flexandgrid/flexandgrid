@@ -27,9 +27,9 @@ body {
 }
 
 /* Grid Cheetsheet 타이틀 다크모드  */
-.main-cheatsheet-grid.on .main-title {
+/* .on .main-title {
     color: var(--subtext);
-}
+} */
 
 .main-wrapper {
     margin: 0 auto;
@@ -71,8 +71,4 @@ body {
 
 .btn-up.on {
     background: var(--subtext) url(/src/assets/images/icon-chevron-up-darkmode.svg) no-repeat center;
-}
-
-.footer-area {
-    display: block;
 }
