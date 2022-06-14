@@ -383,9 +383,6 @@ const createList = (contents) => {
         currentDesc = currentDesc.replace(/<\/?[^>]+(>|$)/g, "");
         highTag = highTag.replace(/<\/?[^>]+(>|$)/g, "");
         highTag = highTag.replace(/[^\s]+[0-9.]/g, "");
-        if (currentTitle.match(/\(([^)]+)\)/g) == "(w3c)") {
-          currentTitle = currentTitle.replace(/\(([^)]+)\)/g, "(W3C)");
-        }
         if (prev != currentTitle) {
           prev = currentTitle;
           const searchListItem = document.createElement("li");
@@ -398,7 +395,7 @@ const createList = (contents) => {
           );
           searchListItemLink.setAttribute("class", "item-search");
 
-          currentTitle = currentTitle.replace(/[^\s]+[0-9.]/gi, "");
+          currentTitle = currentTitle.replace(/[^s]+[.]/gi, "");
           const searchRoute = document.createElement("span");
           searchRoute.setAttribute("class", "route-search");
           searchRoute.appendChild(
