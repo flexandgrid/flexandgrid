@@ -260,24 +260,20 @@ const contents = [];
     const flexhtml = parseMarkdown(markdownflex);
     const gridhtml = parseMarkdown(markdowngrid);
     contents.push(
-      flexhtml
-        .filter(
-          (v) =>
-            v.includes(`h2`) ||
-            v.includes(`h3`) ||
-            v.includes(`h4`) ||
-            v.includes(`<p>`)
-        )
-        .map((v) => v.toLocaleLowerCase()),
-      gridhtml
-        .filter(
-          (v) =>
-            v.includes(`h2`) ||
-            v.includes(`h3`) ||
-            v.includes(`h4`) ||
-            v.includes(`<p>`)
-        )
-        .map((v) => v.toLocaleLowerCase())
+      flexhtml.filter(
+        (v) =>
+          v.includes(`h2`) ||
+          v.includes(`h3`) ||
+          v.includes(`h4`) ||
+          v.includes(`<p>`)
+      ),
+      gridhtml.filter(
+        (v) =>
+          v.includes(`h2`) ||
+          v.includes(`h3`) ||
+          v.includes(`h4`) ||
+          v.includes(`<p>`)
+      )
     );
     createList(contents);
   };
@@ -319,7 +315,7 @@ const createList = (contents) => {
 
   contents.forEach((v, i) => {
     v.forEach((value, j) => {
-      if (value.includes(searchQuery.toLowerCase())) {
+      if (value.includes(value.match(new RegExp(searchQuery, "i")))) {
         if (value.includes("h3") || value.includes("h4")) {
           currentTitle = value;
           while (!contents[i][j].includes("<p>")) {
@@ -386,7 +382,7 @@ const createList = (contents) => {
         currentTitle = currentTitle.replace(/<\/?[^>]+(>|$)/g, "");
         currentDesc = currentDesc.replace(/<\/?[^>]+(>|$)/g, "");
         highTag = highTag.replace(/<\/?[^>]+(>|$)/g, "");
-        highTag = highTag.replace(/.+(?=....)[0-9.]/g, "");
+        highTag = highTag.replace(/[^\s]+[0-9.]/g, "");
         if (currentTitle.match(/\(([^)]+)\)/g) == "(w3c)") {
           currentTitle = currentTitle.replace(/\(([^)]+)\)/g, "(W3C)");
         }
@@ -402,8 +398,7 @@ const createList = (contents) => {
           );
           searchListItemLink.setAttribute("class", "item-search");
 
-          currentTitle = currentTitle.replace(/.+(?=......)[0-9.]/g, "");
-
+          currentTitle = currentTitle.replace(/[^\s]+[0-9.]/gi, "");
           const searchRoute = document.createElement("span");
           searchRoute.setAttribute("class", "route-search");
           searchRoute.appendChild(
