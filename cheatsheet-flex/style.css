@@ -5,10 +5,10 @@ body {
 }
 
 main {
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
 }
 
 .flex-wrapper{
@@ -17,12 +17,12 @@ main {
 }
 
 .flex-cont{
-  margin-top: 80px;
   display: grid;
-  width: fit-content;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 28px;
   grid-row-gap: 50px;
+  width: fit-content;
+  margin-top: 80px;
 }
 
 article{
@@ -117,4 +117,12 @@ article:not(:last-child, :nth-last-of-type(2)){
 
 .btn-up.on {
     background: var(--subtext) url(/src/assets/images/icon-chevron-up-darkmode.svg) no-repeat center;
+}
+
+.fg-editor .code {
+  overflow: hidden;
+  width: 100%;
+  max-height: var(--outer);
+  background-color: var(--white);
+  box-shadow: 0px 4px 12px 0px var(--box-shadow-1);
 }
