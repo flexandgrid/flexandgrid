@@ -292,7 +292,6 @@ let currentDesc = "";
 let prev = "";
 let firstDesc;
 let desc = [];
-const contentsList = [];
 const createList = (contents) => {
   contents.forEach((check, i) => {
     for (let j = 0; j < contents[i].length - 1; j++) {
