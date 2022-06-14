@@ -127,13 +127,13 @@
   background-color: var(--primary-6);
 }
 
-.fg-editor.theme-double-color-2 .container .item:nth-of-type(4n-1),
-.fg-editor.theme-double-color-2 .container .item:nth-of-type(4n-2) {
+.fg-editor.theme-double-color-2 .container .item:nth-child(2),
+.fg-editor.theme-double-color-2 .container .item:nth-child(4) {
   background-color: var(--primary-2);
 }
 
-.on .fg-editor.theme-double-color-2 .container .item:nth-of-type(4n-1),
-.on .fg-editor.theme-double-color-2 .container .item:nth-of-type(4n-2) {
+.on .fg-editor.theme-double-color-2 .container .item:nth-of-type(2),
+.on .fg-editor.theme-double-color-2 .container .item:nth-of-type(4) {
   background-color: var(--primary-6);
 }
 
