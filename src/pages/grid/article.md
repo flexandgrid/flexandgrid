@@ -57,7 +57,7 @@ Chrome에서 개발자 도구를 이용하면 HTML 요소에 grid 속성이 적�
 
 ![](images/008.png)
 
-또한, Styles 탭에서 `display : grid;` 속성 옆의 버튼을 이용해서 요소에 grid의 다양한 속성을 바로 적용하여 어떻게 변하는지 바로 확인할 수 있다.
+또한, Styles 탭에서 `display: grid` 속성 옆의 버튼을 이용해서 요소에 grid의 다양한 속성을 바로 적용하여 어떻게 변하는지 바로 확인할 수 있다.
 
 ![](images/009.png)
 
@@ -95,11 +95,11 @@ Grid는 Flex와 마찬가지로 HTML 구조에 컨테이너와 아이템, 이렇
 </div>
 ```
 
-grid를 사용하기 위해선 flex 처럼 CSS에서 display 속성을 부여하는 과정이 필요하다. 컨테이너`display:grid;`를 적용하면 이후 Grid가 제공하는 속성을 다양하게 사용할 수 있다.
+grid를 사용하기 위해선 flex 처럼 CSS에서 display 속성을 부여하는 과정이 필요하다. 컨테이너`display: grid`를 적용하면 이후 Grid가 제공하는 속성을 다양하게 사용할 수 있다.
 
 <br />
 
-선언 시 즉각적으로 아이템들이 가로로 배치되는 flex와 달리, grid는 `display:grid;`선언을 해도 변화를 확인하기 어렵다. 왜냐하면 grid 레이아웃이 되었지만, 아직 컨테이너가 하나의 열(row)밖에 없어 아이템들이 기본정렬을 유지하고 있기 때문이다. 컨테이너에 grid-template-columns, grid-template-rows 속성을 추가하여 행과 열을 추가함으로써 그리드 형태를 명확히 확인할 수 있다.
+선언 시 즉각적으로 아이템들이 가로로 배치되는 flex와 달리, grid는 `display: grid`선언을 해도 변화를 확인하기 어렵다. 왜냐하면 grid 레이아웃이 되었지만, 아직 컨테이너가 하나의 열(row)밖에 없어 아이템들이 기본정렬을 유지하고 있기 때문이다. 컨테이너에 grid-template-columns, grid-template-rows 속성을 추가하여 행과 열을 추가함으로써 그리드 형태를 명확히 확인할 수 있다.
 
 ```css
 .container {
@@ -143,7 +143,7 @@ grid-template-rows: row1높이 row2높이;
 
 **fr이란?**
 
-fr 은 fraction의 줄임말로, fraction을 직역하면 ‘분수’라는 뜻을 가지고 있다. grid 에서는 그리드 컨테이너에서 사용할 수 있는 공간의 일부를 나타내는 단위를 의미하는데, fr 단위를 사용하면 그리드 내부의 레이아웃 분할을 자동으로 계산해서 적용할 수 있다. 그리드 레이아웃에서 그리드 아이템의 크기를 지정할 때 px 을 이용하면 항상 크기가 고정되기 때문에 반응형 웹 디자인에는 적합하지 않다. 그래서 상대적인 크기를 지정할 수 있도록 fr 단위를 사용하면, 더 편리하게 반응형 디자인을 적용할 수 있다. 예를 들어 `grid-template-columns: 1fr 1fr 1fr;` 이라는 코드를 적는다면, 컨테이너 안 그리드 아이템의 크기는 1 : 1 : 1 의 비율로 각각 적용된다.
+fr 은 fraction의 줄임말로, fraction을 직역하면 ‘분수’라는 뜻을 가지고 있다. grid 에서는 그리드 컨테이너에서 사용할 수 있는 공간의 일부를 나타내는 단위를 의미하는데, fr 단위를 사용하면 그리드 내부의 레이아웃 분할을 자동으로 계산해서 적용할 수 있다. 그리드 레이아웃에서 그리드 아이템의 크기를 지정할 때 px 을 이용하면 항상 크기가 고정되기 때문에 반응형 웹 디자인에는 적합하지 않다. 그래서 상대적인 크기를 지정할 수 있도록 fr 단위를 사용하면, 더 편리하게 반응형 디자인을 적용할 수 있다. 예를 들어 `grid-template-columns: 1fr 1fr 1fr` 이라는 코드를 적는다면, 컨테이너 안 그리드 아이템의 크기는 1 : 1 : 1 의 비율로 각각 적용된다.
 
 ```editor
 <div data-mode="snippet" class="fg-editor css-grid theme-grid">
@@ -565,7 +565,7 @@ gap: calc(20px+10%);
 </div>
 ```
 
-fr 단위가 gap의 속성값이 될 수 없는 이유는, fr은 사용 가능한 공간을 분배하는 단위이기 때문이다. 아래 예시처럼 `grid-template-columns: 1fr 1fr 1fr;` 라는 속성을 컨테이너에 적용하면, 컨테이너의 사용 가능한 넓이를 고려하여 1 : 1 : 1의 비율로 분배하는 것이 fr의 역할이다. 하지만, grid item 요소들 사이에는 \***\*사용 가능한 공간이 존재하지 않고, 서로 붙어있는 상태이다**.** 따라서 \*\***아이템 간의 간격을 벌리는 속성인 gap에 fr 단위가 적용되지 않는 것이다.
+fr 단위가 gap의 속성값이 될 수 없는 이유는, fr은 사용 가능한 공간을 분배하는 단위이기 때문이다. 아래 예시처럼 `grid-template-columns: 1fr 1fr 1fr` 라는 속성을 컨테이너에 적용하면, 컨테이너의 사용 가능한 넓이를 고려하여 1 : 1 : 1의 비율로 분배하는 것이 fr의 역할이다. 하지만, grid item 요소들 사이에는 \***\*사용 가능한 공간이 존재하지 않고, 서로 붙어있는 상태이다**.** 따라서 \*\***아이템 간의 간격을 벌리는 속성인 gap에 fr 단위가 적용되지 않는 것이다.
 
 <br />
 
@@ -702,7 +702,7 @@ gap에 부여하는 첫 번째 값은 row-gap, 두 번째 값은 column-gap이�
 
 ## 4.1. grid-column-start & grid-column-end
 
-Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. column 2개로 이루어진 grid 레이아웃을 상상해보도록 하겠다. column 라인은 앞에서부터 차례로 1,2,3번을 매길 수 있으므로 총 3개다.
+Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. column 2개로 이루어진 grid 레이아웃을 상상해보도록 하겠다. column 라인은 앞에서부터 차례로 1, 2, 3번을 매길 수 있으므로 총 3개다.
 
 <br />
 
@@ -732,7 +732,7 @@ Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. colu
 </div>
 ```
 
-Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. column 2개로 이루어진 grid 레이아웃을 상상해보도록 하겠다. column 라인은 앞에서부터 차례로 1,2,3번을 매길 수 있으므로 총 3개다.
+Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. column 2개로 이루어진 grid 레이아웃을 상상해보도록 하겠다. column 라인은 앞에서부터 차례로 1, 2, 3번을 매길 수 있으므로 총 3개다.
 
 ## 4.2. grid-row-start & grid-row-end
 
@@ -766,7 +766,7 @@ Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. colu
 </div>
 ```
 
-위 예제에서 grid1의 row 영역이 grid line의 1부터 3 까지 차지한 것을 볼 수 있다.
+위 예제에서 grid1의 row 영역이 grid line의 1부터 3까지 차지한 것을 볼 수 있다.
 
 ## 4.3. 셀의 영역 지정
 
@@ -803,7 +803,7 @@ Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. colu
 </div>
 ```
 
-위 예제의 grid1 과 grid2의 영역을 지정해보겠다.
+위 예제의 grid1과 grid2의 영역을 지정해보겠다.
 
 ```editor
 <div data-mode="snippet" data-hide-buttons="true" class="fg-editor css-grid theme-grid">
@@ -850,7 +850,7 @@ Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. colu
 </div>
 ```
 
-지금까지 배운 `grid-column-start` , `grid-column-end` , `grid-row-start` , `grid-row-end` 속성을 사용하여 grid 셀의 영역을 지정할 수 있다. 하지만 이렇게 column과 row에 start와 end를 각 각 지정해주기에는 코드가 너무 길어지게 된다. start와 end를 한번에 지정 하려면 start와 end의 축약 속성인 `grid-column` , `grid-row`를 사용할 수 있다.
+지금까지 배운 `grid-column-start`, `grid-column-end`, `grid-row-start`, `grid-row-end` 속성을 사용하여 grid 셀의 영역을 지정할 수 있다. 하지만 이렇게 column과 row에 start와 end를 각각 지정해주기에는 코드가 너무 길어지게 된다. start와 end를 한번에 지정 하려면 start와 end의 축약 속성인 `grid-column`, `grid-row`를 사용할 수 있다.
 
 ## 4.4. grid-column & grid-row
 
@@ -858,8 +858,8 @@ Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. colu
 
 <br />
 
-- grid-column : 시작 / 끝 ;
-- grid-row : 시작 / 끝 ;
+- grid-column : 시작 / 끝
+- grid-row : 시작 / 끝
 
 ```editor
 <div data-mode="snippet" data-hide-buttons="true" class="fg-editor css-grid theme-grid">
@@ -906,7 +906,7 @@ Grid 레이아웃에는 암묵적으로 grid 라인이 포함되어 있다. colu
 
 ## 4.5. span 을 이용한 레이아웃 지정
 
-Grid 에서 span은 아이템 요소에 쓰이는 속성이며, 몇개의 셀을 차지하게 할 것인지 지정해줄 수 있다. 숫자와 함께 쓰이며 이 숫자만큼 영역을 차지한다. 명시하지 않으면 span 1이 기본값이 된다.
+Grid 에서 span은 아이템 요소에 쓰이는 속성이며, 몇 개의 셀을 차지하게 할 것인지 지정해줄 수 있다. 숫자와 함께 쓰이며 이 숫자만큼 영역을 차지한다. 명시하지 않으면 span 1이 기본값이 된다.
 
 ```editor
 <div data-mode="snippet" data-hide-buttons="true" class="fg-editor css-grid theme-grid">
@@ -956,9 +956,9 @@ grid 컨테이너 내의 item에 적용하는 속성이며, 아이템을 그리�
 <br />
 
 - `grid-row-start`, `grid-column-start`, `grid-row-end`, `grid-column-end`의 단축 속성이며, column과 row를 한 번에 지정할 수 있는 장점이 있다.
-- 형태: grid-area: grid-row-start / grid-column-start / grid-row-end / grid- column-end
-- 아래 예시의 grid1의 grid-area는 grid-row: 1 / 3, grid-column: 2 / 3과 동일하다.
-- 아래 예시의 grid2의 grid-area는 grid-row: 3 / 4, grid-column: 1 / 3과 동일하다.
+- 형태: `grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end`
+- 아래 예시의 grid1의 `grid-area`는 `grid-row: 1 / 3`, `grid-column: 2 / 3`과 동일하다.
+- 아래 예시의 grid2의 `grid-area`는 `grid-row: 3 / 4`, `grid-column: 1 / 3`과 동일하다.
 
 ```editor
 <div data-mode="snippet" data-hide-buttons="true" class="fg-editor css-grid theme-grid">
@@ -1072,7 +1072,7 @@ grid 컨테이너 내의 item에 적용하는 속성이며, 아이템을 그리�
 }
 ```
 
-각각의 라인에 이름을 정해주고 이 이름을 각 아이템 요소의 `grid-column-start` , `grid-column-end` , `grid-row-start` , `grid-row-end` 속성에 지정해주면 된다.
+각각의 라인에 이름을 정해주고 이 이름을 각 아이템 요소의 `grid-column-start`, `grid-column-end`, `grid-row-start`, `grid-row-end` 속성에 지정해주면 된다.
 
 ![](images/024.png)
 
