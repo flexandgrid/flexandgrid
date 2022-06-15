@@ -72,7 +72,11 @@ axis로 자식 요소의 정렬 방향을 제어할 수 있다. 행방향, 열�
 
 Flex의 주축이 되는 main axis의 방향은 `flex-direction` 이라는 속성에 의해 결정된다. 이는 다음과 같이 **네 가지의 경우**가 있다.
 
+<br />
+
 `flex-direction` 속성에 `row-reverse` 또는 `column-reverse` 값을 사용하면 DOM 구조와 시각적 표현에 차이가 발생하여 스크린 리더로 접근하는 사용자에게 잘못된 정보를 전달 할 가능성이 있으니 주의를 요한다.
+
+<br />
 
 1. `flex-direction: row` : `flex-direction` 의 기본값으로 아이템들이 행 방향, 가로로 배치된다.
 2. `flex-direction: row-reverse` : 아이템들이 역순으로 가로로 배치된다.
@@ -396,6 +400,8 @@ align의 사전적 정의는 ‘일직선으로 맞추다’이다. 즉, flex에
 
 flex-wrap 속성을 사용하게 되면, 부모 요소(컨테이너)의 크기만큼 단어 카드들의 크기를 조절할 수도 있고, 단어 카드들의 크기만큼 영역을 차지하고 부모 요소(컨테이너)의 영역을 벗어나게 되면 단어 카드를 밑으로 내려서 정렬도 할 수 있게 된다.
 
+<br />
+
 flex-wrap 속성은 Flex 레이아웃 모듈의 하위 속성이다. 정렬된 요소들의 총 너비가 부모 너비보다 클 때, 요소들을 강제적으로 한 줄로 할 것인지 여러 줄로 할 것인지를 정의한다. 두 줄 이상인 경우 새로운 라인이 쌓일 방향을 결정하는 교차 축도 정의된다. 가로축은 메인축에 수직인 축이다. 부모 요소에 `display:flex;`를 꼭 작성해야한다.
 
 ## 5.1. flex-wrap: nowrap
@@ -421,6 +427,8 @@ flex-wrap 속성 중 nowrap의 속성에 대해서 알아보자. flex-wrap는 
 ```
 
 하지만, 검색을 통해서 wrap의 속성을 찾아봤다면, 아래 그림처럼 부모영역(컨테이너)을 넘어가는 그림을 보았을 것이다. 이렇게 되는 이유는 8장에서 다루게 될 flex-shrink의 속성 때문이다. 기본적으로 flex-shrink의 초깃값은 1로 설정되어있어서 일정 비율만큼 줄어들게 되는데 이 속성을 0으로 하면 아래 그림처럼 부모영역(컨테이너)을 넘어가게 된다.
+
+<br />
 
 따라서 flex-wrap : nowrap은 자식 요소(아이템)의 전체 크기가 부모영역(컨테이너)을 넘어가지 않는다면 자기 자신의 크기를 유지하게 되고, 부모영역(컨테이너)을 넘어가게 된다면 일정한 비율로 줄어들게 된다. Flex를 사용하다 보면 nowrap이라는 속성을 자주 볼 일은 없지만, 이 속성을 사용하면 어떻게 변하는지 알아두는 것이 좋다.
 
@@ -449,9 +457,15 @@ flex-wrap 속성 중 nowrap의 속성에 대해서 알아보자. flex-wrap는 
 
 다음으로 flex-wrap 속성 중에 wrap의 속성에 대해서 알아보자. Flex-wrap의 wrap속성은 각 자식 요소(아이템)의 총 넓이가 부모 요소(컨테이너)의 넓이 보다 클 때, 부모 요소(컨테이너) 안에 자식 요소(아이템)이 들어갈 수 있도록 다음 줄에 이어서 정렬해 주는 속성을 말한다.
 
+<br />
+
 앞서 말한 flex-wrap에서 nowrap을 사용하면 자식 요소(아이템)의 총 넓이가 부모 요소(컨테이너)의 넓이보다 큰 경우 정렬된 요소들은 부모 요소(컨테이너)의 넓이에 맞춰 자동 축소 되게 된다.
 
-반면, flex-wrap:wrap의 경우에는 자식 요소(아이템)의 넓이를 유지한 채로 다음 줄로 이어서 정렬 되게 한다. flex-wrap:wrap을 사용하는 경우, 자식 요소(아이템)의 크기와 부모 요소(컨테이너)에 크기에 따라 다음 줄로 정렬이 이어지게 되는데 이는 flex-direction의 방향을 따르게 된다,
+<br />
+
+반면, flex-wrap:wrap의 경우에는 자식 요소(아이템)의 넓이를 유지한 채로 다음 줄로 이어서 정렬 되게 한다. flex-wrap:wrap을 사용하는 경우, 자식 요소(아이템)의 크기와 부모 요소(컨테이너)에 크기에 따라 다음 줄로 정렬이 이어지게 되는데 이는 flex-direction의 방향을 따르게 된다.
+
+<br />
 
 만약 flex-direction의 방향이 row(행)라면 row(행)에 맞춰 주축인 수평으로 자식 요소(아이템)들이 정렬 되게 되고, 교차축인 수직축으로 아이템이 쌓이게 된다.
 
@@ -502,6 +516,8 @@ flex-direction의 방향이 column(열)이라면 column(열)에 맞춰 주축인
 
 `flex-wrap : wrap-reverse;` 는 `wrap-reverse`: `wrap;` 과 마찬가지로 자식 요소(아이템)들이 필요한 경우 여러 줄에 걸쳐 배치되지만, 다른 점은 wrap-reverse이기 때문에 자식 요소(아이템) 요소들이 정렬되는 기준점이 반대 방향으로 바뀌어서 배치된다.
 
+<br />
+
 적용하는 방법은 부모 요소(컨테이너)에 display: flex를 주고, flex-wrap: wrap-reverse 값을 설정하면 된다.
 
 ```css
@@ -532,6 +548,8 @@ flex-direction의 방향이 column(열)이라면 column(열)에 맞춰 주축인
 ```
 
 `display: flex;` 의 경우 `flex-direction: row;` 가 기본값이다. 그렇기 때문에 `flex-wrap: wrap;` 인 경우에는 부모 요소인 컨테이너의 왼쪽 축의 상단부터 자식 요소인 아이템들이 순차적으로 배치된다. 즉, 배치가 시작되는 기준이 주축(main-axis)의 main-start 지점이 부모(컨테이너)의 상단, 교차 축(cross-axis)의 cross-start 지점은 부모(컨테이너) 왼쪽이 된다.
+
+<br />
 
 하지만, `flex-wrap: wrap-reverse;` 의 경우 부모 요소(컨테이너)의 하단인 바닥 행의 왼쪽에서부터 1, 2, 3…번 순으로 아이템이 배치 되고 나머지 요소들은 그 행 위에 배치 된다. 또, 전체적으로 보면 `flex-wrap: wrap;` 과는 반대로 자식 요소(아이템)들이 컨테이너의 하단에 붙어 배치 되는 것을 확인할 수 있다.
 
@@ -599,6 +617,8 @@ reverse(역순)이기 때문에 배치 되는 기준점이 바뀌기 때문이�
 - **flex-direction: column; 값을 준 경우 flex-wrap: wrap-reverse; 는 어떻게 될까?**
 
 `display: flex;` 를 준 경우, flex-direction의 기본값은 row지만, `flex-direction: column;` 을 준다면 위에서 확인한 것들과는 다른 결과를 확인할 수 있다. flex의 방향이 row(행)이 아닌 column(열)으로 변경되기 때문에 주축(main-axis)이 수평(가로)이 아닌 수직(세로) 방향이 된다.
+
+<br />
 
 그렇기 때문에, `flex-direction: column;` 인 상태에서 `flex-wrap: wrap-reverse;` 를 주게 되면, 주축(main-axis)의 main-start 지점이 부모 요소(컨테이너)의 오른쪽 끝 지점이 되고, 오른쪽 끝의 열(column)부터 아이템이 차례대로 배치된다.
 
@@ -972,6 +992,8 @@ flex: flex-grow | flex-shrink | flex-basis;
 
 일반적으로는 모든 값이 설정되었음을 보장하기 위하여 flex 속성을 이용해 **축약형**으로 사용한다. 축약 속성의 순서는 `flex-grow`, `flex-shrink`, `flex-basis` 순으로 적용되며 띄어쓰기로 구분한다.
 
+<br />
+
 Flex **축약 속성의 기본값**은 **flex: 0 1 auto;** 이다. flex-grow를 제외한 개별 속성은 생략할 수 있다. flex : 1; 할 경우 grow는 1로 변하고 shrink의 값은 0으로 basis의 값을 명시적으로 작성하지 않으면 0으로 입력이 된다.
 
 ## 7.5. flex-grow보다는 flex 축약 속성을! (W3C)
@@ -1111,10 +1133,9 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-grow속성을 직접 사�
 
 `flex-shrink` 속성은 부모 컨테이너에 `flex-wrap: wrap;` 속성을 부여한 경우 적용되지 않는다. 따라서 적용을 위해서는 `wrap`을 정의하지 않거나, `nowrap`속성이 부여되어야 한다.
 
-<aside>
-💡 flex-basis: 250px 통일, 3번째 아이템만 flex-shrink: 2 일 때 (예시3, 4)
+<br />
 
-</aside>
+💡 flex-basis: 250px 통일, 3번째 아이템만 flex-shrink: 2 일 때 (예시3, 4)
 
 ```editor
 <div data-mode="snippet" class="fg-editor css-flex">
@@ -1197,6 +1218,8 @@ flex: <flex-grow> <flex-shrink> <flex-basis>;
 
 `flex-grow` , `flex-shrink` , `flex-basis` 속성의 값을 단축해서 사용할 수 있는 것이 `flex` 축약 속성이다. 순서는 grow, shrink, basis 순으로 적용된다.
 
+<br />
+
 - `flex-grow` 는 flex 아이템이 팽창하는 비율을 설정한다. 기본값은 1이다.
 - `flex-shrink` 는 flex 아이템이 수축하는 비율을 설정한다. 기본값은 1이다.
 - `flex-basis` 는 flex 아이템이 팽창하고 수축하는 기준 크기를 설정한다. 기본값은 0이다.
@@ -1219,9 +1242,13 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 
 `align-self`란 교차 축(cross-axis)을 기준으로 개별아이템 요소의 정렬 방법을 결정하는 속성이다. Flex 컨테이너에 적용하여 내부에 있는 전체 아이템을 정렬하는 `align-items`와 달리, `align-self`는 인접한 Flex 아이템에 영향을 주지 않고, 각각의 Flex 아이템 위치를 자유롭게 변경할 수 있다. 따라서 전체 설정인 `align-items`보다, 개별 아이템에 적용되는 `align-self` 속성이 우선한다는 특징이 있다.
 
+<br />
+
 **align-self의 속성값**
 
 `align-self`의 속성값은, auto 값을 제외하면 `align-items`의 속성값과 같다.
+
+<br />
 
 - auto : 기본값으로, 플렉스박스 컨테이너의 `align-items` 속성을 상속받는다. align-items의 기본 속성은 stretch이기 때문에, align-items가 지정되어있지 않는 경우 stretch 속성을 상속받는다.
 - stretch : 교차 축을 기준으로, 컨테이너의 높이를 채우기 위해 플렉스 아이템이 늘어난다.
@@ -1229,6 +1256,8 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 - flex-end : 교차 축을 기준으로, 플렉스 아이템이 컨테이너의 끝점에 정렬된다.
 - center : 교차 축을 기준으로, 플렉스 아이템이 컨테이너의 중앙에 정렬된다.
 - baseline : 교차 축을 기준으로, 플렉스 아이템이 컨테이너의 문자 기준선에 정렬된다.
+
+<br />
 
 아래는 아이템에 auto, stretch, flex-start, flex-end, center, baseline 속성값을 부여한 모습이다. 컨테이너가 `flex-direction:row;` 인 경우 교차 축인 세로축을 기준으로, 아이템들이 컨테이너를 채운다.
 
@@ -1368,11 +1397,15 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 
 `order` 속성은 아이템 요소들의 순서를 결정하는 속성이다. 기본적으로 `flex`는 작성한 순서대로 나열되지만, `order` 속성을 사용하여 아이템들의 순서를 변경할 수 있다.
 
+<br />
+
 **order의 특징**
 
 - 기본값은 0이며, 음수와 양수를 사용할 수 있다. 값이 작을수록 우선순위가 적용되어 `음수 → 0 → 양수` 순서로 표시된다.
 - `flex-direction` 속성의 방향값(row, row-reverse, column, column-reverse)을 기준으로 낮은 숫자를 먼저 배치한다.
 - HTML 구조와 상관없이 순서를 시각적으로 변경할 수 있지만, HTML 자체의 구조를 바꾸는 것은 아니다. 따라서 스크린리더가 읽을 때는 `order`값이 적용되지 않고 HTML 마크업 순서대로 읽힌다.
+
+<br />
 
 아래는 `flex-direction: row;` 와 `flex-direction: column;`에서 `order` 값을 적용하지 않았을 때와 적용했을 때의 모습이다.
 
@@ -1423,11 +1456,11 @@ CSS 표준을 관리하는 **W3C**에 따르면, flex-shrink속성을 직접 사
 
 **order의 사용 예시**
 
-1. 날짜와 제목, 내용이 있는 카드 디자인을 만든다고 가정하자. 아래의 이미지처럼 날짜가 제목보다 먼저 위치하게 할 때, 기본 순서로 배치한다면 스크린 리더는 날짜, 제목, 내용 순으로 읽을 것이다. 하지만 사용자는 가장 중요한 제목을 먼저 읽은 후 날짜를 읽기를 선호한다. 이럴 경우, 날짜에 `order:-1`을 주어 시각적 순서만 바꿔서 스크린 리더가 읽는 순서를 변경하지 않도록 할 수 있다.
+날짜와 제목, 내용이 있는 카드 디자인을 만든다고 가정하자. 아래의 이미지처럼 날짜가 제목보다 먼저 위치하게 할 때, 기본 순서로 배치한다면 스크린 리더는 날짜, 제목, 내용 순으로 읽을 것이다. 하지만 사용자는 가장 중요한 제목을 먼저 읽은 후 날짜를 읽기를 선호한다. 이럴 경우, 날짜에 `order:-1`을 주어 시각적 순서만 바꿔서 스크린 리더가 읽는 순서를 변경하지 않도록 할 수 있다.
 
 ![](images/016__384.png)
 
-1. 아래와 같은 경우에도 order 속성을 사용할 수 있다.
+아래와 같은 경우에도 order 속성을 사용할 수 있다.
 
 이미 만들어진 모듈을 사용하여 웹을 구성한다면 초기에는 아래와 같은 배치가 된다. 마크업 순서가 header부터 footer까지 차례대로 되어있으므로, 각 요소의 크기를 조정해주어도 기본적으로 순서는 바뀌지 않는다.
 
@@ -1616,11 +1649,17 @@ flex에서도 z-index 속성을 사용할 수 있다. 어떤 요소에 z-index�
 
 IE 10/11 버전에서 Flex를 사용 할 때 생각대로 작동되지 않는 이슈들과 맞닥뜨릴 수 있는데, 그 중 몇 가지를 소개하겠다.
 
+<br />
+
 - IE 10과 11 버전에서 flex-basis 사용 시에 `box-sizing: border-box;`가 인식되지 않는다. IE 10/11에서는 flex-basis로 flex item의 크기를 정할 때, flex item의 크기를 항상 item의 콘텐츠 크기를 기준으로 잡는다. `box-sizing: border-box;` 속성을 주어도 바뀌지 않는다. 이를 해결하는 방법 중 하나는 flex item을 감싸는(wrapper) 요소를 추가해 주는 것이다. 이 때 요소는 border나 padding값이 없어야 한다.
 - IE 10/11에서 `min-height` 속성을 flex container에 사용 시, 자식 태그인 flex item은 부모 태그인 flex container의 크기를 인식하지 못한다. 예를 들어, flex item을 수직 정렬하고자 할 때, 부모인 flex container의 높이가 인식되어야 하는데, item들이 높이를 인식하지 못하게 된다. 이를 해결하는 방법으로는 flex container를 감싸는 또 다른 flex container요소(wrapper)를 추가하는 것이다. 이때 flex container를 감싸는 부모 요소는 column direction 속성으로 지정해주어야 한다.
+
+<br />
 
 **Flex 이슈 확인 사이트**
 
 이 외에도 IE 10/11 버전에서 flex 사용에는 여러 이슈가 있다. 다음은 flex 이슈를 확인할 수 있는 사이트이다.
+
+<br />
 
 [https://github.com/philipwalton/flexbugs](https://github.com/philipwalton/flexbugs)
