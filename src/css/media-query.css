@@ -1,1 +1,16 @@
 /* media-query */
+/* cheatsheet-flex tablet */
+@media screen and (max-width: 1280px) {
+  .flex-cont {
+    grid-template-columns: repeat(1, 1fr);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fg-cheat,
+  .container,
+  .box-area,
+  .box-code-area {
+    width: 100%;
+  }
+}
