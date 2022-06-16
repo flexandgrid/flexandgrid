@@ -1,349 +1,241 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>flexngrid</title>
-    <link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="/src/css/default.css">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="android-icon-192x192.png"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="/src/css/default.css" />
     <link rel="stylesheet" href="/src/css/color.css" />
-    <link rel="stylesheet" href="/src/components/gnb-nav-modal.css">
+    <link rel="stylesheet" href="/src/components/gnb-nav-modal.css" />
     <link rel="stylesheet" href="/src/components/gnb-nav.css" />
     <link rel="stylesheet" href="/src/components/search-modal.css" />
-    <link rel="stylesheet" href="/src/components/mobile-search-modal.css">
-    <link rel="stylesheet" href="/src/components/footer.css">
-    <link rel="stylesheet" href="/src/utils/editor/editor.css">
+    <link rel="stylesheet" href="/src/components/mobile-search-modal.css" />
+    <link rel="stylesheet" href="/src/components/footer.css" />
+    <link rel="stylesheet" href="/src/utils/editor/editor.css" />
     <script defer src="/src/utils/editor/editor.js"></script>
     <script defer src="/src/components/gnb-nav.js"></script>
     <script defer src="/src/components/button.js"></script>
     <script defer src="/src/js/darkmode.js"></script>
     <script defer src="/src/js/search.js"></script>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body class="main-body">
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="main-body">
     <header class="gnb-header">
-        <div class="gnb-cont">
-            <h1 class="logo-container">
-                <a href="/" class="header-logo">
-                    <span class="a11y-hidden">flex and grid 홈</span>
-                </a>
-            </h1>
-            <nav>
-                <ul class="nav-left">
-                    <li class="hamburger-container">
-                        <a href="/" class="hamburger-menu">
-                            <span class="a11y-hidden">모바일 메뉴</span>
-                        </a>
-                    </li>
-                    <li class="nav-left-menu nav-cheatsheet">Cheatsheet
-                        <div class="modal-menu">
-                            <ul class="list-menu">
-                                <li class="list-item">
-                                    <a class="link-menu" href="/cheatsheet-flex">Flex Cheatsheet</a>
-                                </li>
-                                <li class="list-item">
-                                    <a class="link-menu" href="/cheatsheet-grid">Grid Cheatsheet</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-left-menu nav-flex">
-                        <a href="/flex">Flex</a>
-                    </li>
-                    <li class="nav-left-menu nav-grid">
-                        <a href="/grid">Grid</a>
-                    </li>
-                    <li class="nav-left-menu nav-tryit">
-                        <a href="/try-it">Try it</a>
-                    </li>
+      <div class="gnb-cont">
+        <h1 class="logo-container">
+          <a href="/" class="header-logo">
+            <span class="a11y-hidden">flex and grid 홈</span>
+          </a>
+        </h1>
+        <nav>
+          <ul class="nav-left">
+            <li class="hamburger-container">
+              <a href="/" class="hamburger-menu">
+                <span class="a11y-hidden">모바일 메뉴</span>
+              </a>
+            </li>
+            <li class="nav-left-menu nav-cheatsheet">
+              Cheatsheet
+              <div class="modal-menu">
+                <ul class="list-menu">
+                  <li class="list-item">
+                    <a class="link-menu" href="/cheatsheet-flex"
+                      >Flex Cheatsheet</a
+                    >
+                  </li>
+                  <li class="list-item">
+                    <a class="link-menu" href="/cheatsheet-grid"
+                      >Grid Cheatsheet</a
+                    >
+                  </li>
                 </ul>
-                <ul class="nav-right">
-                    <li class="mobile-search">
-                        <button class="search-toggle">
-                            <span class="a11y-hidden">검색 창 활성화</span>
-                        </button>
-                    </li>
-                    <li class="search">
-                        <form action="/search" method="get" autocomplete="off">
-                            <input type="text" class="search-input" name="q" placeholder="Search"/>
-                            <button type="submit" class="search-btn">
-                                <span class="a11y-hidden">검색 버튼</span>
-                            </button>
-                        </form>
-                        <div class="modal-history">
-                            <div class="header-history">
-                                <strong class="tit-history">최근 검색어</strong>
-                                <button class="btn-del-all">전체 삭제</button>
-                            </div>
-                            <ul class="list-history"></ul>
-                        </div>
-                    </li>
-                    <li class="button-group">
-                        <button class="darkmode-btn">
-                            <span class="a11y-hidden">다크 모드 전환</span>
-                        </button>
-                        <a
-                            href="https://github.com/flexandgrid/flexandgrid"
-                            target="_blank"
-                            class="github-btn">
-                            <span class="a11y-hidden">깃헙 바로가기</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+              </div>
+            </li>
+            <li class="nav-left-menu nav-flex">
+              <a href="/flex">Flex</a>
+            </li>
+            <li class="nav-left-menu nav-grid">
+              <a href="/grid">Grid</a>
+            </li>
+            <li class="nav-left-menu nav-tryit">
+              <a href="/try-it">Try it</a>
+            </li>
+          </ul>
+          <ul class="nav-right">
+            <li class="mobile-search">
+              <button class="search-toggle">
+                <span class="a11y-hidden">검색 창 활성화</span>
+              </button>
+            </li>
+            <li class="search">
+              <form action="/search" method="get" autocomplete="off">
+                <input
+                  type="text"
+                  class="search-input"
+                  name="q"
+                  placeholder="Search"
+                />
+                <button type="submit" class="search-btn">
+                  <span class="a11y-hidden">검색 버튼</span>
+                </button>
+              </form>
+              <div class="modal-history">
+                <div class="header-history">
+                  <strong class="tit-history">최근 검색어</strong>
+                  <button class="btn-del-all">전체 삭제</button>
+                </div>
+                <ul class="list-history"></ul>
+              </div>
+            </li>
+            <li class="button-group">
+              <button class="darkmode-btn">
+                <span class="a11y-hidden">다크 모드 전환</span>
+              </button>
+              <a
+                href="https://github.com/flexandgrid/flexandgrid"
+                target="_blank"
+                class="github-btn"
+              >
+                <span class="a11y-hidden">깃헙 바로가기</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <aside class="search-modal-mobile">
-        <header>
-            <h1 class="visually-hidden">검색창</h1>
-            <form action="/search" method="get" autocomplete="off">
-                <input type="text" class="search-input" name="q" placeholder="Search"/>
-                <button type="submit" class="search-btn">
-                    <span class="visually-hidden">검색 버튼</span>
-                </button>
-            </form>
-            <button class="close-btn" type="button">취소</button>
+      <header>
+        <h1 class="visually-hidden">검색창</h1>
+        <form action="/search" method="get" autocomplete="off">
+          <input
+            type="text"
+            class="search-input"
+            name="q"
+            placeholder="Search"
+          />
+          <button type="submit" class="search-btn">
+            <span class="visually-hidden">검색 버튼</span>
+          </button>
+        </form>
+        <button class="close-btn" type="button">취소</button>
+      </header>
+      <section class="modal-history">
+        <header class="header-history">
+          <h2 class="tit-history">최근 검색어</h2>
+          <button type="button" class="btn-del-all">전체 삭제</button>
         </header>
-        <section class="modal-history">
-            <header class="header-history">
-                <h2 class="tit-history">최근 검색어</h2>
-                <button type="button" class="btn-del-all">전체 삭제</button>
-            </header>
-            <ul class="list-history"></ul>
-        </section>
+        <ul class="list-history-m"></ul>
+      </section>
     </aside>
     <div class="overlay" aria-hidden></div>
 
     <main class="main">
-        <section class="section-carousel">
-            <h2 class="visually-hidden">flex, grid 코드 에디터</h2>
-            <!-- carousel mode (flex) -->
-            <div data-mode="carousel" data-title="Flex Code" class="fg-editor carousel-flex theme-double-color-1">
-                <code data-struct="[1][2][2][2]" class="carousel-flex">
-                    .container {
-                      display: flex;
-                    }
-                    .item1 {
-                      flex: 1;
-                    }
-                    .item2 {
-                      flex: 2;
-                    }
-                    .item3 {
-                      flex: 1;
-                    }
-                    .item4 {
-                      flex: 1;
-                    }
-                    .item5 {
-                      flex: 2;
-                    }
-                    .item7 {
-                      flex: 1;
-                    }
-                </code>
-                <code data-struct="[2][2][2][2]" class="carousel-flex">
-                    .container {
-                      display: flex;
-                    }
-                    .container1 {
-                      justify-content: space-between;
-                    }
-                    .item1 {
-                      flex: 1;        
-                    }
-                    .item2 {
-                      flex: 3;
-                    }
-                    .item3 {
-                      flex: 1;
-                    }
-                    .item4 {
-                      flex: 0;
-                    }
-                    .item5 {
-                      flex: 1;
-                    }
-                    .item6 {
-                      flex: 1;
-                    }
-                    .item7 {
-                      flex: 2;
-                    }
-                    .item8 {
-                      flex: 1;
-                    }
-                </code>
-                <code data-struct="[2][2][2][2]" class="carousel-flex">
-                    .container {
-                      display: flex;
-                    }
-                    .container3 {
-                      justify-content: space-between;
-                      flex-direction: row-reverse;
-                    }
-                    .item1 {
-                      flex: 1;  
-                    }
-                    .item2 {
-                      flex: 0; 
-                    }
-                    .item3 {
-                      flex: 1;
-                    }
-                    .item4 {
-                      flex: 3;
-                    }
-                    .item5 {
-                      flex-basis: 30%;
-                    }
-                    .item6 {
-                      flex-basis: 40%;
-                    }
-                    .item7 {
-                      flex: 1;
-                    }
-                    .item8 {
-                    }
-                </code>
-            </div>
-            <!-- carousel mode (grid) -->
-            <div data-mode="carousel" data-title="Grid Code" class="fg-editor carousel-grid theme-grid theme-double-color-2">
-                <code data-hidden="true">
-                    .container {
-                        gap: 0;
-                    }
-                </code>
-                <code data-struct="[8]">
-                    .container {
-                      display: grid;
-                      grid-template-columns: repeat(10, 1fr);
-                      grid-template-rows: repeat(4, 1fr);
-                      row-gap: 16px;
-                    }
-                    .item1 {
-                      grid-area: 1 / 3 / 2 / 8;
-                    }
-                    .item2 {
-                      grid-area: 1 / 9 / 2 / 11;
-                    }
-                    .item3 {
-                      grid-area: 2 / 1 / 3 / 5;
-                    }
-                    .item4 {
-                      grid-area: 2 / 6 / 3 / 11;
-                    }
-                    .item5 {
-                      grid-area: 3 / 1 / 4 / 5;
-                    }
-                    .item6 {
-                      grid-area: 3 / 7 / 4 / 11;
-                    }
-                    .item7 {
-                      grid-area: 4 / 3 / 5 / 8;
-                    }
-                    .item8 {
-                      grid-area: 4 / 9 / 5 / 11;
-                    }
-                </code>
-                <code data-struct="[8]">
-                    .container {
-                      display: grid;
-                      grid-template-columns: repeat(10, 1fr);
-                      grid-template-rows: repeat(4, 1fr);
-                      row-gap: 16px;
-                    }
-                    .item1 {
-                      grid-area: 1 / 1 / 2 / 6;
-                    }
-                    .item2 {
-                      grid-area: 1 / 7 / 2 / 11;
-                    }
-                    .item3 {
-                      grid-area: 2 / 3 / 3 / 7;
-                    }
-                    .item4 {
-                      grid-area: 2 / 8 / 3 / 11;
-                    }
-                    .item5 {
-                      grid-area: 3 / 1 / 4 / 5;
-                    }
-                    .item6 {
-                      grid-area: 3 / 6 / 4 / 11;
-                    }
-                    .item7 {
-                      grid-area: 4 / 1 / 5 / 4;
-                    }
-                    .item8 {
-                      grid-area: 4 / 5 / 5 / 11;
-                    }
-                </code>
-                <code data-struct="[8]">
-                    .container {
-                      display: grid;
-                      grid-template-columns: repeat(10, 1fr);
-                      grid-template-rows: repeat(4, 1fr);
-                      row-gap: 16px;
-                    }
-                    .item1 {
-                      grid-area: 1 / 1 / 2 / 5;
-                    }
-                    .item2 {
-                      grid-area: 1 / 6 / 2 / 11;
-                    }
-                    .item3 {
-                      grid-area: 2 / 3 / 3 / 5;
-                    }
-                    .item4 {
-                      grid-area: 2 / 7 / 3 / 11;
-                    }
-                    .item5 {
-                      grid-area: 3 / 1 / 4 / 4;
-                    }
-                    .item6 {
-                      grid-area: 3 / 5 / 4 / 10;
-                    }
-                    .item7 {
-                      grid-area: 4 / 1 / 5 / 6;
-                    }
-                    .item8 {
-                      grid-area: 4 / 8 / 5 / 11;
-                    }
-                </code>
-            </div>
-        </section>
+      <section class="section-carousel">
+        <h2 class="visually-hidden">flex, grid 코드 에디터</h2>
+        <!-- carousel mode (flex) -->
+        <div
+          data-mode="carousel"
+          data-title="Flex Code"
+          class="fg-editor carousel-flex theme-double-color-1"
+        >
+          <code data-struct="[1][2][2][2]" class="carousel-flex">
+            .container { display: flex; } .item1 { flex: 1; } .item2 { flex: 2;
+            } .item3 { flex: 1; } .item4 { flex: 1; } .item5 { flex: 2; } .item7
+            { flex: 1; }
+          </code>
+          <code data-struct="[2][2][2][2]" class="carousel-flex">
+            .container { display: flex; } .container1 { justify-content:
+            space-between; } .item1 { flex: 1; } .item2 { flex: 3; } .item3 {
+            flex: 1; } .item4 { flex: 0; } .item5 { flex: 1; } .item6 { flex: 1;
+            } .item7 { flex: 2; } .item8 { flex: 1; }
+          </code>
+          <code data-struct="[2][2][2][2]" class="carousel-flex">
+            .container { display: flex; } .container3 { justify-content:
+            space-between; flex-direction: row-reverse; } .item1 { flex: 1; }
+            .item2 { flex: 0; } .item3 { flex: 1; } .item4 { flex: 3; } .item5 {
+            flex-basis: 30%; } .item6 { flex-basis: 40%; } .item7 { flex: 1; }
+            .item8 { }
+          </code>
+        </div>
+        <!-- carousel mode (grid) -->
+        <div
+          data-mode="carousel"
+          data-title="Grid Code"
+          class="fg-editor carousel-grid theme-grid theme-double-color-2"
+        >
+          <code data-hidden="true"> .container { gap: 0; } </code>
+          <code data-struct="[8]">
+            .container { display: grid; grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(4, 1fr); row-gap: 16px; } .item1 {
+            grid-area: 1 / 3 / 2 / 8; } .item2 { grid-area: 1 / 9 / 2 / 11; }
+            .item3 { grid-area: 2 / 1 / 3 / 5; } .item4 { grid-area: 2 / 6 / 3 /
+            11; } .item5 { grid-area: 3 / 1 / 4 / 5; } .item6 { grid-area: 3 / 7
+            / 4 / 11; } .item7 { grid-area: 4 / 3 / 5 / 8; } .item8 { grid-area:
+            4 / 9 / 5 / 11; }
+          </code>
+          <code data-struct="[8]">
+            .container { display: grid; grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(4, 1fr); row-gap: 16px; } .item1 {
+            grid-area: 1 / 1 / 2 / 6; } .item2 { grid-area: 1 / 7 / 2 / 11; }
+            .item3 { grid-area: 2 / 3 / 3 / 7; } .item4 { grid-area: 2 / 8 / 3 /
+            11; } .item5 { grid-area: 3 / 1 / 4 / 5; } .item6 { grid-area: 3 / 6
+            / 4 / 11; } .item7 { grid-area: 4 / 1 / 5 / 4; } .item8 { grid-area:
+            4 / 5 / 5 / 11; }
+          </code>
+          <code data-struct="[8]">
+            .container { display: grid; grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(4, 1fr); row-gap: 16px; } .item1 {
+            grid-area: 1 / 1 / 2 / 5; } .item2 { grid-area: 1 / 6 / 2 / 11; }
+            .item3 { grid-area: 2 / 3 / 3 / 5; } .item4 { grid-area: 2 / 7 / 3 /
+            11; } .item5 { grid-area: 3 / 1 / 4 / 4; } .item6 { grid-area: 3 / 5
+            / 4 / 10; } .item7 { grid-area: 4 / 1 / 5 / 6; } .item8 { grid-area:
+            4 / 8 / 5 / 11; }
+          </code>
+        </div>
+      </section>
     </main>
     <button type="button" class="btn-up"></button>
 
     <footer class="footer-area">
-        <div class="cont-footer">
-            <div class="cont-txt">
-                <strong class="txt-title">flex, grid 오픈소스 프로젝트 입니다 :)</strong>
-                <p class="txt-main">
-                    이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이 사용할 수 있는 공공재입니다.
-                </p>
-                <small class="txt-copyrigt">© 2022, All Rights Reserved</small>
-            </div>
-            <div class="cont-btn">
-                <a
-                    class="btn-footer btn-github"
-                    href="https://github.com/flexandgrid/flexandgrid"
-                    target="_blank">
-                    Github
-                </a>
-                <a
-                    class="btn-footer btn-file"
-                    href="https://ridibooks.com/books/2773000058"
-                    target="_blank"
-                    download="">
-                    PDF Book
-                </a>
-            </div>
+      <div class="cont-footer">
+        <div class="cont-txt">
+          <strong class="txt-title"
+            >flex, grid 오픈소스 프로젝트 입니다 :)</strong
+          >
+          <p class="txt-main">
+            이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이
+            사용할 수 있는 공공재입니다.
+          </p>
+          <small class="txt-copyrigt">© 2022, All Rights Reserved</small>
         </div>
+        <div class="cont-btn">
+          <a
+            class="btn-footer btn-github"
+            href="https://github.com/flexandgrid/flexandgrid"
+            target="_blank"
+          >
+            Github
+          </a>
+          <a
+            class="btn-footer btn-file"
+            href="https://ridibooks.com/books/2773000058"
+            target="_blank"
+            download=""
+          >
+            PDF Book
+          </a>
+        </div>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
