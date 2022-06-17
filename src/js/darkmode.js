@@ -41,5 +41,8 @@ const handleDarkMode = () => {
   localStorage.setItem("darkmode", isDark);
 };
 
-const darkmodeBtn = document.querySelector(".darkmode-btn");
-darkmodeBtn.addEventListener("click", handleDarkMode);
+const darkmodeBtns = document.querySelectorAll(".darkmode-btn");
+darkmodeBtns.forEach((darkmodeBtn) => {
+  darkmodeBtn.addEventListener("click", handleDarkMode);
+})
+

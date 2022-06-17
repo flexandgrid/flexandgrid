@@ -82,7 +82,7 @@ li {
 }
 
 /* github link button */
-.mobile-github {
+/* .mobile-github {
     display: inline-block;
     width: 230px;
     height: 48px;
@@ -94,7 +94,7 @@ li {
     color: var(--secondary);
     padding: 14px 0 14px 18px;
     box-sizing: border-box;
-}
+} */
 
 .mobile-github::before {
     display: inline-block;

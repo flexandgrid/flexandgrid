@@ -1,6 +1,6 @@
 const btnDrawer = document.querySelector('.btn-drawer');
-const asideArea = document.querySelector('.aside-area');
-const aside = document.querySelector('.aside');
+const asideArea = document.querySelector('.drawer-menu-area');
+const aside = document.querySelector('.aside-drawer-menu');
 const PAGE_NAME = window.location.pathname.split('/')[1];
 
 const toggleDrawer = () => {
