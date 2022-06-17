@@ -6,6 +6,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Grid</title>
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
 	<link rel="stylesheet" href="/src/css/default.css" />
 	<link rel="stylesheet" href="/src/css/color.css" />
 	<link rel="stylesheet" href="/src/components/gnb-nav-modal.css">
@@ -125,9 +128,18 @@
 		<aside class="aside">
 			<div class="aside-area">
 				<div class="drawer-menu">
-					<a href="../../index.html" class="mobile-logo"></a>
-					<button class="btn-drawer-menu btn-cheatSheet">Cheatsheet</button>
-					<a href="/flex/index.html" class="btn-drawer-menu btn-flex">Flex</a>
+					<a href="/index.html" class="mobile-logo"></a>
+					<button class="btn-drawer-menu btn-cheatSheet fold">Cheatsheet
+						<ol class="list-drawer-menu">
+							<li>
+								<a href="/cheatsheet-flex/index.html" class="tit-drawer-menu">Flex Cheatsheet</a>
+							</li>
+							<li>
+								<a href="/cheatsheet-grid/index.html" class="tit-drawer-menu">Grid Cheatsheet</a>
+							</li>
+						</ol>
+					</button>
+					<a href="/flex/index.html" class="btn-drawer-menu btn-flex fold">Flex</a>
 					<button class="btn-drawer-menu btn-grid">Grid</button>
 				</div>
 			</div>

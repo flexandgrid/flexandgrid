@@ -136,22 +136,25 @@
   transform: rotate(180deg);
 }
 
+.btn-cheatSheet:hover::before,
 .btn-cheatSheet:focus::before {
   background: url(../assets/images/icon-cheatsheet-hover.svg) no-repeat center/contain;
 }
 
-.btn-flex:focus {
+.btn-flex:hover, .btn-flex:focus {
   color: var(--flex-primary);
 }
 
+.btn-flex:hover::before ,
 .btn-flex:focus::before {
   background: url(../assets/images/icon-flex-hover.svg) no-repeat center/contain;
 }
 
-.btn-grid:focus {
+.btn-grid:hover, .btn-grid:focus {
   color: var(--grid-primary);
 }
 
+.btn-grid:hover::before, 
 .btn-grid:focus::before {
   background: url(../assets/images/icon-grid-hover.svg) no-repeat center/contain;
 }
@@ -263,22 +266,27 @@
   background: url(../assets/images/icon-chevron-darkmode.svg) no-repeat center/contain;
 }
 
+.on .btn-cheatSheet:hover::before,
 .on .btn-cheatSheet:focus::before {
   background: url(../assets/images/icon-cheatsheet-hover.svg) no-repeat center/contain;
 }
 
+.on .btn-flex:hover, 
 .on .btn-flex:focus {
   color: var(--flex-primary);
 }
 
+.on .btn-flex:hover::before,
 .on .btn-flex:focus::before {
   background: url(../assets/images/icon-flex-hover.svg) no-repeat center/contain;
 }
 
+.on .btn-grid:hover, 
 .on .btn-grid:focus {
   color: var(--grid-primary);
 }
 
+.on .btn-grid:hover::before,
 .on .btn-grid:focus::before {
   background: url(../assets/images/icon-grid-hover.svg) no-repeat center/contain;
 }
