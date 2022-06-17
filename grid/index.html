@@ -13,15 +13,17 @@
 	<link rel="stylesheet" href="/src/css/color.css" />
 	<link rel="stylesheet" href="/src/components/gnb-nav-modal.css">
 	<link rel="stylesheet" href="/src/components/gnb-nav.css" />
+	<link rel="stylesheet" href="/src/components/drawer-menu.css">
+  <link rel="stylesheet" href="/src/components/mobile-drawer-menu.css">
 	<link rel="stylesheet" href="/src/components/search-modal.css" />
 	<link rel="stylesheet" href="/src/components/mobile-search-modal.css">
-	<link rel="stylesheet" href="/src/components/drawer-menu.css">
 	<link rel="stylesheet" href="/src/components/footer.css" />
 	<link rel="stylesheet" href="/src/utils/editor/editor.css" />
 	<link rel="stylesheet" href="style.css" />
 	<script defer src="/src/js/parser.js"></script>
 	<script defer src="/src/utils/editor/editor.js"></script>
 	<script defer src="/src/components/gnb-nav.js"></script>
+	<script defer src="/src/components/mobile-drawer-menu.js"></script>
 	<script defer src="/src/components/drawer-menu.js"></script>
 	<script defer src="/src/components/button.js"></script>
 	<script defer src="/src/js/darkmode.js"></script>
@@ -39,9 +41,9 @@
 					<nav>
 							<ul class="nav-left">
 									<li class="hamburger-container">
-											<a href="/" class="hamburger-menu">
+											<button type="button" class="hamburger-menu">
 													<span class="a11y-hidden">모바일 메뉴</span>
-											</a>
+											</button>
 									</li>
 									<li class="nav-left-menu nav-cheatsheet">Cheatsheet
 											<div class="modal-menu">
@@ -121,12 +123,12 @@
 				<ul class="list-history-m"></ul>
 		</section>
 	</aside>
-	<div class="overlay" aria-hidden></div>
+	<div class="overlay search-overlay" aria-hidden></div>
 
 	<main class="main-grid">
 		<button class="btn-drawer"><span class="a11y-hidden">목차 메뉴 닫기</span></button>
-		<aside class="aside">
-			<div class="aside-area">
+		<aside class="aside aside-drawer-menu">
+			<div class="aside-area drawer-menu-area">
 				<div class="drawer-menu">
 					<a href="/index.html" class="mobile-logo"></a>
 					<button class="btn-drawer-menu btn-cheatSheet fold">Cheatsheet
@@ -144,6 +146,31 @@
 				</div>
 			</div>
 		</aside>
+
+    <aside class="aside mobile-menu">
+      <div class="aside-area mobile-menu-area">
+        <div class="drawer-menu">
+					<a href="/index.html" class="mobile-logo"></a>
+					<button class="btn-drawer-menu btn-drawer-menu-mobile btn-cheatSheet fold">Cheatsheet
+						<ol class="list-drawer-menu">
+							<li>
+								<a href="/cheatsheet-flex/index.html" class="tit-drawer-menu">Flex Cheatsheet</a>
+							</li>
+							<li>
+								<a href="/cheatsheet-flex/index.html" class="tit-drawer-menu">Grid Cheatsheet</a>
+							</li>
+						</ol>
+					</button>
+					<a href="/flex/index.html" class="btn-drawer-menu btn-drawe-menu-mobile btn-flex fold">Flex</a>
+					<a href="/grid/index.html" class="btn-drawer-menu btn-drawer-menu-mobile btn-grid fold">Grid</a>
+          <div class="cont-mobile-util">
+            <button class="btn-mobile-menu mobile-darkmode darkmode-btn">Dark Mode</button>
+            <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="btn-mobile-menu mobile-github">Github</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class="overlay menu-overlay" aria-hidden></div>
 
 		<section class="sect-grid">
 			<div class="cont-grid"></div>

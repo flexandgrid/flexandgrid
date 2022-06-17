@@ -291,7 +291,9 @@
   background: url(../assets/images/icon-grid-hover.svg) no-repeat center/contain;
 }
 
-.on .btn-flex .list-drawer-menu, .on .btn-grid .list-drawer-menu {
+.on .btn-flex .list-drawer-menu, 
+.on .btn-grid .list-drawer-menu,
+.on .btn-cheatSheet .list-drawer-menu {
   color: var(--tertiary);
 }
 
@@ -365,8 +367,8 @@
 }
 
 @media screen and (max-width: 768px) {
-  .aside-area {
-    display: none;
+  .drawer-menu-area .drawer-menu {
+    transform: translateX(-295px);
   }
 
   .btn-drawer {
