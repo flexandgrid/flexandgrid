@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>grid cheatsheet</title>
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/src/css/default.css" />
@@ -23,14 +23,12 @@
     <link rel="stylesheet" href="/src/components/buttons.css">
     <link rel="stylesheet" href="/src/components/footer.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/css/media-query.css">
     <script defer src="/src/components/gnb-nav.js"></script>
     <script defer src="/src/components/mobile-drawer-menu.js"></script>
     <script defer src="/src/components/button.js"></script>
     <script defer src="/src/js/darkmode.js"></script>
     <script defer src="/src/js/search.js"></script>
-    <style>
-        @import url('/src/css/media-query-mobile.css')screen and (max-width: 768px);
-    </style>
 </head>
 
 <body>
@@ -120,10 +118,11 @@
                 </button>
                 <a href="/flex/index.html" class="btn-drawer-menu btn-drawer-menu-mobile btn-flex fold">Flex</a>
                 <a href="/grid/index.html" class="btn-drawer-menu btn-drawer-menu-mobile btn-grid fold">Grid</a>
-            <div class="cont-mobile-util">
-                <button class="btn-mobile-menu mobile-darkmode darkmode-btn">Dark Mode</button>
-                <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="btn-mobile-menu mobile-github">Github</a>
-            </div>
+                <div class="cont-mobile-util">
+                    <button class="btn-mobile-menu mobile-darkmode darkmode-btn">Dark Mode</button>
+                    <a href="https://github.com/flexandgrid/flexandgrid" target="_blank"
+                        class="btn-mobile-menu mobile-github">Github</a>
+                </div>
             </div>
         </div>
     </aside>
