@@ -75,6 +75,10 @@ article:not(:last-child, :nth-last-of-type(2)){
     color: var(--secondary);
   }
 
+.mobile-menu .btn-cheatSheet::before {
+  background: url(/src/assets/images/icon-cheatsheet-hover.svg) no-repeat center/contain;
+}
+
 
   /* 다크모드 버튼 */
  

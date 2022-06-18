@@ -3,11 +3,11 @@
 .main-tryit {
     display: flex;
     justify-content: center;
-    padding: 140px 108px 120px;
+    padding: 140px 108px 100px;
     background-color: var(--background);
 }
 
-.main-tryit .sect-tryit {
+.main-tryit section {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -15,17 +15,12 @@
     max-width: 1600px;
 }
 
-.main-tryit section {
-    width: 100%;
-}
-
 .gnb-header ul.nav-left li:nth-child(5) {
     font-weight: 700;
 }
 
 .main-tryit h2 {
-    padding-top: 100px;
-    margin: -100px 0 50px;
+    margin-bottom: 60px;
     color: var(--secondary);
     font-size: 36px;
     font-weight: 300;
@@ -36,8 +31,8 @@
     gap: 40px;
 }
 
-.main-tryit .fg-editor:nth-child(2) {
-    margin: 10px 0 90px;
+.main-tryit .sect-tryit section:last-child {
+    gap: 73px;
 }
 
 .fg-editor .preview, 
@@ -49,6 +44,24 @@
 .main-tryit .fg-editor .code {
     background-color: var(--white);
     box-shadow: 0px 4px 12px 0px rgba(135, 135, 135, 0.15);;
+}
+
+.fg-editor.free-mode .container .item:nth-of-type(even) {
+  background-color: var(--primary-4);
+}
+
+.fg-editor.free-mode .container:nth-child(4n-1) .item:nth-of-type(odd),
+.fg-editor.free-mode .container:nth-child(2n-1) .item:nth-of-type(3n) {
+  background-color: var(--primary-3);
+}
+
+.on .fg-editor.free-mode .container .item:nth-of-type(even) {
+  background-color: var(--primary-6);
+}
+
+.on .fg-editor.free-mode .container:nth-child(4n-1) .item:nth-of-type(odd),
+.on .fg-editor.free-mode .container:nth-child(2n-1) .item:nth-of-type(3n) {
+  background-color: var(--primary-6);
 }
 
 .footer-area {
@@ -115,20 +128,25 @@
     }
 
     .main-tryit h2 {
+        margin-bottom: 50px;
         font-size: 28px;
-    }
-
-    .main-tryit .fg-editor {
-        gap: 20px;
-    }
-
-    .main-tryit .fg-editor:nth-child(2) {
-        margin: 0 0 40px;
     }
 }
 
 @media screen and (max-width: 479px) {
     .main-tryit {
-        padding: 100px 40px 80px;
+        padding: 85px 20px 40px;
+    }
+
+    .main-tryit h2 {
+        margin-bottom: 35px;
+    }
+
+    .main-tryit .fg-editor {
+        gap: 20px;
+    }
+    
+    .main-tryit .sect-tryit section:last-child {
+        gap: 40px;
     }
 }

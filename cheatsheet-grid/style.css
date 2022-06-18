@@ -49,6 +49,10 @@ body {
     font-weight: 700;
 }
 
+.mobile-menu .btn-cheatSheet::before {
+  background: url(/src/assets/images/icon-cheatsheet-hover.svg) no-repeat center/contain;
+}
+
 .btn-up {
     display: none;
     position: fixed;

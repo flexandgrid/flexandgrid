@@ -26,7 +26,7 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease-in-out;
-    z-index: 90;
+    z-index: 10;
 }
 
 .overlay.clicked {
@@ -147,9 +147,6 @@
         top: 0;
         left: 0;
         width: 100%;
-    }
-    .overlay {
-        display: none;
     }
 }
 

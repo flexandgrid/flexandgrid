@@ -102,7 +102,8 @@ main {
 
 .cont-flex figcaption {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
+  line-height: 1.3em;
 }
 
 .cont-flex figure img {
@@ -340,7 +341,7 @@ main {
   }
 
   .cont-flex figcaption {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .cont-flex figure img {

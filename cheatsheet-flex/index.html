@@ -1,494 +1,961 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>flex cheatsheet</title>
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/src/css/default.css" />
     <link rel="stylesheet" href="/src/css/color.css" />
     <link rel="stylesheet" href="/search/style.css" />
-    <link rel="stylesheet" href="/src/components/gnb-nav-modal.css">
+    <link rel="stylesheet" href="/src/components/gnb-nav-modal.css" />
     <link rel="stylesheet" href="/src/components/gnb-nav.css" />
+    <link rel="stylesheet" href="/src/components/drawer-menu.css">
+    <link rel="stylesheet" href="/src/components/mobile-drawer-menu.css">
     <link rel="stylesheet" href="/src/components/search-item.css" />
     <link rel="stylesheet" href="/src/components/search-modal.css" />
-    <link rel="stylesheet" href="/src/components/mobile-search-modal.css">
-    <link rel="stylesheet" href="/src/components/footer.css">
-    <link rel="stylesheet" href="/src/components/cheatsheet-flex.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/components/mobile-search-modal.css" />
+    <link rel="stylesheet" href="/src/components/footer.css" />
+    <link rel="stylesheet" href="/src/components/cheatsheet-flex.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/src/css/media-query.css" />
     <script defer src="/src/components/gnb-nav.js"></script>
+    <script defer src="/src/components/mobile-drawer-menu.js"></script>
     <script defer src="/src/components/button.js"></script>
     <script defer src="/src/js/darkmode.js"></script>
     <script defer src="/src/js/search.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="gnb-header">
-        <div class="gnb-cont">
-            <h1 class="logo-container">
-                <a href="/" class="header-logo">
-                    <span class="a11y-hidden">flex and grid 홈</span>
-                </a>
-            </h1>
-            <nav>
-                <ul class="nav-left">
-                    <li class="hamburger-container">
-                        <a href="/" class="hamburger-menu">
-                            <span class="a11y-hidden">모바일 메뉴</span>
-                        </a>
-                    </li>
-                    <li class="nav-left-menu nav-cheatsheet">Cheatsheet
-                        <div class="modal-menu">
-                            <ul class="list-menu">
-                                <li class="list-item">
-                                    <a class="link-menu" href="/cheatsheet-flex">Flex Cheatsheet</a>
-                                </li>
-                                <li class="list-item">
-                                    <a class="link-menu" href="/cheatsheet-grid">Grid Cheatsheet</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-left-menu nav-flex">
-                        <a href="/flex">Flex</a>
-                    </li>
-                    <li class="nav-left-menu nav-grid">
-                        <a href="/grid">Grid</a>
-                    </li>
-                    <li class="nav-left-menu nav-tryit">
-                        <a href="/try-it">Try it</a>
-                    </li>
+      <div class="gnb-cont">
+        <h1 class="logo-container">
+          <a href="/" class="header-logo">
+            <span class="a11y-hidden">flex and grid 홈</span>
+          </a>
+        </h1>
+        <nav>
+          <ul class="nav-left">
+            <li class="hamburger-container">
+              <button type="button" class="hamburger-menu">
+                <span class="a11y-hidden">모바일 메뉴</span>
+              </button>
+            </li>
+            <li class="nav-left-menu nav-cheatsheet">
+              Cheatsheet
+              <div class="modal-menu">
+                <ul class="list-menu">
+                  <li class="list-item">
+                    <a class="link-menu" href="/cheatsheet-flex"
+                      >Flex Cheatsheet</a
+                    >
+                  </li>
+                  <li class="list-item">
+                    <a class="link-menu" href="/cheatsheet-grid"
+                      >Grid Cheatsheet</a
+                    >
+                  </li>
                 </ul>
-                <ul class="nav-right">
-                    <li class="mobile-search">
-                        <button class="search-toggle">
-                            <span class="a11y-hidden">검색 창 활성화</span>
-                        </button>
-                    </li>
-                    <li class="search">
-                        <form action="/search" method="get" autocomplete="off">
-                            <input type="text" class="search-input" name="q" placeholder="Search" />
-                            <button type="submit" class="search-btn">
-                                <span class="a11y-hidden">검색 버튼</span>
-                            </button>
-                        </form>
-                        <div class="modal-history">
-                            <div class="header-history">
-                                <strong class="tit-history">최근 검색어</strong>
-                                <button class="btn-del-all">전체 삭제</button>
-                            </div>
-                            <ul class="list-history"></ul>
-                        </div>
-                    </li>
-                    <li class="button-group">
-                        <button class="darkmode-btn">
-                            <span class="a11y-hidden">다크 모드 전환</span>
-                        </button>
-                        <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="github-btn">
-                            <span class="a11y-hidden">깃헙 바로가기</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+              </div>
+            </li>
+            <li class="nav-left-menu nav-flex">
+              <a href="/flex">Flex</a>
+            </li>
+            <li class="nav-left-menu nav-grid">
+              <a href="/grid">Grid</a>
+            </li>
+            <li class="nav-left-menu nav-tryit">
+              <a href="/try-it">Try it</a>
+            </li>
+          </ul>
+          <ul class="nav-right">
+            <li class="mobile-search">
+              <button class="search-toggle">
+                <span class="a11y-hidden">검색 창 활성화</span>
+              </button>
+            </li>
+            <li class="search">
+              <form action="/search" method="get" autocomplete="off">
+                <input
+                  type="text"
+                  class="search-input"
+                  name="q"
+                  placeholder="Search"
+                />
+                <button type="submit" class="search-btn">
+                  <span class="a11y-hidden">검색 버튼</span>
+                </button>
+              </form>
+              <div class="modal-history">
+                <div class="header-history">
+                  <strong class="tit-history">최근 검색어</strong>
+                  <button class="btn-del-all">전체 삭제</button>
+                </div>
+                <ul class="list-history"></ul>
+              </div>
+            </li>
+            <li class="button-group">
+              <button class="darkmode-btn">
+                <span class="a11y-hidden">다크 모드 전환</span>
+              </button>
+              <a
+                href="https://github.com/flexandgrid/flexandgrid"
+                target="_blank"
+                class="github-btn"
+              >
+                <span class="a11y-hidden">깃헙 바로가기</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <aside class="search-modal-mobile">
-        <header>
-            <h1 class="visually-hidden">검색창</h1>
-            <form action="/search" method="get" autocomplete="off">
-                <input type="text" class="search-input" name="q" placeholder="Search" />
-                <button type="submit" class="search-btn">
-                    <span class="visually-hidden">검색 버튼</span>
-                </button>
-            </form>
-            <button class="close-btn" type="button">취소</button>
-        </header>
-
-        <section class="modal-history">
-            <header class="header-history">
-                <h2 class="tit-history">최근 검색어</h2>
-                <button type="button" class="btn-del-all">전체 삭제</button>
-            </header>
-            <ul class="list-history-m"></ul>
-        </section>
+    <aside class="aside mobile-menu">
+      <div class="aside-area mobile-menu-area">
+        <div class="drawer-menu">
+					<a href="/index.html" class="mobile-logo"></a>
+					<button class="btn-drawer-menu btn-drawer-menu-mobile btn-cheatSheet">Cheatsheet
+						<ol class="list-drawer-menu">
+							<li>
+								<a href="/cheatsheet-flex/index.html" class="tit-drawer-menu">Flex Cheatsheet</a>
+							</li>
+							<li>
+								<a href="/cheatsheet-grid/index.html" class="tit-drawer-menu">Grid Cheatsheet</a>
+							</li>
+						</ol>
+					</button>
+					<a href="/flex/index.html" class="btn-drawer-menu btn-drawer-menu-mobile btn-flex fold">Flex</a>
+					<a href="/grid/index.html" class="btn-drawer-menu btn-drawer-menu-mobile btn-grid fold">Grid</a>
+          <div class="cont-mobile-util">
+            <button class="btn-mobile-menu mobile-darkmode darkmode-btn">Dark Mode</button>
+            <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="btn-mobile-menu mobile-github">Github</a>
+          </div>
+        </div>
+      </div>
     </aside>
-    <div class="overlay" aria-hidden></div>
+    <div class="overlay menu-overlay" aria-hidden></div>
+
+    <aside class="search-modal-mobile">
+      <header>
+        <h1 class="visually-hidden">검색창</h1>
+        <form action="/search" method="get" autocomplete="off">
+          <input
+            type="text"
+            class="search-input"
+            name="q"
+            placeholder="Search"
+          />
+          <button type="submit" class="search-btn">
+            <span class="visually-hidden">검색 버튼</span>
+          </button>
+        </form>
+        <button class="close-btn" type="button">취소</button>
+      </header>
+
+      <section class="modal-history">
+        <header class="header-history">
+          <h2 class="tit-history">최근 검색어</h2>
+          <button type="button" class="btn-del-all">전체 삭제</button>
+        </header>
+        <ul class="list-history-m"></ul>
+      </section>
+    </aside>
+    <div class="overlay search-overlay" aria-hidden></div>
 
     <main class="cheatsheet-flex">
-        <div class="flex-wrapper">
+      <div class="flex-wrapper">
         <h1 id="Flex-Cheatsheet" class="main-title">
-            <a href="#Grid-Cheatsheet">Flex Cheatsheet</a>
+          <a href="#Grid-Cheatsheet">Flex Cheatsheet</a>
         </h1>
         <div class="flex-cont">
-        <article class="fg-cheat">
-            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-direction</a></h2>
+          <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction">
+              <a href="#flex-direction">flex-direction</a>
+            </h2>
             <form class="radio-cheat">
-                <input type="radio" id="cheat0-option1" name="cheat0" class="input-option" checked="true">
-                <label for="cheat0-option1" class="label-option cheat0-option1">row</label>
-                <input type="radio" id="cheat0-option2" name="cheat0" class="input-option">
-                <label for="cheat0-option2" class="label-option cheat0-option2">row-reverse</label>
-                <input type="radio" id="cheat0-option3" name="cheat0" class="input-option">
-                <label for="cheat0-option3" class="label-option cheat0-option3">column</label>
-                <input type="radio" id="cheat0-option4" name="cheat0" class="input-option">
-                <label for="cheat0-option4" class="label-option cheat0-option4">column-reverse</label>
+              <input
+                type="radio"
+                id="cheat0-option1"
+                name="cheat0"
+                class="input-option"
+                checked="true"
+              />
+              <label for="cheat0-option1" class="label-option cheat0-option1"
+                >row</label
+              >
+              <input
+                type="radio"
+                id="cheat0-option2"
+                name="cheat0"
+                class="input-option"
+              />
+              <label for="cheat0-option2" class="label-option cheat0-option2"
+                >row-reverse</label
+              >
+              <input
+                type="radio"
+                id="cheat0-option3"
+                name="cheat0"
+                class="input-option"
+              />
+              <label for="cheat0-option3" class="label-option cheat0-option3"
+                >column</label
+              >
+              <input
+                type="radio"
+                id="cheat0-option4"
+                name="cheat0"
+                class="input-option"
+              />
+              <label for="cheat0-option4" class="label-option cheat0-option4"
+                >column-reverse</label
+              >
             </form>
             <section class="box-area">
-                <div class="container cheat0" id="cont-cheat0">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                </div>
+              <div class="container cheat0" id="cont-cheat0">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+              </div>
             </section>
             <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
-                <p class="txt-code">
-                    <span class="number-code">3</span><em>flex-direction: row;</em>
-                </p>
-                <p class="txt-code"><span class="number-code">4</span>}</p>
-                <p class="txt-code"><span class="number-code">5</span></p>
+              <p class="txt-code">
+                <span class="number-code">1</span>.container {
+              </p>
+              <p class="txt-code">
+                <span class="number-code">2</span>display: flex;
+              </p>
+              <p class="txt-code">
+                <span class="number-code">3</span><em>flex-direction: row;</em>
+              </p>
+              <p class="txt-code"><span class="number-code">4</span>}</p>
+              <p class="txt-code"><span class="number-code">5</span></p>
             </section>
             <div class="buttons">
-                <button type="button" class="button button-add">+ Add Box</button>
-                <button type="button" class="button button-remove">- Remove Box</button>
+              <button type="button" class="button button-add">+ Add Box</button>
+              <button type="button" class="button button-remove">
+                - Remove Box
+              </button>
             </div>
-        </article>
+          </article>
 
-        <article class="fg-cheat">
-            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">justify-content</a></h2>
+          <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction">
+              <a href="#flex-direction">justify-content</a>
+            </h2>
             <form class="radio-cheat">
-                <input type="radio" id="cheat1-option1" name="cheat1" class="input-option" checked="true">
-                <label for="cheat1-option1" class="label-option cheat1-option1">flex-start</label>
-                <input type="radio" id="cheat1-option2" name="cheat1" class="input-option">
-                <label for="cheat1-option2" class="label-option cheat1-option2">center</label>
-                <input type="radio" id="cheat1-option3" name="cheat1" class="input-option">
-                <label for="cheat1-option3" class="label-option cheat1-option3">flex-end</label>
-                <input type="radio" id="cheat1-option4" name="cheat1" class="input-option">
-                <label for="cheat1-option4" class="label-option cheat1-option4">space-between</label>
-                <input type="radio" id="cheat1-option5" name="cheat1" class="input-option">
-                <label for="cheat1-option5" class="label-option cheat1-option5">space-around</label>
-                <input type="radio" id="cheat1-option6" name="cheat1" class="input-option">
-                <label for="cheat1-option6" class="label-option cheat1-option6">space-evenly</label>
+              <input
+                type="radio"
+                id="cheat1-option1"
+                name="cheat1"
+                class="input-option"
+                checked="true"
+              />
+              <label for="cheat1-option1" class="label-option cheat1-option1"
+                >flex-start</label
+              >
+              <input
+                type="radio"
+                id="cheat1-option2"
+                name="cheat1"
+                class="input-option"
+              />
+              <label for="cheat1-option2" class="label-option cheat1-option2"
+                >center</label
+              >
+              <input
+                type="radio"
+                id="cheat1-option3"
+                name="cheat1"
+                class="input-option"
+              />
+              <label for="cheat1-option3" class="label-option cheat1-option3"
+                >flex-end</label
+              >
+              <input
+                type="radio"
+                id="cheat1-option4"
+                name="cheat1"
+                class="input-option"
+              />
+              <label for="cheat1-option4" class="label-option cheat1-option4"
+                >space-between</label
+              >
+              <input
+                type="radio"
+                id="cheat1-option5"
+                name="cheat1"
+                class="input-option"
+              />
+              <label for="cheat1-option5" class="label-option cheat1-option5"
+                >space-around</label
+              >
+              <input
+                type="radio"
+                id="cheat1-option6"
+                name="cheat1"
+                class="input-option"
+              />
+              <label for="cheat1-option6" class="label-option cheat1-option6"
+                >space-evenly</label
+              >
             </form>
             <section class="box-area">
-                <div class="container cheat1" id="cont-cheat1">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                </div>
+              <div class="container cheat1" id="cont-cheat1">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+              </div>
             </section>
             <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
-                <p class="txt-code">
-                    <span class="number-code">3</span><em>justify-content: flex-start;</em>
-                </p>
-                <p class="txt-code"><span class="number-code">4</span>}</p>
-                <p class="txt-code"><span class="number-code">5</span></p>
+              <p class="txt-code">
+                <span class="number-code">1</span>.container {
+              </p>
+              <p class="txt-code">
+                <span class="number-code">2</span>display: flex;
+              </p>
+              <p class="txt-code">
+                <span class="number-code">3</span
+                ><em>justify-content: flex-start;</em>
+              </p>
+              <p class="txt-code"><span class="number-code">4</span>}</p>
+              <p class="txt-code"><span class="number-code">5</span></p>
             </section>
             <div class="buttons">
-                <button type="button" class="button button-add">+ Add Box</button>
-                <button type="button" class="button button-remove">- Remove Box</button>
+              <button type="button" class="button button-add">+ Add Box</button>
+              <button type="button" class="button button-remove">
+                - Remove Box
+              </button>
             </div>
-        </article>
-        <article class="fg-cheat">
-            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">align-items</a></h2>
+          </article>
+          <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction">
+              <a href="#flex-direction">align-items</a>
+            </h2>
             <form class="radio-cheat">
-                <input type="radio" id="cheat2-option1" name="cheat2" class="input-option" checked="true">
-                <label for="cheat2-option1" class="label-option cheat2-option1">flex-start</label>
-                <input type="radio" id="cheat2-option2" name="cheat2" class="input-option">
-                <label for="cheat2-option2" class="label-option cheat2-option2">center</label>
-                <input type="radio" id="cheat2-option3" name="cheat2" class="input-option">
-                <label for="cheat2-option3" class="label-option cheat2-option3">flex-end</label>
-                <input type="radio" id="cheat2-option4" name="cheat2" class="input-option">
-                <label for="cheat2-option4" class="label-option cheat2-option4">baseline</label>
-                <input type="radio" id="cheat2-option5" name="cheat2" class="input-option">
-                <label for="cheat2-option5" class="label-option cheat2-option5">stretch</label>
+              <input
+                type="radio"
+                id="cheat2-option1"
+                name="cheat2"
+                class="input-option"
+                checked="true"
+              />
+              <label for="cheat2-option1" class="label-option cheat2-option1"
+                >flex-start</label
+              >
+              <input
+                type="radio"
+                id="cheat2-option2"
+                name="cheat2"
+                class="input-option"
+              />
+              <label for="cheat2-option2" class="label-option cheat2-option2"
+                >center</label
+              >
+              <input
+                type="radio"
+                id="cheat2-option3"
+                name="cheat2"
+                class="input-option"
+              />
+              <label for="cheat2-option3" class="label-option cheat2-option3"
+                >flex-end</label
+              >
+              <input
+                type="radio"
+                id="cheat2-option4"
+                name="cheat2"
+                class="input-option"
+              />
+              <label for="cheat2-option4" class="label-option cheat2-option4"
+                >baseline</label
+              >
+              <input
+                type="radio"
+                id="cheat2-option5"
+                name="cheat2"
+                class="input-option"
+              />
+              <label for="cheat2-option5" class="label-option cheat2-option5"
+                >stretch</label
+              >
             </form>
             <section class="box-area">
-                <div class="container cheat2" id="cont-cheat2">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                </div>
+              <div class="container cheat2" id="cont-cheat2">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+              </div>
             </section>
             <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
-                <p class="txt-code">
-                    <span class="number-code">3</span><em>align-items: flex-start;</em>
-                </p>
-                <p class="txt-code"><span class="number-code">4</span>}</p>
-                <p class="txt-code"><span class="number-code">5</span></p>
+              <p class="txt-code">
+                <span class="number-code">1</span>.container {
+              </p>
+              <p class="txt-code">
+                <span class="number-code">2</span>display: flex;
+              </p>
+              <p class="txt-code">
+                <span class="number-code">3</span
+                ><em>align-items: flex-start;</em>
+              </p>
+              <p class="txt-code"><span class="number-code">4</span>}</p>
+              <p class="txt-code"><span class="number-code">5</span></p>
             </section>
             <div class="buttons">
-                <button type="button" class="button button-add">+ Add Box</button>
-                <button type="button" class="button button-remove">- Remove Box</button>
+              <button type="button" class="button button-add">+ Add Box</button>
+              <button type="button" class="button button-remove">
+                - Remove Box
+              </button>
             </div>
-        </article>
-        <article class="fg-cheat">
-            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">align-content</a></h2>
+          </article>
+          <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction">
+              <a href="#flex-direction">align-content</a>
+            </h2>
             <form class="radio-cheat">
-                <input type="radio" id="cheat3-option1" name="cheat3" class="input-option" checked="true">
-                <label for="cheat3-option1" class="label-option cheat3-option1">stretch</label>
-                <input type="radio" id="cheat3-option2" name="cheat3" class="input-option">
-                <label for="cheat3-option2" class="label-option cheat3-option2">flex-start</label>
-                <input type="radio" id="cheat3-option3" name="cheat3" class="input-option">
-                <label for="cheat3-option3" class="label-option cheat3-option3">center</label>
-                <input type="radio" id="cheat3-option4" name="cheat3" class="input-option">
-                <label for="cheat3-option4" class="label-option cheat3-option4">flex-end</label>
-                <input type="radio" id="cheat3-option5" name="cheat3" class="input-option">
-                <label for="cheat3-option5" class="label-option cheat3-option5">space-between</label>
-                <input type="radio" id="cheat3-option6" name="cheat3" class="input-option">
-                <label for="cheat3-option6" class="label-option cheat3-option6">space-around</label>
-                <input type="radio" id="cheat3-option7" name="cheat3" class="input-option">
-                <label for="cheat3-option7" class="label-option cheat3-option7">space-evenly</label>
+              <input
+                type="radio"
+                id="cheat3-option1"
+                name="cheat3"
+                class="input-option"
+                checked="true"
+              />
+              <label for="cheat3-option1" class="label-option cheat3-option1"
+                >stretch</label
+              >
+              <input
+                type="radio"
+                id="cheat3-option2"
+                name="cheat3"
+                class="input-option"
+              />
+              <label for="cheat3-option2" class="label-option cheat3-option2"
+                >flex-start</label
+              >
+              <input
+                type="radio"
+                id="cheat3-option3"
+                name="cheat3"
+                class="input-option"
+              />
+              <label for="cheat3-option3" class="label-option cheat3-option3"
+                >center</label
+              >
+              <input
+                type="radio"
+                id="cheat3-option4"
+                name="cheat3"
+                class="input-option"
+              />
+              <label for="cheat3-option4" class="label-option cheat3-option4"
+                >flex-end</label
+              >
+              <input
+                type="radio"
+                id="cheat3-option5"
+                name="cheat3"
+                class="input-option"
+              />
+              <label for="cheat3-option5" class="label-option cheat3-option5"
+                >space-between</label
+              >
+              <input
+                type="radio"
+                id="cheat3-option6"
+                name="cheat3"
+                class="input-option"
+              />
+              <label for="cheat3-option6" class="label-option cheat3-option6"
+                >space-around</label
+              >
+              <input
+                type="radio"
+                id="cheat3-option7"
+                name="cheat3"
+                class="input-option"
+              />
+              <label for="cheat3-option7" class="label-option cheat3-option7"
+                >space-evenly</label
+              >
             </form>
             <section class="box-area">
-                <div class="container cheat3" id="cont-cheat3">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                    <div class="item">4</div>
-                    <div class="item">5</div>
-                    <div class="item">6</div>
-                </div>
+              <div class="container cheat3" id="cont-cheat3">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+                <div class="item">4</div>
+                <div class="item">5</div>
+                <div class="item">6</div>
+              </div>
             </section>
             <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.item {</p>
-                <p class="txt-code">
-                    <span class="number-code">2</span><em>align-content: stretch;</em>
-                </p>
-                <p class="txt-code"><span class="number-code">3</span>}</p>
+              <p class="txt-code"><span class="number-code">1</span>.item {</p>
+              <p class="txt-code">
+                <span class="number-code">2</span
+                ><em>align-content: stretch;</em>
+              </p>
+              <p class="txt-code"><span class="number-code">3</span>}</p>
             </section>
             <div class="buttons">
-                <button type="button" class="button button-add">+ Add Box</button>
-                <button type="button" class="button button-remove">- Remove Box</button>
+              <button type="button" class="button button-add">+ Add Box</button>
+              <button type="button" class="button button-remove">
+                - Remove Box
+              </button>
             </div>
-        </article>
-        <article class="fg-cheat">
-            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-wrap</a></h2>
+          </article>
+          <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction">
+              <a href="#flex-direction">flex-wrap</a>
+            </h2>
             <form class="radio-cheat">
-                <input type="radio" id="cheat4-option1" name="cheat4" class="input-option" checked="true">
-                <label for="cheat4-option1" class="label-option cheat4-option1">nowrap</label>
-                <input type="radio" id="cheat4-option2" name="cheat4" class="input-option">
-                <label for="cheat4-option2" class="label-option cheat4-option2">wrap</label>
-                <input type="radio" id="cheat4-option3" name="cheat4" class="input-option">
-                <label for="cheat4-option3" class="label-option cheat4-option3">wrap-reverse</label>
+              <input
+                type="radio"
+                id="cheat4-option1"
+                name="cheat4"
+                class="input-option"
+                checked="true"
+              />
+              <label for="cheat4-option1" class="label-option cheat4-option1"
+                >nowrap</label
+              >
+              <input
+                type="radio"
+                id="cheat4-option2"
+                name="cheat4"
+                class="input-option"
+              />
+              <label for="cheat4-option2" class="label-option cheat4-option2"
+                >wrap</label
+              >
+              <input
+                type="radio"
+                id="cheat4-option3"
+                name="cheat4"
+                class="input-option"
+              />
+              <label for="cheat4-option3" class="label-option cheat4-option3"
+                >wrap-reverse</label
+              >
             </form>
             <section class="box-area">
-                <div class="container cheat4" id="cont-cheat4">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                </div>
+              <div class="container cheat4" id="cont-cheat4">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+              </div>
             </section>
             <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                <p class="txt-code"><span class="number-code">2</span>display: flex;</p>
-                <p class="txt-code">
-                    <span class="number-code">3</span><em>flex-wrap: nowrap;</em>
-                </p>
-                <p class="txt-code"><span class="number-code">4</span>}</p>
-                <p class="txt-code"><span class="number-code">5</span></p>
+              <p class="txt-code">
+                <span class="number-code">1</span>.container {
+              </p>
+              <p class="txt-code">
+                <span class="number-code">2</span>display: flex;
+              </p>
+              <p class="txt-code">
+                <span class="number-code">3</span><em>flex-wrap: nowrap;</em>
+              </p>
+              <p class="txt-code"><span class="number-code">4</span>}</p>
+              <p class="txt-code"><span class="number-code">5</span></p>
             </section>
             <div class="buttons">
-                <button type="button" class="button button-add">+ Add Box</button>
-                <button type="button" class="button button-remove">- Remove Box</button>
+              <button type="button" class="button button-add">+ Add Box</button>
+              <button type="button" class="button button-remove">
+                - Remove Box
+              </button>
             </div>
-        </article>
-        <article class="fg-cheat">
-            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-basis</a></h2>
+          </article>
+          <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction">
+              <a href="#flex-direction">flex-basis</a>
+            </h2>
             <form class="radio-cheat">
-                <input type="radio" id="cheat5-option1" name="cheat5" class="input-option" checked="true">
-                <label for="cheat5-option1" class="label-option cheat5-option1">auto</label>
-                <input type="radio" id="cheat5-option2" name="cheat5" class="input-option">
-                <label for="cheat5-option2" class="label-option cheat5-option2">0</label>
-                <input type="radio" id="cheat5-option3" name="cheat5" class="input-option">
-                <label for="cheat5-option3" class="label-option cheat5-option3">max-content</label>
-                <input type="radio" id="cheat5-option4" name="cheat5" class="input-option">
-                <label for="cheat5-option4" class="label-option cheat5-option4">min-content</label>
-                <input type="radio" id="cheat5-option5" name="cheat5" class="input-option">
-                <label for="cheat5-option5" class="label-option cheat5-option5">fit-content</label>
-                <input type="radio" id="cheat5-option6" name="cheat5" class="input-option">
-                <label for="cheat5-option6" class="label-option cheat5-option6">fill</label>
-                <input type="radio" id="cheat5-option7" name="cheat5" class="input-option">
-                <label for="cheat5-option7" class="label-option cheat5-option7">입력값</label>
+              <input
+                type="radio"
+                id="cheat5-option1"
+                name="cheat5"
+                class="input-option"
+                checked="true"
+              />
+              <label for="cheat5-option1" class="label-option cheat5-option1"
+                >auto</label
+              >
+              <input
+                type="radio"
+                id="cheat5-option2"
+                name="cheat5"
+                class="input-option"
+              />
+              <label for="cheat5-option2" class="label-option cheat5-option2"
+                >0</label
+              >
+              <input
+                type="radio"
+                id="cheat5-option3"
+                name="cheat5"
+                class="input-option"
+              />
+              <label for="cheat5-option3" class="label-option cheat5-option3"
+                >max-content</label
+              >
+              <input
+                type="radio"
+                id="cheat5-option4"
+                name="cheat5"
+                class="input-option"
+              />
+              <label for="cheat5-option4" class="label-option cheat5-option4"
+                >min-content</label
+              >
+              <input
+                type="radio"
+                id="cheat5-option5"
+                name="cheat5"
+                class="input-option"
+              />
+              <label for="cheat5-option5" class="label-option cheat5-option5"
+                >fit-content</label
+              >
+              <input
+                type="radio"
+                id="cheat5-option6"
+                name="cheat5"
+                class="input-option"
+              />
+              <label for="cheat5-option6" class="label-option cheat5-option6"
+                >fill</label
+              >
+              <input
+                type="radio"
+                id="cheat5-option7"
+                name="cheat5"
+                class="input-option"
+              />
+              <label for="cheat5-option7" class="label-option cheat5-option7"
+                >입력값</label
+              >
             </form>
             <section class="box-area">
-                <div class="container cheat5" id="cont-cheat5">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                </div>
+              <div class="container cheat5" id="cont-cheat5">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+              </div>
             </section>
             <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.item {</p>
-                <p class="txt-code">
-                    <span class="number-code">2</span><em>flex-basis: auto;</em>
-                </p>
-                <p class="txt-code"><span class="number-code">3</span>}</p>
+              <p class="txt-code"><span class="number-code">1</span>.item {</p>
+              <p class="txt-code">
+                <span class="number-code">2</span><em>flex-basis: auto;</em>
+              </p>
+              <p class="txt-code"><span class="number-code">3</span>}</p>
             </section>
             <div class="buttons">
-                <button type="button" class="button button-add">+ Add Box</button>
-                <button type="button" class="button button-remove">- Remove Box</button>
+              <button type="button" class="button button-add">+ Add Box</button>
+              <button type="button" class="button button-remove">
+                - Remove Box
+              </button>
             </div>
-        </article>
+          </article>
 
-        <article class="fg-cheat">
-            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-grow</a></h2>
+          <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction">
+              <a href="#flex-direction">flex-grow</a>
+            </h2>
             <form class="radio-cheat">
-                <input type="radio" id="cheat6-option1" name="cheat6" class="input-option" checked="true">
-                <label for="cheat6-option1" class="label-option cheat6-option1">0</label>
-                <input type="radio" id="cheat6-option2" name="cheat6" class="input-option">
-                <label for="cheat6-option2" class="label-option cheat6-option2">1</label>
-                <input type="radio" id="cheat6-option3" name="cheat6" class="input-option">
-                <label for="cheat6-option3" class="label-option cheat6-option3">입력값</label>
+              <input
+                type="radio"
+                id="cheat6-option1"
+                name="cheat6"
+                class="input-option"
+                checked="true"
+              />
+              <label for="cheat6-option1" class="label-option cheat6-option1"
+                >0</label
+              >
+              <input
+                type="radio"
+                id="cheat6-option2"
+                name="cheat6"
+                class="input-option"
+              />
+              <label for="cheat6-option2" class="label-option cheat6-option2"
+                >1</label
+              >
+              <input
+                type="radio"
+                id="cheat6-option3"
+                name="cheat6"
+                class="input-option"
+              />
+              <label for="cheat6-option3" class="label-option cheat6-option3"
+                >입력값</label
+              >
             </form>
             <section class="box-area">
-                <div class="container cheat6" id="cont-cheat6">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                </div>
+              <div class="container cheat6" id="cont-cheat6">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+              </div>
             </section>
             <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.item {</p>
-                <p class="txt-code">
-                    <span class="number-code">2</span><em>flex-grow: 0;</em>
-                </p>
-                <p class="txt-code"><span class="number-code">3</span>}</p>
+              <p class="txt-code"><span class="number-code">1</span>.item {</p>
+              <p class="txt-code">
+                <span class="number-code">2</span><em>flex-grow: 0;</em>
+              </p>
+              <p class="txt-code"><span class="number-code">3</span>}</p>
             </section>
             <div class="buttons">
-                <button type="button" class="button button-add">+ Add Box</button>
-                <button type="button" class="button button-remove">- Remove Box</button>
+              <button type="button" class="button button-add">+ Add Box</button>
+              <button type="button" class="button button-remove">
+                - Remove Box
+              </button>
             </div>
-        </article>
+          </article>
 
-        <article class="fg-cheat">
-            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">flex-shrink</a></h2>
+          <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction">
+              <a href="#flex-direction">flex-shrink</a>
+            </h2>
             <form class="radio-cheat">
-                <input type="radio" id="cheat7-option1" name="cheat7" class="input-option" checked="true">
-                <label for="cheat7-option1" class="label-option cheat7-option1">0</label>
-                <input type="radio" id="cheat7-option2" name="cheat7" class="input-option">
-                <label for="cheat7-option2" class="label-option cheat7-option2">1</label>
-                <input type="radio" id="cheat7-option3" name="cheat7" class="input-option">
-                <label for="cheat7-option3" class="label-option cheat7-option3">입력값</label>
+              <input
+                type="radio"
+                id="cheat7-option1"
+                name="cheat7"
+                class="input-option"
+                checked="true"
+              />
+              <label for="cheat7-option1" class="label-option cheat7-option1"
+                >0</label
+              >
+              <input
+                type="radio"
+                id="cheat7-option2"
+                name="cheat7"
+                class="input-option"
+              />
+              <label for="cheat7-option2" class="label-option cheat7-option2"
+                >1</label
+              >
+              <input
+                type="radio"
+                id="cheat7-option3"
+                name="cheat7"
+                class="input-option"
+              />
+              <label for="cheat7-option3" class="label-option cheat7-option3"
+                >입력값</label
+              >
             </form>
             <section class="box-area">
-                <div class="container cheat7" id="cont-cheat7">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                </div>
+              <div class="container cheat7" id="cont-cheat7">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+              </div>
             </section>
             <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.item {</p>
-                <p class="txt-code">
-                    <span class="number-code">2</span><em>flex-shrink: 0;</em>
-                </p>
-                <p class="txt-code"><span class="number-code">3</span>}</p>
+              <p class="txt-code"><span class="number-code">1</span>.item {</p>
+              <p class="txt-code">
+                <span class="number-code">2</span><em>flex-shrink: 0;</em>
+              </p>
+              <p class="txt-code"><span class="number-code">3</span>}</p>
             </section>
             <div class="buttons">
-                <button type="button" class="button button-add">+ Add Box</button>
-                <button type="button" class="button button-remove">- Remove Box</button>
+              <button type="button" class="button button-add">+ Add Box</button>
+              <button type="button" class="button button-remove">
+                - Remove Box
+              </button>
             </div>
-        </article>
+          </article>
 
-        <article class="fg-cheat">
-            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">align-self</a></h2>
+          <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction">
+              <a href="#flex-direction">align-self</a>
+            </h2>
             <form class="radio-cheat">
-                <input type="radio" id="cheat8-option1" name="cheat8" class="input-option" checked="true">
-                <label for="cheat8-option1" class="label-option cheat8-option1">auto</label>
-                <input type="radio" id="cheat8-option2" name="cheat8" class="input-option">
-                <label for="cheat8-option2" class="label-option cheat8-option2">stretch</label>
-                <input type="radio" id="cheat8-option3" name="cheat8" class="input-option">
-                <label for="cheat8-option3" class="label-option cheat8-option3">flex-start</label>
-                <input type="radio" id="cheat8-option4" name="cheat8" class="input-option">
-                <label for="cheat8-option4" class="label-option cheat8-option4">flex-end</label>
-                <input type="radio" id="cheat8-option5" name="cheat8" class="input-option">
-                <label for="cheat8-option5" class="label-option cheat8-option5">center</label>
-                <input type="radio" id="cheat8-option6" name="cheat8" class="input-option">
-                <label for="cheat8-option6" class="label-option cheat8-option6">baseline</label>
+              <input
+                type="radio"
+                id="cheat8-option1"
+                name="cheat8"
+                class="input-option"
+                checked="true"
+              />
+              <label for="cheat8-option1" class="label-option cheat8-option1"
+                >auto</label
+              >
+              <input
+                type="radio"
+                id="cheat8-option2"
+                name="cheat8"
+                class="input-option"
+              />
+              <label for="cheat8-option2" class="label-option cheat8-option2"
+                >stretch</label
+              >
+              <input
+                type="radio"
+                id="cheat8-option3"
+                name="cheat8"
+                class="input-option"
+              />
+              <label for="cheat8-option3" class="label-option cheat8-option3"
+                >flex-start</label
+              >
+              <input
+                type="radio"
+                id="cheat8-option4"
+                name="cheat8"
+                class="input-option"
+              />
+              <label for="cheat8-option4" class="label-option cheat8-option4"
+                >flex-end</label
+              >
+              <input
+                type="radio"
+                id="cheat8-option5"
+                name="cheat8"
+                class="input-option"
+              />
+              <label for="cheat8-option5" class="label-option cheat8-option5"
+                >center</label
+              >
+              <input
+                type="radio"
+                id="cheat8-option6"
+                name="cheat8"
+                class="input-option"
+              />
+              <label for="cheat8-option6" class="label-option cheat8-option6"
+                >baseline</label
+              >
             </form>
             <section class="box-area">
-                <div class="container cheat8" id="cont-cheat8">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                </div>
+              <div class="container cheat8" id="cont-cheat8">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+              </div>
             </section>
             <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.item {</p>
-                <p class="txt-code">
-                    <span class="number-code">2</span><em>align-self: auto;</em>
-                </p>
-                <p class="txt-code"><span class="number-code">3</span>}</p>
+              <p class="txt-code"><span class="number-code">1</span>.item {</p>
+              <p class="txt-code">
+                <span class="number-code">2</span><em>align-self: auto;</em>
+              </p>
+              <p class="txt-code"><span class="number-code">3</span>}</p>
             </section>
             <div class="buttons">
-                <button type="button" class="button button-add">+ Add Box</button>
-                <button type="button" class="button button-remove">- Remove Box</button>
+              <button type="button" class="button button-add">+ Add Box</button>
+              <button type="button" class="button button-remove">
+                - Remove Box
+              </button>
             </div>
-        </article>
+          </article>
 
-        <article class="fg-cheat">
-            <h2 class="tit-cheat" id="flex-direction"><a href="#flex-direction">order</a></h2>
+          <article class="fg-cheat">
+            <h2 class="tit-cheat" id="flex-direction">
+              <a href="#flex-direction">order</a>
+            </h2>
             <form class="radio-cheat">
-                <input type="radio" id="cheat9-option1" name="cheat9" class="input-option" checked="true">
-                <label for="cheat9-option1" class="label-option cheat9-option1">row</label>
-                <input type="radio" id="cheat9-option2" name="cheat9" class="input-option">
-                <label for="cheat9-option2" class="label-option cheat9-option2">row & order</label>
-                <input type="radio" id="cheat9-option3" name="cheat9" class="input-option">
-                <label for="cheat9-option3" class="label-option cheat9-option3">column</label>
-                <input type="radio" id="cheat9-option4" name="cheat9" class="input-option">
-                <label for="cheat9-option4" class="label-option cheat9-option4">column & order</label>
+              <input
+                type="radio"
+                id="cheat9-option1"
+                name="cheat9"
+                class="input-option"
+                checked="true"
+              />
+              <label for="cheat9-option1" class="label-option cheat9-option1"
+                >row</label
+              >
+              <input
+                type="radio"
+                id="cheat9-option2"
+                name="cheat9"
+                class="input-option"
+              />
+              <label for="cheat9-option2" class="label-option cheat9-option2"
+                >row & order</label
+              >
+              <input
+                type="radio"
+                id="cheat9-option3"
+                name="cheat9"
+                class="input-option"
+              />
+              <label for="cheat9-option3" class="label-option cheat9-option3"
+                >column</label
+              >
+              <input
+                type="radio"
+                id="cheat9-option4"
+                name="cheat9"
+                class="input-option"
+              />
+              <label for="cheat9-option4" class="label-option cheat9-option4"
+                >column & order</label
+              >
             </form>
             <section class="box-area">
-                <div class="container cheat9" id="cont-cheat9">
-                    <div class="item">1</div>
-                    <div class="item">2</div>
-                    <div class="item">3</div>
-                </div>
+              <div class="container cheat9" id="cont-cheat9">
+                <div class="item">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+              </div>
             </section>
             <section class="box-code-area">
-                <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                <p class="txt-code">
-                    <span class="number-code">2</span><em>display: flex;</em>
-                </p>
-                <p class="txt-code"><span class="number-code">3</span>}</p>
+              <p class="txt-code">
+                <span class="number-code">1</span>.container {
+              </p>
+              <p class="txt-code">
+                <span class="number-code">2</span><em>display: flex;</em>
+              </p>
+              <p class="txt-code"><span class="number-code">3</span>}</p>
             </section>
             <div class="buttons">
-                <button type="button" class="button button-add">+ Add Box</button>
-                <button type="button" class="button button-remove">- Remove Box</button>
+              <button type="button" class="button button-add">+ Add Box</button>
+              <button type="button" class="button button-remove">
+                - Remove Box
+              </button>
             </div>
-        </article>
+          </article>
         </div>
-            </div>
+      </div>
     </main>
     <button type="button" class="btn-up"></button>
     <footer class="footer-area">
-        <div class="cont-footer">
-            <div class="cont-txt">
-                <strong class="txt-title">flex, grid 오픈소스 프로젝트 입니다 :)</strong>
-                <p class="txt-main">
-                    이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이 사용할 수 있는 공공재입니다.
-                </p>
-                <small class="txt-copyrigt">© 2022, All Rights Reserved</small>
-            </div>
-            <div class="cont-btn">
-                <a class="btn-footer btn-github" href="https://github.com/flexandgrid/flexandgrid" target="_blank">
-                    Github
-                </a>
-                <a class="btn-footer btn-file" href="https://ridibooks.com/books/2773000058" target="_blank"
-                    download="">
-                    PDF Book
-                </a>
-            </div>
+      <div class="cont-footer">
+        <div class="cont-txt">
+          <strong class="txt-title"
+            >flex, grid 오픈소스 프로젝트 입니다 :)</strong
+          >
+          <p class="txt-main">
+            이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이
+            사용할 수 있는 공공재입니다.
+          </p>
+          <small class="txt-copyrigt">© 2022, All Rights Reserved</small>
         </div>
+        <div class="cont-btn">
+          <a
+            class="btn-footer btn-github"
+            href="https://github.com/flexandgrid/flexandgrid"
+            target="_blank"
+          >
+            Github
+          </a>
+          <a
+            class="btn-footer btn-file"
+            href="https://ridibooks.com/books/2773000058"
+            target="_blank"
+            download=""
+          >
+            PDF Book
+          </a>
+        </div>
+      </div>
     </footer>
     <script src="/src/components/cheatsheet-flex.js"></script>
-</body>
-
+  </body>
 </html>

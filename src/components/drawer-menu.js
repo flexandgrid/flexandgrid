@@ -1,6 +1,6 @@
 const btnDrawer = document.querySelector('.btn-drawer');
-const asideArea = document.querySelector('.aside-area');
-const aside = document.querySelector('.aside');
+const asideArea = document.querySelector('.drawer-menu-area');
+const aside = document.querySelector('.aside-drawer-menu');
 const PAGE_NAME = window.location.pathname.split('/')[1];
 
 const toggleDrawer = () => {
@@ -64,9 +64,7 @@ const handleLoad = () => {
 // window.addEventListener('scroll', checkScroll);
 window.addEventListener('markdownParsed', handleLoad);
 
-
-
-const menuBtn = document.querySelectorAll('.btn-drawer-menu');
+const menuBtn = document.querySelectorAll('.btn-drawer-menu-main');
 
 // 메뉴 드롭다운
 

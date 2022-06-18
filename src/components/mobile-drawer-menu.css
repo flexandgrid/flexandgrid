@@ -1,0 +1,90 @@
+.mobile-menu-area.clicked {
+  display: block;
+  transform: translateX(0);
+  z-index: 20;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+.cont-mobile-util {
+  margin-top: 22px;
+}
+
+.btn-mobile-menu {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 14px 0 11px 40px;
+  border-radius: 10px;
+  color: var(--secondary);
+  font-size: 16px;
+  line-height: 28px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mobile-menu .btn-mobile-menu:hover {
+  background-color: var(--background);
+}
+
+.mobile-darkmode::before,
+.mobile-github::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 16px;
+  left: 8px;
+  background: url(/src/assets/images/icon-github.svg) no-repeat center / contain;
+}
+
+.mobile-menu .mobile-darkmode::before {
+  background: url(/src/assets/images/icon-moon.svg) no-repeat center / contain;
+}
+
+.mobile-menu .mobile-github::before  {
+  background: url(/src/assets/images/icon-github.svg) no-repeat center / contain;
+}
+
+.mobile-menu .btn-drawer-menu.fold:nth-child(n+2):nth-child(n+3):after {
+  display: none;
+}
+
+.menu-overlay {
+  display: none;
+}
+
+
+/* 다크모드 */
+.on .mobile-menu .btn-mobile-menu:hover {
+  background-color: var(--border-dark);
+}
+
+.on .mobile-menu .btn-mobile-menu {
+  color: var(--tertiary);
+}
+
+.on .mobile-menu .mobile-darkmode::before {
+  background: url(/src/assets/images/icon-moon-darkmode.svg) no-repeat center / contain;
+}
+
+.on .mobile-menu .mobile-github::before  {
+  background: url(/src/assets/images/icon-github-darkmode.svg) no-repeat center / contain;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+  }
+
+  .mobile-menu .drawer-menu{
+    width: 60%;
+    min-width: 295px;
+  }
+  .overlay.menu-overlay {
+    display: block;
+  }
+}

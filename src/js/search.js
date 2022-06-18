@@ -9,7 +9,7 @@ const searchInputs = document.querySelectorAll('.search-input');
 const searchToggle = document.querySelector('.mobile-search');
 const searchMobileModal = document.querySelector('.search-modal-mobile');
 const searchModalCloseBtn = searchMobileModal.querySelector('.close-btn');
-const searchOverlay = document.querySelector('.overlay');
+const searchOverlay = document.querySelector('.search-overlay');
 
 searchInputs.forEach((input) =>
   input.addEventListener('click', () => {
@@ -41,7 +41,7 @@ function closeSearchModalBtn() {
 searchModalCloseBtn.addEventListener('click', closeSearchModalBtn);
 
 function closeSearchModal(e) {
-  if (e.target.className === 'overlay clicked') {
+  if (e.target.className === 'overlay search-overlay clicked') {
     searchMobileModal.classList.remove('clicked');
     searchOverlay.classList.remove('clicked');
     window.removeEventListener('click', closeSearchModal);

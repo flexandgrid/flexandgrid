@@ -102,7 +102,8 @@ main {
 
 .cont-grid figcaption {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
+  line-height: 1.3em;
 }
 
 .cont-grid figure img {
@@ -346,7 +347,7 @@ main {
   }
 
   .cont-grid figcaption {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .cont-grid figure img {

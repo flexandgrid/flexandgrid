@@ -5,11 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>try it</title>
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/src/css/default.css" />
     <link rel="stylesheet" href="/src/css/color.css" />
     <link rel="stylesheet" href="/search/style.css" />
     <link rel="stylesheet" href="/src/components/gnb-nav-modal.css">
     <link rel="stylesheet" href="/src/components/gnb-nav.css" />
+    <link rel="stylesheet" href="/src/components/drawer-menu.css">
+    <link rel="stylesheet" href="/src/components/mobile-drawer-menu.css">
     <link rel="stylesheet" href="/src/components/search-item.css" />
     <link rel="stylesheet" href="/src/components/search-modal.css" />
     <link rel="stylesheet" href="/src/components/mobile-search-modal.css">
@@ -17,6 +22,7 @@
     <link rel="stylesheet" href="/src/utils/editor/editor.css">
     <link rel="stylesheet" href="style.css">
     <script defer src="/src/components/gnb-nav.js"></script>
+    <script defer src="/src/components/mobile-drawer-menu.js"></script>
     <script defer src="/src/components/button.js"></script>
     <script defer src="/src/js/darkmode.js"></script>
     <script defer src="/src/js/search.js"></script>
@@ -32,9 +38,9 @@
             <nav>
                 <ul class="nav-left">
                     <li class="hamburger-container">
-                        <a href="/" class="hamburger-menu">
+                        <button type="button" class="hamburger-menu">
                             <span class="a11y-hidden">모바일 메뉴</span>
-                        </a>
+                        </button>
                     </li>
                     <li class="nav-left-menu nav-cheatsheet">Cheatsheet
                         <div class="modal-menu">
@@ -95,6 +101,31 @@
         </div>
     </header>
 
+    <aside class="aside mobile-menu">
+        <div class="aside-area mobile-menu-area">
+            <div class="drawer-menu">
+                <a href="/index.html" class="mobile-logo"></a>
+                <button class="btn-drawer-menu btn-cheatSheet fold">Cheatsheet
+                    <ol class="list-drawer-menu">
+                        <li>
+                            <a href="/cheatsheet-flex/index.html" class="tit-drawer-menu">Flex Cheatsheet</a>
+                        </li>
+                        <li>
+                            <a href="/cheatsheet-flex/index.html" class="tit-drawer-menu">Grid Cheatsheet</a>
+                        </li>
+                    </ol>
+                </button>
+                <a href="/flex/index.html" class="btn-drawer-menu btn-flex fold">Flex</a>
+                <a href="/grid/index.html" class="btn-drawer-menu btn-grid fold">Grid</a>
+                <div class="cont-mobile-util">
+                    <button class="btn-mobile-menu mobile-darkmode darkmode-btn">Dark Mode</button>
+                    <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="btn-mobile-menu mobile-github">Github</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <div class="overlay menu-overlay" aria-hidden></div>
+
     <aside class="search-modal-mobile">
         <header>
             <h1 class="visually-hidden">검색창</h1>
@@ -115,7 +146,7 @@
             <ul class="list-history-m"></ul>
         </section>
     </aside>
-    <div class="overlay" aria-hidden></div>
+    <div class="overlay search-overlay" aria-hidden></div>
 
     <main class="main-tryit">
         <section class="sect-tryit">
@@ -124,27 +155,20 @@
             <h3 class="visually-hidden">에디터 프리모드</h3>
             <!-- free mode -->
             <div data-mode="free" data-title="Flex Code" class="fg-editor">
-                <code data-struct="[1][2][2][1]">
+                <code data-struct="[1][3][1]">
                     .container {
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
                     }
+                    .item {
+                        flex: 1;
+                    }
+                    .container2 .item {
+                        height: 160px;
+                    }
                     .item3 {
-                        flex: 1;
-                        opacity: 0.2;
-                    }
-                    .item1, .item4 {
-                        flex: 1;
-                    }
-                    .item5 {
-                        flex: 2;
-                        opacity: 0.5;
-                        order: -1;
-                    }
-                    .item6 {
-                        flex: 1;
-                        opacity: 0.2;
+                        flex: 4;
                     }
                 </code>
             </div>
@@ -159,16 +183,14 @@
                         "footer footer footer";
                     }
                     .item {
-                        width: auto !important;
-                        height: auto !important;
+                        width: auto;
                     }
                     .item1 {
                         grid-area: header;
-                        background-color: #F9B09E;
                     }
                     .item2 {
                         grid-area: sidebar;
-                        opacity: 0.3;
+                        height: auto;
                     }
                     .item3 {
                         grid-area: content1;
@@ -178,7 +200,6 @@
                     }
                     .item5 {
                         grid-area: content3;
-                        opacity: 0.3;
                     }
                     .item6 {
                         grid-area: footer;                    
