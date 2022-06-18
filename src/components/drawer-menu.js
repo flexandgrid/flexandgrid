@@ -1,6 +1,7 @@
 const btnDrawer = document.querySelector('.btn-drawer');
 const asideArea = document.querySelector('.drawer-menu-area');
 const aside = document.querySelector('.aside-drawer-menu');
+const drawerMenu = document.querySelector('.drawer-menu');
 const PAGE_NAME = window.location.pathname.split('/')[1];
 
 const toggleDrawer = () => {
@@ -43,6 +44,10 @@ const scrollSpy = (drawerTit, contTit) => {
       let nextTarget = contTit[i + 1] ? contTit[i + 1].offsetTop : fullHeight;
       if (target - pos < 20 && pos < nextTarget - 10) {
         drawerTit[i].classList.add('scroll-spy');
+        drawerMenu.scrollTo(
+          0,
+          drawerTit[i].offsetTop - drawerMenu.clientHeight / 2
+        );
       } else {
         drawerTit[i].classList.remove('scroll-spy');
       }
@@ -70,8 +75,8 @@ const menuBtn = document.querySelectorAll('.btn-drawer-menu-main');
 
 const toggleBtn = (e) => {
   e.target.classList.toggle('fold');
-}
+};
 
-for(let i = 0; i < menuBtn.length; i++) {
+for (let i = 0; i < menuBtn.length; i++) {
   menuBtn[i].addEventListener('click', (e) => toggleBtn(e));
 }
