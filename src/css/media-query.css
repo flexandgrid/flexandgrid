@@ -17,27 +17,28 @@
 @media screen and (max-width: 768px) {
   .cheatsheet-flex {
     width: auto;
-    margin: 10%;
+    margin: 60px 20px;
   }
 
-  .flex-wrapper {
+  .cheatsheet-flex .flex-wrapper {
     padding: 0;
     width: 100%;
   }
 
-  .flex-cont {
+  .cheatsheet-flex .flex-wrapper .flex-cont {
     width: auto;
+    margin-top: 30px;
   }
 
-  .main-title {
-    margin: 0;
+  .cheatsheet-flex .flex-wrapper .main-title {
+  margin-top: 30px;
   }
 
-  .fg-cheat {
+  .cheatsheet-flex .flex-wrapper .flex-cont .fg-cheat {
     width: 100%;
   }
 
-  .box-code-area {
+  .cheatsheet-flex .flex-wrapper .flex-cont .fg-cheat .box-code-area {
     width: auto;
   }
 }
