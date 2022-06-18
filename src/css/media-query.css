@@ -48,6 +48,33 @@
 
 
 /* cheatsheet-grid tablet */
+@media screen and (max-width: 1280px) {
+
+  .main-cheatsheet-grid {
+    width:auto;
+  }
+  .cheatsheet-grid {
+      width:100%;
+      padding: 100px 150px 30px;
+  }
+
+  .cheatsheet-grid .main-title {
+      margin: 40px 0 80px;
+  }
+
+  .cheatsheet-grid .main-wrapper {
+      width: 100%;
+      grid-template-columns: repeat(1, 1fr);
+  }
+  .cheatsheet-grid .main-wrapper .fg-cheat {
+    width: 100%;
+  }
+  .cheatsheet-grid .main-wrapper .fg-cheat .box-code-area {
+    width: 100%;
+  }
+
+}
+
 
 /* cheatsheet-grid mobile */
 @media screen and (max-width: 768px) {
