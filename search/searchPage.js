@@ -1,7 +1,7 @@
 const URLSearch = new URLSearchParams(location.search);
-const searchQuery = URLSearch.get("q");
-const searchText = document.querySelector(".text-search");
-const searchResultCount = document.querySelector(".text-search-count");
+const searchQuery = URLSearch.get('q');
+const searchText = document.querySelector('.text-search');
+const searchResultCount = document.querySelector('.text-search-count');
 let searchItem;
 
 if (searchQuery) {
@@ -12,13 +12,13 @@ if (searchQuery) {
 const contents = [];
 
 (async function () {
-  const PAGE_NAME = window.location.pathname.split("/")[1];
+  const PAGE_NAME = window.location.pathname.split('/')[1];
 
   const normalize = (markdown) => {
     return markdown
-      .replace(/\r\n?/g, "\n")
-      .replace(/\n{2,}/g, "\n\n")
-      .split("\n");
+      .replace(/\r\n?/g, '\n')
+      .replace(/\n{2,}/g, '\n\n')
+      .split('\n');
   };
 
   const parse = (token, { regex, tagName, replace }) => {
@@ -27,38 +27,38 @@ const contents = [];
 
   const codeBlockStart = {
     regex: /^\s*`{3}(.+)/,
-    replace: "<pre><code>$1",
+    replace: '<pre><code>$1',
   };
 
   const codeBlockEnd = {
     regex: /(.*)`{3}\s*$/,
-    replace: "$1</code></pre>",
+    replace: '$1</code></pre>',
   };
 
   const unorderedListItem = {
     regex: /^\s*-\s(.+)/,
-    replace: "<li>$1",
+    replace: '<li>$1',
   };
 
   const orderedListItem = {
     regex: /^\s*(\d+\.\s.+)/,
-    replace: "<li>$1",
+    replace: '<li>$1',
   };
 
   const tableRow = {
     regex: /^\|(.+)\|$/,
     replace: (_, group) => {
       const heads = group
-        .split("|")
+        .split('|')
         .map((text) => `<td>${text.trim()}</td>`)
-        .join("");
+        .join('');
       return `<tr>${heads}</tr>`;
     },
   };
 
   const tableDivision = {
     regex: /^\|(([-|]|\s)+)\|$/,
-    replace: "",
+    replace: '',
   };
 
   const heading = {
@@ -67,7 +67,7 @@ const contents = [];
       const tagName = `h${mark.length + 1}`;
       return `<${tagName} id="${group.replace(
         /(\*{2})|`/g,
-        ""
+        ''
       )}">${group}</${tagName}>`;
     },
   };
@@ -79,23 +79,23 @@ const contents = [];
       return `<figure><img src="${
         window.location.origin
       }/src/pages/${PAGE_NAME}/${g2}"${
-        width ? ` style="width: ${width}px;"` : ""
-      }>${g1 ? `<figcaption>${g1}</figcaption>` : ""}</figure>`;
+        width ? ` style="width: ${width}px;"` : ''
+      }>${g1 ? `<figcaption>${g1}</figcaption>` : ''}</figure>`;
     },
   };
 
   const lineBreak = {
     regex: /^<br\s*\/>$/,
-    replace: "<br />",
+    replace: '<br />',
   };
 
   const paragraph = {
     regex: /(?<=^|\n)(.+)$/,
-    tagName: "p",
+    tagName: 'p',
     replace: (matched) =>
       /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img|code)/.test(matched)
         ? matched
-        : "<p>" + matched + "</p>",
+        : '<p>' + matched + '</p>',
   };
 
   const link = {
@@ -105,12 +105,12 @@ const contents = [];
 
   const strong = {
     regex: /\*{2}(([^*])+)\*{2}/g,
-    tagName: "strong",
+    tagName: 'strong',
   };
 
   const code = {
     regex: /`([^`]+)`/g,
-    tagName: "code",
+    tagName: 'code',
   };
 
   const listDepth = (token) => {
@@ -150,17 +150,17 @@ const contents = [];
           case codeBlockStart:
             codeBlockStartIndex = i;
             const codeType = tokens[i].match(/<code>(.+)$/)?.[1];
-            if (codeType === "editor") {
+            if (codeType === 'editor') {
               isEditor = true;
-              tokens[i] = "";
+              tokens[i] = '';
             } else {
-              tokens[i] = tokens[i].replace(codeType, "");
+              tokens[i] = tokens[i].replace(codeType, '');
             }
             break;
 
           case unorderedListItem:
           case orderedListItem:
-            const tagName = rule === unorderedListItem ? "ul" : "ol";
+            const tagName = rule === unorderedListItem ? 'ul' : 'ol';
             const depth = listDepth(token);
             if (depth > curListDepth) {
               tokens[i] = `<${tagName}>` + tokens[i];
@@ -179,18 +179,18 @@ const contents = [];
               tokens[i - 1] += listStack.pop();
             }
             curListDepth = depth;
-            listStack.push("</li>");
+            listStack.push('</li>');
             break;
 
           case tableRow:
             if (tableStartIndex === -1) {
               tableStartIndex = i;
-              tokens[i] = "<table>" + tokens[i].replace(/(\<\/?)td>/g, "$1th>");
+              tokens[i] = '<table>' + tokens[i].replace(/(\<\/?)td>/g, '$1th>');
             }
             break;
 
           default:
-            if (token.trim() === "") {
+            if (token.trim() === '') {
               if (listStack.length) {
                 while (listStack.length) {
                   tokens[i - 1] += listStack.pop();
@@ -199,7 +199,7 @@ const contents = [];
               }
 
               if (tableStartIndex >= 0) {
-                tokens[i - 1] += "</table>";
+                tokens[i - 1] += '</table>';
                 tableStartIndex = -1;
               }
 
@@ -208,21 +208,21 @@ const contents = [];
         }
         // 코드 블럭일 때
       } else {
-        if (token.trim() === "") {
-          tokens[i] = "\n\n";
+        if (token.trim() === '') {
+          tokens[i] = '\n\n';
         }
         if (!isEditor) {
           tokens[i] = token
-            .replaceAll("<", "&#60;")
-            .replaceAll(">", "&#62;")
-            .replaceAll(" ", "&nbsp;");
+            .replaceAll('<', '&#60;')
+            .replaceAll('>', '&#62;')
+            .replaceAll(' ', '&nbsp;');
         }
         if (codeBlockEnd.regex.test(token)) {
           tokens[i] = parse(token, codeBlockEnd);
           codeBlockStartIndex = -1;
           isEditor = false;
         } else {
-          tokens[i] += "\n";
+          tokens[i] += '\n';
         }
       }
     }
@@ -281,27 +281,27 @@ const contents = [];
   render();
 })();
 
-const listSearch = document.querySelector(".list-search");
-let highTag = "";
-let currentTitle = "";
-let currentDesc = "";
-let prev = "";
+const listSearch = document.querySelector('.list-search');
+let highTag = '';
+let currentTitle = '';
+let currentDesc = '';
+let prev = '';
 let firstDesc;
 let desc = [];
 const createList = (contents) => {
   contents.forEach((check, i) => {
     for (let j = 0; j < contents[i].length - 1; j++) {
-      if (check[j].includes("<p>")) {
+      if (check[j].includes('<p>')) {
         firstDesc = j;
 
-        while (contents[i][j].includes("<p>")) {
+        while (contents[i][j].includes('<p>')) {
           desc += contents[i][j];
           contents[i].splice(j, 1);
           if (j < contents[i].length - 1) {
           } else {
             break;
           }
-          if (contents[i][j].includes("<p>")) {
+          if (contents[i][j].includes('<p>')) {
             continue;
           } else {
             break;
@@ -315,19 +315,19 @@ const createList = (contents) => {
 
   contents.forEach((v, i) => {
     v.forEach((value, j) => {
-      if (value.includes(value.match(new RegExp(searchQuery, "i")))) {
-        if (value.includes("h3") || value.includes("h4")) {
+      if (value.includes(value.match(new RegExp(searchQuery, 'i')))) {
+        if (value.includes('h3') || value.includes('h4')) {
           currentTitle = value;
-          while (!contents[i][j].includes("<p>")) {
+          while (!contents[i][j].includes('<p>')) {
             j++;
-            if (contents[i][j].includes("<p>")) {
+            if (contents[i][j].includes('<p>')) {
               currentDesc = contents[i][j];
             }
           }
 
-          while (!contents[i][j].includes("h2")) {
+          while (!contents[i][j].includes('h2')) {
             j--;
-            if (contents[i][j].includes("h2")) {
+            if (contents[i][j].includes('h2')) {
               highTag = contents[i][j];
               break;
             }
@@ -335,23 +335,23 @@ const createList = (contents) => {
               break;
             }
           }
-        } else if (value.includes("<p>")) {
+        } else if (value.includes('<p>')) {
           currentDesc = value;
-          while (!contents[i][j].includes("h2")) {
+          while (!contents[i][j].includes('h2')) {
             j--;
             if (
-              contents[i][j].includes("h2") ||
-              contents[i][j].includes("h3") ||
-              contents[i][j].includes("h4")
+              contents[i][j].includes('h2') ||
+              contents[i][j].includes('h3') ||
+              contents[i][j].includes('h4')
             ) {
               currentTitle = contents[i][j];
-              if (contents[i][j].includes("h2")) {
+              if (contents[i][j].includes('h2')) {
                 highTag = contents[i][j];
                 break;
               }
-              while (!contents[i][j].includes("h2")) {
+              while (!contents[i][j].includes('h2')) {
                 j--;
-                if (contents[i][j].includes("h2")) {
+                if (contents[i][j].includes('h2')) {
                   highTag = contents[i][j];
                   break;
                 }
@@ -362,54 +362,54 @@ const createList = (contents) => {
               break;
             }
           }
-        } else if (value.includes("h2")) {
+        } else if (value.includes('h2')) {
           highTag = value;
           currentTitle = value;
-          while (!contents[i][j].includes("<p>")) {
+          while (!contents[i][j].includes('<p>')) {
             j++;
-            if (contents[i][j].includes("<p>")) {
+            if (contents[i][j].includes('<p>')) {
               currentDesc = contents[i][j];
             } else if (
-              contents[i][j].includes("h3") ||
-              contents[i][j].includes("h4")
+              contents[i][j].includes('h3') ||
+              contents[i][j].includes('h4')
             ) {
-              currentDesc = "";
+              currentDesc = '';
               break;
             }
           }
         }
 
-        currentTitle = currentTitle.replace(/<\/?[^>]+(>|$)/g, "");
-        currentDesc = currentDesc.replace(/<\/?[^>]+(>|$)/g, "");
-        highTag = highTag.replace(/<\/?[^>]+(>|$)/g, "");
-        highTag = highTag.replace(/[^\s]+[0-9.]/g, "");
+        currentTitle = currentTitle.replace(/<\/?[^>]+(>|$)/g, '');
+        currentDesc = currentDesc.replace(/<\/?[^>]+(>|$)/g, '');
+        highTag = highTag.replace(/<\/?[^>]+(>|$)/g, '');
+        highTag = highTag.replace(/[^\s]+[0-9.]/g, '');
         if (prev != currentTitle) {
           prev = currentTitle;
-          const searchListItem = document.createElement("li");
-          searchListItem.setAttribute("class", "itemwrap-search");
+          const searchListItem = document.createElement('li');
+          searchListItem.setAttribute('class', 'itemwrap-search');
 
-          const searchListItemLink = document.createElement("a");
+          const searchListItemLink = document.createElement('a');
           searchListItemLink.setAttribute(
-            "href",
+            'href',
             `${i == 0 ? `/flex/#${currentTitle}` : `/grid/#${currentTitle}`}`
           );
-          searchListItemLink.setAttribute("class", "item-search");
+          searchListItemLink.setAttribute('class', 'item-search');
 
-          currentTitle = currentTitle.replace(/[^s]+[.]/gi, "");
-          const searchRoute = document.createElement("span");
-          searchRoute.setAttribute("class", "route-search");
+          currentTitle = currentTitle.replace(/[^s]+[.]/gi, '');
+          const searchRoute = document.createElement('span');
+          searchRoute.setAttribute('class', 'route-search');
           searchRoute.appendChild(
             document.createTextNode(
               i == 0 ? `flex > ${highTag}` : `grid > ${highTag}`
             )
           );
 
-          const searchTitle = document.createElement("strong");
-          searchTitle.setAttribute("class", "tit-search");
+          const searchTitle = document.createElement('strong');
+          searchTitle.setAttribute('class', 'tit-search');
           searchTitle.appendChild(document.createTextNode(currentTitle));
 
-          const searchDesc = document.createElement("p");
-          searchDesc.setAttribute("class", "desc-search");
+          const searchDesc = document.createElement('p');
+          searchDesc.setAttribute('class', 'desc-search');
           searchDesc.appendChild(document.createTextNode(currentDesc));
 
           searchListItemLink.appendChild(searchRoute);
@@ -424,6 +424,6 @@ const createList = (contents) => {
       }
     });
   });
-  searchItem = document.querySelectorAll(".itemwrap-search");
+  searchItem = document.querySelectorAll('.itemwrap-search');
   searchResultCount.innerText = `Showing ${searchItem.length} results`;
 };
