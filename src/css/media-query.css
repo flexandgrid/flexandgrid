@@ -14,3 +14,37 @@
     width: 100%;
   }
 }
+
+/* cheatsheet-flex mobile */
+
+
+/* cheatsheet-grid tablet */
+
+
+/* cheatsheet-grid mobile */
+@media screen and (max-width : 768px) {
+  .main-cheatsheet-grid {
+    width: auto;
+    margin: 100px 40px;
+  }
+
+  .cheatsheet-grid {
+    padding: 0;
+  }
+
+  .cheatsheet-grid .main-title {
+    margin-bottom: 50px;
+  }
+
+  .cheatsheet-grid .main-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .cheatsheet-grid .main-wrapper .fg-cheat {
+    width: 100%;
+  }
+
+  .cheatsheet-grid .main-wrapper .fg-cheat .box-code-area {
+    width: auto;
+  }
+}
