@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>try it</title>
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/src/css/default.css" />
@@ -26,7 +27,18 @@
     <script defer src="/src/components/button.js"></script>
     <script defer src="/src/js/darkmode.js"></script>
     <script defer src="/src/js/search.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7CSH8KPNK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Z7CSH8KPNK');
+    </script>
 </head>
+
 <body>
     <header class="gnb-header">
         <div class="gnb-cont">
@@ -72,7 +84,7 @@
                     </li>
                     <li class="search">
                         <form action="/search" method="get" autocomplete="off">
-                            <input type="text" class="search-input" name="q" placeholder="Search"/>
+                            <input type="text" class="search-input" name="q" placeholder="Search" />
                             <button type="submit" class="search-btn">
                                 <span class="a11y-hidden">검색 버튼</span>
                             </button>
@@ -89,10 +101,7 @@
                         <button class="darkmode-btn">
                             <span class="a11y-hidden">다크 모드 전환</span>
                         </button>
-                        <a
-                            href="https://github.com/flexandgrid/flexandgrid"
-                            target="_blank"
-                            class="github-btn">
+                        <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="github-btn">
                             <span class="a11y-hidden">깃헙 바로가기</span>
                         </a>
                     </li>
@@ -119,7 +128,8 @@
                 <a href="/grid/index.html" class="btn-drawer-menu btn-grid fold">Grid</a>
                 <div class="cont-mobile-util">
                     <button class="btn-mobile-menu mobile-darkmode darkmode-btn">Dark Mode</button>
-                    <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="btn-mobile-menu mobile-github">Github</a>
+                    <a href="https://github.com/flexandgrid/flexandgrid" target="_blank"
+                        class="btn-mobile-menu mobile-github">Github</a>
                 </div>
             </div>
         </div>
@@ -130,7 +140,7 @@
         <header>
             <h1 class="visually-hidden">검색창</h1>
             <form action="/search" method="get" autocomplete="off">
-                <input type="text" class="search-input" name="q" placeholder="Search"/>
+                <input type="text" class="search-input" name="q" placeholder="Search" />
                 <button type="submit" class="search-btn">
                     <span class="visually-hidden">검색 버튼</span>
                 </button>
@@ -150,12 +160,12 @@
 
     <main class="main-tryit">
         <section class="sect-tryit">
-        <h2>Try it</h2>
-        <section>
-            <h3 class="visually-hidden">에디터 프리모드</h3>
-            <!-- free mode -->
-            <div data-mode="free" data-title="Flex Code" class="fg-editor">
-                <code data-struct="[1][3][1]">
+            <h2>Try it</h2>
+            <section>
+                <h3 class="visually-hidden">에디터 프리모드</h3>
+                <!-- free mode -->
+                <div data-mode="free" data-title="Flex Code" class="fg-editor">
+                    <code data-struct="[1][3][1]">
                     .container {
                         display: flex;
                         justify-content: space-between;
@@ -171,9 +181,9 @@
                         flex: 4;
                     }
                 </code>
-            </div>
-            <div data-mode="free" data-title="Grid Code" class="fg-editor theme-grid">
-                <code data-struct="[6]">
+                </div>
+                <div data-mode="free" data-title="Grid Code" class="fg-editor theme-grid">
+                    <code data-struct="[6]">
                     .container {
                         display: grid;
                         grid-template-areas:
@@ -205,8 +215,8 @@
                         grid-area: footer;                    
                     }
                 </code>
-            </div>
-        </section>
+                </div>
+            </section>
     </main>
     <button type="button" class="btn-up"></button>
 
@@ -220,16 +230,10 @@
                 <small class="txt-copyrigt">© 2022, All Rights Reserved</small>
             </div>
             <div class="cont-btn">
-                <a
-                    class="btn-footer btn-github"
-                    href="https://github.com/flexandgrid/flexandgrid"
-                    target="_blank">
+                <a class="btn-footer btn-github" href="https://github.com/flexandgrid/flexandgrid" target="_blank">
                     Github
                 </a>
-                <a
-                    class="btn-footer btn-file"
-                    href="https://ridibooks.com/books/2773000058"
-                    target="_blank"
+                <a class="btn-footer btn-file" href="https://ridibooks.com/books/2773000058" target="_blank"
                     download="">
                     PDF Book
                 </a>
@@ -238,4 +242,5 @@
     </footer>
     <script src="/src/utils/editor/editor.js"></script>
 </body>
+
 </html>
