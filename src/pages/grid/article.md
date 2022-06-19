@@ -1163,3 +1163,116 @@ IE에서는 아래와 같은 grid의 auto-placement를 지원하지 않는다. I
 - `grid-auto-columns`
 - `grid-auto-rows`
 - `grid-auto-flow`
+
+# 6. 성배 레이아웃 그리기
+웹 사이트 구현에서 자주 구현되는 모습인 성배 레이아웃은 단순히 특정한 형태의 레이아웃을 구현하는 것을 넘어서서 어떻게 하면 검색 엔진 최적화, 효율, 크로스 브라우징 등을 고려하면서 개발할 수 있는가에 대한 문제입니다. flex와 grid가 나오면서 거의 완전한 [솔루션](https://en.wikipedia.org/wiki/Holy_grail_(web_design))을 제공한 상태이지만 그 전에는 다양한 솔루션에 갑론을박이 있었던 문제입니다.
+- 좀 더 다양한 예제는 책에서 확인이 가능합니다.
+```editor
+<div data-mode="snippet" data-hide-buttons="true" class="fg-editor css-grid theme-grid">
+  <code data-hidden-text="true">
+    header
+    sidebar
+    content
+    sidebar
+    footer
+  </code>
+  <code data-hidden="true">
+    .item {
+      width: auto;
+      height: auto;
+      border: solid 1px #765451;
+    }
+    .item6 {
+      display:none;
+    }
+    .item7 {
+      display:none;
+    }
+    .item2, .item3, .item4 {
+      background-color: #fff0e6;
+      color: #765451;
+    }
+  </code>
+  <code data-item="7">
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    .item1 {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+    .item2 {
+      grid-area: 2 / 1 / 7 / 2;
+    }
+    .item3 {
+      grid-area: 2 / 2 / 7 / 3;
+    }
+    .item4 {
+      grid-area: 2 / 3 / 7 / 4;
+    }
+    .item5 {
+      grid-area: 7 / 1 / 8 / 4;
+    }
+  </code>
+</div>
+```
+
+```editor
+<div data-mode="snippet" data-hide-buttons="true" class="fg-editor css-grid theme-grid">
+  <code data-hidden-text="true">
+    header
+    sidebar
+    content
+    sidebar
+    footer
+  </code>
+  <code data-hidden="true">
+    .item {
+      width: auto;
+      height: auto;
+      border: solid 1px #765451;
+    }
+    .item6 {
+      display:none;
+    }
+    .item7 {
+      display:none;
+    }
+    .item2, .item3, .item4 {
+      background-color: #fff0e6;
+      color: #765451;
+    }
+  </code>
+  <code data-item="7">
+    .container {
+      grid-template-areas:
+                "header header header"
+                "sidebar content1 content2"
+                "sidebar content1 content2"
+                "sidebar content1 content2"
+                "sidebar content1 content2"
+                "sidebar content1 content2"
+                "sidebar footer footer";
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    .item1 {
+      grid-area: header;
+    }
+    .item2 {
+      grid-area: sidebar;
+    }
+    .item3 {
+      grid-area: content1;
+    }
+    .item4 {
+      grid-area: content2;
+    }
+    .item5 {
+      grid-area: footer;
+    }
+  </code>
+</div>
+```
