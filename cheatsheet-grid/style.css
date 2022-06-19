@@ -71,6 +71,7 @@ article:not(:last-child, :nth-last-of-type(2)) {
 
 .fg-editor {
     flex-direction: column;
+    width: 525px;
 }
 
 .fg-editor .preview,
