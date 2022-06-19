@@ -29,6 +29,38 @@
     <script defer src="/src/components/button.js"></script>
     <script defer src="/src/js/darkmode.js"></script>
     <script defer src="/src/js/search.js"></script>
+
+    <!-- editor -->
+    <script defer src="/src/utils/editor/editor.js"></script>
+    <link rel="stylesheet" href="/src/css/default.css" />
+    <link rel="stylesheet" href="/src/utils/editor/editor.css">
+    <style>
+        .fg-editor {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapper-preview .container.container1 {
+            width: 100%;
+        }
+
+        .preview {
+            width: 100% !important;
+            padding: 20px 10px !important;
+        }
+
+        .code {
+            width: 100% !important;
+        }
+
+        .tit-cheat {
+            margin-bottom: 20px;
+        }
+
+        article {
+            padding-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -168,33 +200,20 @@
                         </a>
                     </h2>
 
-                    <section class="box-area">
-                        <div class="container cheat0" id="cont-cheat0">
-                            <div class="item">1</div>
-                            <div class="item">2</div>
-                            <div class="item">3</div>
-                            <div class="item">4</div>
-                        </div>
-                    </section>
-
-                    <section class="box-code-area">
-                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
-                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;<em>grid-template-columns:
-                                200px
-                                200px;</em>
-                        </p>
-
-                        <p class="txt-code"><span class="number-code">4</span>&nbsp;&nbsp;<em>grid-template-rows:
-                                100px
-                                100px;</em>
-                        </p>
-                        <p class="txt-code"><span class="number-code">5</span>}</p>
-                    </section>
-
-                    <div class="buttons">
-                        <button type="button" class="button button-add">+ Add Box</button>
-                        <button type="button" class="button button-remove">- Remove Box</button>
+                    <div data-mode="snippet" class="fg-editor css-grid theme-grid">
+                        <code data-hidden="true">
+                          .item {
+                            width: auto;
+                            height: auto;
+                          }
+                        </code>
+                        <code data-item="4">
+                          .container {
+                            display: grid;
+                            grid-template-columns: 200px 200px;
+                            grid-template-rows: 100px 100px;
+                          }
+                        </code>
                     </div>
                 </article>
                 <!-- grid-template-columns -->
@@ -202,315 +221,260 @@
                     <h2 class="tit-title" id="grid-template-columns"><a
                             href="#grid-template-columns">grid-template-columns</a>
                     </h2>
-                    <form class="radio-cheat">
-                        <input type="radio" id="cheat1-option1" name="cheat1" class="input-option" checked="true">
-                        <label for="cheat1-option1" class="label-option cheat1-option1">1fr 1fr 1fr</label>
-                        <input type="radio" id="cheat1-option2" name="cheat1" class="input-option">
-                        <label for="cheat1-option2" class="label-option cheat1-option2">repeat(3,1fr)</label>
-                        <input type="radio" id="cheat1-option3" name="cheat1" class="input-option">
-                        <label for="cheat1-option3" class="label-option cheat1-option3">repeat(3, minmax(30px,
-                            auto))</label>
-                        <input type="radio" id="cheat1-option4" name="cheat1" class="input-option">
-                        <label for="cheat1-option4" class="label-option cheat1-option4">minmax(50%, 90%) 1fr 1fr</label>
-                    </form>
-
-                    <section class="box-area">
-                        <div class="container cheat1" id="cont-cheat1">
-                            <div class="item cheat1">1</div>
-                            <div class="item">2</div>
-                            <div class="item">3</div>
-                        </div>
-                    </section>
-                    <section class="box-code-area ">
-                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
-                        <p class="txt-code">
-                            <span class="number-code">3</span>&nbsp;&nbsp;<em>grid-template-columns: 1fr 1fr 1fr;</em>
-                        </p>
-                        <p class="txt-code"><span class="number-code">4</span>}</p>
-                    </section>
-                    <div class="buttons">
-                        <button type="button" class="button button-add">+ Add Box</button>
-                        <button type="button" class="button button-remove">- Remove Box</button>
+                    <div data-mode="snippet" class="fg-editor css-grid theme-grid">
+                        <code data-hidden="true">
+                            .item {
+                                width: auto;
+                                height: auto;
+                            }
+                        </code>
+                        <code data-snippet="1fr 1fr 1fr" data-item="3">
+                            .container {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr 1fr;
+                            }
+                        </code>
+                        <code data-snippet="repeat(3, 1fr)" data-item="3">
+                            .container {
+                                display: grid;
+                                grid-template-columns: repeat(3, 1fr);
+                            }
+                        </code>
+                        <code data-snippet="repeat(3, minmax(30px, auto))" data-item="3">
+                            .container {
+                                display: grid;
+                                grid-template-columns: repeat(3, minmax(30px, auto));
+                            }
+                        </code>
+                        <code data-snippet="minmax(50%, 90%) 1fr 1fr" data-item="3">
+                            .container {
+                                display: grid;
+                                grid-template-columns: minmax(50%, 80%) 1fr 1fr;
+                            }
+                        </code>
+                        <code data-snippet="min">
+                            .container {
+                                display: grid;
+                                grid-template-columns: repeat(3, minmax(30px, 100px));
+                                width: 100px;
+                            }
+                        </code>
+                        <code data-snippet="max">
+                            .container {
+                                display: grid;
+                                grid-template-columns: repeat(3, minmax(30px, 100px));
+                                width: 400px;
+                            }
+                        </code>
                     </div>
                 </article>
                 <!-- grid-gap -->
                 <article class="fg-cheat">
                     <h2 class="tit-title" id="gap"><a href="#gap">gap</a></h2>
 
-                    <form class="radio-cheat">
-                        <input type="radio" id="cheat2-option1" name="cheat2" class="input-option" checked="true">
-                        <label for="cheat2-option1" class="label-option cheat2-option1">0px</label>
-                        <input type="radio" id="cheat2-option2" name="cheat2" class="input-option">
-                        <label for="cheat2-option2" class="label-option cheat2-option2">20px</label>
-                        <input type="radio" id="cheat2-option3" name="cheat2" class="input-option">
-                        <label for="cheat2-option3" class="label-option cheat2-option3">10%</label>
-                        <input type="radio" id="cheat2-option4" name="cheat2" class="input-option">
-                        <label for="cheat2-option4" class="label-option cheat2-option4">20px 1px</label>
-                        <input type="radio" id="cheat2-option5" name="cheat2" class="input-option">
-                        <label for="cheat2-option5" class="label-option cheat2-option5">20% 10%</label>
-                    </form>
-                    <section class="box-area">
-                        <div class="container cheat2" id="cont-cheat2">
-                            <div class="item">1</div>
-                            <div class="item">2</div>
-                            <div class="item">3</div>
-                            <div class="item">4</div>
-                            <div class="item">5</div>
-                            <div class="item">6</div>
-                            <div class="item">7</div>
-                            <div class="item">8</div>
-                            <div class="item">9</div>
-                        </div>
-                    </section>
-                    <section class="box-code-area ">
-                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp; display: grid;</p>
-                        <p class="txt-code">
-                            <span class="number-code">3</span>&nbsp;&nbsp; grid-template-columns: repeat(3,1fr);
-                        </p>
-                        <p class="txt-code"><span class="number-code">4</span>&nbsp;&nbsp; gap: <em>0</em>;</p>
-                        <p class="txt-code"><span class="number-code">5</span>}</p>
-                    </section>
-
-                    <div class="buttons">
-                        <button type="button" class="button button-add">+ Add Box</button>
-                        <button type="button" class="button button-remove">- Remove Box</button>
+                    <div data-mode="snippet" class="fg-editor css-grid theme-grid">
+                        <code data-hidden="true">
+                          .container {
+                            gap: 0;
+                          }
+                          .item {
+                            width: auto;
+                            height: auto;
+                          }
+                        </code>
+                        <code data-snippet="0px" data-item="9">
+                          .container {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 0px;
+                          }
+                        </code>
+                        <code data-snippet="20px" data-item="9">
+                          .container {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 20px;
+                          }
+                        </code>
+                        <code data-snippet="10%" data-item="9">
+                          .container {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 10%;
+                          }
+                        </code>
+                        <code data-snippet="20px 10px" data-item="9">
+                          .container {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 20px 10px;
+                          }
+                        </code>
+                        <code data-snippet="20% 10%" data-item="9">
+                          .container {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 20% 10%;
+                          }
+                        </code>
                     </div>
                 </article>
                 <!-- grid-column-start grid-column-end  -->
                 <article class="fg-cheat">
-                    <h2 class="tit-title" id="grid-column-start-end"><a
-                            href="#grid-column-start-end">grid-column-start</a>
-                        <br>
-                        <a href="#grid-column-start-end">
-                            grid-column-end
-                        </a>
+                    <h2 class="tit-title" id="row-column, start-end">
+                        <a href="#row-column, start-end">row-column, start-end</a>
                     </h2>
-                    <section class="box-area">
-                        <div class="container cheat3" id="cont-cheat3">
-                            <div class="item">1</div>
-                            <div class="item">2</div>
-                            <div class="item">3</div>
-                        </div>
-                    </section>
-                    <section class="box-code-area ">
-                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
-                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-columns: 1fr
-                            1fr;</p>
-                        <p class="txt-code"><span class="number-code">4</span>}</p>
-                        <p class="txt-code"><span class="number-code">5</span></p>
-                        <p class="txt-code">
-                            <span class="number-code">6</span>
+                    <div data-mode="snippet" class="fg-editor css-grid theme-grid">
+                        <code data-hidden="true">
+                            .item {
+                                width: auto;
+                                height: auto;
+                            }
+                        </code>
+                        <code data-snippet="grid-column-start: 1; grid-column-end: 3;" data-item="9">
+                            .container {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr 1fr;
+                            }
                             .item1 {
-                        </p>
-                        <p class="txt-code">
-                            <span class="number-code">7</span>&nbsp;&nbsp;
-                            grid-column-start : <em>1</em>;
-                        </p>
-                        <p class="txt-code">
-                            <span class="number-code">8</span>&nbsp;&nbsp;
-                            grid-column-end : <em>3</em>;
-                        </p>
-                        <p class="txt-code"><span class="number-code">9</span>}</p>
-                        <p class="txt-code"><span class="number-code">10</span></p>
-                        <p class="txt-code"><span class="number-code">11</span></p>
-                    </section>
-
-                    <div class="buttons">
-                        <button type="button" class="button button-add">+ Add Box</button>
-                        <button type="button" class="button button-remove">- Remove Box</button>
+                                grid-column-start: 1;
+                                grid-column-end: 3;
+                            }
+                        </code>
+                        <code data-snippet="grid-row-start: 1; grid-row-end: 3;" data-item="9">
+                            .container {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr 1fr;
+                            }
+                            .item1 {
+                                grid-row-start: 1;
+                                grid-row-end: 3;
+                            }
+                        </code>
+                        <code data-snippet="mix" data-item="9">
+                            .container {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr 1fr;
+                                grid-template-rows: 1fr 1fr;
+                            }
+                            .item1 {
+                                grid-column-start: 2;
+                                grid-column-end: 3;
+                                grid-row-start: 1;
+                                grid-row-end: 3;
+                            }
+                            .item2 {
+                                grid-column-start: 1;
+                                grid-column-end: 3;
+                                grid-row-start: 3;
+                                grid-row-end: 4;
+                            }
+                        </code>
+                        <code data-snippet="grid-column & grid-row" data-item="9">
+                            .container {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr 1fr;
+                                grid-template-rows: 1fr 1fr;
+                            }
+                            .item1 {
+                                grid-column: 2 / 3;
+                                grid-row: 1 / 3;
+                            }
+                            .item2 {
+                                grid-column: 1 / 3;
+                                grid-row: 3 / 4;
+                            }
+                        </code>
                     </div>
                 </article>
-                <!-- grid-column  -->
-                <article class="fg-cheat">
-                    <h2 class="tit-title" id="grid-column"><a href="#grid-column">grid-column</a>
-                    </h2>
-                    <form class="radio-cheat">
-                        <input type="radio" id="cheat4-option1" name="cheat4" class="input-option" checked="true">
-                        <label for="cheat4-option1" class="label-option cheat1-option1">1 / 3</label>
-                        <input type="radio" id="cheat4-option2" name="cheat4" class="input-option">
-                        <label for="cheat4-option2" class="label-option cheat1-option1">2 / 3</label>
-                        <input type="radio" id="cheat4-option3" name="cheat4" class="input-option">
-                        <label for="cheat4-option3" class="label-option cheat4-option2">1 / span 3</label>
-                        <input type="radio" id="cheat4-option4" name="cheat4" class="input-option">
-                        <label for="cheat4-option4" class="label-option cheat4-option2">2 / span 2</label>
-                    </form>
-                    <section class="box-area">
-                        <div class="container cheat4" id="cont-cheat4">
-                            <div class="item">1</div>
-                            <div class="item">2</div>
-                            <div class="item">3</div>
-                            <div class="item">4</div>
-                            <div class="item">5</div>
-                        </div>
-                    </section>
 
-                    <section class="box-code-area">
-                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
-                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-columns: 1fr
-                            1fr;</p>
-                        <p class="txt-code"><span class="number-code">4</span>}</p>
-                        <p class="txt-code"><span class="number-code">5</span></p>
-                        <p class="txt-code">
-                            <span class="number-code">6</span>
-                            .item1 {
-                        </p>
-                        <p class="txt-code">
-                            <span class="number-code">7</span>&nbsp;&nbsp;
-                            grid-column : <em>1 / 3</em>;
-                        </p>
-                        <p class="txt-code"><span class="number-code">8</span>}</p>
-                        <p class="txt-code"><span class="number-code">9</span></p>
-                        <p class="txt-code"><span class="number-code">10</span></p>
-                    </section>
-                    <div class="buttons">
-                        <button type="button" class="button button-add">+ Add Box</button>
-                        <button type="button" class="button button-remove">- Remove Box</button>
-                    </div>
-                </article>
-                <!-- grid-row-start grid-row-end  -->
-                <article class="fg-cheat">
-                    <h2 class="tit-title" id="grid-row-start-end"><a href="#grid-row-start-end">grid-row-start</a>
-                        <br>
-                        <a href="#grid-row-start-end">
-                            grid-row-end
-                        </a>
-                    </h2>
-                    <section class="box-area">
-                        <div class="container cheat5" id="cont-cheat5">
-                            <div class="item">1</div>
-                            <div class="item">2</div>
-                            <div class="item">3</div>
-                        </div>
-                    </section>
-
-                    <section class="box-code-area ">
-                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
-                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-columns: 1fr
-                            1fr;</p>
-                        <p class="txt-code"><span class="number-code">4</span>}</p>
-                        <p class="txt-code"><span class="number-code">5</span></p>
-                        <p class="txt-code">
-                            <span class="number-code">6</span>
-                            .item1 {
-                        </p>
-                        <p class="txt-code">
-                            <span class="number-code">7</span>&nbsp;&nbsp;
-                            grid-row-start : <em>1</em>;
-                        </p>
-                        <p class="txt-code">
-                            <span class="number-code">8</span>&nbsp;&nbsp;
-                            grid-row-end : <em>3</em>;
-                        </p>
-                        <p class="txt-code"><span class="number-code">9</span>}</p>
-                        <p class="txt-code"><span class="number-code">10</span></p>
-                        <p class="txt-code"><span class="number-code">11</span></p>
-                    </section>
-                    <div class="buttons">
-                        <button type="button" class="button button-add">+ Add Box</button>
-                        <button type="button" class="button button-remove">- Remove Box</button>
-                    </div>
-                </article>
-                <!-- grid-row  -->
-                <article class="fg-cheat">
-                    <h2 class="tit-title" id="grid-row"><a href="#grid-row">grid-row</a>
-                    </h2>
-                    <form class="radio-cheat">
-                        <input type="radio" id="cheat6-option1" name="cheat6" class="input-option" checked="true">
-                        <label for="cheat6-option1" class="label-option cheat6-option1">1 / 3</label>
-                        <input type="radio" id="cheat6-option2" name="cheat6" class="input-option">
-                        <label for="cheat6-option2" class="label-option cheat6-option1">2 / 3</label>
-                        <input type="radio" id="cheat6-option3" name="cheat6" class="input-option">
-                        <label for="cheat6-option3" class="label-option cheat6-option2">1 / span 3</label>
-                        <input type="radio" id="cheat6-option4" name="cheat6" class="input-option">
-                        <label for="cheat6-option4" class="label-option cheat6-option2">2 / span 2</label>
-                    </form>
-                    <section class="box-area">
-                        <div class="container cheat6" id="cont-cheat6">
-                            <div class="item">1</div>
-                            <div class="item">2</div>
-                            <div class="item">3</div>
-                            <div class="item">4</div>
-                            <div class="item">5</div>
-                        </div>
-                    </section>
-
-                    <section class="box-code-area">
-                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
-                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-columns: 1fr
-                            1fr;</p>
-                        <p class="txt-code"><span class="number-code">4</span>}</p>
-                        <p class="txt-code"><span class="number-code">5</span></p>
-                        <p class="txt-code">
-                            <span class="number-code">6</span>
-                            .item1 {
-                        </p>
-                        <p class="txt-code">
-                            <span class="number-code">7</span>&nbsp;&nbsp;
-                            grid-row : <em>1 / 3</em>;
-                        </p>
-                        <p class="txt-code"><span class="number-code">8</span>}</p>
-                        <p class="txt-code"><span class="number-code">9</span></p>
-                        <p class="txt-code"><span class="number-code">10</span></p>
-                    </section>
-                    <div class="buttons">
-                        <button type="button" class="button button-add">+ Add Box</button>
-                        <button type="button" class="button button-remove">- Remove Box</button>
-                    </div>
-                </article>
                 <!-- grid-area  -->
                 <article class="fg-cheat">
                     <h2 class="tit-title" id="grid-area"><a href="#grid-area">grid-area</a>
                     </h2>
-                    <form class="radio-cheat">
-                        <input type="radio" id="cheat7-option1" name="cheat6" class="input-option" checked="true">
-                        <label for="cheat7-option1" class="label-option cheat7-option1">1 / 2 / 3 / 4</label>
-                        <input type="radio" id="cheat7-option2" name="cheat6" class="input-option">
-                        <label for="cheat7-option2" class="label-option cheat7-option2">1 / 4 / 1 / 2</label>
-                        <input type="radio" id="cheat7-option3" name="cheat6" class="input-option">
-                        <label for="cheat7-option3" class="label-option cheat7-option3">2 / 1 / 2 / 3</label>
-                        <input type="radio" id="cheat7-option4" name="cheat6" class="input-option">
-                        <label for="cheat7-option4" class="label-option cheat7-option4">3 / 4 / 2 / 3</label>
-                    </form>
-                    <section class="box-area">
-                        <div class="container cheat7" id="cont-cheat7">
-                            <div class="item">1</div>
-                            <div class="item">2</div>
-                            <div class="item">3</div>
-                            <div class="item">4</div>
-                            <div class="item">5</div>
-                        </div>
-                    </section>
+                    <div data-mode="snippet" data-hide-buttons="true" class="fg-editor css-grid theme-grid">
+                        <code data-hidden-text="true">
+                          grid1
+                          grid2
+                          grid3
+                          grid4
+                          grid5
+                          grid6
+                          grid7
+                        </code>
+                        <code data-hidden="true">
+                          .item {
+                            width: auto;
+                            height: auto;
+                          }
+                          .item {
+                            background-color: var(--primary-3);
+                          }
+                          .item1, .item2 {
+                            background-color: var(--primary-5);
+                          }
+                        </code>
+                        <code data-item="7">
+                          .container {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr 1fr;
+                            grid-template-rows: 1fr 1fr;
+                          }
+                          .item1 {
+                            grid-area: 1 / 2 / 3 / 3;
+                          }
+                          .item2 {
+                            grid-area: 3 / 1 / 4 / 3;
+                          }
+                        </code>
+                    </div>
+                </article>
 
-                    <section class="box-code-area">
-                        <p class="txt-code"><span class="number-code">1</span>.container {</p>
-                        <p class="txt-code"><span class="number-code">2</span>&nbsp;&nbsp;display: grid;</p>
-                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-columns:
-                            repeat(3, 1fr);</p>
-                        <p class="txt-code"><span class="number-code">3</span>&nbsp;&nbsp;grid-template-rows: repeat(3,
-                            1fr);</p>
-                        <p class="txt-code"><span class="number-code">4</span>}</p>
-                        <p class="txt-code"><span class="number-code">5</span></p>
-                        <p class="txt-code">
-                            <span class="number-code">6</span>
-                            .item1 {
-                        </p>
-                        <p class="txt-code">
-                            <span class="number-code">7</span>&nbsp;&nbsp;
-                            grid-area : <em>1 / 2 / 3 / 4</em>;
-                        </p>
-                        <p class="txt-code"><span class="number-code">8</span>}</p>
-                        <p class="txt-code"><span class="number-code">9</span></p>
-                        <p class="txt-code"><span class="number-code">10</span></p>
-                    </section>
-                    <div class="buttons">
-                        <button type="button" class="button button-add">+ Add Box</button>
-                        <button type="button" class="button button-remove">- Remove Box</button>
+                <!-- grid-template-areas  -->
+                <article class="fg-cheat">
+                    <h2 class="tit-title" id="grid-area"><a href="#grid-template-areas">grid-template-areas</a>
+                    </h2>
+                    <div data-mode="snippet" data-hide-buttons="true" class="fg-editor css-grid theme-grid">
+                        <code data-hidden-text="true">
+                          header
+                          main
+                          sidebar
+                          footer
+                        </code>
+                        <code data-hidden="true">
+                          .item {
+                            width: auto;
+                            min-height: 80px;
+                            height: auto;
+                          }
+                          .item3, .item4 {
+                            background-color: var(--primary-2);
+                            color: var(--primary-6);
+                          }
+                        </code>
+                        <code data-item="4">
+                          .container {
+                            display: grid;
+                            grid-template-columns: repeat(5, 1fr);
+                            grid-template-rows: repeat(3, 1fr);
+                            grid-template-areas:
+                              "header header header header header"
+                              "main main main side side"
+                              "footer footer footer footer footer";
+                          }
+                          .item1 {
+                            grid-area: header;
+                          }
+                          .item2 {
+                            grid-area: main;
+                          }
+                          .item3 {
+                            grid-area: side;
+                          }
+                          .item4 {
+                            grid-area: footer;
+                          }
+                        </code>
                     </div>
                 </article>
             </div>
