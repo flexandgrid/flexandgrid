@@ -1,132 +1,145 @@
 @charset "UTF-8";
 
 body {
-    background-color: var(--flex-background);
+	overflow-x: hidden;
+	background-color: var(--flex-background);
 }
 
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
+.cheatsheet-flex {
+	display: flex;
+	justify-content: center;
+	width: 100%;
 }
 
-.flex-wrapper{
-  width: fit-content;
-  padding: 0 180px;
+.flex-wrapper {
+	width: fit-content;
+	max-width: 1480px;
+	padding: 0 180px 100px;
 }
 
-.flex-cont{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 28px;
-  grid-row-gap: 50px;
-  width: fit-content;
-  margin-top: 80px;
+.flex-cont {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-column-gap: 28px;
+	grid-row-gap: 50px;
+	width: fit-content;
+	margin-top: 80px;
 }
 
-article{
-  padding-bottom: 70px;
+.main-title {
+	color: var(--secondary);
+	font-weight: 400;
+	font-size: 36px;
+	line-height: 44px;
+	margin-top: 140px;
 }
 
-article:not(:last-child, :nth-last-of-type(2)){
-  border-bottom: 1px solid var(--flex-border);
+article:not(:last-child, :nth-last-of-type(2)) {
+	padding-bottom: 70px;
+	border-bottom: 1px solid var(--flex-border);
 }
+
+.tit-cheat {
+	margin-bottom: 20px;
+}
+
+.tit-cheat a {
+	width: 113px;
+	color: var(--primary);
+	font-weight: 600;
+	font-size: 22px;
+	line-height: 36px;
+}
+
+.tit-cheat a:hover {
+	width: 142px;
+	color: var(--secondary);
+}
+
+.tit-cheat a:hover:before {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-right: 5px;
+	background-image: url(/src/assets/images/icon-link.svg);
+	background-repeat: no-repeat;
+	vertical-align: text-bottom;
+	content: '';
+}
+
+
+.fg-editor {
+	flex-direction: column;
+	width: 525px;
+	padding: 0 10px;
+}
+
+.fg-editor .preview,
+.fg-editor .code {
+	width: 100%;
+}
+
+
+/* 다크모드 */
+.on {
+	background-color: var(--primary);
+}
+
+.on .tit-cheat a {
+	color: var(--border);
+	font-family: Pretendard;
+	font-weight: 600;
+	font-size: 22px;
+	line-height: 36px;
+}
+
+.on .tit-cheat a:hover {
+	color: var(--tertiary);
+}
+
+.on .tit-cheat a:hover:before {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-right: 5px;
+	background-image: url(/src/assets/images/icon-link.svg);
+	background-repeat: no-repeat;
+	vertical-align: text-bottom;
+	filter: opacity(0.5) drop-shadow(0 0 0 var(--tertiary));
+	content: '';
+}
+
 
 .gnb-header .modal-menu .list-item:first-child {
-    color: var(--flex-primary);
-    font-weight: 700;
+	color: var(--flex-primary);
+	font-weight: 700;
 }
-
-.main-title{
-  color: var(--secondary);
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 44px;
-  margin-top: 140px;
-}
-
-.fg-cheat .buttons {
-    width: 100%;
-  }
-  
-.fg-cheat .buttons .button {
-    height: 41px;
-    padding: 10px 16px;
-    border-radius: 10px;
-  }
-
-.fg-cheat .buttons .button:hover {
-    box-shadow: 0 0 2px 2px #00000033;
-  }
-  
-.fg-cheat .buttons .button:active {
-    box-shadow: inset 0 0 2px 2px #00000033;
-  }
-
-.fg-cheat .buttons .button-add {
-    margin-right: 12px;
-    background-color: var(--flex-hover);
-    color: var(--flex-primary);
-  }
-  
-.fg-cheat .buttons .button-remove {
-    background-color: var(--subtext);
-    color: var(--secondary);
-  }
 
 .mobile-menu .btn-cheatSheet::before {
-  background: url(/src/assets/images/icon-cheatsheet-hover.svg) no-repeat center/contain;
+	background: url(/src/assets/images/icon-cheatsheet-hover.svg) no-repeat center/contain;
 }
 
 
-  /* 다크모드 버튼 */
- 
-  .on .fg-cheat .buttons .button-add {
-    margin-right: 12px;
-    background-color: var(--flex-border);
-    color: var(--flex-background);
-  }
-
-  .on .fg-cheat .buttons .button-remove {
-    background-color: var(--secondary);
-    color: #252424;
-  }
-
-  .on .fg-cheat .buttons .button:hover {
-    box-shadow: 0 0 2px 2px #ffffffaa;
-  }
-
-  
-
 .btn-up {
-    display: none;
-    position: fixed;
-    bottom: 60px;
-    right: 5%;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #3f3f46 url(/src/assets/images/icon-chevron-up.svg) no-repeat center;
-    box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
-    transition: all 0.3s;
-    cursor: pointer;
-    z-index: 10;
+	display: none;
+	position: fixed;
+	bottom: 60px;
+	right: 5%;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #3f3f46 url(/src/assets/images/icon-chevron-up.svg) no-repeat center;
+	box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
+	transition: all 0.3s;
+	cursor: pointer;
+	z-index: 10;
 }
 
 .btn-up.on:active,
 .btn-up:active {
-    background-color: var(--secondary);
+	background-color: var(--secondary);
 }
 
 .btn-up.on {
-    background: var(--subtext) url(/src/assets/images/icon-chevron-up-darkmode.svg) no-repeat center;
-}
-
-.fg-editor .code {
-  overflow: hidden;
-  width: 100%;
-  max-height: var(--outer);
-  background-color: var(--white);
-  box-shadow: 0px 4px 12px 0px var(--box-shadow-1);
+	background: var(--subtext) url(/src/assets/images/icon-chevron-up-darkmode.svg) no-repeat center;
 }

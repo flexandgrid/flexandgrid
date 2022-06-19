@@ -2,268 +2,238 @@
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>flex cheatsheet</title>
-  <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="/src/css/color.css" />
-  <link rel="stylesheet" href="/search/style.css" />
-  <link rel="stylesheet" href="/src/components/gnb-nav-modal.css" />
-  <link rel="stylesheet" href="/src/components/gnb-nav.css" />
-  <link rel="stylesheet" href="/src/components/drawer-menu.css" />
-  <link rel="stylesheet" href="/src/components/mobile-drawer-menu.css" />
-  <link rel="stylesheet" href="/src/components/search-item.css" />
-  <link rel="stylesheet" href="/src/components/search-modal.css" />
-  <link rel="stylesheet" href="/src/components/mobile-search-modal.css" />
-  <link rel="stylesheet" href="/src/components/footer.css" />
-  <link rel="stylesheet" href="/src/components/cheatsheet-flex.css" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="/src/css/media-query.css" />
-  <script defer src="/src/components/gnb-nav.js"></script>
-  <script defer src="/src/components/mobile-drawer-menu.js"></script>
-  <script defer src="/src/components/button.js"></script>
-  <script defer src="/src/js/darkmode.js"></script>
-  <script defer src="/src/js/search.js"></script>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Flex Cheatsheet</title>
+	<link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="/src/css/default.css" />
+	<link rel="stylesheet" href="/src/css/color.css" />
+	<link rel="stylesheet" href="/search/style.css" />
+	<link rel="stylesheet" href="/src/components/gnb-nav-modal.css" />
+	<link rel="stylesheet" href="/src/components/gnb-nav.css" />
+	<link rel="stylesheet" href="/src/components/drawer-menu.css" />
+	<link rel="stylesheet" href="/src/components/mobile-drawer-menu.css" />
+	<link rel="stylesheet" href="/src/components/search-item.css" />
+	<link rel="stylesheet" href="/src/components/search-modal.css" />
+	<link rel="stylesheet" href="/src/components/mobile-search-modal.css" />
+	<link rel="stylesheet" href="/src/components/footer.css" />
+	<link rel="stylesheet" href="/src/css/media-query.css" />
+	<link rel="stylesheet" href="/src/utils/editor/editor.css">
+	<link rel="stylesheet" href="style.css" />
+	<script defer src="/src/components/gnb-nav.js"></script>
+	<script defer src="/src/components/mobile-drawer-menu.js"></script>
+	<script defer src="/src/components/button.js"></script>
+	<script defer src="/src/js/darkmode.js"></script>
+	<script defer src="/src/js/search.js"></script>
+	<script defer src="/src/utils/editor/editor.js"></script>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7CSH8KPNK"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7CSH8KPNK"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
 
-    gtag('config', 'G-Z7CSH8KPNK');
-  </script>
-
-  <!-- editor -->
-  <script defer src="/src/utils/editor/editor.js"></script>
-  <link rel="stylesheet" href="/src/css/default.css" />
-  <link rel="stylesheet" href="/src/utils/editor/editor.css">
-  <style>
-    .fg-editor {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .wrapper-preview .container.container1 {
-      width: 100%;
-    }
-
-    .preview {
-      width: 100% !important;
-      padding: 20px 10px !important;
-    }
-
-    .code {
-      width: 100% !important;
-    }
-
-    .tit-cheat {
-      margin-bottom: 20px;
-    }
-
-    article {
-      padding-bottom: 20px;
-    }
-  </style>
+		gtag('config', 'G-Z7CSH8KPNK');
+	</script>
 </head>
 
 <body>
-  <header class="gnb-header">
-    <div class="gnb-cont">
-      <h1 class="logo-container">
-        <a href="/" class="header-logo">
-          <span class="a11y-hidden">flex and grid 홈</span>
-        </a>
-      </h1>
-      <nav>
-        <ul class="nav-left">
-          <li class="hamburger-container">
-            <button type="button" class="hamburger-menu">
-              <span class="a11y-hidden">모바일 메뉴</span>
-            </button>
-          </li>
-          <li class="nav-left-menu nav-cheatsheet">
-            Cheatsheet
-            <div class="modal-menu">
-              <ul class="list-menu">
-                <li class="list-item">
-                  <a class="link-menu" href="/cheatsheet-flex">Flex Cheatsheet</a>
-                </li>
-                <li class="list-item">
-                  <a class="link-menu" href="/cheatsheet-grid">Grid Cheatsheet</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-left-menu nav-flex">
-            <a href="/flex">Flex</a>
-          </li>
-          <li class="nav-left-menu nav-grid">
-            <a href="/grid">Grid</a>
-          </li>
-          <li class="nav-left-menu nav-tryit">
-            <a href="/try-it">Try it</a>
-          </li>
-        </ul>
-        <ul class="nav-right">
-          <li class="mobile-search">
-            <button class="search-toggle">
-              <span class="a11y-hidden">검색 창 활성화</span>
-            </button>
-          </li>
-          <li class="search">
-            <form action="/search" method="get" autocomplete="off">
-              <input type="text" class="search-input" name="q" placeholder="Search" />
-              <button type="submit" class="search-btn">
-                <span class="a11y-hidden">검색 버튼</span>
-              </button>
-            </form>
-            <div class="modal-history">
-              <div class="header-history">
-                <strong class="tit-history">최근 검색어</strong>
-                <button class="btn-del-all">전체 삭제</button>
-              </div>
-              <ul class="list-history"></ul>
-            </div>
-          </li>
-          <li class="button-group">
-            <button class="darkmode-btn">
-              <span class="a11y-hidden">다크 모드 전환</span>
-            </button>
-            <a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="github-btn">
-              <span class="a11y-hidden">깃헙 바로가기</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+	<header class="gnb-header">
+		<div class="gnb-cont">
+			<h1 class="logo-container">
+				<a href="/" class="header-logo">
+					<span class="a11y-hidden">flex and grid 홈</span>
+				</a>
+			</h1>
+			<nav>
+				<ul class="nav-left">
+					<li class="hamburger-container">
+						<button type="button" class="hamburger-menu">
+							<span class="a11y-hidden">모바일 메뉴</span>
+						</button>
+					</li>
+					<li class="nav-left-menu nav-cheatsheet">
+						Cheatsheet
+						<div class="modal-menu">
+							<ul class="list-menu">
+								<li class="list-item">
+									<a class="link-menu" href="/cheatsheet-flex">Flex Cheatsheet</a>
+								</li>
+								<li class="list-item">
+									<a class="link-menu" href="/cheatsheet-grid">Grid Cheatsheet</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="nav-left-menu nav-flex">
+						<a href="/flex">Flex</a>
+					</li>
+					<li class="nav-left-menu nav-grid">
+						<a href="/grid">Grid</a>
+					</li>
+					<li class="nav-left-menu nav-tryit">
+						<a href="/try-it">Try it</a>
+					</li>
+				</ul>
+				<ul class="nav-right">
+					<li class="mobile-search">
+						<button class="search-toggle">
+							<span class="a11y-hidden">검색 창 활성화</span>
+						</button>
+					</li>
+					<li class="search">
+						<form action="/search" method="get" autocomplete="off">
+							<input type="text" class="search-input" name="q" placeholder="Search" />
+							<button type="submit" class="search-btn">
+								<span class="a11y-hidden">검색 버튼</span>
+							</button>
+						</form>
+						<div class="modal-history">
+							<div class="header-history">
+								<strong class="tit-history">최근 검색어</strong>
+								<button class="btn-del-all">전체 삭제</button>
+							</div>
+							<ul class="list-history"></ul>
+						</div>
+					</li>
+					<li class="button-group">
+						<button class="darkmode-btn">
+							<span class="a11y-hidden">다크 모드 전환</span>
+						</button>
+						<a href="https://github.com/flexandgrid/flexandgrid" target="_blank" class="github-btn">
+							<span class="a11y-hidden">깃헙 바로가기</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
 
-  <aside class="aside mobile-menu">
-    <div class="aside-area mobile-menu-area">
-      <div class="drawer-menu">
-        <a href="/index.html" class="mobile-logo"></a>
-        <button class="btn-drawer-menu btn-drawer-menu-mobile btn-cheatSheet">
-          Cheatsheet
-          <ol class="list-drawer-menu">
-            <li>
-              <a href="/cheatsheet-flex/index.html" class="tit-drawer-menu">Flex Cheatsheet</a>
-            </li>
-            <li>
-              <a href="/cheatsheet-grid/index.html" class="tit-drawer-menu">Grid Cheatsheet</a>
-            </li>
-          </ol>
-        </button>
-        <a href="/flex/index.html" class="btn-drawer-menu btn-drawer-menu-mobile btn-flex fold">Flex</a>
-        <a href="/grid/index.html" class="btn-drawer-menu btn-drawer-menu-mobile btn-grid fold">Grid</a>
-        <div class="cont-mobile-util">
-          <button class="btn-mobile-menu mobile-darkmode darkmode-btn">
-            Dark Mode
-          </button>
-          <a href="https://github.com/flexandgrid/flexandgrid" target="_blank"
-            class="btn-mobile-menu mobile-github">Github</a>
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="overlay menu-overlay" aria-hidden></div>
+	<aside class="aside mobile-menu">
+		<div class="aside-area mobile-menu-area">
+			<div class="drawer-menu">
+				<a href="/index.html" class="mobile-logo"></a>
+				<button class="btn-drawer-menu btn-drawer-menu-mobile btn-cheatSheet">
+					Cheatsheet
+					<ol class="list-drawer-menu">
+						<li>
+							<a href="/cheatsheet-flex/index.html" class="tit-drawer-menu">Flex Cheatsheet</a>
+						</li>
+						<li>
+							<a href="/cheatsheet-grid/index.html" class="tit-drawer-menu">Grid Cheatsheet</a>
+						</li>
+					</ol>
+				</button>
+				<a href="/flex/index.html" class="btn-drawer-menu btn-drawer-menu-mobile btn-flex fold">Flex</a>
+				<a href="/grid/index.html" class="btn-drawer-menu btn-drawer-menu-mobile btn-grid fold">Grid</a>
+				<div class="cont-mobile-util">
+					<button class="btn-mobile-menu mobile-darkmode darkmode-btn">
+						Dark Mode
+					</button>
+					<a href="https://github.com/flexandgrid/flexandgrid" target="_blank"
+						class="btn-mobile-menu mobile-github">Github</a>
+				</div>
+			</div>
+		</div>
+	</aside>
+	<div class="overlay menu-overlay" aria-hidden></div>
 
-  <aside class="search-modal-mobile">
-    <header>
-      <h1 class="visually-hidden">검색창</h1>
-      <form action="/search" method="get" autocomplete="off">
-        <input type="text" class="search-input" name="q" placeholder="Search" />
-        <button type="submit" class="search-btn">
-          <span class="visually-hidden">검색 버튼</span>
-        </button>
-      </form>
-      <button class="close-btn" type="button">취소</button>
-    </header>
+	<aside class="search-modal-mobile">
+		<header>
+			<h1 class="visually-hidden">검색창</h1>
+			<form action="/search" method="get" autocomplete="off">
+				<input type="text" class="search-input" name="q" placeholder="Search" />
+				<button type="submit" class="search-btn">
+					<span class="visually-hidden">검색 버튼</span>
+				</button>
+			</form>
+			<button class="close-btn" type="button">취소</button>
+		</header>
 
-    <section class="modal-history">
-      <header class="header-history">
-        <h2 class="tit-history">최근 검색어</h2>
-        <button type="button" class="btn-del-all">전체 삭제</button>
-      </header>
-      <ul class="list-history-m"></ul>
-    </section>
-  </aside>
-  <div class="overlay search-overlay" aria-hidden></div>
+		<section class="modal-history">
+			<header class="header-history">
+				<h2 class="tit-history">최근 검색어</h2>
+				<button type="button" class="btn-del-all">전체 삭제</button>
+			</header>
+			<ul class="list-history-m"></ul>
+		</section>
+	</aside>
+	<div class="overlay search-overlay" aria-hidden></div>
 
-  <main class="cheatsheet-flex">
-    <div class="flex-wrapper">
-      <h1 id="Flex-Cheatsheet" class="main-title">
-        <a href="#Grid-Cheatsheet">Flex Cheatsheet</a>
-      </h1>
-      <div class="flex-cont">
-        <article class="fg-cheat">
-          <h2 class="tit-cheat" id="flex-direction">
-            <a href="#flex-direction">flex-direction</a>
-          </h2>
-          <div data-mode="snippet" class="fg-editor css-flex">
-            <code data-snippet="row">
+	<main class="cheatsheet-flex">
+		<div class="flex-wrapper">
+			<h1 id="Flex-Cheatsheet" class="main-title">
+				Flex Cheatsheet
+			</h1>
+			<div class="flex-cont">
+				<article class="fg-cheat">
+					<h2 class="tit-cheat" id="flex-direction">
+						<a href="#flex-direction">flex-direction</a>
+					</h2>
+					<div data-mode="snippet" class="fg-editor css-flex">
+						<code data-snippet="row">
               .container {
                 display: flex;
                 flex-direction: row;
               }
             </code>
-            <code data-snippet="row-reverse">
+						<code data-snippet="row-reverse">
               .container {
                 display: flex;
                 flex-direction : row-reverse;
               }
             </code>
-            <code data-snippet="column">
+						<code data-snippet="column">
               .container {
                 display: flex;
                 flex-direction : column;
               }
             </code>
-            <code data-snippet="column-reverse">
+						<code data-snippet="column-reverse">
               .container {
                 display: flex;
                 flex-direction : column-reverse;
               }
             </code>
-          </div>
-        </article>
+					</div>
+				</article>
 
-        <article class="fg-cheat">
-          <h2 class="tit-cheat" id="flex-direction">
-            <a href="#flex-direction">justify-content</a>
-          </h2>
-          <div data-mode="snippet" class="fg-editor css-flex">
-            <code data-snippet="flex-start">
+				<article class="fg-cheat">
+					<h2 class="tit-cheat" id="flex-direction">
+						<a href="#flex-direction">justify-content</a>
+					</h2>
+					<div data-mode="snippet" class="fg-editor css-flex">
+						<code data-snippet="flex-start">
               .container {
                 display: flex;
                 justify-content: flex-start;
               }
             </code>
-            <code data-snippet="center">
+						<code data-snippet="center">
               .container {
                 display: flex;
                 justify-content: center;
               }
             </code>
-            <code data-snippet="flex-end">
+						<code data-snippet="flex-end">
               .container {
                 display: flex;
                 justify-content: flex-end;
               }
             </code>
-          </div>
-        </article>
+					</div>
+				</article>
 
-        <article class="fg-cheat">
-          <h2 class="tit-cheat" id="flex-direction">
-            <a href="#flex-direction">align-items</a>
-          </h2>
-          <div data-mode="snippet" class="fg-editor css-flex">
-            <code data-hidden="true">
+				<article class="fg-cheat">
+					<h2 class="tit-cheat" id="flex-direction">
+						<a href="#flex-direction">align-items</a>
+					</h2>
+					<div data-mode="snippet" class="fg-editor css-flex">
+						<code data-hidden="true">
               .container {
                 min-height: 250px;
                 height: 100%;
@@ -272,31 +242,31 @@
                 height: auto;
               }
             </code>
-            <code data-snippet="stretch(기본값)">
+						<code data-snippet="stretch(기본값)">
               .container {
                 display: flex;
                 align-items: stretch;
               }
             </code>
-            <code data-snippet="flex-start">
+						<code data-snippet="flex-start">
               .container {
                 display: flex;
                 align-items: flex-start;
               }
             </code>
-            <code data-snippet="center">
+						<code data-snippet="center">
               .container {
                 display: flex;
                 align-items: center;
               }
             </code>
-            <code data-snippet="flex-end">
+						<code data-snippet="flex-end">
               .container {
                 display: flex;
                 align-items: flex-end;
               }
             </code>
-            <code data-snippet="baseline" data-item="4">
+						<code data-snippet="baseline" data-item="4">
               .container {
                 display: flex;
                 align-items: baseline;
@@ -316,14 +286,15 @@
                 font-size: 16px;
               }
             </code>
-          </div>
-        </article>
-        <article class="fg-cheat">
-          <h2 class="tit-cheat" id="flex-direction">
-            <a href="#flex-direction">align-content</a>
-          </h2>
-          <div data-mode="snippet" class="fg-editor css-flex">
-            <code data-hidden="true">
+					</div>
+				</article>
+        
+				<article class="fg-cheat">
+					<h2 class="tit-cheat" id="flex-direction">
+						<a href="#flex-direction">align-content</a>
+					</h2>
+					<div data-mode="snippet" class="fg-editor css-flex">
+						<code data-hidden="true">
               .container {
                 min-height: 250px;
                 height: 100%;
@@ -332,7 +303,7 @@
                 height: auto;
               }
             </code>
-            <code data-snippet="stretch(기본값)" data-item="8">
+						<code data-snippet="stretch(기본값)" data-item="8">
               .container {
                 display: flex;
                 flex-wrap: wrap;
@@ -342,7 +313,7 @@
                 width: 20%;
               }
             </code>
-            <code data-snippet="flex-start" data-item="8">
+						<code data-snippet="flex-start" data-item="8">
               .container {
                 display: flex;
                 flex-wrap: wrap;
@@ -353,7 +324,7 @@
                 height: 50px;
               }
             </code>
-            <code data-snippet="center" data-item="8">
+						<code data-snippet="center" data-item="8">
               .container {
                 display: flex;
                 flex-wrap: wrap;
@@ -364,7 +335,7 @@
                 height: 50px;
               }
             </code>
-            <code data-snippet="flex-end" data-item="8">
+						<code data-snippet="flex-end" data-item="8">
               .container {
                 display: flex;
                 flex-wrap: wrap;
@@ -375,7 +346,7 @@
                 height: 50px;
               }
             </code>
-            <code data-snippet="space-between" data-item="8">
+						<code data-snippet="space-between" data-item="8">
               .container {
                 display: flex;
                 flex-wrap: wrap;
@@ -386,7 +357,7 @@
                 height: 50px;
               }
             </code>
-            <code data-snippet="space-around" data-item="8">
+						<code data-snippet="space-around" data-item="8">
               .container {
                 display: flex;
                 flex-wrap: wrap;
@@ -397,7 +368,7 @@
                 height: 50px;
               }
             </code>
-            <code data-snippet="space-evenly" data-item="8">
+						<code data-snippet="space-evenly" data-item="8">
               .container {
                 display: flex;
                 flex-wrap: wrap;
@@ -408,15 +379,15 @@
                 height: 50px;
               }
             </code>
-          </div>
-        </article>
+					</div>
+				</article>
 
-        <article class="fg-cheat">
-          <h2 class="tit-cheat" id="flex-direction">
-            <a href="#flex-direction">flex-wrap</a>
-          </h2>
-          <div data-mode="snippet" class="fg-editor css-flex">
-            <code data-hidden="true">
+				<article class="fg-cheat">
+					<h2 class="tit-cheat" id="flex-direction">
+						<a href="#flex-direction">flex-wrap</a>
+					</h2>
+					<div data-mode="snippet" class="fg-editor css-flex">
+						<code data-hidden="true">
               .container {
                 min-height: 250px;
                 height: 100%;
@@ -425,41 +396,41 @@
                 height: auto;
               }
             </code>
-            <code data-snippet="nowrap(기본값)" data-item="8">
+						<code data-snippet="nowrap(기본값)" data-item="8">
               .container {
                 flex-wrap: nowrap;
               }
             </code>
-            <code data-snippet="wrap" data-item="8">
+						<code data-snippet="wrap" data-item="8">
               .container {
                 flex-wrap: wrap;
               }
             </code>
-            <code data-snippet="wrap-reverse" data-item="8">
+						<code data-snippet="wrap-reverse" data-item="8">
               .container {
                 flex-wrap : wrap-reverse;
               }
             </code>
-          </div>
-        </article>
+					</div>
+				</article>
 
-        <article class="fg-cheat">
-          <h2 class="tit-cheat" id="flex-direction">
-            <a href="#flex-direction">flex-basis</a>
-          </h2>
-          <div data-mode="snippet" class="fg-editor css-flex">
-            <code data-hidden-text="true">
+				<article class="fg-cheat">
+					<h2 class="tit-cheat" id="flex-direction">
+						<a href="#flex-direction">flex-basis</a>
+					</h2>
+					<div data-mode="snippet" class="fg-editor css-flex">
+						<code data-hidden-text="true">
               AA
               BBB
               CCCCCCCCCCC
             </code>
-            <code data-hidden="true">
+						<code data-hidden="true">
               .item {
                 display: block;
                 height: auto;
               }
             </code>
-            <code data-snippet="auto">
+						<code data-snippet="auto">
               .container {
                 display: flex;
               }
@@ -468,7 +439,7 @@
                 flex-basis: auto;
               }
             </code>
-            <code data-snippet="0">
+						<code data-snippet="0">
               .container {
                 display: flex;
               }
@@ -477,7 +448,7 @@
                 flex-basis: 0;
               }
             </code>
-            <code data-snippet="content">
+						<code data-snippet="content">
               .container {
                 display: flex;
               }
@@ -486,7 +457,7 @@
                 flex-basis: content;
               }
             </code>
-            <code data-snippet="max-content">
+						<code data-snippet="max-content">
               .container {
                 display: flex;
               }
@@ -495,7 +466,7 @@
                 flex-basis: max-content;
               }
             </code>
-            <code data-snippet="min-content">
+						<code data-snippet="min-content">
               .container {
                 display: flex;
               }
@@ -504,7 +475,7 @@
                 flex-basis: min-content;
               }
             </code>
-            <code data-snippet="fit-content">
+						<code data-snippet="fit-content">
               .container {
                 display: flex;
               }
@@ -513,7 +484,7 @@
                 flex-basis: fit-content;
               }
             </code>
-            <code data-snippet="fill">
+						<code data-snippet="fill">
               .container {
                 display: flex;
               }
@@ -522,15 +493,15 @@
                 flex-basis: fill;
               }
             </code>
-          </div>
-        </article>
+					</div>
+				</article>
 
-        <article class="fg-cheat">
-          <h2 class="tit-cheat" id="flex-direction">
-            <a href="#flex-direction">flex-grow</a>
-          </h2>
-          <div data-mode="snippet" class="fg-editor css-flex">
-            <code data-snippet="0">
+				<article class="fg-cheat">
+					<h2 class="tit-cheat" id="flex-direction">
+						<a href="#flex-direction">flex-grow</a>
+					</h2>
+					<div data-mode="snippet" class="fg-editor css-flex">
+						<code data-snippet="0">
               .container {
                 display: flex;
               }
@@ -539,7 +510,7 @@
                 flex-grow:0;
               }
             </code>
-            <code data-snippet="1">
+						<code data-snippet="1">
               .container {
                 display: flex;
               }
@@ -548,28 +519,7 @@
                 flex-grow:1;
               }
             </code>
-            <code data-snippet="1-2-1">
-              .container {
-                display: flex;
-              }
-              
-              item {
-                flex-grow:1;
-              }
-
-              .item1 {
-                flex-grow:1;
-              }
-
-              .item2 {
-                flex-grow:2;
-              }
-
-              .item3 {
-                flex-grow:1;
-              }
-            </code>
-            <code data-snippet="1-2-2">
+						<code data-snippet="1-2-1">
               .container {
                 display: flex;
               }
@@ -587,29 +537,50 @@
               }
 
               .item3 {
+                flex-grow:1;
+              }
+            </code>
+						<code data-snippet="1-2-2">
+              .container {
+                display: flex;
+              }
+              
+              item {
+                flex-grow:1;
+              }
+
+              .item1 {
+                flex-grow:1;
+              }
+
+              .item2 {
+                flex-grow:2;
+              }
+
+              .item3 {
                 flex-grow:2;
               }
             </code>
-          </div>
-        </article>
+					</div>
+				</article>
 
-        <article class="fg-cheat">
-          <h2 class="tit-cheat" id="flex-direction">
-            <a href="#flex-direction">flex-shrink</a>
-          </h2>
-          <div data-mode="snippet" class="fg-editor css-flex">
-            <code data-hidden-text="true">
+				<article class="fg-cheat">
+					<h2 class="tit-cheat" id="flex-direction">
+						<a href="#flex-direction">flex-shrink</a>
+					</h2>
+					<div data-mode="snippet" class="fg-editor css-flex">
+						<code data-hidden-text="true">
               1
               2
               3
             </code>
-            <code data-hidden="true">
+						<code data-hidden="true">
               .item {
                 height: auto;
                 font-size: 12px;
               }
             </code>
-            <code>
+						<code>
               .container {
                 display: flex;
               }
@@ -621,15 +592,15 @@
                 flex-shrink: 2;
               }
             </code>
-          </div>
-        </article>
+					</div>
+				</article>
 
-        <article class="fg-cheat">
-          <h2 class="tit-cheat" id="flex-direction">
-            <a href="#flex-direction">align-self</a>
-          </h2>
-          <div data-mode="snippet" class="fg-editor css-flex">
-            <code data-hidden-text="true">
+				<article class="fg-cheat">
+					<h2 class="tit-cheat" id="flex-direction">
+						<a href="#flex-direction">align-self</a>
+					</h2>
+					<div data-mode="snippet" class="fg-editor css-flex">
+						<code data-hidden-text="true">
               auto
               stretch
               flex-start
@@ -637,7 +608,7 @@
               center
               baseline
             </code>
-            <code data-hidden="true">
+						<code data-hidden="true">
               .container {
                 min-height: 250px;
                 height: 100%;
@@ -648,7 +619,7 @@
                 font-size: 16px;
               }
             </code>
-            <code data-snippet="flex-direction:row" data-item="6">
+						<code data-snippet="flex-direction:row" data-item="6">
               .container {
                 display: flex;
                 flex-direction: row;
@@ -672,7 +643,7 @@
                 align-self: baseline;
               }
             </code>
-            <code data-snippet="flex-direction:column" data-item="6">
+						<code data-snippet="flex-direction:column" data-item="6">
               .container {
                 display: flex;
                 flex-direction: column;
@@ -696,20 +667,20 @@
                 align-self: baseline;
               }
             </code>
-          </div>
-        </article>
+					</div>
+				</article>
 
-        <article class="fg-cheat">
-          <h2 class="tit-cheat" id="flex-direction">
-            <a href="#flex-direction">order</a>
-          </h2>
-          <div data-mode="snippet" class="fg-editor css-flex">
-            <code data-snippet="row" data-item="3">
+				<article class="fg-cheat">
+					<h2 class="tit-cheat" id="flex-direction">
+						<a href="#flex-direction">order</a>
+					</h2>
+					<div data-mode="snippet" class="fg-editor css-flex">
+						<code data-snippet="row" data-item="3">
               .container {
                 display: flex;
               }
             </code>
-            <code data-snippet="row & order" data-item="3">
+						<code data-snippet="row & order" data-item="3">
               .container {
                 display: flex;
               }
@@ -723,13 +694,13 @@
                 order: 1;
               }
             </code>
-            <code data-snippet="column" data-item="3">
+						<code data-snippet="column" data-item="3">
               .container {
                 display: flex;
                 flex-direction: column;
               }
             </code>
-            <code data-snippet="column & order" data-item="3">
+						<code data-snippet="column & order" data-item="3">
               .container {
                 display: flex;
                 flex-direction: column;
@@ -744,33 +715,35 @@
                 order: 1;
               }
             </code>
-          </div>
-        </article>
-      </div>
-    </div>
-  </main>
-  <button type="button" class="btn-up"></button>
-  <footer class="footer-area">
-    <div class="cont-footer">
-      <div class="cont-txt">
-        <strong class="txt-title">flex, grid 오픈소스 프로젝트 입니다 :)</strong>
-        <p class="txt-main">
-          이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이
-          사용할 수 있는 공공재입니다.
-        </p>
-        <small class="txt-copyrigt">© 2022, All Rights Reserved</small>
-      </div>
-      <div class="cont-btn">
-        <a class="btn-footer btn-github" href="https://github.com/flexandgrid/flexandgrid" target="_blank">
-          Github
-        </a>
-        <a class="btn-footer btn-file" href="https://ridibooks.com/books/2773000058" target="_blank" download="">
-          PDF Book
-        </a>
-      </div>
-    </div>
-  </footer>
-  <script src="/src/components/cheatsheet-flex.js"></script>
+					</div>
+				</article>
+			</div>
+		</div>
+	</main>
+
+	<button type="button" class="btn-up"></button>
+
+	<footer class="footer-area">
+		<div class="cont-footer">
+			<div class="cont-txt">
+				<strong class="txt-title">flex, grid 오픈소스 프로젝트 입니다 :)</strong>
+				<p class="txt-main">
+					이 자료는 많은 개발자의 도움으로 만들어졌습니다. 누구나 허락 없이
+					사용할 수 있는 공공재입니다.
+				</p>
+				<small class="txt-copyrigt">© 2022, All Rights Reserved</small>
+			</div>
+			<div class="cont-btn">
+				<a class="btn-footer btn-github" href="https://github.com/flexandgrid/flexandgrid" target="_blank">
+					Github
+				</a>
+				<a class="btn-footer btn-file" href="https://ridibooks.com/books/2773000058" target="_blank"
+					download="">
+					PDF Book
+				</a>
+			</div>
+		</div>
+	</footer>
 </body>
 
 </html>
