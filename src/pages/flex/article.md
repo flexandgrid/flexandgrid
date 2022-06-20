@@ -1665,7 +1665,10 @@ IE 10/11 버전에서 Flex를 사용 할 때 생각대로 작동되지 않는 �
 [https://github.com/philipwalton/flexbugs](https://github.com/philipwalton/flexbugs)
 
 # 11. 성배 레이아웃 그리기
-웹 사이트 구현에서 자주 구현되는 모습인 성배 레이아웃은 단순히 특정한 형태의 레이아웃을 구현하는 것을 넘어서서 어떻게 하면 검색 엔진 최적화, 효율, 크로스 브라우징 등을 고려하면서 개발할 수 있는가에 대한 문제입니다. flex와 grid가 나오면서 거의 완전한 [솔루션](https://en.wikipedia.org/wiki/Holy_grail_(web_design))을 제공한 상태이지만 그 전에는 다양한 솔루션에 갑론을박이 있었던 문제입니다.
+
+웹 사이트 구현에서 자주 구현되는 모습인 성배 레이아웃은 단순히 특정한 형태의 레이아웃을 구현하는 것을 넘어서서 어떻게 하면 검색 엔진 최적화, 효율, 크로스 브라우징 등을 고려하면서 개발할 수 있는가에 대한 문제입니다. flex와 grid가 나오면서 거의 완전한 [솔루션](<https://en.wikipedia.org/wiki/Holy_grail_(web_design)>)을 제공한 상태이지만 그 전에는 다양한 솔루션에 갑론을박이 있었던 문제입니다.
+
+<br />
 
 - 좀 더 다양한 예제는 책에서 확인이 가능합니다.
 
@@ -1684,6 +1687,11 @@ IE 10/11 버전에서 Flex를 사용 할 때 생각대로 작동되지 않는 �
       height: auto;
       border: 1px solid #504975;
     }
+    .item2, .item3, .item4 {
+      background-color: #eceafe;
+      color: #504975;
+      padding: 80px 0;
+    }
   </code>
   <code data-struct="[5]">
     .container {
@@ -1697,21 +1705,12 @@ IE 10/11 버전에서 Flex를 사용 할 때 생각대로 작동되지 않는 �
     .item2 {
       flex: 1;
       order: 3;
-      background-color: #eceafe;
-      color: #504975;
-      padding: 80px 0;
     }
     .item3 {
       order: 2;
-      background-color: #eceafe;
-      color: #504975;
-      padding: 80px 0;
     }
     .item4 {
       order: 4;
-      background-color: #eceafe;
-      color: #504975;
-      padding: 80px 0;
     }
     .item5 {
       width: 100%;
