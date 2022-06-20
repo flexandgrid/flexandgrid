@@ -70,11 +70,10 @@
   --add-button-background: var(--primary-2);
   --remove-button-color: #878787;
   --remove-button-background: #e0e0e0;
+  --dropdown-background: #eceafe;
   --indicator: #efefef;
-  --fixed-white: #ffffff;
   --fixed-gray-8: #27272a;
-  --fixed-gray-6: #3f3f46;
-  --fixed-box-shadow: #00000033;
+  --fixed-white: #ffffff;
   --four-color-1: #765451;
 }
 
@@ -92,6 +91,7 @@
   --accent-2: #eceafe;
   --accent-1: #fbfbff;
   --box-shadow-1: #c5604614;
+  --dropdown-background: #fff0e6;
   --four-color-1: #504975;
 }
 
@@ -104,6 +104,7 @@
   --gray-2: #3f3f46;
   --gray-1: #2d2d2d;
   --white: #333338;
+  --primary-2: var(--primary-6);
   --background: #3f3f46;
   --box-shadow-2: #ffffffaa;
   --box-shadow-1: #2d2d2d1a;
@@ -123,18 +124,9 @@
   background-color: var(--primary-2);
 }
 
-.on .fg-editor.theme-double-color-1 .container .item:nth-of-type(even) {
-  background-color: var(--primary-6);
-}
-
 .fg-editor.theme-double-color-2 .container .item:nth-child(2),
 .fg-editor.theme-double-color-2 .container .item:nth-child(4) {
   background-color: var(--primary-2);
-}
-
-.on .fg-editor.theme-double-color-2 .container .item:nth-child(2),
-.on .fg-editor.theme-double-color-2 .container .item:nth-child(4) {
-  background-color: var(--primary-6);
 }
 
 @keyframes mountItem {
@@ -356,10 +348,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-.on .fg-editor .container:not(.item):hover {
-  background-color: var(--primary-6);
-}
-
 .fg-editor .item {
   display: flex;
   justify-content: center;
@@ -467,15 +455,11 @@
 
 .fg-editor tr:hover {
   background-color: var(--primary-2);
-  color: var(--fixed-gray-6);
-}
-
-.on .fg-editor tr:hover {
-  background-color: var(--primary-6);
+  color: var(--gray-6);
 }
 
 .fg-editor tr:hover .text-code {
-  color: var(--fixed-gray-6);
+  color: var(--gray-6);
 }
 
 .fg-editor tr:hover .text-code:focus {
@@ -604,14 +588,6 @@
   box-shadow: inset 0 0 2px 1px var(--box-shadow-2);
 }
 
-.fg-editor td:hover .button-code:hover {
-  box-shadow: 0 0 3px 1px var(--fixed-box-shadow);
-}
-
-.fg-editor td:hover .button-code:active {
-  box-shadow: inset 0 0 2px 1px var(--fixed-box-shadow);
-}
-
 .fg-editor input.button-code {
   padding: 0 3px;
   cursor: auto;
@@ -632,7 +608,7 @@
   max-height: var(--dropdown);
   border: 1px solid black;
   border-radius: 5px;
-  background-color: var(--primary-2);
+  background-color: var(--dropdown-background);
   color: var(--fixed-gray-8);
   cursor: auto;
 }
