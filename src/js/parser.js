@@ -77,12 +77,12 @@
   };
 
   const paragraph = {
-    regex: /(?<=^|\n)(.+)$/,
+    regex: /(?:^|\n)(.+)$/,
     tagName: 'p',
-    replace: (matched) =>
+    replace: (matched, group) =>
       /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img|code)/.test(matched)
         ? matched
-        : '<p>' + matched + '</p>'
+        : '<p>' + group + '</p>'
   };
 
   const link = {
