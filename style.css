@@ -56,7 +56,6 @@
     background-color: var(--secondary);
 }
 
-
 .btn-up.on {
     background: var(--subtext) url("./src/assets/images/icon-chevron-up-darkmode.svg") no-repeat center;
 }

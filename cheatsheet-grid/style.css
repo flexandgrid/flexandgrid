@@ -25,15 +25,15 @@ body {
     grid-column-gap: 28px;
     grid-row-gap: 50px;
     width: fit-content;
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 .main-title {
     color: var(--secondary);
-    font-weight: 400;
     font-size: 36px;
+    font-weight: 300;
     line-height: 44px;
-    margin-top: 140px;
+    margin-top: 150px;
 }
 
 article:not(:last-child, :nth-last-of-type(2)) {

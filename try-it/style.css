@@ -3,7 +3,7 @@
 .main-tryit {
     display: flex;
     justify-content: center;
-    padding: 140px 108px 100px;
+    padding: 150px 108px 100px;
     background-color: var(--background);
 }
 
@@ -112,7 +112,7 @@
 /* 반응형 */
 @media screen and (max-width: 1280px) {
     .main-tryit {
-        padding: 140px 60px 120px;
+        padding: 150px 60px 100px;
     }
 }
 
@@ -135,7 +135,7 @@
 
 @media screen and (max-width: 479px) {
     .main-tryit {
-        padding: 85px 20px 40px;
+        padding: 85px 40px 40px;
     }
 
     .main-tryit h2 {
