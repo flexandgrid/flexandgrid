@@ -1022,8 +1022,8 @@ grid 컨테이너 내의 item에 적용하는 속성이며, 아이템을 그리�
       height: auto;
     }
     .item3, .item4 {
-      background-color: var(--primary-2);
-      color: var(--primary-6);
+      background-color: #fff0e6;
+      color: #765451;
     }
   </code>
   <code data-item="4">
@@ -1094,8 +1094,8 @@ grid 컨테이너 내의 item에 적용하는 속성이며, 아이템을 그리�
       height: auto;
     }
     .item {
-      background-color: var(--primary-2);
-      color: var(--primary-6);
+      background-color: #fff0e6;
+      color: #765451;
     }
     .item1, .item5 {
       background-color: var(--primary-5);
