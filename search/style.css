@@ -9,40 +9,41 @@
   clip: rect(0, 0, 0, 0);
 }
 
-.header-temporary {
-  height: 80px;
-  border: 1px solid #999;
-  box-sizing: border-box;
+.main {
+  display: flex;
+  justify-content: center;
+  margin: 150px 160px;
 }
 
-.main {
-  margin: 200px 160px 200px 160px;
+.main div {
+  max-width: 1600px;
+  width: 100%;
 }
 
 .text-search {
   margin: 0 0 10px 20px;
   font-size: 36px;
-  line-height: 44px;
-  color: #3f3f46;
+  line-height: 1.6;
+  color: var(--primary);
 }
 
 .text-search-count {
-  margin: 0 0 25px 20px;
+  margin: 0 0 40px 20px;
   font-size: 12px;
-  line-height: 16px;
-  color: #878787;
+  line-height: 1.6;
+  color: var(--secondary);
 }
 
 .search-body.on {
-  background-color: #3f3f46;
+  background-color: var(--primary);
 }
 
 .search-body.on .text-search {
-  color: #e0e0e0;
+  color: var(--subtext);
 }
 
 .search-body.on .text-search-count {
-  color: #b4b4b4;
+  color: var(--tertiary);
 }
 
 .txt-item {
@@ -62,7 +63,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #3f3f46 url(/src/assets/images/icon-chevron-up.svg) no-repeat center;
+  background: var(--primary) url(/src/assets/images/icon-chevron-up.svg) no-repeat center;
   box-shadow: 0 10px 25px rgba(135, 135, 135, 0.15);
   transition: all 0.3s;
   cursor: pointer;
@@ -79,6 +80,30 @@
     no-repeat center;
 }
 
-.search-body .footer-area {
-  display: none;
+@media screen and (max-width: 1280px) {
+  .main {
+    margin: 150px 80px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    margin: 120px 32px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .main {
+    margin: 100px 18px;
+  }
+  .text-search {
+    margin: 0 0 8px 20px;
+    font-size: 24px;
+    line-height: 1.6;
+  }
+
+  .text-search-count {
+    margin: 0 0 20px 16px;
+    font-size: 13px;
+  }
 }
