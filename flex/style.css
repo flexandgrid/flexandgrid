@@ -38,7 +38,7 @@ main {
 .cont-flex {
   max-width: 1480px;
   width: 100%;
-  padding: 140px 180px 120px;
+  padding: 150px 180px 80px;
   font-size: 18px;
   line-height: 1.6em;
 }
@@ -279,9 +279,8 @@ main {
 /* 반응형 */
 @media screen and (max-width: 1280px) {
   .cont-flex {
-    padding-left: 5vw;
-    padding-right: 5vw;
     width: 80%;
+    padding: 95px 5vw 80px;
   }
 
   .cont-flex article {
@@ -299,10 +298,7 @@ main {
     margin: 35px 0 15px;
   }
 
-  .cont-flex figure {
-    max-width: 90%;
-  }
-
+  .cont-flex figure,
   .cont-flex figure img {
     max-width: 90%;
   }
@@ -310,7 +306,14 @@ main {
 
 @media screen and (max-width: 768px) {
   .cont-flex {
-    padding: 50px 5vw;
+    width: 100%;
+    padding: 50px 40px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .cont-flex {
+    padding: 30px 40px;
     font-size: 16px;
   }
 

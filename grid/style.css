@@ -38,7 +38,7 @@ main {
 .cont-grid {
   max-width: 1480px;
   width: 100%;
-  padding: 140px 180px 120px;
+  padding: 150px 180px 80px;
   font-size: 18px;
   line-height: 1.6em;
 }
@@ -279,16 +279,15 @@ main {
 /* 반응형 */
 @media screen and (max-width: 1280px) {
   .cont-grid {
-    padding-left: 5vw;
-    padding-right: 5vw;
     width: 80%;
+    padding: 95px 5vw 80px;
   }
 
   .cont-grid article {
     margin-bottom: 80px;
   }
 
-  .cont-grid h2 {
+   .cont-grid h2 {
     padding: 35px 0 0;
     margin: 20px 0;
   }
@@ -299,24 +298,22 @@ main {
     margin: 35px 0 15px;
   }
 
-  .cont-grid figure {
-    max-width: 90%;
-  }
-
+  .cont-grid figure,
   .cont-grid figure img {
     max-width: 90%;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1280) {
-  .sect-grid {
-    width: calc(100% - 295px);
+@media screen and (max-width: 768px) {
+  .cont-grid {
+    width: 100%;
+    padding: 50px 40px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 479px) {
   .cont-grid {
-    padding: 50px 5vw;
+    padding: 30px 40px;
     font-size: 16px;
   }
 
