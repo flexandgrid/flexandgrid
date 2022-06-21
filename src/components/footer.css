@@ -111,27 +111,27 @@ body {
     vertical-align: -5px;
 }
 
-.footer-area.on {
+.on .footer-area {
     background-color: var(--border-dark);
 }
 
-.footer-area.on .txt-copyrigt,
-.footer-area.on .txt-main,
-.footer-area.on .txt-title {
+.on .footer-area .txt-copyrigt,
+.on .footer-area .txt-main,
+.on .footer-area .txt-title {
     color: var(--secondary);
 }
 
-.footer-area.on .btn-footer {
+.on .footer-area .btn-footer {
     box-shadow: 0 8px 10px rgba(45, 45, 45, 0.5);
     background-color: var(--secondary);
     color: var(--dark);
 }
 
-.footer-area.on .btn-footer:hover {
+.on .footer-area .btn-footer:hover {
     background-color: #6b6b6b;
 }
 
-.footer-area.on .btn-github::before {
+.on .footer-area .btn-github::before {
     content: "";
     display: inline-block;
     width: 24px;
@@ -141,7 +141,7 @@ body {
     vertical-align: -5px;
 }
 
-.footer-area.on .btn-file::before {
+.on .footer-area .btn-file::before {
     content: "";
     display: inline-block;
     width: 24px;

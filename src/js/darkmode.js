@@ -3,7 +3,6 @@ const cheatsheetModal = document.querySelector(".modal-menu");
 const searchModal = document.querySelector(".modal-history");
 const pageBody = document.querySelector("body");
 const upBtn = document.querySelector(".btn-up");
-const footerArea = document.querySelector(".footer-area");
 
 let currentMode = localStorage.getItem("darkmode");
 let isDark = false;
@@ -16,7 +15,6 @@ const checkDarkMode = () => {
     searchModal.classList.add("on");
     pageBody.classList.add("on");
     upBtn.classList.add("on");
-    footerArea.classList.add("on");
   } else {
     isDark = false;
     headerArea.classList.remove("on");
@@ -24,7 +22,6 @@ const checkDarkMode = () => {
     searchModal.classList.remove("on");
     pageBody.classList.remove("on");
     upBtn.classList.remove("on");
-    footerArea.classList.remove("on");
   }
 };
 checkDarkMode();
@@ -35,7 +32,6 @@ const handleDarkMode = () => {
   searchModal.classList.toggle("on");
   pageBody.classList.toggle("on");
   upBtn.classList.toggle("on");
-  footerArea.classList.toggle("on");
  
   isDark = !isDark;
   localStorage.setItem("darkmode", isDark);
