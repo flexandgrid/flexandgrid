@@ -392,7 +392,7 @@ const createList = (contents) => {
             'href',
             `${i == 0 ? `/flex/#${currentTitle}` : `/grid/#${currentTitle}`}`
           );
-          searchListItemLink.setAttribute('target', `_top`);
+
           searchListItemLink.setAttribute('class', 'item-search');
 
           currentTitle = currentTitle.replace(/[^s]+[.]/gi, '');
