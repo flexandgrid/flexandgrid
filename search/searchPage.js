@@ -10,7 +10,6 @@ if (searchQuery) {
 
 // fetch
 const contents = [];
-
 (async function () {
   const PAGE_NAME = window.location.pathname.split('/')[1];
 
@@ -27,22 +26,22 @@ const contents = [];
 
   const codeBlockStart = {
     regex: /^\s*`{3}(.+)/,
-    replace: '<pre><code>$1'
+    replace: '<pre><code>$1',
   };
 
   const codeBlockEnd = {
     regex: /(.*)`{3}\s*$/,
-    replace: '$1</code></pre>'
+    replace: '$1</code></pre>',
   };
 
   const unorderedListItem = {
     regex: /^\s*-\s(.+)/,
-    replace: '<li>$1'
+    replace: '<li>$1',
   };
 
   const orderedListItem = {
     regex: /^\s*(\d+\.\s.+)/,
-    replace: '<li>$1'
+    replace: '<li>$1',
   };
 
   const tableRow = {
@@ -53,12 +52,12 @@ const contents = [];
         .map((text) => `<td>${text.trim()}</td>`)
         .join('');
       return `<tr>${heads}</tr>`;
-    }
+    },
   };
 
   const tableDivision = {
     regex: /^\|(([-|]|\s)+)\|$/,
-    replace: ''
+    replace: '',
   };
 
   const heading = {
@@ -69,7 +68,7 @@ const contents = [];
         /(\*{2})|`/g,
         ''
       )}">${group}</${tagName}>`;
-    }
+    },
   };
 
   const figure = {
@@ -81,12 +80,12 @@ const contents = [];
       }/src/pages/${PAGE_NAME}/${g2}"${
         width ? ` style="width: ${width}px;"` : ''
       }>${g1 ? `<figcaption>${g1}</figcaption>` : ''}</figure>`;
-    }
+    },
   };
 
   const lineBreak = {
     regex: /^<br\s*\/>$/,
-    replace: '<br />'
+    replace: '<br />',
   };
 
   const paragraph = {
@@ -95,22 +94,22 @@ const contents = [];
     replace: (matched, group) =>
       /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img|code)/.test(matched)
         ? matched
-        : '<p>' + group + '</p>'
+        : '<p>' + group + '</p>',
   };
 
   const link = {
     regex: /\[(.+)\]\((.+)\)/g,
-    replace: '<a href="$2">$1</a>'
+    replace: '<a href="$2">$1</a>',
   };
 
   const strong = {
     regex: /\*{2}(([^*])+)\*{2}/g,
-    tagName: 'strong'
+    tagName: 'strong',
   };
 
   const code = {
     regex: /`([^`]+)`/g,
-    tagName: 'code'
+    tagName: 'code',
   };
 
   const listDepth = (token) => {
@@ -126,7 +125,7 @@ const contents = [];
     tableRow,
     heading,
     figure,
-    lineBreak
+    lineBreak,
   ];
 
   const inlineRules = [link, strong, code];
@@ -391,7 +390,11 @@ const createList = (contents) => {
           const searchListItemLink = document.createElement('a');
           searchListItemLink.setAttribute(
             'href',
-            `${i == 0 ? `/flex/#${currentTitle}` : `/grid/#${currentTitle}`}`
+            `${
+              i == 0
+                ? `https://www.flexngrid.com/flex/#${currentTitle}`
+                : `https://www.flexngrid.com/grid/#${currentTitle}`
+            }`
           );
           searchListItemLink.setAttribute('class', 'item-search');
 
