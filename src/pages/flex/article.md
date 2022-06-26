@@ -1220,9 +1220,9 @@ flex: <flex-grow> <flex-shrink> <flex-basis>;
 
 <br />
 
-- `flex-grow` 는 flex 아이템이 팽창하는 비율을 설정한다. 기본값은 1이다.
+- `flex-grow` 는 flex 아이템이 팽창하는 비율을 설정한다. 기본값은 0이다.
 - `flex-shrink` 는 flex 아이템이 수축하는 비율을 설정한다. 기본값은 1이다.
-- `flex-basis` 는 flex 아이템이 팽창하고 수축하는 기준 크기를 설정한다. 기본값은 0이다.
+- `flex-basis` 는 flex 아이템이 팽창하고 수축하는 기준 크기를 설정한다. 기본값은 auto이다.
 
 ## 8.5. flex-shrink보다는 flex 축약 속성을! (W3C)
 
